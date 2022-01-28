@@ -63,7 +63,7 @@ const HeaderWrapper = styled.header`
 
   img {
     width: 200px;
-    margin-right: 20px;
+    margin-right: 30px;
   }
 `;
 
@@ -80,7 +80,7 @@ const StyledNavigation = styled.nav`
   line-height: 2;
 
   a {
-    margin: 0 20px;
+    margin: 0 30px;
     cursor: pointer;
   }
 `;

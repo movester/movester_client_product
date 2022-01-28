@@ -35,6 +35,7 @@ const FooterWrapper = styled.footer`
   align-items: center;
   padding: 40px 80px;
   border-top: 2px solid #2a1598;
+  background: #fff;
 `;
 
 const FooterLeftBlock = styled.div`
