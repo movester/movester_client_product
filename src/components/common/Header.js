@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import ProfileButton from '../elements/ProfileButton';
-import ProfileDropMenu from './ProfileDropMenu';
+import NavProfileButton from '../elements/NavProfileButton';
+import ProfileDropMenu from '../molecules/ProfileDropMenu';
 
 function Header() {
   const [isLoging, setIsLoging] = useState(true);
@@ -29,7 +29,7 @@ function Header() {
         <StyledNavigation>
           {isLoging ? (
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <ProfileButton handleClick={handleClick} />
+              <NavProfileButton handleClick={handleClick} />
               {isClick && <ProfileDropMenu />}
             </div>
           ) : (

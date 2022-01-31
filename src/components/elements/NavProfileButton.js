@@ -2,15 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-function ProfileButton({ handleClick }) {
+function NavProfileButton({ handleClick }) {
   return <ProfileWrapper onClick={handleClick}>조나현님</ProfileWrapper>;
 }
 
-ProfileButton.propTypes = {
+NavProfileButton.propTypes = {
   handleClick: PropTypes.func.isRequired,
 };
 
-export default ProfileButton;
+export default NavProfileButton;
 
 const ProfileWrapper = styled.div`
   width: 105px;

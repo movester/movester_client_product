@@ -2,8 +2,8 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Routes, Route } from 'react-router-dom';
 
-import Header from './components/utils/Header';
-import Footer from './components/utils/Footer';
+import Header from './components/common/Header';
+import Footer from './components/common/Footer';
 
 import theme from './theme';
 import Home from './pages/Home';

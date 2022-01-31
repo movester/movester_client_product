@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Main from '../components/utils/Main';
-import Nav from '../components/utils/Nav';
+import Main from '../components/common/Main';
+import Nav from '../components/common/Nav';
 import Button from '../components/elements/Button';
 import ProfillTitle from '../components/elements/ProfileTitle';
 import ProfillInput from '../components/elements/ProfillInput';
-import ReCaptcha from '../components/utils/ReCaptcha';
-import ModalPortal from '../components/utils/Modal/ModalPortal';
-import PwChangeModal from '../components/utils/Modal/PwChangeModal';
+import ReCaptcha from '../components/common/ReCaptcha';
+import ModalPortal from '../components/common/Modal/ModalPortal';
+import PwChangeModal from '../components/common/Modal/PwChangeModal';
 
 function pwChange() {
   const [modalOn, setModalOn] = useState(false);

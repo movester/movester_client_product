@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 function ProfileDropMenu() {
@@ -10,10 +10,10 @@ function ProfileDropMenu() {
         <span className="user-email">jnhro1@gmail.com</span>
       </UserInfoContainer>
       <StyledNavigation>
-        <NavLink to="/profill/">프로필</NavLink>
-        <NavLink to="/profill/basket">찜한 스트레칭</NavLink>
-        <NavLink to="/">출석도장</NavLink>
-        <NavLink to="/profill/Record">기록</NavLink>
+        <Link to="/">프로필</Link>
+        <Link to="/">찜한 스트레칭</Link>
+        <Link to="/">출석도장</Link>
+        <Link to="/">기록</Link>
       </StyledNavigation>
     </ProfileDropMenuWrapper>
   );

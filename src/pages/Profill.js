@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Main from '../components/utils/Main';
-import Nav from '../components/utils/Nav';
+import Main from '../components/common/Main';
+import Nav from '../components/common/Nav';
 import ProfillTitle from '../components/elements/ProfileTitle';
 import Button from '../components/elements/Button';
 

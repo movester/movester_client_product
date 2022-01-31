@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from '../components/utils/Main';
+import Main from '../components/common/Main';
 
 function Stretching() {
   return (

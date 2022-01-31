@@ -1,10 +1,11 @@
 import React from 'react';
-import Main from '../components/utils/Main';
+import HomeComponent from '../components/UI/home/HomeComponent';
+import Main from '../components/common/Main';
 
 function Home() {
   return (
     <Main>
-      <h2>Home 페이지입니다</h2>
+      <HomeComponent />
     </Main>
   );
 }
