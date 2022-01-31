@@ -11,7 +11,7 @@ function ProfileDropMenu() {
       </UserInfoContainer>
       <StyledNavigation>
         <NavLink to="/profill/">프로필</NavLink>
-        <NavLink to="/">찜한 스트레칭</NavLink>
+        <NavLink to="/profill/basket">찜한 스트레칭</NavLink>
         <NavLink to="/">출석도장</NavLink>
         <NavLink to="/profill/Record">기록</NavLink>
       </StyledNavigation>

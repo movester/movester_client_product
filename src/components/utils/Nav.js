@@ -12,7 +12,7 @@ function Nav() {
     {
       id: 1,
       title: '찜한 스트레칭',
-      path: '/profill/zzim',
+      path: '/profill/basket',
     },
     {
       id: 2,
