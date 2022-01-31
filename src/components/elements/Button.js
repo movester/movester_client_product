@@ -30,8 +30,7 @@ const StyledButton = styled.div`
   height: 40px;
   line-height: 40px;
   display: inline-block;
-  // background-color: ${({ theme }) => theme.lightPurple};
-  background-color: rgba(109, 102, 170, 0.7);
+  background-color: ${({ theme }) => theme.lightPurple};
   border-radius: 10px;
   font-size: 20px;
   color: #ffffff;

@@ -17,6 +17,7 @@ import PwChange from './pages/PwChange';
 import UserDelete from './pages/UserDelete';
 import Record from './pages/Record';
 import Basket from './pages/Basket';
+import Stamp from './pages/Stamp';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/profill/userDelete" element={<UserDelete />} />
         <Route path="/profill/record" element={<Record />} />
         <Route path="/profill/basket" element={<Basket />} />
+        <Route path="/profill/stamp" element={<Stamp />} />
       </Routes>
       <Footer />
     </ThemeProvider>
