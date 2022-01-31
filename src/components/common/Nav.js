@@ -17,7 +17,7 @@ function Nav() {
     {
       id: 2,
       title: '출석도장',
-      path: '/profill/visit',
+      path: '/profill/stamp',
     },
     {
       id: 3,
@@ -47,7 +47,7 @@ const StyledNavWrap = styled.nav`
   width: 200px;
   height: 215px;
   text-align: center;
-  padding: 20px 20px;
+  padding: 20px 43px;
   border: 1px solid black;
   border-radius: 5px;
   margin-right: 50px;

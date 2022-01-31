@@ -2,16 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-function Main({ children }) {
-  return <StyledMain>{children}</StyledMain>;
+function Main({ children, type }) {
+  return <StyledMain className={type}>{children}</StyledMain>;
 }
 
 Main.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
+  type: PropTypes.string,
+};
+Main.defaultProps = {
+  type: '',
 };
 
 export default Main;
 
 const StyledMain = styled.main`
-  padding-top: 80px;
+  margin-top: 80px;
+
+  &.profill {
+    padding: 40px 5rem;
+    height: 74vh;
+    display: flex;
+  }
 `;
