@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Main from '../components/utils/Main';
-import Nav from '../components/utils/Nav';
+import Main from '../components/common/Main';
+import Nav from '../components/common/Nav';
 
 function Record() {
   return (

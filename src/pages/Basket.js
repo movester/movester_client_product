@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Main from '../components/utils/Main';
-import Nav from '../components/utils/Nav';
-import MoveLink from '../components/utils/MoveLink';
+import Main from '../components/common/Main';
+import Nav from '../components/common/Nav';
+import MoveLink from '../components/common/MoveLink';
 
 function Basket() {
   const BasketArr = [];
