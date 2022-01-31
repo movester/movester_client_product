@@ -13,7 +13,7 @@ function Basket() {
         {BasketArr.length ? null : (
           <div className="not-Basket">
             <img src="/assets/sorry.png" alt="스트레칭 없음" />
-            <p>찜한 스트레칭이 없습니다!</p>
+            <p className="tall-text">찜한 스트레칭이 없습니다!</p>
             <MoveLink text="아직 찜한 스트레칭이 없으신가요?" btnText="스트레칭 보러가기" address="/stretching" />
           </div>
         )}
@@ -30,6 +30,9 @@ const StyledWrap = styled.section`
   .not-Basket {
     margin-top: 50px;
     text-align: center;
+    .tall-text {
+      font-size: 18px;
+    }
     p {
       margin-top: 20px;
     }
