@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Main from '../components/utils/Main';
 import Nav from '../components/utils/Nav';
 import ProfillTitle from '../components/elements/ProfileTitle';
-import Button from '../components/utils/Button';
+import Button from '../components/elements/Button';
 
 function profill() {
   return (
