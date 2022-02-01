@@ -44,8 +44,8 @@ const StyledButton = styled.div`
     line-height: 26px;
     background-color: #ffffff;
     font-size: 18px;
-    color: ${({ theme }) => theme.darkPulple};
-    border: 2px solid ${({ theme }) => theme.darkPulple};
+    color: ${({ theme }) => theme.darkPurple};
+    border: 2px solid ${({ theme }) => theme.darkPurple};
     margin: 0;
   }
 

@@ -6,14 +6,13 @@ function GrayBg({ children }) {
   return <StyledGrayBg>{children}</StyledGrayBg>;
 }
 
-export default GrayBg;
-
 const StyledGrayBg = styled.div`
   width: 100%;
   background-color: rgba(229, 229, 229, 0.6);
   border-radius: 5px;
   padding: 20px;
 `;
+export { GrayBg, StyledGrayBg };
 
 GrayBg.propTypes = {
   children: PropTypes.node.isRequired,
