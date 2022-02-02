@@ -21,14 +21,16 @@ function Record() {
           <div className="graph-one">
             <Button type="search" text="어깨" />
             <div className="graph" />
-            <Link to="/profill/record/myrecord">
+            <Link to="/mypage/record/shoulder">
               <p>오늘의 어깨 기록하러가기 {'>'}</p>
             </Link>
           </div>
           <div className="graph-one">
             <Button type="search" text="허리 &#183; 다리" />
             <div className="graph" />
-            <p>오늘의 허리 &#183; 다리 기록하러가기 {'>'}</p>
+            <Link to="/mypage/record/waistLeg">
+              <p>오늘의 허리 &#183; 다리 기록하러가기 {'>'}</p>
+            </Link>
           </div>
         </div>
 
@@ -66,7 +68,7 @@ const StyledWrap = styled.section`
       .search {
         width: 120px;
         height: 40px;
-        line-height: 40px;
+        line-height: 36px;
       }
       p {
         font-weight: bold;
