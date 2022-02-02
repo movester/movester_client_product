@@ -22,13 +22,20 @@ function Stretching() {
     <Main>
       <StyledNav>
         <MainCategory>
-          <StyledMainBtn type="button">부위별</StyledMainBtn>
+          <StyledMainBtn>부위별</StyledMainBtn>
           <StyledBar>|</StyledBar>
-          <StyledMainBtn type="button">자세별</StyledMainBtn>
+          <StyledMainBtn>자세별</StyledMainBtn>
           <StyledBar>|</StyledBar>
-          <StyledMainBtn type="button">효과별</StyledMainBtn>
+          <StyledMainBtn>효과별</StyledMainBtn>
+          <StyledTagBtn>태그 맞춤 동작 찾기</StyledTagBtn>
         </MainCategory>
-        <CurrentCategory>전체</CurrentCategory>
+        <CurrentCategory>
+          <StyledCurBtn>전체</StyledCurBtn>
+          <StyledArrow>&gt;</StyledArrow>
+          <StyledCurBtn>상체</StyledCurBtn>
+          <StyledArrow>&gt;</StyledArrow>
+          <StyledCurBtn>목/어깨</StyledCurBtn>
+        </CurrentCategory>
         <SubCategory>
           <StyledSubBtn>전신</StyledSubBtn>
           <StyledSubBtn>상체</StyledSubBtn>
@@ -77,10 +84,33 @@ const StyledBar = styled.span`
   margin: 1rem;
 `;
 
+const StyledTagBtn = styled.button`
+  font-size: 16px;
+  color: ${({ theme }) => theme.darkPurple};
+  width: 150px;
+  height: 40px;
+  border: 2px solid ${({ theme }) => theme.darkPurple};
+  border-radius: 10px;
+  float: right;
+`;
+
 const CurrentCategory = styled.div`
   font-size: 20px;
   font-weight: 800;
   margin: 1rem 0;
+`;
+
+const StyledArrow = styled.span`
+  font-size: 20px;
+  margin: 1rem;
+`;
+
+const StyledCurBtn = styled.button`
+  font-size: 20px;
+
+  & + & {
+    margin-left: 1rem;
+  }
 `;
 
 const SubCategory = styled.div`
@@ -91,7 +121,7 @@ const StyledSubBtn = styled.button`
   font-size: 18px;
   width: 80px;
   height: 40px;
-  background-color: #F0C36A;
+  background-color: #f0c36a;
   border-radius: 10px;
 
   & + & {
@@ -112,6 +142,7 @@ const StyledSection = styled.section`
 const Item = styled.div`
   width: 100%;
   height: auto;
+  cursor: pointer;
 `;
 
 const ImageWrap = styled.div`
