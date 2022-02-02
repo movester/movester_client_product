@@ -2,10 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ModalPortal from './ModalPortal';
-// import begImage from '../../../assets/beg.png';
 import begImage from '../../../assets/beg.png';
 
-function PwChangeModal({ title, onClose }) {
+function AccountLeave({ title, onClose }) {
   return (
     <ModalPortal>
       <Container>
@@ -28,17 +27,17 @@ function PwChangeModal({ title, onClose }) {
   );
 }
 
-PwChangeModal.propTypes = {
+AccountLeave.propTypes = {
   title: PropTypes.string,
   onClose: PropTypes.func,
 };
 
-PwChangeModal.defaultProps = {
+AccountLeave.defaultProps = {
   title: '',
   onClose: () => {},
 };
 
-export default PwChangeModal;
+export default AccountLeave;
 
 const Container = styled.div`
   background: rgba(0, 0, 0, 0.25);

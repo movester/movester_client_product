@@ -7,7 +7,7 @@ import ProfillTitle from '../components/elements/ProfileTitle';
 import ProfillInput from '../components/elements/ProfillInput';
 import ReCaptcha from '../components/common/ReCaptcha';
 import ModalPortal from '../components/common/Modal/ModalPortal';
-import PwChangeModal from '../components/common/Modal/PwChangeModal';
+import PwConfirm from '../components/common/Modal/PwConfirm';
 
 function pwChange() {
   const [modalOn, setModalOn] = useState(false);
@@ -25,7 +25,7 @@ function pwChange() {
         <StyledButtonWrap>
           <ReCaptcha />
           <Button text="비밀번호 변경" event={handleModal} />
-          <ModalPortal>{modalOn && <PwChangeModal onClose={handleModal} title="계정 삭제" />}</ModalPortal>
+          <ModalPortal>{modalOn && <PwConfirm onClose={handleModal} title="비밀번호 변경" />}</ModalPortal>
         </StyledButtonWrap>
       </StyledContentWrap>
     </Main>
