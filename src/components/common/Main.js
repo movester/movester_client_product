@@ -24,4 +24,8 @@ const StyledMain = styled.main`
     height: 74vh;
     display: flex;
   }
+
+  &.padding {
+    padding: 0 5rem;
+  }
 `;
