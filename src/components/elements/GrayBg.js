@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 function GrayBg({ children }) {
-  return <StyledGrayBg>{children}</StyledGrayBg>;
+  return <StyledGrayBg className="gray-bg">{children}</StyledGrayBg>;
 }
 
 const StyledGrayBg = styled.div`
