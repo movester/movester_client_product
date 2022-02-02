@@ -21,9 +21,20 @@ function Stretching() {
   return (
     <Main>
       <StyledNav>
-        <MainCategory>부위별 | 자세별 | 효과별</MainCategory>
+        <MainCategory>
+          <StyledMainBtn type="button">부위별</StyledMainBtn>
+          <StyledBar>|</StyledBar>
+          <StyledMainBtn type="button">자세별</StyledMainBtn>
+          <StyledBar>|</StyledBar>
+          <StyledMainBtn type="button">효과별</StyledMainBtn>
+        </MainCategory>
         <CurrentCategory>전체</CurrentCategory>
-        <SubCategory>전신 상체</SubCategory>
+        <SubCategory>
+          <StyledSubBtn>전신</StyledSubBtn>
+          <StyledSubBtn>상체</StyledSubBtn>
+          <StyledSubBtn>하체</StyledSubBtn>
+          <StyledSubBtn>코어</StyledSubBtn>
+        </SubCategory>
       </StyledNav>
       <StyledSection>
         {STRETCHING_LIST.map(stretching => (
@@ -45,7 +56,7 @@ function Stretching() {
 
 const StyledNav = styled.nav`
   width: 100%;
-  padding: 10px 5rem;
+  padding: 1rem 5rem;
   border-bottom: 2px solid ${({ theme }) => theme.darkPurple};
 `;
 
@@ -53,13 +64,39 @@ const MainCategory = styled.div`
   font-size: 18px;
 `;
 
+const StyledMainBtn = styled.button`
+  font-size: 18px;
+
+  & + & {
+    margin-left: 1rem;
+  }
+`;
+
+const StyledBar = styled.span`
+  font-size: 18px;
+  margin: 1rem;
+`;
+
 const CurrentCategory = styled.div`
   font-size: 20px;
-  margin: 10px 0;
+  font-weight: 800;
+  margin: 1rem 0;
 `;
 
 const SubCategory = styled.div`
   font-size: 20px;
+`;
+
+const StyledSubBtn = styled.button`
+  font-size: 18px;
+  width: 80px;
+  height: 40px;
+  background-color: #F0C36A;
+  border-radius: 10px;
+
+  & + & {
+    margin-left: 2rem;
+  }
 `;
 
 const StyledSection = styled.section`
