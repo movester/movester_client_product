@@ -100,7 +100,6 @@ const Wrap = styled.div`
   font-size: 16px;
   margin: 20px 0;
   text-align: left;
-  // background: red;
 
   span {
     font-size: 12px;
@@ -122,6 +121,35 @@ const TagBtn = styled.button`
   padding: 5px 10px;
   background: #f1d0bd;
   border-radius: 10px;
+
+  &:nth-child(1) {
+    background-color: #D6B4B4;
+  }
+
+  &:nth-child(2) {
+    background-color: #FEB580;
+  }
+
+  &:nth-child(3) {
+    background-color: #F0C36A;
+  }
+
+  &:nth-child(4) {
+    background-color: #BFD0A2;
+  }
+
+  &:nth-child(5) {
+    background-color: #97BFB8;
+  }
+
+  &:nth-child(6) {
+    background-color: #9A97BF;
+  }
+
+  &:nth-child(7) {
+    background-color: #BF97BE;
+  }
+
 `;
 
 const TagWrap = styled.div`

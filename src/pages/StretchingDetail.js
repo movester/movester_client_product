@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import Main from '../components/common/Main';
@@ -86,12 +87,14 @@ function StretchingDetail() {
         <Title>이 스트레칭이 마음에 들었다면</Title>
         <StretchingContainer>
           {STRETCHING_LIST.map(stretching => (
-            <StretchingItem
-              title={stretching.title}
-              category={stretching.category}
-              posture={stretching.posture}
-              effect={stretching.effect}
-            />
+            <Link to="/stretching/detail">
+              <StretchingItem
+                title={stretching.title}
+                category={stretching.category}
+                posture={stretching.posture}
+                effect={stretching.effect}
+              />
+            </Link>
           ))}
         </StretchingContainer>
       </RecommendWrap>
@@ -282,4 +285,3 @@ const StretchingContainer = styled.div`
   column-gap: 5rem;
   justify-content: center;
 `;
-

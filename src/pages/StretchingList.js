@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Main from '../components/common/Main';
 import StretchingItem from '../components/elements/StretchingItem';
@@ -52,12 +53,14 @@ function StretchingList() {
       </StyledNav>
       <StretchingContainer>
         {STRETCHING_LIST.map(stretching => (
-          <StretchingItem
+         <Link to="/stretching/detail">
+         <StretchingItem
             title={stretching.title}
             category={stretching.category}
             posture={stretching.posture}
             effect={stretching.effect}
           />
+        </Link>
         ))}
       </StretchingContainer>
       <ModalPortal>{modalOn && <StretchingTagModal onClose={handleModal} title="계정 삭제" />}</ModalPortal>
@@ -127,11 +130,30 @@ const StyledSubBtn = styled.button`
   font-size: 18px;
   width: 80px;
   height: 40px;
-  background-color: #f0c36a;
   border-radius: 10px;
 
   & + & {
     margin-left: 2rem;
+  }
+
+  &:nth-child(1) {
+    background-color: #D6B4B4;
+  }
+
+  &:nth-child(2) {
+    background-color: #F0C36A;
+  }
+
+  &:nth-child(3) {
+    background-color: #BFD0A2;
+  }
+
+  &:nth-child(4) {
+    background-color: #97BFB8;
+  }
+
+  &:nth-child(5) {
+    background-color: #BF97BE;
   }
 `;
 
@@ -144,4 +166,3 @@ const StretchingContainer = styled.section`
   gap: 2rem 5rem;
   justify-content: center;
 `;
-
