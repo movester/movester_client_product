@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Main from '../components/common/Main';
 import StretchingItem from '../components/elements/StretchingItem';
+import ModalPortal from '../components/common/Modal/ModalPortal';
+import StretchingTagModal from '../components/common/Modal/StretchingTagModal';
 
 const STRETCHING_LIST = [
   { title: '팔 접어 어깨 스트레칭', category: '상체 > 팔/어께', posture: '서서, 앉아서', effect: '라운드숄더 거북목' },
@@ -19,6 +21,10 @@ const STRETCHING_LIST = [
 ];
 
 function StretchingList() {
+  const [modalOn, setModalOn] = useState(true);
+  const handleModal = () => {
+    setModalOn(!modalOn);
+  };
   return (
     <Main>
       <StyledNav>
@@ -54,9 +60,12 @@ function StretchingList() {
           />
         ))}
       </StretchingContainer>
+      <ModalPortal>{modalOn && <StretchingTagModal onClose={handleModal} title="계정 삭제" />}</ModalPortal>
     </Main>
   );
 }
+
+export default StretchingList;
 
 const StyledNav = styled.nav`
   width: 100%;
@@ -136,4 +145,3 @@ const StretchingContainer = styled.section`
   justify-content: center;
 `;
 
-export default StretchingList;

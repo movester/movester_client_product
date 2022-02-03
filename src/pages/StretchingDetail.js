@@ -99,6 +99,8 @@ function StretchingDetail() {
   );
 }
 
+export default StretchingDetail;
+
 const OutLine = styled.section`
   width: 100%;
   height: auto;
@@ -281,4 +283,3 @@ const StretchingContainer = styled.div`
   justify-content: center;
 `;
 
-export default StretchingDetail;
