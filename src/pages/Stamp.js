@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Main from '../components/common/Main';
 import Nav from '../components/common/Nav';
-import GrayBg from '../components/elements/GrayBg';
+import { GrayBg } from '../components/elements/GrayBg';
 
 function Stamp() {
   return (

@@ -13,12 +13,14 @@ import StretchingDetail from './pages/StretchingDetail';
 import Event from './pages/Event';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-import Profill from './pages/Profill';
+import Profile from './pages/Profile';
 import PwChange from './pages/PwChange';
-import UserDelete from './pages/UserDelete';
+import Account from './pages/Account';
 import Record from './pages/Record';
 import Basket from './pages/Basket';
 import Stamp from './pages/Stamp';
+import Shoulder from './pages/Shoulder';
+import WaistLeg from './pages/WaistLeg';
 
 function App() {
   return (
@@ -32,12 +34,14 @@ function App() {
         <Route path="/event" element={<Event />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/join" element={<SignupPage />} />
-        <Route path="/profill" element={<Profill />} />
-        <Route path="/profill/PwChange" element={<PwChange />} />
-        <Route path="/profill/userDelete" element={<UserDelete />} />
-        <Route path="/profill/record" element={<Record />} />
-        <Route path="/profill/basket" element={<Basket />} />
-        <Route path="/profill/stamp" element={<Stamp />} />
+        <Route path="/mypage/profile" element={<Profile />} />
+        <Route path="/mypage/profile/PwChange" element={<PwChange />} />
+        <Route path="/mypage/profile/account" element={<Account />} />
+        <Route path="/mypage/basket" element={<Basket />} />
+        <Route path="/mypage/stamp" element={<Stamp />} />
+        <Route path="/mypage/record" element={<Record />} />
+        <Route path="/mypage/record/shoulder" element={<Shoulder />} />
+        <Route path="/mypage/record/waistLeg" element={<WaistLeg />} />
       </Routes>
       <Footer />
     </ThemeProvider>

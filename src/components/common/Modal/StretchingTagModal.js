@@ -8,6 +8,7 @@ function StretchingTagModal({ onClose }) {
     <ModalPortal>
       <Container>
         <Content>
+          <CloseBtn onClick={onClose}>X</CloseBtn>
           <Title>태그 맞춤 동작 찾기</Title>
           <p>카테고리별 태그를 선택하여</p>
           <p>나에게 꼭 맞는 스트레칭을 찾아보세요!</p>
@@ -90,6 +91,12 @@ const Content = styled.div`
   }
 `;
 
+const CloseBtn = styled.button`
+  float: right;
+  font-size: 20px;
+  font-weight: 700;
+`;
+
 const Title = styled.div`
   font-size: 20px;
   font-weight: 800;
@@ -123,33 +130,32 @@ const TagBtn = styled.button`
   border-radius: 10px;
 
   &:nth-child(1) {
-    background-color: #D6B4B4;
+    background-color: #d6b4b4;
   }
 
   &:nth-child(2) {
-    background-color: #FEB580;
+    background-color: #feb580;
   }
 
   &:nth-child(3) {
-    background-color: #F0C36A;
+    background-color: #f0c36a;
   }
 
   &:nth-child(4) {
-    background-color: #BFD0A2;
+    background-color: #bfd0a2;
   }
 
   &:nth-child(5) {
-    background-color: #97BFB8;
+    background-color: #97bfb8;
   }
 
   &:nth-child(6) {
-    background-color: #9A97BF;
+    background-color: #9a97bf;
   }
 
   &:nth-child(7) {
-    background-color: #BF97BE;
+    background-color: #bf97be;
   }
-
 `;
 
 const TagWrap = styled.div`

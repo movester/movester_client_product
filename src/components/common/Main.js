@@ -24,8 +24,14 @@ const StyledMain = styled.main`
     height: 74vh;
     display: flex;
   }
+<<<<<<< HEAD
 
   &.padding {
     padding: 0 5rem;
+=======
+  &.record {
+    padding: 40px 5rem;
+    display: flex;
+>>>>>>> 084f235f7c87a47c225880556aebbcd731887673
   }
 `;

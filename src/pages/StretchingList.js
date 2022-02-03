@@ -22,7 +22,7 @@ const STRETCHING_LIST = [
 ];
 
 function StretchingList() {
-  const [modalOn, setModalOn] = useState(true);
+  const [modalOn, setModalOn] = useState(false);
   const handleModal = () => {
     setModalOn(!modalOn);
   };
@@ -35,7 +35,7 @@ function StretchingList() {
           <StyledMainBtn>자세별</StyledMainBtn>
           <StyledBar>|</StyledBar>
           <StyledMainBtn>효과별</StyledMainBtn>
-          <StyledTagBtn>태그 맞춤 동작 찾기</StyledTagBtn>
+          <StyledTagBtn onClick={handleModal}>태그 맞춤 동작 찾기</StyledTagBtn>
         </MainCategory>
         <CurrentCategory>
           <StyledCurBtn>전체</StyledCurBtn>

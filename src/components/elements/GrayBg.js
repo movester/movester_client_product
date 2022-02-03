@@ -3,10 +3,8 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 function GrayBg({ children }) {
-  return <StyledGrayBg>{children}</StyledGrayBg>;
+  return <StyledGrayBg className="gray-bg">{children}</StyledGrayBg>;
 }
-
-export default GrayBg;
 
 const StyledGrayBg = styled.div`
   width: 100%;
@@ -14,6 +12,7 @@ const StyledGrayBg = styled.div`
   border-radius: 5px;
   padding: 20px;
 `;
+export { GrayBg, StyledGrayBg };
 
 GrayBg.propTypes = {
   children: PropTypes.node.isRequired,

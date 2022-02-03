@@ -13,7 +13,7 @@ function profill() {
       <StyledWrap>
         <ProfillTitle title="비밀번호" />
         <StyledButtonWrap>
-          <Link to="/profill/PwChange">
+          <Link to="/mypage/profile/PwChange">
             <Button text="비밀번호 변경" />
           </Link>
         </StyledButtonWrap>
@@ -25,7 +25,7 @@ function profill() {
             그래도 정말로 회원 탈퇴를 원하시나요 ?
           </p>
           <StyledButtonWrap>
-            <Link to="/profill/userDelete">
+            <Link to="/mypage/profile/account">
               <Button text="탈퇴" />
             </Link>
           </StyledButtonWrap>
