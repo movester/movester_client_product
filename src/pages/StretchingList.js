@@ -17,7 +17,7 @@ const STRETCHING_LIST = [
   { title: '팔 접어 어깨 스트레칭', category: '상체 > 팔/어께', posture: '서서, 앉아서', effect: '라운드숄더 거북목' },
 ];
 
-function Stretching() {
+function StretchingList() {
   return (
     <Main>
       <StyledNav>
@@ -206,4 +206,4 @@ const Effect = styled.p`
   color: ${({ theme }) => theme.darkPurple};
 `;
 
-export default Stretching;
+export default StretchingList;
