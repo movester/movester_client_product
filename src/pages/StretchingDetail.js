@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import Main from '../components/common/Main';
+import StretchingItem from '../components/elements/StretchingItem';
 
 const STRETCHING_DATA = {
   title: '팔 접어 어깨 스트레칭',
@@ -12,6 +13,14 @@ const STRETCHING_DATA = {
   scoreCnt: 510,
   youtube: 'https://www.youtube.com/watch?v=thj1vU19HF0',
 };
+
+const STRETCHING_LIST = [
+  { title: '팔 접어 어깨 스트레칭', category: '상체 > 팔/어께', posture: '서서, 앉아서', effect: '라운드숄더 거북목' },
+  { title: '팔 접어 어깨 스트레칭', category: '상체 > 팔/어께', posture: '서서, 앉아서', effect: '라운드숄더 거북목' },
+  { title: '팔 접어 어깨 스트레칭', category: '상체 > 팔/어께', posture: '서서, 앉아서', effect: '라운드숄더 거북목' },
+  { title: '팔 접어 어깨 스트레칭', category: '상체 > 팔/어께', posture: '서서, 앉아서', effect: '라운드숄더 거북목' },
+];
+
 function StretchingDetail() {
   return (
     <Main>
@@ -51,6 +60,41 @@ function StretchingDetail() {
           <KaKaoBtn>카카오톡 공유하기</KaKaoBtn>
         </DetailWrap>
       </OutLine>
+      <Content>
+        이 곳은 내용입니다.
+        <ScoreResearch>
+          <p>뭅스터와 함께 스트레칭을 따라해보셨나요?</p>
+          <span>조나현님께서 느낀 스트레칭의 강도를 표시해주세요!</span>
+          <StarWrap>
+            <Star>
+              <input type="radio" id="5-star" name="rating" value="5" disabled />
+              <label htmlFor="5-star">&#9733;</label>
+              <input type="radio" id="4-star" name="rating" value="4" disabled />
+              <label htmlFor="4-star">&#9733;</label>
+              <input type="radio" id="3-star" name="rating" value="3" disabled />
+              <label htmlFor="3-star">&#9733;</label>
+              <input type="radio" id="2-star" name="rating" value="2" disabled />
+              <label htmlFor="2-star">&#9733;</label>
+              <input type="radio" id="1-star" name="rating" value="1" disabled />
+              <label htmlFor="1-star">&#9733;</label>
+            </Star>
+          </StarWrap>
+          <SubmitBtn>제출</SubmitBtn>
+        </ScoreResearch>
+      </Content>
+      <RecommendWrap>
+        <Title>이 스트레칭이 마음에 들었다면</Title>
+        <StretchingContainer>
+          {STRETCHING_LIST.map(stretching => (
+            <StretchingItem
+              title={stretching.title}
+              category={stretching.category}
+              posture={stretching.posture}
+              effect={stretching.effect}
+            />
+          ))}
+        </StretchingContainer>
+      </RecommendWrap>
     </Main>
   );
 }
@@ -77,31 +121,31 @@ const StyledImg = styled.img`
 `;
 
 const LikeButton = styled.div`
-width: 20px;
-height: 20px;
-background: ${({ theme }) => theme.darkGray};
-transform: rotate(45deg);
-position: absolute;
-right: 20px;
-bottom: 20px;
-
-&::before,
-&::after {
-  content: '';
   width: 20px;
   height: 20px;
-  position: absolute;
-  border-radius: 50%;
   background: ${({ theme }) => theme.darkGray};
-}
+  transform: rotate(45deg);
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
 
-&::before {
-  left: -50%;
-}
+  &::before,
+  &::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.darkGray};
+  }
 
-&::after {
-  top: -50%;
-}
+  &::before {
+    left: -50%;
+  }
+
+  &::after {
+    top: -50%;
+  }
 `;
 
 const DetailWrap = styled.div`
@@ -125,8 +169,8 @@ const Posture = styled.p`
 `;
 
 const StarWrap = styled.div`
+  display: inline;
   font-size: 16px;
-  margin-bottom: 10px;
 `;
 
 const Star = styled.div`
@@ -149,11 +193,12 @@ const Star = styled.div`
   label:hover,
   label:hover ~ label {
     color: #fc0;
+    cursor: pointer;
   }
 `;
 
 const EffectWrap = styled.div`
-  margin-bottom: 20px;
+  margin: 10px 0 20px 0;
 `;
 
 const EffectTag = styled.div`
@@ -185,10 +230,55 @@ const StyledYouTubeIcon = styled(YouTubeIcon)`
 const KaKaoBtn = styled.button`
   width: auto;
   height: 24px;
-  padding: 5px;
-  background: #F7E600;
+  padding: 5px 10px;
+  background: #f7e600;
   border-radius: 10px;
+`;
 
+const Content = styled.section`
+  height: auto;
+  padding: 3rem 15%;
+`;
+
+const ScoreResearch = styled.section`
+  background: ${({ theme }) => theme.lightGray};
+  border-radius: 30px;
+  height: auto;
+  margin-top: 2rem;
+  padding: 2rem;
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  span {
+    margin-right: 10px;
+  }
+`;
+
+const SubmitBtn = styled.button`
+  font-size: 16px;
+  font-weight: 800;
+  color: #ffffff;
+  width: 100px;
+  height: 30px;
+  background: ${({ theme }) => theme.lightPurple};
+  border-radius: 10px;
+  float: right;
+`;
+
+const RecommendWrap = styled.section`
+  height: auto;
+  background-color: ${({ theme }) => theme.lightGray};
+  padding: 2rem 15%;
+`;
+
+const StretchingContainer = styled.div`
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 5rem;
+  justify-content: center;
 `;
 
 export default StretchingDetail;
