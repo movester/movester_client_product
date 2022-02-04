@@ -4,7 +4,7 @@ import styled from 'styled-components';
 function ReCaptcha() {
   return (
     <StyledReCaptchaWrap>
-      <div />
+      <div className="area" />
       <div className="recaptcha">recaptcha</div>
     </StyledReCaptchaWrap>
   );
@@ -15,8 +15,14 @@ export default ReCaptcha;
 const StyledReCaptchaWrap = styled.div`
   width: 60%;
   display: flex;
-  div {
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+  .area {
     width: 25%;
+    @media screen and (max-width: 1024px) {
+      display: none;
+    }
   }
   .recaptcha {
     width: 100%;

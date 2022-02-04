@@ -6,7 +6,7 @@ import { GrayBg } from '../components/elements/GrayBg';
 
 function Stamp() {
   return (
-    <Main type="profill">
+    <Main type="record">
       <Nav />
       <StyledWrap>
         <p className="stamp-title">오늘의 출석 도장 찍기</p>
@@ -58,6 +58,7 @@ const StyledWrap = styled.section`
 
 const StyledCalendar = styled.div`
   width: 450px;
+  max-width: 100%;
   height: 447px;
   margin: 0 auto 20px;
   background-color: gray;

@@ -54,22 +54,37 @@ const StyledWrap = styled.section`
     color: ${({ theme }) => theme.darkPurple};
     font-size: 18px;
     font-weight: bold;
-    margin: 15px 0;
+    margin: 30px 0;
+    @media screen and (max-width: 768px) {
+      text-align: center;
+    }
   }
 
   .graph-wrap {
+    @media screen and (max-width: 768px) {
+      flex-flow: column;
+      align-items: start;
+    }
     display: flex;
     padding: 0 5%;
     .graph-one {
       width: 50%;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
       &:last-child {
         margin-left: 50px;
+        @media screen and (max-width: 768px) {
+          margin-left: 0;
+          margin-top: 20px;
+        }
       }
       .search {
         width: 120px;
         height: 40px;
         line-height: 36px;
       }
+
       p {
         font-weight: bold;
         color: ${({ theme }) => theme.darkPurple};
@@ -79,9 +94,6 @@ const StyledWrap = styled.section`
         height: 300px;
         background-color: gray;
         margin: 20px 0;
-        & + & {
-          margin-left: 20px;
-        }
       }
     }
   }
