@@ -72,4 +72,7 @@ const StyledNavWrap = styled.nav`
     font-size: 12px;
     font-weight: normal;
   }
+  @media screen and (max-width: 1024px) {
+    display:none;
+  }
 `;

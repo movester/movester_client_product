@@ -39,5 +39,13 @@ const StyledContentWrap = styled.section`
 const StyledButtonWrap = styled.div`
   display: flex;
   justify-content: space-between;
+
   align-items: end;
+  @media screen and (max-width: 1024px) {
+    flex-flow: column;
+    align-items: start;
+    .recaptcha {
+      margin-bottom: 30px;
+    }
+  }
 `;

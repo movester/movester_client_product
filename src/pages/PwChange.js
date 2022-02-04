@@ -9,7 +9,7 @@ import ReCaptcha from '../components/common/ReCaptcha';
 import ModalPortal from '../components/common/Modal/ModalPortal';
 import PwConfirm from '../components/common/Modal/PwConfirm';
 
-function pwChange() {
+function PwChange() {
   const [modalOn, setModalOn] = useState(false);
   const handleModal = () => {
     setModalOn(!modalOn);
@@ -32,7 +32,7 @@ function pwChange() {
   );
 }
 
-export default pwChange;
+export default PwChange;
 
 const StyledContentWrap = styled.section`
   width: 100%;
@@ -43,4 +43,11 @@ const StyledButtonWrap = styled.div`
   justify-content: space-between;
 
   align-items: end;
+  @media screen and (max-width: 1024px) {
+    flex-flow: column;
+    align-items: start;
+    .recaptcha {
+      margin-bottom: 30px;
+    }
+  }
 `;

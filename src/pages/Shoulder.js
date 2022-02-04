@@ -65,7 +65,6 @@ export default Shoulder;
 
 const StyledWrap = styled.section`
   width: 100%;
-  // text-align: center;
   .title {
     font-size: 18px;
     font-weight: bold;
@@ -73,7 +72,7 @@ const StyledWrap = styled.section`
   }
   .gray-bg {
     text-align: center;
-    margin: 20px 0;
+    margin: 40px 0;
     &:last-child {
       margin: 0 0;
     }
@@ -81,7 +80,7 @@ const StyledWrap = styled.section`
       margin-top: 10px;
     }
     img + img {
-      margin-left: 80px;
+      margin-left: 10%;
     }
   }
   .ft-text {
@@ -93,13 +92,25 @@ const StyledCheckRecord = styled.div`
   margin-top: 30px;
   padding: 0 20px;
   text-align: center;
+  @media screen and (max-width: 768px) {
+    flex-flow: column;
+    align-items: start;
+    padding: 0;
+  }
   & > div {
     width: 50%;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
   }
   .graph {
     height: 300px;
     background-color: gray;
     margin-right: 10%;
+    @media screen and (max-width: 768px) {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
   }
   .ruler {
     width: 100%;
