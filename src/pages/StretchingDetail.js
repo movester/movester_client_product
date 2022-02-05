@@ -112,6 +112,12 @@ const OutLine = styled.section`
   gap: 1rem;
   padding: 1rem 15%;
   color: #ffffff;
+
+  @media screen and (max-width: 700px) {
+    flex-flow: column;
+    align-items: start;
+    padding: 1rem 4rem;
+  }
 `;
 
 const ImageWrap = styled.div`
@@ -119,10 +125,14 @@ const ImageWrap = styled.div`
 `;
 
 const StyledImg = styled.img`
-  border: 1px solid gray;
-  width: 250px;
-  height: 250px;
+  width: 17rem;
+  height: 17rem;
   border-radius: 15px;
+
+  @media screen and (max-width: 700px) {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const LikeButton = styled.div`
@@ -155,6 +165,8 @@ const LikeButton = styled.div`
 
 const DetailWrap = styled.div`
   padding-top: 0.7rem;
+  width: 17rem;
+  height: 17rem;
 `;
 
 const Title = styled.p`
@@ -176,6 +188,10 @@ const Posture = styled.p`
 const StarWrap = styled.div`
   display: inline;
   font-size: 16px;
+
+  @media screen and (max-width: 870px) {
+    display: block;
+  }
 `;
 
 const Star = styled.div`
@@ -258,6 +274,11 @@ const ScoreResearch = styled.section`
 
   span {
     margin-right: 10px;
+
+    @media screen and (max-width: 870px) {
+      display: block;
+      margin-bottom: 10px;
+    }
   }
 `;
 
@@ -270,6 +291,10 @@ const SubmitBtn = styled.button`
   background: ${({ theme }) => theme.lightPurple};
   border-radius: 10px;
   float: right;
+
+  @media screen and (max-width: 870px) {
+    float: none;
+  }
 `;
 
 const RecommendWrap = styled.section`
@@ -284,4 +309,13 @@ const StretchingContainer = styled.div`
   grid-template-columns: repeat(4, 1fr);
   column-gap: 5rem;
   justify-content: center;
+
+  @media screen and (max-width: 1340px) {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 3rem;
+  }
+
+  @media screen and (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
 `;
