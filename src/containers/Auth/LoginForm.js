@@ -22,18 +22,30 @@ function LoginForm() {
   const onChange = e => {
     const { value, name } = e.target;
 
-    if (name === 'email' && !emailRegex.test(value)) {
+    if (name === 'email' && value.length > 0 && !emailRegex.test(value)) {
       setIsEmail(false);
       setEmailMessage('올바른 이메일 형식이 아닙니다.');
-    } else if (name === 'email' && emailRegex.test(value)) {
-      setIsEmail(true);
-      setEmailMessage('');
-    } else if (name === 'password' && !passwordRegex.test(value)) {
+    } else if (name === 'email') {
+      if (emailRegex.test(value)) {
+        setIsEmail(true);
+        setEmailMessage('');
+      }
+      if (value === '') {
+        setIsEmail(true);
+        setEmailMessage('');
+      }
+    } else if (name === 'password' && value.length > 0 && !passwordRegex.test(value)) {
       setIsPassword(false);
       setPasswordMessage('영문자, 숫자, 특수문자 조합으로 8자리 이상 입력해주세요.');
-    } else {
-      setIsPassword(true);
-      setPasswordMessage('');
+    } else if (name === 'password') {
+      if (passwordRegex.test(value)) {
+        setIsPassword(true);
+        setPasswordMessage('');
+      }
+      if (value === '') {
+        setIsPassword(true);
+        setPasswordMessage('');
+      }
     }
 
     dispatch(

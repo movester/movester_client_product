@@ -5,6 +5,9 @@ import flexCenterAlign from './flexCenterAlign';
 const FormWrapper = styled.form`
   ${flexCenterAlign}
   position: relative;
+  & p {
+    height: 10px;
+  }
   & .email-message {
     font-size: 12px;
     color: red;
