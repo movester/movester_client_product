@@ -47,7 +47,6 @@ function FindPassword() {
             <p className="wrapper__todo">가입하신 이메일을 작성해주세요.</p>
             <FormWrapper onSubmit={onSubmit}>
               <StyledInput type="email" name="email" placeholder="이메일" autoComplete="email" />
-              {/* TODO: 이메일 유효성 검사 */}
               <p className="wrapper__info">해당 이메일로 비밀번호 재설정 메일을 받으시겠습니까?</p>
               <StyledButton>비밀번호 재설정하기</StyledButton>
             </FormWrapper>
