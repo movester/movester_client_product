@@ -259,6 +259,10 @@ const KaKaoBtn = styled.button`
 const Content = styled.section`
   height: auto;
   padding: 3rem 15%;
+
+  @media screen and (max-width: 600px) {
+    padding: 3rem;
+  }
 `;
 
 const ScoreResearch = styled.section`
@@ -301,6 +305,10 @@ const RecommendWrap = styled.section`
   height: auto;
   background-color: ${({ theme }) => theme.lightGray};
   padding: 2rem 15%;
+
+  @media screen and (max-width: 600px) {
+    padding: 2rem 3rem;
+  }
 `;
 
 const StretchingContainer = styled.div`

@@ -210,8 +210,8 @@ const ContentWrap = styled.div`
     display: none;
   }
 
-  @media screen and (max-width: 500px) {
-    padding: 3rem 10%;
+  @media screen and (max-width: 600px) {
+    padding: 3rem;
   }
 `;
 
