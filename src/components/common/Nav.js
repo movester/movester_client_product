@@ -3,26 +3,26 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 function Nav() {
-  const profillList = [
+  const mypageList = [
     {
       id: 0,
       title: '프로필',
-      path: '/profill/',
+      path: '/mypage/profile',
     },
     {
       id: 1,
       title: '찜한 스트레칭',
-      path: '/profill/basket',
+      path: '/mypage/basket',
     },
     {
       id: 2,
       title: '출석도장',
-      path: '/profill/stamp',
+      path: '/mypage/stamp',
     },
     {
       id: 3,
       title: '기록',
-      path: '/profill/record',
+      path: '/mypage/record',
     },
   ];
 
@@ -31,7 +31,7 @@ function Nav() {
       <p>유송현님</p>
       <p className="email">ysh2987@gmail.com</p>
       <ul>
-        {profillList.map(item => (
+        {mypageList.map(item => (
           <li key={item.id}>
             <NavLink to={item.path}>{item.title}</NavLink>
           </li>
@@ -50,7 +50,7 @@ const StyledNavWrap = styled.nav`
   padding: 20px 43px;
   border: 1px solid black;
   border-radius: 5px;
-  margin-right: 50px;
+  margin-right: 60px;
   p {
     margin-bottom: 10px;
     font-size: 18px;
@@ -71,5 +71,8 @@ const StyledNavWrap = styled.nav`
   .email {
     font-size: 12px;
     font-weight: normal;
+  }
+  @media screen and (max-width: 1024px) {
+    display:none;
   }
 `;

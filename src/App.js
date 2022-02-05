@@ -8,18 +8,21 @@ import Footer from './components/common/Footer';
 import theme from './theme';
 import Home from './pages/Home';
 import About from './pages/About';
-import Stretching from './pages/Stretching';
+import StretchingList from './pages/StretchingList';
+import StretchingDetail from './pages/StretchingDetail';
 import Event from './pages/Event';
 import LoginPage from './pages/LoginPage';
 import JoinPage from './pages/JoinPage';
-import Profill from './pages/Profill';
+import Profile from './pages/Profile';
 import PwChange from './pages/PwChange';
-import UserDelete from './pages/UserDelete';
+import Account from './pages/Account';
 import Record from './pages/Record';
 import Basket from './pages/Basket';
 import Stamp from './pages/Stamp';
 import FindPasswordPage from './pages/FindPasswordPage';
 import EditPasswordPage from './pages/EditPasswordPage';
+import Shoulder from './pages/Shoulder';
+import WaistLeg from './pages/WaistLeg';
 
 function App() {
   return (
@@ -28,18 +31,21 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/stretching" element={<Stretching />} />
+        <Route path="/stretching" element={<StretchingList />} />
+        <Route path="/stretching/detail" element={<StretchingDetail />} />
         <Route path="/event" element={<Event />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/login/accountInfoFound" element={<FindPasswordPage />} />
         <Route path="/login/accountInfoEdited" element={<EditPasswordPage />} />
         <Route path="/join" element={<JoinPage />} />
-        <Route path="/profill" element={<Profill />} />
-        <Route path="/profill/PwChange" element={<PwChange />} />
-        <Route path="/profill/userDelete" element={<UserDelete />} />
-        <Route path="/profill/record" element={<Record />} />
-        <Route path="/profill/basket" element={<Basket />} />
-        <Route path="/profill/stamp" element={<Stamp />} />
+        <Route path="/mypage/profile" element={<Profile />} />
+        <Route path="/mypage/profile/PwChange" element={<PwChange />} />
+        <Route path="/mypage/profile/account" element={<Account />} />
+        <Route path="/mypage/basket" element={<Basket />} />
+        <Route path="/mypage/stamp" element={<Stamp />} />
+        <Route path="/mypage/record" element={<Record />} />
+        <Route path="/mypage/record/shoulder" element={<Shoulder />} />
+        <Route path="/mypage/record/waistLeg" element={<WaistLeg />} />
       </Routes>
       <Footer />
     </ThemeProvider>
