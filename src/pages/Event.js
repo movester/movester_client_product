@@ -1,17 +1,34 @@
-// import React, { useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Main from '../components/common/Main';
 
 function Event() {
-  // const [activeLi, setActiveLi] = useState('progress');
+  const [activeMenu, setActiveMenu] = useState('.progress');
+
+  const handleActiveMenu = (e, menu) => {
+    e.target.classList.add('active');
+    document.querySelector(activeMenu).classList.add('hidden');
+    document.querySelector(menu).classList.remove('hidden');
+    setActiveMenu(menu);
+
+    ['.progress-menu', '.winner-announce-menu', '.closed-menu'].forEach(li =>
+      document.querySelector(li).classList.remove('active')
+    );
+    e.target.classList.add('active');
+  };
   return (
     <Main>
       <StyledNav>
         <ul>
-          <StyledLi className="active">진행중</StyledLi>
-          <StyledLi>당첨자발표</StyledLi>
-          <StyledLi>마감</StyledLi>
+          <StyledLi className="progress-menu active" onClick={e => handleActiveMenu(e, '.progress')}>
+            진행중
+          </StyledLi>
+          <StyledLi className="winner-announce-menu" onClick={e => handleActiveMenu(e, '.winner-announce')}>
+            당첨자발표
+          </StyledLi>
+          <StyledLi className="closed-menu" onClick={e => handleActiveMenu(e, '.closed')}>
+            마감
+          </StyledLi>
         </ul>
         <p>MOVESTER에서만 제공하는 다양한 이벤트</p>
         <p>함께 스트레칭하며 다양한 활동을 경험해보세요!</p>
@@ -51,7 +68,7 @@ function Event() {
         </Item>
       </ContentWrap>
 
-      <ContentWrap className="winner-announce">
+      <ContentWrap className="winner-announce hidden">
         <Item>
           <Title>winner 출석왕 포인트 대결</Title>
           <Detail>
@@ -86,10 +103,11 @@ function Event() {
         </Item>
       </ContentWrap>
 
-      <ContentWrap className="closed">
+      <ContentWrap className="closed hidden">
         <Item>
           <Title>closed 출석왕 포인트 대결</Title>
           <Detail>
+            <ImageBlock>마감</ImageBlock>
             <StyledImg src="/assets/stretching-list.png" alt="이벤트 대표 이미지" />
             <Wrap>
               <Date>기간 : 2021.05.01 ~ 2021.05.31</Date>
@@ -106,6 +124,7 @@ function Event() {
         <Item>
           <Title>closed 출석왕 포인트 대결</Title>
           <Detail>
+            <ImageBlock>마감</ImageBlock>
             <StyledImg src="/assets/stretching-list.png" alt="이벤트 대표 이미지" />
             <Wrap>
               <Date>기간 : 2021.05.01 ~ 2021.05.31</Date>
@@ -167,8 +186,11 @@ const ContentWrap = styled.div`
   width: 100%;
   padding: 3rem 20%;
 
-  &.winner-announce,
-  &.closed {
+  &.active {
+    display: block;
+  }
+
+  &.hidden {
     display: none;
   }
 `;
@@ -203,6 +225,19 @@ const StyledImg = styled.img`
   width: 400px;
   height: 400px;
   border-radius: 10px;
+`;
+
+const ImageBlock = styled.div`
+  width: 400px;
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  border-radius: 10px;
+  color: #923737;
+  font-size: 10rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 400px;
 `;
 
 const Wrap = styled.div`
