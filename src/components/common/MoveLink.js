@@ -23,6 +23,8 @@ MoveLink.propTypes = {
 };
 
 const StyledText = styled.p`
+  margin: 10px 0;
+
   span {
     font-weight: bold;
   }

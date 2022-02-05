@@ -6,7 +6,7 @@ function HomeComponent() {
   return (
     <>
       <Banner>
-        <h2>#1일 #스트레칭 #습관 만들기</h2>
+        <h2>#1일 #1스트레칭 #습관 만들기</h2>
         <div className="banner-wrapper">
           <div className="container">
             <span className="title">Move U, Start U, With me.</span>
@@ -65,6 +65,7 @@ const Banner = styled.section`
 
   .banner-wrapper {
     display: flex;
+    flex: 1 1;
     justify-content: center;
     align-items: center;
 
@@ -131,19 +132,19 @@ const ImageWrapper = styled.div`
   width: 200px;
   height: 200px;
   margin-bottom: 30px;
-  border: 1px solid #000;
+  border: none;
   border-radius: 50%;
-  background-color: rgba(196, 196, 196, 0.5);
   position: relative;
   cursor: pointer;
+  transition: all 0.3s;
 
   & + & {
     margin: 0 20px;
   }
 
   &:hover {
-    background: rgba(249, 172, 23, 0.74);
-    opacity: 1;
+    background: ${({ theme }) => theme.darkGray};
+    color: #fff;
   }
 `;
 

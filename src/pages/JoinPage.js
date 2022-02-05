@@ -1,16 +1,16 @@
 import React from 'react';
-import Main from '../components/common/Main';
 import AuthTemplate from '../components/common/AuthTemplate';
-import LoginForm from '../containers/Auth/LoginForm';
+import Main from '../components/common/Main';
+import JoinForm from '../containers/Auth/JoinForm';
 
-function LoginPage() {
+function SignupPage() {
   return (
     <Main>
       <AuthTemplate>
-        <LoginForm />
+        <JoinForm />
       </AuthTemplate>
     </Main>
   );
 }
 
-export default LoginPage;
+export default SignupPage;

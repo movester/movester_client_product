@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-function ProfileDropMenu() {
+function ProfileDropMenu({ handleClick }) {
   return (
     <ProfileDropMenuWrapper>
       <UserInfoContainer>
@@ -10,14 +11,26 @@ function ProfileDropMenu() {
         <span className="user-email">jnhro1@gmail.com</span>
       </UserInfoContainer>
       <StyledNavigation>
-        <NavLink to="/profill/">프로필</NavLink>
-        <NavLink to="/profill/basket">찜한 스트레칭</NavLink>
-        <NavLink to="/profill/stamp">출석도장</NavLink>
-        <NavLink to="/profill/Record">기록</NavLink>
+        <NavLink to="/profill/" onClick={handleClick}>
+          프로필
+        </NavLink>
+        <NavLink to="/profill/basket" onClick={handleClick}>
+          찜한 스트레칭
+        </NavLink>
+        <NavLink to="/profill/stamp" onClick={handleClick}>
+          출석도장
+        </NavLink>
+        <NavLink to="/profill/Record" onClick={handleClick}>
+          기록
+        </NavLink>
       </StyledNavigation>
     </ProfileDropMenuWrapper>
   );
 }
+
+ProfileDropMenu.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+};
 
 export default ProfileDropMenu;
 

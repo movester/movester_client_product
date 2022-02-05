@@ -5,12 +5,12 @@ import NavProfileButton from '../elements/NavProfileButton';
 import ProfileDropMenu from '../molecules/ProfileDropMenu';
 
 function Header() {
-  const [isLoging, setIsLoging] = useState(true);
-  const [isClick, setisClick] = useState(false);
+  const [isLoging, setIsLoging] = useState(false);
+  const [isClick, setIsClick] = useState(false);
   console.log(isLoging, typeof setIsLoging);
 
   const handleClick = () => {
-    setisClick(prev => !prev);
+    setIsClick(prev => !prev);
   };
 
   return (
@@ -30,7 +30,7 @@ function Header() {
           {isLoging ? (
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <NavProfileButton handleClick={handleClick} />
-              {isClick && <ProfileDropMenu />}
+              {isClick && <ProfileDropMenu handleClick={handleClick} />}
             </div>
           ) : (
             <>
