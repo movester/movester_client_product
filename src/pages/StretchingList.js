@@ -35,7 +35,6 @@ function StretchingList() {
           <StyledMainBtn>자세별</StyledMainBtn>
           <StyledBar>|</StyledBar>
           <StyledMainBtn>효과별</StyledMainBtn>
-          <StyledTagBtn onClick={handleModal}>태그 맞춤 동작 찾기</StyledTagBtn>
         </MainCategory>
         <CurrentCategory>
           <StyledCurBtn>전체</StyledCurBtn>
@@ -50,17 +49,18 @@ function StretchingList() {
           <StyledSubBtn>하체</StyledSubBtn>
           <StyledSubBtn>코어</StyledSubBtn>
         </SubCategory>
+        <StyledTagBtn onClick={handleModal}>태그 맞춤 동작 찾기</StyledTagBtn>
       </StyledNav>
       <StretchingContainer>
         {STRETCHING_LIST.map(stretching => (
-         <Link to="/stretching/detail">
-         <StretchingItem
-            title={stretching.title}
-            category={stretching.category}
-            posture={stretching.posture}
-            effect={stretching.effect}
-          />
-        </Link>
+          <Link to="/stretching/detail">
+            <StretchingItem
+              title={stretching.title}
+              category={stretching.category}
+              posture={stretching.posture}
+              effect={stretching.effect}
+            />
+          </Link>
         ))}
       </StretchingContainer>
       <ModalPortal>{modalOn && <StretchingTagModal onClose={handleModal} title="계정 삭제" />}</ModalPortal>
@@ -74,6 +74,11 @@ const StyledNav = styled.nav`
   width: 100%;
   padding: 1rem 5rem;
   border-bottom: 2px solid ${({ theme }) => theme.darkPurple};
+  position: relative;
+
+  @media screen and (max-width: 600px) {
+    padding: 1rem 3rem;
+  }
 `;
 
 const MainCategory = styled.div`
@@ -91,16 +96,6 @@ const StyledMainBtn = styled.button`
 const StyledBar = styled.span`
   font-size: 18px;
   margin: 1rem;
-`;
-
-const StyledTagBtn = styled.button`
-  font-size: 16px;
-  color: ${({ theme }) => theme.darkPurple};
-  width: 150px;
-  height: 40px;
-  border: 2px solid ${({ theme }) => theme.darkPurple};
-  border-radius: 10px;
-  float: right;
 `;
 
 const CurrentCategory = styled.div`
@@ -124,6 +119,11 @@ const StyledCurBtn = styled.button`
 
 const SubCategory = styled.div`
   font-size: 20px;
+  @media screen and (max-width: 400px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
 `;
 
 const StyledSubBtn = styled.button`
@@ -134,26 +134,63 @@ const StyledSubBtn = styled.button`
 
   & + & {
     margin-left: 2rem;
+
+    @media screen and (max-width: 600px) {
+      margin-left: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 60px;
+    height: 30px;
+  }
+
+  @media screen and (max-width: 400px) {
+    width: auto;
+    height: 30px;
+
+    & + & {
+      margin: 0;
+    }
   }
 
   &:nth-child(1) {
-    background-color: #D6B4B4;
+    background-color: #d6b4b4;
   }
 
   &:nth-child(2) {
-    background-color: #F0C36A;
+    background-color: #f0c36a;
   }
 
   &:nth-child(3) {
-    background-color: #BFD0A2;
+    background-color: #bfd0a2;
   }
 
   &:nth-child(4) {
-    background-color: #97BFB8;
+    background-color: #97bfb8;
   }
 
   &:nth-child(5) {
-    background-color: #BF97BE;
+    background-color: #bf97be;
+  }
+`;
+
+const StyledTagBtn = styled.button`
+  font-size: 16px;
+  color: ${({ theme }) => theme.darkPurple};
+  width: 150px;
+  height: 40px;
+  border: 2px solid ${({ theme }) => theme.darkPurple};
+  border-radius: 10px;
+  position: absolute;
+  top: 1rem;
+  right: 5rem;
+
+  @media screen and (max-width: 770px) {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-top: 1rem;
   }
 `;
 
@@ -161,8 +198,19 @@ const StretchingContainer = styled.section`
   height: auto;
   padding: 2rem 5rem;
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem 5rem;
   justify-content: center;
+
+  @media screen and (max-width: 1340px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 1rem 3rem;
+  }
 `;
