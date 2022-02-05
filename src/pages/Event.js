@@ -107,8 +107,10 @@ function Event() {
         <Item>
           <Title>closed 출석왕 포인트 대결</Title>
           <Detail>
-            <ImageBlock>마감</ImageBlock>
-            <StyledImg src="/assets/stretching-list.png" alt="이벤트 대표 이미지" />
+            <ImageWrap>
+              <ImageLetter>마감</ImageLetter>
+              <StyledImg className="dark" src="/assets/stretching-list.png" alt="이벤트 대표 이미지" />
+            </ImageWrap>
             <Wrap>
               <Date>기간 : 2021.05.01 ~ 2021.05.31</Date>
               <Content>
@@ -124,8 +126,10 @@ function Event() {
         <Item>
           <Title>closed 출석왕 포인트 대결</Title>
           <Detail>
-            <ImageBlock>마감</ImageBlock>
-            <StyledImg src="/assets/stretching-list.png" alt="이벤트 대표 이미지" />
+            <ImageWrap>
+              <ImageLetter>마감</ImageLetter>
+              <StyledImg className="dark" src="/assets/stretching-list.png" alt="이벤트 대표 이미지" />
+            </ImageWrap>
             <Wrap>
               <Date>기간 : 2021.05.01 ~ 2021.05.31</Date>
               <Content>
@@ -162,6 +166,10 @@ const StyledNav = styled.nav`
     margin-top: 0.5rem;
     font-weight: 700;
   }
+
+  @media screen and (max-width: 500px) {
+    height: 12rem;
+  }
 `;
 
 const StyledLi = styled.li`
@@ -174,17 +182,25 @@ const StyledLi = styled.li`
   &.active {
     font-size: 24px;
     color: ${({ theme }) => theme.darkPurple};
+
+    @media screen and (max-width: 500px) {
+      font-size: 20px;
+    }
   }
 
   & + & {
     margin-left: 2rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: 16px;
   }
 `;
 
 const ContentWrap = styled.div`
   height: auto;
   width: 100%;
-  padding: 3rem 20%;
+  padding: 3rem 22%;
 
   &.active {
     display: block;
@@ -192,6 +208,10 @@ const ContentWrap = styled.div`
 
   &.hidden {
     display: none;
+  }
+
+  @media screen and (max-width: 500px) {
+    padding: 3rem 10%;
   }
 `;
 
@@ -205,7 +225,12 @@ const Item = styled.div`
 `;
 
 const Detail = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 10px;
+  @media screen and (max-width: 1100px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const Title = styled.div`
@@ -221,27 +246,48 @@ const Title = styled.div`
   text-align: center;
 `;
 
-const StyledImg = styled.img`
-  width: 400px;
-  height: 400px;
-  border-radius: 10px;
+const ImageWrap = styled.div`
+  width: 100%;
+  height: auto;
+  position: relative;
 `;
 
-const ImageBlock = styled.div`
-  width: 400px;
-  height: 400px;
-  background-color: rgba(0, 0, 0, 0.5);
-  position: absolute;
+const StyledImg = styled.img`
+  width: 100%;
+  height: auto;
   border-radius: 10px;
+
+  &.dark {
+    filter: brightness(50%);
+  }
+}
+
+`;
+
+const ImageLetter = styled.span`
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: absolute;
+  top: 75%;
+  transform: translateY(-50%);
   color: #923737;
   font-size: 10rem;
   font-weight: 700;
-  text-align: center;
-  line-height: 400px;
+  z-index: 1;
+
+  @media screen and (max-width: 430px) {
+    font-size: 8rem;
+  }
 `;
 
 const Wrap = styled.div`
-  padding: 2rem;
+  padding: 2rem 1rem 1rem 1rem;
+
+  @media screen and (max-width: 1100px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const Date = styled.p`
