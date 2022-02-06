@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 function NavProfileButton({ handleClick }) {
-  return <ProfileWrapper onClick={handleClick}>조나현님</ProfileWrapper>;
+  return <ProfileWrapper onClick={e => handleClick(e)}>조나현님</ProfileWrapper>;
 }
 
 NavProfileButton.propTypes = {
@@ -14,11 +14,11 @@ export default NavProfileButton;
 
 const ProfileWrapper = styled.div`
   width: 105px;
-  font-size: 16px;
+  font-size: 1rem;
   color: #2a1598;
   border: 2px solid #2a1598;
   border-radius: 10px;
-  padding: 5px;
+  padding: 0.3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,5 +28,9 @@ const ProfileWrapper = styled.div`
     color: #fff;
     background: #2a1598;
     border: 2px solid #fff;
+  }
+
+  @media (max-width: 850px) {
+    margin-right: 1.5rem;
   }
 `;
