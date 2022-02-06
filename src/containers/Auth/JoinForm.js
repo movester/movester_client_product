@@ -30,35 +30,57 @@ function JoinForm() {
     const { value, name } = e.target;
     const { password } = form;
 
-    if (name === 'email' && !emailRegex.test(value)) {
+    if (name === 'email' && value.length > 0 && !emailRegex.test(value)) {
       setIsEmail(false);
       setEmailMessage('올바른 이메일 형식이 아닙니다.');
-    } else if (name === 'email' && emailRegex.test(value)) {
-      setIsEmail(true);
-      setEmailMessage('');
-    } else if (name === 'password' && !passwordRegex.test(value)) {
+    } else if (name === 'email') {
+      if (emailRegex.test(value)) {
+        setIsEmail(true);
+        setEmailMessage('');
+      }
+      if (value === '') {
+        setIsEmail(true);
+        setEmailMessage('');
+      }
+    } else if (name === 'password' && value.length > 0 && !passwordRegex.test(value)) {
       setIsPassword(false);
       setPasswordMessage('영문자, 숫자, 특수문자 조합으로 8자리 이상 입력해주세요.');
-    } else if (name === 'password' && passwordRegex.test(value)) {
-      setIsPassword(true);
-      setPasswordMessage('');
-    } else if (name === 'passwordConfirm' && !passwordRegex.test(value)) {
+    } else if (name === 'password') {
+      if (passwordRegex.test(value)) {
+        setIsPassword(true);
+        setPasswordMessage('');
+      }
+      if (value === '') {
+        setIsPassword(true);
+        setPasswordMessage('');
+      }
+    } else if (name === 'passwordConfirm' && value.length > 0 && !passwordRegex.test(value)) {
       setIsPasswordConfirm(false);
       setPasswordConfirmMessage('영문자, 숫자, 특수문자 조합으로 8자리 이상 입력해주세요.');
     } else if (name === 'passwordConfirm') {
       if (passwordRegex.test(value) && password !== value) {
+        // 비밀번호 일치하지 않는 경우
         setIsPasswordConfirm(false);
         setPasswordConfirmMessage('비밀번호가 일치하지 않습니다.');
+      } else if (value === '') {
+        setIsPasswordConfirm(true);
+        setPasswordConfirmMessage('');
       } else {
         setIsPasswordConfirm(true);
         setPasswordConfirmMessage('');
       }
-    } else if (name === 'username' && value.length < 2) {
+    } else if (name === 'username' && value !== '' && value.length < 2) {
       setIsName(false);
       setNameMessage('2글자 이상의 이름을 입력해주세요.');
-    } else {
-      setIsName(true);
-      setNameMessage('');
+    } else if (name === 'username') {
+      if (value === '') {
+        setIsName(true);
+        setNameMessage('');
+      }
+      if (value.length >= 2) {
+        setIsName(true);
+        setNameMessage('');
+      }
     }
 
     dispatch(
