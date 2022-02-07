@@ -9,7 +9,7 @@ import ProfileDropMenu from '../molecules/ProfileDropMenu';
 import NavigationDropMenu from '../molecules/NavigationDropMenu';
 
 function Header() {
-  const [isLoging, setIsLoging] = useState(false);
+  const [isLoging, setIsLoging] = useState(true);
   const [isInfo, setIsInfo] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
   console.log(typeof setIsLoging);
@@ -40,14 +40,16 @@ function Header() {
       <HeaderRightBlock>
         <StyledNavigation>
           {isLoging ? (
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <NavProfileButtonWrapper>
               <NavProfileButton handleClick={handleInfo} />
               {isInfo && <ProfileDropMenu />}
-            </div>
+            </NavProfileButtonWrapper>
           ) : (
-            <>
-              <Link to="/join">Join</Link> | <Link to="/login">Login</Link>
-            </>
+            <AuthNavigationWrapper>
+              <Link to="/join">Join</Link>
+              <span>|</span>
+              <Link to="/login">Login</Link>
+            </AuthNavigationWrapper>
           )}
         </StyledNavigation>
       </HeaderRightBlock>
@@ -80,18 +82,21 @@ const HeaderWrapper = styled.header`
     width: 10rem;
   }
 
+  a {
+    margin-right: 0.5rem;
+  }
+
   .navigation-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-around;
   }
 
-  @media (max-width: 850px) {
-    padding: 0;
-
+  @media (max-width: 600px) {
+    padding: 0 3rem;
     svg {
       display: block;
-      margin: 0 0.5rem;
+      margin-right: 0.5rem;
       cursor: pointer;
     }
     img {
@@ -107,9 +112,9 @@ const HeaderLeftBlock = styled.div`
   width: 50%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 
-  @media (max-width: 850px) {
+  @media (max-width: 600px) {
     justify-content: flex-start;
   }
 `;
@@ -123,11 +128,26 @@ const StyledNavigation = styled.nav`
   line-height: 2;
 
   a {
-    margin: 0 1rem;
     cursor: pointer;
   }
 
   @media (max-width: 850px) {
     font-size: 1rem;
+  }
+`;
+
+const NavProfileButtonWrapper = styled.div`
+  width: 105px;
+  display: 'flex';
+  flex-direction: 'column';
+
+  @media (max-width: 850px) {
+    width: 70px;
+  }
+`;
+
+const AuthNavigationWrapper = styled.div`
+  span {
+    margin: 0 0.5rem;
   }
 `;
