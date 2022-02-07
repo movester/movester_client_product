@@ -5,16 +5,16 @@ function Footer() {
   return (
     <FooterWrapper>
       <FooterLeftBlock>
+        <img src="/assets/logo.png" alt="뭅스터 로고" />
         <div className="footer-top">
-          <img src="/assets/logo.png" alt="뭅스터 로고" />
           |&nbsp;&nbsp;<span>개인 정보 취급 방침</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>이용 약관</span>&nbsp;&nbsp;|
           &nbsp;&nbsp;
           <span>고객 센터</span>
         </div>
         <div className="footer-middle">
-          <span>대표자: 표정연</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>사업자번호: 000-000000-0000</span>&nbsp;&nbsp;|
-          &nbsp;&nbsp;<span>주소: 인천광역시 어쩌구 저쩌구</span>&nbsp;&nbsp;|&nbsp;&nbsp;
-          <span>이메일: jnhro1@gmail.com</span>
+          <span>대표자: 표정연&nbsp;&nbsp;|</span>&nbsp;&nbsp;<span>사업자번호: 000-000000-0000&nbsp;&nbsp;|</span>
+          &nbsp;&nbsp;<span>주소: 인천광역시 어쩌구 저쩌구&nbsp;&nbsp;|</span>&nbsp;&nbsp;
+          <span>이메일: jnhro1@gmail.com&nbsp;&nbsp;|</span>
         </div>
         <div className="footer-bottom">
           <p>©️MOVESTER. ALL RIGHTS RESERVED</p>
@@ -38,20 +38,32 @@ const FooterWrapper = styled.footer`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 80px;
+  padding: 4rem 8rem;
   border-top: 2px solid #2a1598;
   color: #2a1598;
   background: #fff;
+
+  @media (max-width: 1150px) {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  @media (max-width: 535px) {
+    align-items: flex-start;
+  }
 `;
 
 const FooterLeftBlock = styled.div`
+  img {
+    width: 100px;
+    margin-right: 10px;
+  }
+
   .footer-top {
-    margin-bottom: 20px;
-    font-size: 18px;
-    img {
-      width: 100px;
-      margin-right: 10px;
-    }
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+
     span + span {
       cursor: pointer;
     }
@@ -63,15 +75,29 @@ const FooterLeftBlock = styled.div`
 
   .footer-middle,
   .footer-bottom {
-    font-size: 14px;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 650px) {
+    .footer-top {
+      font-size: 0.8rem;
+    }
+
+    .footer-middle,
+    .footer-bottom {
+      font-size: 0.5rem;
+      margin-bottom: 10px;
+    }
+
+    .footer-middle span {
+      display: block;
+    }
   }
 `;
 
 const FooterRightBlock = styled.div`
-  display: flex;
-
   img {
-    width: 48px;
+    width: 50px;
     height: 50px;
     margin: 0 10px;
     cursor: pointer;

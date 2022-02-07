@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
+import flexCenterAlign from '../../styles/flexCenterAlign';
+
 function ProfileDropMenu() {
   return (
     <ProfileDropMenuWrapper>
@@ -28,36 +30,44 @@ const ProfileDropMenuWrapper = styled.div`
   background: #fff;
   border: 1px solid #615b5b;
   border-radius: 10px;
-  z-index: 11;
+  z-index: 10;
   padding: 16px;
   margin-top: 19px;
-`;
-
-const UserInfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
   .user-name {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 700;
-    line-height: 28px;
+    line-height: 2rem;
   }
 
   .user-email {
-    font-size: 14px;
+    font-size: 1rem;
+  }
+
+  a {
+    cursor: pointer;
+  }
+
+  @media (max-width: 850px) {
+    width: 120px;
+    right: 18px;
+    padding: 0;
+    .user-name {
+      font-size: 1rem;
+    }
+    .user-email {
+      font-size: 0.5rem;
+    }
+    a {
+      font-size: 0.8rem;
+    }
   }
 `;
 
-const StyledNavigation = styled.nav`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+const UserInfoContainer = styled.div`
+  ${flexCenterAlign}
+`;
 
-  a {
-    font-size: 18px;
-    cursor: pointer;
-  }
+const StyledNavigation = styled.nav`
+  ${flexCenterAlign}
 `;
