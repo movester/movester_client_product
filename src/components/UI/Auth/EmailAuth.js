@@ -28,6 +28,10 @@ const EmailAuthWrapper = styled.section`
     margin-bottom: 50px;
   }
 
+  p {
+    font-size: 0.9rem;
+  }
+
   p:nth-child(3) {
     margin-bottom: 30px;
   }
@@ -35,6 +39,5 @@ const EmailAuthWrapper = styled.section`
   .info {
     margin: 30px 0;
     color: #888383;
-    font-size: 14px;
   }
 `;
