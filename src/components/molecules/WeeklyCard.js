@@ -40,7 +40,10 @@ function WeeklyCard() {
 export default WeeklyCard;
 
 const WeeklyCardWrapper = styled.div`
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-bottom: 30px;
   cursor: pointer;
 `;
@@ -60,5 +63,14 @@ const WeeklyCardContainer = styled.div`
 
   & + & {
     margin-right: 10px;
+  }
+
+  @media (max-width: 405px) {
+    width: 100%;
+
+    img {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
   }
 `;

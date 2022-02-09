@@ -28,7 +28,7 @@ function HomeComponent() {
       </WeeklyStretching>
       <Service>
         <h2>#뭅스터만의 #힙한 서비스</h2>
-        <div style={{ display: 'flex' }}>
+        <div className="image-container">
           <ImageWrapper>
             <ItemText>다양한 스트레칭 제공</ItemText>
             <ItemImage src="/assets/bottom-stretching.png" alt="스트레칭" />
@@ -57,7 +57,7 @@ const Banner = styled.section`
   background: rgba(229, 229, 229, 0.6);
 
   h2 {
-    font-size: 24px;
+    font-size: 2rem;
     font-weight: 700;
     color: rgba(42, 21, 152, 1);
     margin: 45px 0;
@@ -65,7 +65,7 @@ const Banner = styled.section`
 
   .banner-wrapper {
     display: flex;
-    flex: 1 1;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 
@@ -73,25 +73,36 @@ const Banner = styled.section`
       display: flex;
       flex-direction: column;
       .title {
-        font-size: 38px;
+        font-size: 2.5rem;
         margin-bottom: 20px;
       }
 
       .sub-title {
-        font-size: 26px;
+        font-size: 1.8rem;
         margin-bottom: 20px;
       }
 
       .content {
-        font-size: 20px;
+        font-size: 1.2rem;
         margin-bottom: 20px;
       }
     }
   }
 
   img {
-    width: 500px;
+    width: 100%;
   }
+
+  @media (max-width: 600px) {
+    padding: 3rem;
+  }
+
+  /* @media (max-width: 1182px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  } */
 `;
 
 const WeeklyStretching = styled.section`
@@ -102,7 +113,7 @@ const WeeklyStretching = styled.section`
   padding: 30px;
 
   h2 {
-    font-size: 24px;
+    font-size: 2rem;
     font-weight: 700;
     color: rgba(42, 21, 152, 1);
     margin-bottom: 30px;
@@ -111,36 +122,39 @@ const WeeklyStretching = styled.section`
 
 const Service = styled.section`
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
   background: rgba(229, 229, 229, 0.6);
   padding: 30px;
 
   h2 {
-    font-size: 24px;
+    font-size: 2rem;
     font-weight: 700;
     color: rgba(42, 21, 152, 1);
     margin-bottom: 30px;
   }
+
+  .image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const ImageWrapper = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: space-between;
   width: 200px;
   height: 200px;
-  margin-bottom: 30px;
+  margin: 10px;
   border: none;
   border-radius: 50%;
   position: relative;
   cursor: pointer;
-  transition: all 0.3s;
-
-  & + & {
-    margin: 0 20px;
-  }
+  transition: all 0.3s ease;
 
   &:hover {
     background: ${({ theme }) => theme.darkGray};

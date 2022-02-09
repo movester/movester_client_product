@@ -50,7 +50,6 @@ const ProfileDropMenuWrapper = styled.div`
 
   @media (max-width: 850px) {
     width: 120px;
-    right: 18px;
     padding: 0;
     .user-name {
       font-size: 1rem;
@@ -61,6 +60,10 @@ const ProfileDropMenuWrapper = styled.div`
     a {
       font-size: 0.8rem;
     }
+  }
+
+  @media (max-width: 600px) {
+    right: 15px;
   }
 `;
 
