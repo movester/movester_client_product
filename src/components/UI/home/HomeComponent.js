@@ -96,13 +96,6 @@ const Banner = styled.section`
   @media (max-width: 600px) {
     padding: 3rem;
   }
-
-  /* @media (max-width: 1182px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  } */
 `;
 
 const WeeklyStretching = styled.section`

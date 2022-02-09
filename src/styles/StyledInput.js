@@ -8,10 +8,15 @@ const StyledInput = styled.input`
   border: none;
   border-radius: 15px;
   margin-bottom: 15px;
-  padding: 5px;
+  padding: 15px;
 
   &:focus {
     border: 2px solid rgb(109, 102, 170);
+  }
+
+  @media (max-width: 400px) {
+    width: 250px;
+    height: 40px;
   }
 `;
 

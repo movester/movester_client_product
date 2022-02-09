@@ -167,13 +167,16 @@ const CheckboxWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    right: -140px;
+    transform: translateX(150%);
     cursor: pointer;
 
     & span {
       position: relative;
       top: -1px;
+    }
+
+    @media (max-width: 400px) {
+      transform: translateX(100%);
     }
   }
 
