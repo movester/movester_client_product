@@ -32,12 +32,12 @@ function FindPassword() {
         {isMailing ? (
           <>
             <img src="/assets/charactor__pw.png" alt="비밀번호 찾기 캐릭터" />
-            <span style={{ fontSize: '18px', fontWeight: '700', marginTop: '30px' }}>jnhro1@gmail.com</span>
+            <span style={{ fontSize: '1.4rem', fontWeight: '700', marginTop: '30px' }}>jnhro1@gmail.com</span>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '10px 0' }}>
-              <p style={{ fontSize: '18px', margin: '10px 0' }}>비밀번호 재설정 메일 전송 완료!</p>
-              <p style={{ fontSize: '14px', marginBottom: '30px' }}>메일을 통해 비밀번호를 재설정해주세요.</p>
+              <p style={{ fontSize: '1.2rem', margin: '10px 0' }}>비밀번호 재설정 메일 전송 완료!</p>
+              <p style={{ fontSize: '1rem', marginBottom: '30px' }}>메일을 통해 비밀번호를 재설정해주세요.</p>
             </div>
-            <p style={{ fontSize: '14px', color: '#888383', marginBottom: '30px' }}>
+            <p style={{ fontSize: '0.8rem', color: '#888383', marginBottom: '30px' }}>
               혹시 메일을 받지 못하셨다면 스팸 메일함을 확인해주세요.
             </p>
             <MoveLink text="이미 계정이 있으신가요?" address="/login" btnText="로그인" />
@@ -74,14 +74,19 @@ const FindPasswordWrapper = styled.section`
   }
 
   .wrapper__todo {
-    position: relative;
-    left: -95px;
     font-size: 14px;
     margin: 20px 0;
+    transform: translateX(-95px);
   }
 
   .wrapper__info {
-    font-size: 14px;
+    font-size: 12px;
     margin-bottom: 10px;
+  }
+
+  @media (max-width: 400px) {
+    .wrapper__todo {
+      transform: translateX(-30px);
+    }
   }
 `;

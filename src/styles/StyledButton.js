@@ -15,6 +15,15 @@ const StyledButton = styled.button`
     background-size: cover;
     background-position: center;
   }
+
+  @media (max-width: 400px) {
+    width: 250px;
+    height: 40px;
+
+    &.kakao-login {
+      background-position: initial;
+    }
+  }
 `;
 
 export default StyledButton;
