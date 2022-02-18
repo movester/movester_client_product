@@ -6,6 +6,7 @@ import Nav from '../components/common/Nav';
 import { GrayBg, StyledGrayBg } from '../components/elements/GrayBg';
 import Button from '../components/elements/Button';
 import MoveLink from '../components/common/MoveLink';
+import Graph from '../components/molecules/Graph';
 
 function Record() {
   return (
@@ -20,14 +21,14 @@ function Record() {
         <div className="graph-wrap">
           <div className="graph-one">
             <Button type="search" text="어깨" />
-            <div className="graph" />
+            <Graph />
             <Link to="/mypage/record/shoulder">
               <p>오늘의 어깨 기록하러가기 {'>'}</p>
             </Link>
           </div>
           <div className="graph-one">
             <Button type="search" text="허리 &#183; 다리" />
-            <div className="graph" />
+            <Graph />
             <Link to="/mypage/record/waistLeg">
               <p>오늘의 허리 &#183; 다리 기록하러가기 {'>'}</p>
             </Link>

@@ -5,6 +5,7 @@ import Nav from '../components/common/Nav';
 import { GrayBg } from '../components/elements/GrayBg';
 import Button from '../components/elements/Button';
 import MoveLink from '../components/common/MoveLink';
+import Graph from '../components/molecules/Graph';
 
 function Shoulder() {
   const [shoulerRecord, setShoulerRecord] = useState(true);
@@ -17,7 +18,7 @@ function Shoulder() {
       <StyledWrap>
         <p className="title">어깨 유연성 기록</p>
         <StyledCheckRecord>
-          <div className="graph" />
+          <Graph />
           <div>
             {shoulerRecord ? (
               <>
