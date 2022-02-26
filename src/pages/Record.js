@@ -19,14 +19,18 @@ function Record() {
         <p className="record-owner">조나현님의 지난 기록</p>
         <div className="graph-wrap">
           <div className="graph-one">
-            <Button type="search" text="어깨" />
+            <Link to="/mypage/record/shoulder">
+              <Button type="search" text="어깨" />
+            </Link>
             <div className="graph" />
             <Link to="/mypage/record/shoulder">
               <p>오늘의 어깨 기록하러가기 {'>'}</p>
             </Link>
           </div>
           <div className="graph-one">
-            <Button type="search" text="허리 &#183; 다리" />
+            <Link to="/mypage/record/waistLeg">
+              <Button type="search" text="허리 &#183; 다리" />
+            </Link>
             <div className="graph" />
             <Link to="/mypage/record/waistLeg">
               <p>오늘의 허리 &#183; 다리 기록하러가기 {'>'}</p>

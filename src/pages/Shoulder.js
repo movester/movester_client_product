@@ -5,6 +5,7 @@ import Nav from '../components/common/Nav';
 import { GrayBg } from '../components/elements/GrayBg';
 import Button from '../components/elements/Button';
 import MoveLink from '../components/common/MoveLink';
+import Ruler from '../components/molecules/Ruler';
 
 function Shoulder() {
   const [shoulerRecord, setShoulerRecord] = useState(true);
@@ -23,7 +24,7 @@ function Shoulder() {
               <>
                 <p className="title">오늘의 어깨 유연성 기록하기</p>
                 <div className="ruler-wrap">
-                  <div className="ruler" />
+                  <Ruler />
                   <Button event={sendRecord} type="wide" />
                 </div>
               </>
