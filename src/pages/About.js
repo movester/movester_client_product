@@ -73,13 +73,17 @@ const StyledTitle = styled.div`
 `;
 
 const Styledposture = styled.div`
-  // display: flex;
-  // justify-content: center;
   margin-bottom: 30px;
   img {
     width: 100%;
     max-width: 200px;
-    margin-right: 20px;
+    margin-right: 5%;
+  }
+  @media screen and (max-width: 768px) {
+    img {
+      width: 150px;
+      margin-right: 3%;
+    }
   }
 `;
 
