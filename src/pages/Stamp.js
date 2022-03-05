@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import Main from '../components/common/Main';
 import Nav from '../components/common/Nav';
@@ -6,6 +7,11 @@ import Calendar from '../components/common/Calendar';
 import { GrayBg } from '../components/elements/GrayBg';
 
 function Stamp() {
+  async function getUsers() {
+    const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+    return response.data;
+  }
+  console.log(getUsers());
   return (
     <Main type="record">
       <Nav />
