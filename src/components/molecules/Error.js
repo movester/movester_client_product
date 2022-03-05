@@ -13,8 +13,10 @@ function Error() {
 export default Error;
 
 const StyledError = styled.div`
-  width: 100%;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   p {
     margin-top: 20px;
     font-size: 1.2rem;
