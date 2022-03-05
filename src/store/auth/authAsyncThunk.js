@@ -21,8 +21,7 @@ export const fetchEmailAuthThunk = createAsyncThunk('user/fetchEmailAuth', async
 
 export const fetchLoginThunk = createAsyncThunk('user/fetchLogin', async (payload, thunkAPI) => {
   try {
-    const response = await authAPI.fetchLoginThunk(payload);
-    console.log(response);
+    const response = await authAPI.fetchLogin(payload);
     return response;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.reponse.data);
