@@ -7,6 +7,9 @@ const initialState = {
     passwordConfirm: '',
     username: '',
   },
+  authenticate: {
+    emailVerifyKey: '',
+  },
   login: {
     email: '',
     password: '',
@@ -21,7 +24,17 @@ const initialState = {
 const formSlice = createSlice({
   name: 'form',
   initialState,
-  reducers: {},
+  reducers: {
+    changeField: (state, { payload: { form, key, value } }) => {
+      state[form][key] = value;
+    },
+    initializeForm: (state, { payload: form }) => {
+      state[form] = initialState[form];
+    },
+  },
+  extraReducers: {},
 });
+
+export const { changeField, initializeForm } = formSlice.actions;
 
 export default formSlice.reducer;
