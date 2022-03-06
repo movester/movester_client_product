@@ -13,7 +13,7 @@ function Graph() {
       .select(svgRef.current)
       .attr('width', w)
       .attr('height', h)
-      .style('background', '#d3d3d3')
+      .style('background', '#fff')
       .style('margin-top', '50')
       .style('overflow', 'visible');
     // setting the scailing
