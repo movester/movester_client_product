@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import flexCenterAlign from '../../../styles/flexCenterAlign';
-import FormWrapper from '../../../styles/FormWrapper';
-import StyledButton from '../../../styles/StyledButton';
-import StyledInput from '../../../styles/StyledInput';
-import MoveLink from '../../common/MoveLink';
-import ReCaptcha from '../../common/ReCaptcha';
+
+import MoveLink from '../common/MoveLink';
+import ReCaptcha from '../common/ReCaptcha';
+
+import flexCenterAlign from '../../styles/flexCenterAlign';
+import FormWrapper from '../../styles/FormWrapper';
+import StyledButton from '../../styles/StyledButton';
+import StyledInput from '../../styles/StyledInput';
 
 function EditPassword() {
   const [isEdited, setIsEdited] = useState(false);

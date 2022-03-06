@@ -10,6 +10,12 @@ const userAPI = {
       `/records/search/${type}?startYear=${startYear}&startMonth=${startMonth}&startDate=${startDate}&endYear=${endYear}&endMonth=${endMonth}&endDate=${endDate}`
     );
   },
+  fetchAddRecord(payload) {
+    return axios.post('/records', payload);
+  },
+  fetchModifyRecord(payload) {
+    return axios.patch('/records', payload);
+  },
 };
 
 export default userAPI;

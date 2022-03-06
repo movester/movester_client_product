@@ -4,11 +4,12 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { fetchEmailAuthThunk } from '../../../store/auth/authAsyncThunk';
-import { changeField } from '../../../store/form/formSlice';
-import flexCenterAlign from '../../../styles/flexCenterAlign';
-import StyledButton from '../../../styles/StyledButton';
-import StyledInput from '../../../styles/StyledInput';
+import { fetchEmailAuthThunk } from '../../store/auth/authAsyncThunk';
+import { changeField } from '../../store/form/formSlice';
+
+import flexCenterAlign from '../../styles/flexCenterAlign';
+import StyledButton from '../../styles/StyledButton';
+import StyledInput from '../../styles/StyledInput';
 
 function EmailAuth({ form }) {
   const { user } = useSelector(({ auth }) => ({
