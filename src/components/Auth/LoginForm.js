@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+import { persistor } from '../../index';
 import AuthForm from './AuthForm';
 import emailRegex from '../../lib/validation/emailRegex';
 import passwordRegex from '../../lib/validation/passwordRegex';
@@ -88,6 +89,8 @@ function LoginForm() {
     if (error) {
       alert(error.error);
       dispatch(initializeAuth());
+      dispatch(initializeForm('login'));
+      persistor.purge();
     }
   }, [error]);
 

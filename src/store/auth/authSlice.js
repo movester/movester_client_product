@@ -28,10 +28,14 @@ const authSlice = createSlice({
       state.error = null;
       state.user = data.data;
     },
-    [fetchJoinThunk.rejected]: (state, { payload: error }) => {
+    [fetchJoinThunk.rejected]: (state, action) => {
       state.isLogin = false;
-      state.error = error;
       state.user = null;
+      if (action.payload) {
+        state.error = action.payload;
+      } else {
+        state.error = action.error.message;
+      }
     },
     [fetchEmailAuthThunk.pending]: state => {
       state.isLogin = false;
@@ -43,10 +47,14 @@ const authSlice = createSlice({
       state.error = null;
       state.user = data.data;
     },
-    [fetchEmailAuthThunk.rejected]: (state, { payload: error }) => {
+    [fetchEmailAuthThunk.rejected]: (state, action) => {
       state.isLogin = false;
-      state.error = error;
       state.user = null;
+      if (action.payload) {
+        state.error = action.payload;
+      } else {
+        state.error = action.error.message;
+      }
     },
     [fetchLoginThunk.pending]: state => {
       state.isLogin = false;

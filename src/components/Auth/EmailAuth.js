@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { fetchEmailAuthThunk } from '../../store/auth/authAsyncThunk';
-import { changeField } from '../../store/form/formSlice';
+import { changeField, initializeForm } from '../../store/form/formSlice';
 
 import flexCenterAlign from '../../styles/flexCenterAlign';
 import StyledButton from '../../styles/StyledButton';
 import StyledInput from '../../styles/StyledInput';
+import { initializeAuth } from '../../store/auth/authSlice';
 
 function EmailAuth({ form }) {
-  const { user } = useSelector(({ auth }) => ({
+  const { user, error } = useSelector(({ auth }) => ({
     user: auth.user,
+    error: auth.error,
   }));
   const dispatch = useDispatch();
   const { emailVerifyKey } = form;
@@ -31,6 +33,18 @@ function EmailAuth({ form }) {
       setTimeout(() => navigate('/'), 2000);
     }
   };
+
+  useEffect(() => {
+    dispatch(initializeForm());
+  }, []);
+
+  useEffect(() => {
+    if (error) {
+      console.log(error);
+      // alert(error.error);
+      dispatch(initializeAuth());
+    }
+  }, [error]);
 
   return (
     <EmailAuthWrapper>

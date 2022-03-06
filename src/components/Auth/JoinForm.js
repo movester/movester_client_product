@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import MoveLink from '../common/MoveLink';
 
 import AuthForm from './AuthForm';
 import EmailAuth from './EmailAuth';
@@ -9,13 +8,16 @@ import emailRegex from '../../lib/validation/emailRegex';
 import passwordRegex from '../../lib/validation/passwordRegex';
 import { fetchJoinThunk } from '../../store/auth/authAsyncThunk';
 import { changeField, initializeForm } from '../../store/form/formSlice';
+import { initializeAuth } from '../../store/auth/authSlice';
+import { persistor } from '../..';
 
 function JoinForm() {
   const dispatch = useDispatch();
-  const { join, authenticate, error } = useSelector(({ form, auth }) => ({
+  const { join, authenticate, error, user } = useSelector(({ form, auth }) => ({
     join: form.join,
     authenticate: form.authenticate,
     error: auth.error,
+    user: auth.user,
   }));
   const { email, password, passwordConfirm, username } = join;
 
@@ -102,45 +104,47 @@ function JoinForm() {
     e.preventDefault();
 
     dispatch(fetchJoinThunk({ email, password, confirmPassword: passwordConfirm, name: username }));
-    if (!error) {
+  };
+
+  useEffect(() => {
+    dispatch(initializeForm('join'));
+  }, []);
+
+  useEffect(() => {
+    if (error) {
+      // console.log(error);
+      alert(error.error);
+      dispatch(initializeAuth());
+      dispatch(initializeForm('join'));
+      persistor.purge();
+    }
+    if (!error && user) {
       setModalOn(prev => !prev);
       setTimeout(() => {
         setModalOn(prev => !prev);
         setEmailAuthentication(prev => !prev);
       }, 3000);
     }
-  };
-
-  useEffect(() => {
-    dispatch(initializeForm());
-  }, []);
+  }, [error]);
 
   return emailAuthentication ? (
     <EmailAuth form={authenticate} />
   ) : (
-    <div>
-      {error ? (
-        <h2>
-          {error} <MoveLink text="" address="/join" btnText="회원가입" />
-        </h2>
-      ) : (
-        <AuthForm
-          type="join"
-          form={join}
-          onChange={onChange}
-          onSubmit={onSubmit}
-          modalOn={modalOn}
-          emailMessage={emailMessage}
-          passwordMessage={passwordMessage}
-          passwordConfirmMessage={passwordConfirmMessage}
-          nameMessage={nameMessage}
-          isEmail={isEmail}
-          isPassword={isPassword}
-          isPasswordConfirm={isPasswordConfirm}
-          isName={isName}
-        />
-      )}
-    </div>
+    <AuthForm
+      type="join"
+      form={join}
+      onChange={onChange}
+      onSubmit={onSubmit}
+      modalOn={modalOn}
+      emailMessage={emailMessage}
+      passwordMessage={passwordMessage}
+      passwordConfirmMessage={passwordConfirmMessage}
+      nameMessage={nameMessage}
+      isEmail={isEmail}
+      isPassword={isPassword}
+      isPasswordConfirm={isPasswordConfirm}
+      isName={isName}
+    />
   );
 }
 

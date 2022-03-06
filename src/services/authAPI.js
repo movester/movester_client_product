@@ -10,7 +10,6 @@ const authAPI = {
     return axios.patch('/users/email-auth/join', payload);
   },
   fetchLogin(payload) {
-    console.log(payload);
     return axios.post('/users/login', payload);
   },
 };

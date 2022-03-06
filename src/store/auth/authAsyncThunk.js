@@ -1,12 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import authAPI from '../../services/authAPI';
 
-export const fetchJoinThunk = createAsyncThunk('user/fetchJoin', async (payload, thunkAPI) => {
+export const fetchJoinThunk = createAsyncThunk('user/fetchJoin', async (payload, { rejectWithValue }) => {
   try {
     const response = await authAPI.fetchJoin(payload);
     return response;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+    const err = error;
+    if (!err.response) {
+      throw error;
+    }
+    return rejectWithValue(err.response.data);
   }
 });
 

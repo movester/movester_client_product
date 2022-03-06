@@ -10,7 +10,7 @@ import App from './App';
 
 import { store } from './store';
 
-const persistor = persistStore(store);
+export const persistor = persistStore(store);
 
 ReactDOM.render(
   <Provider store={store}>
