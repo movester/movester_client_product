@@ -10,7 +10,13 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    initializeAuth: state => {
+      state.isLogin = false;
+      state.error = null;
+      state.user = null;
+    },
+  },
   extraReducers: {
     [fetchJoinThunk.pending]: state => {
       state.isLogin = false;
@@ -52,12 +58,17 @@ const authSlice = createSlice({
       state.error = null;
       state.user = data.data.data;
     },
-    [fetchLoginThunk.rejected]: (state, { payload: error }) => {
+    [fetchLoginThunk.rejected]: (state, action) => {
       state.isLogin = false;
-      state.error = error;
       state.user = null;
+      if (action.payload) {
+        state.error = action.payload;
+      } else {
+        state.error = action.error.message;
+      }
     },
   },
 });
 
+export const { initializeAuth } = authSlice.actions;
 export default authSlice.reducer;
