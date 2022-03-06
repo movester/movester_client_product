@@ -2,12 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-function NavProfileButton({ handleClick }) {
-  return <ProfileWrapper onClick={e => handleClick(e)}>조나현님</ProfileWrapper>;
+function NavProfileButton({ handleClick, user }) {
+  return <ProfileWrapper onClick={e => handleClick(e)}>{user.name}님</ProfileWrapper>;
 }
 
 NavProfileButton.propTypes = {
   handleClick: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    userIdx: PropTypes.number.isRequired,
+    email: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default NavProfileButton;

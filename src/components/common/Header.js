@@ -4,15 +4,19 @@ import { Link } from 'react-router-dom';
 
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
+import { useSelector } from 'react-redux';
 import NavProfileButton from '../elements/NavProfileButton';
 import ProfileDropMenu from '../molecules/ProfileDropMenu';
 import NavigationDropMenu from '../molecules/NavigationDropMenu';
 
 function Header() {
-  const [isLoging, setIsLoging] = useState(false);
+  const { isLogin, user } = useSelector(({ auth }) => ({
+    isLogin: auth.isLogin,
+    user: auth.user,
+  }));
+
   const [isInfo, setIsInfo] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
-  console.log(typeof setIsLoging);
 
   const handleInfo = () => {
     setIsInfo(prev => !prev);
@@ -39,10 +43,10 @@ function Header() {
       </HeaderLeftBlock>
       <HeaderRightBlock>
         <StyledNavigation>
-          {isLoging ? (
+          {isLogin ? (
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <NavProfileButton handleClick={handleInfo} />
-              {isInfo && <ProfileDropMenu />}
+              <NavProfileButton handleClick={handleInfo} user={user} />
+              {isInfo && <ProfileDropMenu user={user} />}
             </div>
           ) : (
             <>

@@ -1,15 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import flexCenterAlign from '../../styles/flexCenterAlign';
 
-function ProfileDropMenu() {
+function ProfileDropMenu({ user }) {
   return (
     <ProfileDropMenuWrapper>
       <UserInfoContainer>
-        <span className="user-name">조나현님</span>
-        <span className="user-email">jnhro1@gmail.com</span>
+        <span className="user-name">{user.name}님</span>
+        <span className="user-email">{user.email}</span>
       </UserInfoContainer>
       <StyledNavigation>
         <NavLink to="/mypage/profile">프로필</NavLink>
@@ -20,6 +21,14 @@ function ProfileDropMenu() {
     </ProfileDropMenuWrapper>
   );
 }
+
+ProfileDropMenu.propTypes = {
+  user: PropTypes.shape({
+    userIdx: PropTypes.number.isRequired,
+    email: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default ProfileDropMenu;
 
