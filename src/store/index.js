@@ -1,12 +1,30 @@
-import { configureStore } from '@reduxjs/toolkit';
-import authSlice from './auth/authSlice';
-import formSlice from './form/formSlice';
-import userSlice from './user/userSlice';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import storage from 'redux-persist/lib/storage';
+import { combineReducers } from 'redux';
+import { persistReducer } from 'redux-persist';
+
+import authReducer from './auth/authSlice';
+import formReducer from './form/formSlice';
+import userReducer from './user/userSlice';
+
+const reducers = combineReducers({
+  auth: authReducer,
+  form: formReducer,
+  user: userReducer,
+});
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['authSlice'],
+};
+
+const persistedReducer = persistReducer(persistConfig, reducers);
 
 export const store = configureStore({
-  reducer: {
-    auth: authSlice,
-    form: formSlice,
-    user: userSlice,
-  },
+  reducer: persistedReducer,
+  devTools: process.env.NODE_ENV !== 'production',
+  middleware: getDefaultMiddleware({
+    serializableCheck: false,
+  }),
 });
