@@ -23,6 +23,7 @@ import FindPasswordPage from './pages/FindPasswordPage';
 import EditPasswordPage from './pages/EditPasswordPage';
 import Shoulder from './pages/Shoulder';
 import WaistLeg from './pages/WaistLeg';
+import NotPound from './pages/NotPound';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Route path="/mypage/record" element={<Record />} />
         <Route path="/mypage/record/shoulder" element={<Shoulder />} />
         <Route path="/mypage/record/waistLeg" element={<WaistLeg />} />
+        <Route path="*" element={<NotPound />} />
       </Routes>
       <Footer />
     </ThemeProvider>
