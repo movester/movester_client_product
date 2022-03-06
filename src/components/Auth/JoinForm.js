@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import MoveLink from '../common/MoveLink';
 
-import { changeField, initializeForm } from '../../modules/auth';
-import AuthForm from '../../components/UI/Auth/AuthForm';
-import EmailAuth from '../../components/UI/Auth/EmailAuth';
+import AuthForm from './AuthForm';
+import EmailAuth from './EmailAuth';
+
 import emailRegex from '../../lib/validation/emailRegex';
 import passwordRegex from '../../lib/validation/passwordRegex';
+import { fetchJoinThunk } from '../../store/auth/authAsyncThunk';
+import { changeField, initializeForm } from '../../store/form/formSlice';
 
 function JoinForm() {
   const dispatch = useDispatch();
-  const { form } = useSelector(({ auth }) => ({
-    form: auth.join,
+  const { join, authenticate, error } = useSelector(({ form, auth }) => ({
+    join: form.join,
+    authenticate: form.authenticate,
+    error: auth.error,
   }));
+  const { email, password, passwordConfirm, username } = join;
 
   const [emailMessage, setEmailMessage] = useState('');
   const [passwordMessage, setPasswordMessage] = useState('');
@@ -28,7 +34,7 @@ function JoinForm() {
 
   const onChange = e => {
     const { value, name } = e.target;
-    const { password } = form;
+    const { password } = join;
 
     if (name === 'email' && value.length > 0 && !emailRegex.test(value)) {
       setIsEmail(false);
@@ -94,36 +100,47 @@ function JoinForm() {
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log('회원가입 onSubmit');
-    setModalOn(prev => !prev);
-    setTimeout(() => {
+
+    dispatch(fetchJoinThunk({ email, password, confirmPassword: passwordConfirm, name: username }));
+    if (!error) {
       setModalOn(prev => !prev);
-      setEmailAuthentication(prev => !prev);
-    }, 3000);
+      setTimeout(() => {
+        setModalOn(prev => !prev);
+        setEmailAuthentication(prev => !prev);
+      }, 3000);
+    }
   };
 
   useEffect(() => {
-    dispatch(initializeForm('join'));
-  }, [dispatch]);
+    dispatch(initializeForm());
+  }, []);
 
   return emailAuthentication ? (
-    <EmailAuth />
+    <EmailAuth form={authenticate} />
   ) : (
-    <AuthForm
-      type="join"
-      form={form}
-      onChange={onChange}
-      onSubmit={onSubmit}
-      modalOn={modalOn}
-      emailMessage={emailMessage}
-      passwordMessage={passwordMessage}
-      passwordConfirmMessage={passwordConfirmMessage}
-      nameMessage={nameMessage}
-      isEmail={isEmail}
-      isPassword={isPassword}
-      isPasswordConfirm={isPasswordConfirm}
-      isName={isName}
-    />
+    <div>
+      {error ? (
+        <h2>
+          {error} <MoveLink text="" address="/join" btnText="회원가입" />
+        </h2>
+      ) : (
+        <AuthForm
+          type="join"
+          form={join}
+          onChange={onChange}
+          onSubmit={onSubmit}
+          modalOn={modalOn}
+          emailMessage={emailMessage}
+          passwordMessage={passwordMessage}
+          passwordConfirmMessage={passwordConfirmMessage}
+          nameMessage={nameMessage}
+          isEmail={isEmail}
+          isPassword={isPassword}
+          isPasswordConfirm={isPasswordConfirm}
+          isName={isName}
+        />
+      )}
+    </div>
   );
 }
 

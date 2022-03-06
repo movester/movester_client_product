@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-import { changeField, initializeForm } from '../../modules/auth';
-import AuthForm from '../../components/UI/Auth/AuthForm';
+import AuthForm from './AuthForm';
 import emailRegex from '../../lib/validation/emailRegex';
 import passwordRegex from '../../lib/validation/passwordRegex';
+import { fetchLoginThunk } from '../../store/auth/authAsyncThunk';
+import { changeField, initializeForm } from '../../store/form/formSlice';
 
 function LoginForm() {
   const dispatch = useDispatch();
-  const { form } = useSelector(({ auth }) => ({
-    form: auth.login,
+  const { login, isLogin } = useSelector(({ form, auth }) => ({
+    login: form.login,
+    isLogin: auth.isLogin,
   }));
+  const { email, password } = login;
+  const navigate = useNavigate();
 
   const [isEmail, setIsEmail] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
@@ -60,18 +65,22 @@ function LoginForm() {
   // 폼 등록 이벤트 핸들러
   const onSubmit = e => {
     e.preventDefault();
-    console.log('로그인 onSubmit');
+    dispatch(fetchLoginThunk({ email, password }));
   };
 
   // 첫 렌더링 시 form 초기화
   useEffect(() => {
     dispatch(initializeForm('login'));
-  }, [dispatch]);
+  }, []);
+
+  useEffect(() => {
+    if (isLogin) navigate('/');
+  }, [isLogin]);
 
   return (
     <AuthForm
       type="login"
-      form={form}
+      form={login}
       onChange={onChange}
       onSubmit={onSubmit}
       emailMessage={emailMessage}

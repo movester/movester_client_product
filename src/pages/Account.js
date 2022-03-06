@@ -23,7 +23,7 @@ function Account() {
         <StyledButtonWrap>
           <ReCaptcha />
           <Button text="회원 탈퇴" event={handleModal} />
-          <ModalPortal>{modalOn && <AccountLeave onClose={handleModal} title="계정 삭제" />}</ModalPortal>
+          <ModalPortal>{modalOn && <AccountLeave onClose={handleModal} title="회원 탈퇴" />}</ModalPortal>
         </StyledButtonWrap>
       </StyledContentWrap>
     </Main>

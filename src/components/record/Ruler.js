@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Slider from 'rc-slider';
 
 import 'rc-slider/assets/index.css';
 
-function Ruler() {
-  const [record, setRecord] = useState(0);
-  const [message, setMessage] = useState('');
-
+function Ruler({ record, message, setRecord, setMessage }) {
   const onSliderChange = val => {
     setMessage('');
     setRecord(val);
@@ -72,6 +70,13 @@ function Ruler() {
     </SliderContainer>
   );
 }
+
+Ruler.propTypes = {
+  record: PropTypes.number.isRequired,
+  message: PropTypes.string.isRequired,
+  setRecord: PropTypes.func.isRequired,
+  setMessage: PropTypes.func.isRequired,
+};
 
 export default Ruler;
 

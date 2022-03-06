@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import flexCenterAlign from '../../../styles/flexCenterAlign';
-import FormWrapper from '../../../styles/FormWrapper';
-import StyledButton from '../../../styles/StyledButton';
-import StyledInput from '../../../styles/StyledInput';
-import FindPasswordModal from '../../common/Modal/FindPasswordModal';
-import ModalPortal from '../../common/Modal/ModalPortal';
-import MoveLink from '../../common/MoveLink';
+import flexCenterAlign from '../../styles/flexCenterAlign';
+import FormWrapper from '../../styles/FormWrapper';
+import StyledButton from '../../styles/StyledButton';
+import StyledInput from '../../styles/StyledInput';
+import FindPasswordModal from '../common/Modal/FindPasswordModal';
+import ModalPortal from '../common/Modal/ModalPortal';
+import MoveLink from '../common/MoveLink';
 
 function FindPassword() {
   const [modalOn, setModalOn] = useState(false);
   const [isMailing, setIsMailing] = useState(false);
-  console.log(modalOn, typeof setModalOn);
 
   const handleModal = () => {
     setModalOn(prev => !prev);
