@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { changeField, initializeForm } from '../../modules/auth';
 import AuthForm from '../../components/UI/Auth/AuthForm';
 import emailRegex from '../../lib/validation/emailRegex';
 import passwordRegex from '../../lib/validation/passwordRegex';
+import { changeField, initializeForm } from '../../store/form/formSlice';
 
 function LoginForm() {
   const dispatch = useDispatch();
