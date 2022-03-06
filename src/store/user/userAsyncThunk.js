@@ -18,3 +18,21 @@ export const fetchUserRecordTypeByDates = createAsyncThunk('user/fetchRecordType
     return thunkAPI.rejectWithValue(error.response.data);
   }
 });
+
+export const fetchAddRecordThunk = createAsyncThunk('user/fetchRecord', async (payload, thunkAPI) => {
+  try {
+    const response = await userAPI.fetchAddRecord(payload);
+    return response;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response.data);
+  }
+});
+
+export const fetchModifyRecordThunk = createAsyncThunk('user/fetchModifyRecord', async (payload, thunkAPI) => {
+  try {
+    const response = await userAPI.fetchModifyRecord(payload);
+    return response;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response.data);
+  }
+});

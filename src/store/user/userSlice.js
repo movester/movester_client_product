@@ -1,13 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchUserRecordTenEach, fetchUserRecordTypeByDates } from './userAsyncThunk';
+import {
+  fetchAddRecordThunk,
+  fetchModifyRecordThunk,
+  fetchUserRecordTenEach,
+  fetchUserRecordTypeByDates,
+} from './userAsyncThunk';
 
 const initialState = {
   loading: false,
-  errorMessage: null,
-  records: {
-    byTen: null,
-    period: null,
-  },
+  error: null,
+  records: null,
 };
 
 const userSlice = createSlice({
@@ -17,33 +19,63 @@ const userSlice = createSlice({
   extraReducers: {
     [fetchUserRecordTenEach.pending]: state => {
       state.loading = true;
-      state.errorMessage = null;
-      state.records.byTen = null;
+      state.error = null;
+      state.records = null;
     },
-    [fetchUserRecordTenEach.fulfilled]: (state, action) => {
+    [fetchUserRecordTenEach.fulfilled]: (state, { payload: data }) => {
       state.loading = false;
-      state.errorMessage = null;
-      state.records.byTen = action.payload.data;
+      state.error = null;
+      state.records = data.data;
     },
-    [fetchUserRecordTenEach.rejected]: (state, action) => {
+    [fetchUserRecordTenEach.rejected]: (state, { payaload: error }) => {
       state.loading = false;
-      state.errorMessage = action.payload.error;
-      state.records.byTen = null;
+      state.error = error;
+      state.records = null;
     },
     [fetchUserRecordTypeByDates.pending]: state => {
       state.loading = true;
-      state.errorMessage = null;
-      state.records.period = null;
+      state.error = null;
+      state.records = null;
     },
-    [fetchUserRecordTypeByDates.fulfilled]: (state, action) => {
+    [fetchUserRecordTypeByDates.fulfilled]: (state, { payload: data }) => {
       state.loading = false;
-      state.errorMessage = null;
-      state.records.period = action.payload.data;
+      state.error = null;
+      state.records = data.data;
     },
-    [fetchUserRecordTypeByDates.rejected]: (state, action) => {
+    [fetchUserRecordTypeByDates.rejected]: (state, { payload: error }) => {
       state.loading = false;
-      state.errorMessage = action.payload.error;
-      state.records.period = action.payload.data;
+      state.error = error;
+      state.records = null;
+    },
+    [fetchAddRecordThunk.pending]: state => {
+      state.loading = true;
+      state.error = null;
+      state.records = null;
+    },
+    [fetchAddRecordThunk.fulfilled]: (state, { payload: data }) => {
+      state.loading = false;
+      state.error = null;
+      state.records = data.data;
+    },
+    [fetchAddRecordThunk.rejected]: (state, { payload: error }) => {
+      state.loading = false;
+      state.error = error;
+      state.records = null;
+    },
+    [fetchModifyRecordThunk.pending]: state => {
+      state.loading = false;
+      state.error = null;
+      state.records = null;
+    },
+    [fetchModifyRecordThunk.fulfilled]: (state, { payload: data }) => {
+      state.loading = true;
+      state.error = null;
+      state.records = data.data;
+    },
+    [fetchModifyRecordThunk.rejected]: (state, { payload: error }) => {
+      state.loading = false;
+      state.error = error;
+      state.records = null;
     },
   },
 });

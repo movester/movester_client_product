@@ -1,7 +1,7 @@
 import React from 'react';
 import AuthTemplate from '../components/common/AuthTemplate';
 import Main from '../components/common/Main';
-import JoinForm from '../containers/Auth/JoinForm';
+import JoinForm from '../components/Auth/JoinForm';
 
 function SignupPage() {
   return (

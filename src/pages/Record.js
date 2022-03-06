@@ -1,13 +1,24 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
 import Main from '../components/common/Main';
 import Nav from '../components/common/Nav';
 import { GrayBg, StyledGrayBg } from '../components/elements/GrayBg';
 import Button from '../components/elements/Button';
 import MoveLink from '../components/common/MoveLink';
+import Graph from '../components/record/Graph';
+
+import { fetchUserRecordTenEach } from '../store/user/userAsyncThunk';
 
 function Record() {
+  const { records } = useSelector(({ user }) => ({ records: user.records }));
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchUserRecordTenEach());
+  }, []);
+  console.log(records);
   return (
     <Main type="record">
       <Nav />
@@ -20,14 +31,14 @@ function Record() {
         <div className="graph-wrap">
           <div className="graph-one">
             <Button type="search" text="어깨" />
-            <div className="graph" />
+            <Graph records={records?.shoulder} />
             <Link to="/mypage/record/shoulder">
               <p>오늘의 어깨 기록하러가기 {'>'}</p>
             </Link>
           </div>
           <div className="graph-one">
             <Button type="search" text="허리 &#183; 다리" />
-            <div className="graph" />
+            <Graph records={records?.leg} />
             <Link to="/mypage/record/waistLeg">
               <p>오늘의 허리 &#183; 다리 기록하러가기 {'>'}</p>
             </Link>

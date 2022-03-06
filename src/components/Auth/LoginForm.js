@@ -2,18 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import AuthForm from '../../components/UI/Auth/AuthForm';
+import AuthForm from './AuthForm';
 import emailRegex from '../../lib/validation/emailRegex';
 import passwordRegex from '../../lib/validation/passwordRegex';
 import { fetchLoginThunk } from '../../store/auth/authAsyncThunk';
 import { changeField, initializeForm } from '../../store/form/formSlice';
+import { initializeAuth } from '../../store/auth/authSlice';
 
 function LoginForm() {
   const dispatch = useDispatch();
-  const { login, isLogin } = useSelector(({ form, auth }) => ({
+  const { login, isLogin, error } = useSelector(({ form, auth }) => ({
     login: form.login,
     isLogin: auth.isLogin,
+    error: auth.error,
   }));
+
   const { email, password } = login;
   const navigate = useNavigate();
 
@@ -65,6 +68,10 @@ function LoginForm() {
   // 폼 등록 이벤트 핸들러
   const onSubmit = e => {
     e.preventDefault();
+    if (!passwordRegex.test(login.password)) {
+      alert('영문자, 숫자, 특수문자 조합으로 8자리 이상 입력해주세요.');
+      return;
+    }
     dispatch(fetchLoginThunk({ email, password }));
   };
 
@@ -76,6 +83,13 @@ function LoginForm() {
   useEffect(() => {
     if (isLogin) navigate('/');
   }, [isLogin]);
+
+  useEffect(() => {
+    if (error) {
+      alert(error.error);
+      dispatch(initializeAuth());
+    }
+  }, [error]);
 
   return (
     <AuthForm

@@ -1,37 +1,59 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+
 import Main from '../components/common/Main';
 import Nav from '../components/common/Nav';
 import { GrayBg } from '../components/elements/GrayBg';
 import Button from '../components/elements/Button';
 import MoveLink from '../components/common/MoveLink';
+import Ruler from '../components/record/Ruler';
+import Graph from '../components/record/Graph';
+import { fetchAddRecordThunk, fetchModifyRecordThunk } from '../store/user/userAsyncThunk';
 
 function Shoulder() {
+  const { records } = useSelector(({ user }) => ({ records: user.records }));
+  const [record, setRecord] = useState(0);
+  const [message, setMessage] = useState('');
   const [shoulerRecord, setShoulerRecord] = useState(true);
-  const sendRecord = () => {
+  const dispatch = useDispatch();
+
+  const addRecord = () => {
+    console.log('클릭이벤트');
+    if (record === 0) {
+      alert('기록을 입력해주세요.');
+      return;
+    }
+    if (records) {
+      dispatch(fetchModifyRecordThunk({ type: 1, record }));
+    }
+    dispatch(fetchAddRecordThunk({ type: 1, record }));
     setShoulerRecord(false);
   };
+
+  const toggle = () => setShoulerRecord(true);
+
   return (
     <Main type="record">
       <Nav />
       <StyledWrap>
         <p className="title">어깨 유연성 기록</p>
         <StyledCheckRecord>
-          <div className="graph" />
+          <Graph />
           <div>
             {shoulerRecord ? (
               <>
                 <p className="title">오늘의 어깨 유연성 기록하기</p>
                 <div className="ruler-wrap">
-                  <div className="ruler" />
-                  <Button event={sendRecord} type="wide" />
+                  <Ruler record={record} message={message} setRecord={setRecord} setMessage={setMessage} />
+                  <Button type="wide" event={addRecord} />
                 </div>
               </>
             ) : (
               <>
                 <p className="title">멋저요! 오늘도 어깨 유연성을 기록했습니다.</p>
                 <div className="ruler-send">
-                  <Button type="search" text="40.2cm" />
+                  <Button type="search" text={`${record}cm`} event={toggle} />
                   <p>
                     건강한 신체를 위한 한걸음
                     <br />

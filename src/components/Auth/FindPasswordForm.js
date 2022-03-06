@@ -1,5 +1,5 @@
 import React from 'react';
-import FindPassword from '../../components/UI/Auth/FindPassword';
+import FindPassword from './FindPassword';
 
 function FindPasswordForm() {
   return <FindPassword />;
