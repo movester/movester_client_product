@@ -12,6 +12,9 @@ const authAPI = {
   fetchLogin(payload) {
     return axios.post('/users/login', payload);
   },
+  fetchKakaoLogin() {
+    return axios.get('/auth/kakao');
+  },
 };
 
 export default authAPI;

@@ -27,3 +27,13 @@ export const fetchLoginThunk = createAsyncThunk('user/fetchLogin', async (payloa
     return thunkAPI.rejectWithValue(error.reponse.data);
   }
 });
+
+export const fetchKakaoLoginThunk = createAsyncThunk('user/fetchKakaoLogin', async (_, thunkAPI) => {
+  try {
+    const response = await authAPI.fetchKakaoLogin();
+    console.log(response);
+    return response;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.reponse.data);
+  }
+});

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+// import { useDispatch } from 'react-redux';
 import MoveLink from '../../common/MoveLink';
 
 import flexCenterAlign from '../../../styles/flexCenterAlign';
@@ -10,6 +11,7 @@ import EmailAuthModal from '../../common/Modal/EmailAuthModal';
 import StyledInput from '../../../styles/StyledInput';
 import StyledButton from '../../../styles/StyledButton';
 import FormWrapper from '../../../styles/FormWrapper';
+// import { fetchKakaoLoginThunk } from '../../../store/auth/authAsyncThunk';
 
 // 회원가입 또는 로그인 폼 렌더
 const textMap = {
@@ -33,6 +35,14 @@ function AuthForm({
   isName,
 }) {
   const text = textMap[type];
+  // const dispatch = useDispatch();
+
+  const handleKakaoLogin = () => {
+    // dispatch(fetchKakaoLoginThunk());
+    window.location.assign(
+      `https://kauth.kakao.com/oauth/authorize?client_id=$0b39406e0267957ef6caaa872523c37d&redirect_uri=$http://localhost:5000/api/auth/kakao/callback/&response_type=code`
+    );
+  };
 
   return (
     <>
@@ -100,7 +110,7 @@ function AuthForm({
               <StyledButton type="submit" className="login-btn" aria-label="login">
                 로그인 하기
               </StyledButton>
-              <StyledButton type="button" className="kakao-login" aria-label="kakao-login" />
+              <StyledButton type="button" className="kakao-login" aria-label="kakao-login" onClick={handleKakaoLogin} />
               <Link to="/login/accountInfoFound" style={{ margin: '20px 0' }}>
                 비밀번호 찾기
               </Link>

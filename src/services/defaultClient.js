@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const defaultClient = axios.create({
-  baseURL: '/api',
+  baseURL: `${process.env.REACT_APP_SERVER_API_URL}`,
   withCredentials: true,
 });
 
