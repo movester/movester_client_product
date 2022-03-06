@@ -11,7 +11,6 @@ import MoveLink from '../../common/MoveLink';
 function FindPassword() {
   const [modalOn, setModalOn] = useState(false);
   const [isMailing, setIsMailing] = useState(false);
-  console.log(modalOn, typeof setModalOn);
 
   const handleModal = () => {
     setModalOn(prev => !prev);

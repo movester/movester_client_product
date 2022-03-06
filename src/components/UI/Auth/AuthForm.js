@@ -45,7 +45,7 @@ function AuthForm({
             placeholder="이메일"
             autoComplete="email"
             onChange={onChange}
-            value={form.email}
+            value={form?.email}
           />
           <p className="email-message">{!isEmail && emailMessage}</p>
           <StyledInput
@@ -54,7 +54,7 @@ function AuthForm({
             placeholder="비밀번호"
             autoComplete="new-password"
             onChange={onChange}
-            value={form.password}
+            value={form?.password}
           />
           <p className="password-message">{!isPassword && passwordMessage}</p>
           {type === 'join' && (
@@ -65,7 +65,7 @@ function AuthForm({
                 placeholder="비밀번호 확인"
                 autoComplete="new-password"
                 onChange={onChange}
-                value={form.passwordConfirm}
+                value={form?.passwordConfirm}
               />
               <p className="confirm-message">{!isPasswordConfirm && passwordConfirmMessage}</p>
               <StyledInput
@@ -74,7 +74,7 @@ function AuthForm({
                 placeholder="이름"
                 autoComplete="username"
                 onChange={onChange}
-                value={form.username}
+                value={form?.username}
               />
               <p className="name-message">{!isName && nameMessage}</p>
             </>
