@@ -112,7 +112,6 @@ function JoinForm() {
 
   useEffect(() => {
     if (error) {
-      // console.log(error);
       alert(error.error);
       dispatch(initializeAuth());
       dispatch(initializeForm('join'));
