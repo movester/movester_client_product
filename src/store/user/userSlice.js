@@ -4,10 +4,7 @@ import { fetchUserRecordTenEach, fetchUserRecordTypeByDates } from './userAsyncT
 const initialState = {
   loading: false,
   errorMessage: null,
-  records: {
-    byTen: null,
-    period: null,
-  },
+  records: null,
 };
 
 const userSlice = createSlice({
@@ -18,32 +15,32 @@ const userSlice = createSlice({
     [fetchUserRecordTenEach.pending]: state => {
       state.loading = true;
       state.errorMessage = null;
-      state.records.byTen = null;
+      state.records = null;
     },
-    [fetchUserRecordTenEach.fulfilled]: (state, action) => {
+    [fetchUserRecordTenEach.fulfilled]: (state, { payload: data }) => {
       state.loading = false;
       state.errorMessage = null;
-      state.records.byTen = action.payload.data;
+      state.records = data.data;
     },
-    [fetchUserRecordTenEach.rejected]: (state, action) => {
+    [fetchUserRecordTenEach.rejected]: (state, { payaload: error }) => {
       state.loading = false;
-      state.errorMessage = action.payload.error;
-      state.records.byTen = null;
+      state.errorMessage = error;
+      state.records = null;
     },
     [fetchUserRecordTypeByDates.pending]: state => {
       state.loading = true;
       state.errorMessage = null;
-      state.records.period = null;
+      state.records = null;
     },
-    [fetchUserRecordTypeByDates.fulfilled]: (state, action) => {
+    [fetchUserRecordTypeByDates.fulfilled]: (state, { payload: data }) => {
       state.loading = false;
       state.errorMessage = null;
-      state.records.period = action.payload.data;
+      state.records = data.data;
     },
-    [fetchUserRecordTypeByDates.rejected]: (state, action) => {
+    [fetchUserRecordTypeByDates.rejected]: (state, { payload: error }) => {
       state.loading = false;
-      state.errorMessage = action.payload.error;
-      state.records.period = action.payload.data;
+      state.errorMessage = error;
+      state.records = null;
     },
   },
 });

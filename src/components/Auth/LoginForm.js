@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import AuthForm from '../../components/UI/Auth/AuthForm';
+import AuthForm from './AuthForm';
 import emailRegex from '../../lib/validation/emailRegex';
 import passwordRegex from '../../lib/validation/passwordRegex';
 import { fetchLoginThunk } from '../../store/auth/authAsyncThunk';

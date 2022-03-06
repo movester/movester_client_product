@@ -5,7 +5,7 @@ import Nav from '../components/common/Nav';
 import { GrayBg } from '../components/elements/GrayBg';
 import Button from '../components/elements/Button';
 import MoveLink from '../components/common/MoveLink';
-import Graph from '../components/molecules/Graph';
+import Graph from '../components/record/Graph';
 
 function Shoulder() {
   const [shoulerRecord, setShoulerRecord] = useState(true);

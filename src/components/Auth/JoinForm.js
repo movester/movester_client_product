@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import MoveLink from '../../components/common/MoveLink';
+import MoveLink from '../common/MoveLink';
 
-import AuthForm from '../../components/UI/Auth/AuthForm';
-import EmailAuth from '../../components/UI/Auth/EmailAuth';
+import AuthForm from './AuthForm';
+import EmailAuth from './EmailAuth';
+
 import emailRegex from '../../lib/validation/emailRegex';
 import passwordRegex from '../../lib/validation/passwordRegex';
 import { fetchJoinThunk } from '../../store/auth/authAsyncThunk';

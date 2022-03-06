@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import WeeklyCard from '../../molecules/WeeklyCard';
+import WeeklyCard from './WeeklyCard';
 
 function HomeComponent() {
   return (

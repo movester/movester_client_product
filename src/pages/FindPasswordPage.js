@@ -1,7 +1,7 @@
 import React from 'react';
 import AuthTemplate from '../components/common/AuthTemplate';
 import Main from '../components/common/Main';
-import FindPasswordForm from '../containers/Auth/FindPasswordForm';
+import FindPasswordForm from '../components/Auth/FindPasswordForm';
 
 function FindPasswordPage() {
   return (
