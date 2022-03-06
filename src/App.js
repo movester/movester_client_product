@@ -18,7 +18,7 @@ import PwChange from './pages/PwChange';
 import Account from './pages/Account';
 import Record from './pages/Record';
 import Basket from './pages/Basket';
-import Stamp from './pages/Stamp';
+import Stamp from './components/stamp/Stamp';
 import FindPasswordPage from './pages/FindPasswordPage';
 import EditPasswordPage from './pages/EditPasswordPage';
 import Shoulder from './pages/Shoulder';

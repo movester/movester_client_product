@@ -5,14 +5,17 @@ import Nav from '../components/common/Nav';
 import Button from '../components/elements/Button';
 import ProfillTitle from '../components/elements/ProfileTitle';
 import ProfillInput from '../components/elements/ProfillInput';
-import ReCaptcha from '../components/common/ReCaptcha';
 import ModalPortal from '../components/common/Modal/ModalPortal';
 import AccountLeave from '../components/common/Modal/AccountLeave';
 
 function Account() {
   const [modalOn, setModalOn] = useState(false);
+  const [input, setInput] = useState('');
   const handleModal = () => {
     setModalOn(!modalOn);
+  };
+  const onChange = e => {
+    setInput(e.target.value);
   };
   return (
     <Main type="profill">
@@ -20,10 +23,12 @@ function Account() {
       <StyledContentWrap>
         <ProfillTitle title="회원 탈퇴" />
         <ProfillInput text="비밀번호" />
+        <input type="text" value={input} onChange={onChange} />
         <StyledButtonWrap>
-          <ReCaptcha />
           <Button text="회원 탈퇴" event={handleModal} />
-          <ModalPortal>{modalOn && <AccountLeave onClose={handleModal} title="회원 탈퇴" />}</ModalPortal>
+          <ModalPortal>
+            {modalOn && <AccountLeave onClose={handleModal} title="회원 탈퇴" password={input} />}
+          </ModalPortal>
         </StyledButtonWrap>
       </StyledContentWrap>
     </Main>
@@ -38,7 +43,7 @@ const StyledContentWrap = styled.section`
 
 const StyledButtonWrap = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 
   align-items: end;
   @media screen and (max-width: 1024px) {

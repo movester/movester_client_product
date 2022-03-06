@@ -4,7 +4,7 @@ import { RotatingLines } from 'react-loader-spinner';
 
 function Loading() {
   return (
-    <StyledLoading>
+    <StyledLoading className="loading">
       <RotatingLines width="70" />
     </StyledLoading>
   );
@@ -14,8 +14,4 @@ export default Loading;
 
 const StyledLoading = styled.div`
   width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;

@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 import ModalPortal from './ModalPortal';
 import begImage from '../../../assets/beg.png';
 
-function AccountLeave({ title, onClose }) {
+function AccountLeave({ title, onClose, password }) {
+  const onLeave = () => {
+    console.log('api 요청', password);
+  };
   return (
     <ModalPortal>
       <Container>
@@ -14,7 +17,7 @@ function AccountLeave({ title, onClose }) {
           <p>정말로 삭제하시겠습니까?</p>
           <Image src={begImage} alt="삭제 이미지" />
           <FlexContainer>
-            <StyledButton type="button" onClick={onClose}>
+            <StyledButton type="button" onClick={onLeave}>
               응, 끝이야
             </StyledButton>
             <StyledButton type="button" onClick={onClose}>
@@ -29,11 +32,13 @@ function AccountLeave({ title, onClose }) {
 
 AccountLeave.propTypes = {
   title: PropTypes.string,
+  password: PropTypes.string,
   onClose: PropTypes.func,
 };
 
 AccountLeave.defaultProps = {
   title: '',
+  password: '',
   onClose: () => {},
 };
 
