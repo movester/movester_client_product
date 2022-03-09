@@ -15,10 +15,13 @@ import { fetchUserRecordTenEach } from '../store/user/userAsyncThunk';
 function Record() {
   const { records } = useSelector(({ user }) => user);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchUserRecordTenEach());
   }, []);
+
   console.log('user records', records);
+
   return (
     <Main type="record">
       <Nav />

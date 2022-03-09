@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchAddRecordThunk,
   fetchModifyRecordThunk,
+  fetchUserRecordByType,
   fetchUserRecordTenEach,
   fetchUserRecordTypeByDates,
 } from './userAsyncThunk';
@@ -10,12 +11,19 @@ const initialState = {
   loading: false,
   error: null,
   records: null,
+  detailRecord: null,
 };
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    initializeRecord(state) {
+      state.loading = false;
+      state.error = null;
+      state.records = null;
+    },
+  },
   extraReducers: {
     [fetchUserRecordTenEach.pending]: state => {
       state.loading = true;
@@ -31,6 +39,25 @@ const userSlice = createSlice({
       state.loading = false;
       state.error = error;
       state.records = null;
+    },
+    [fetchUserRecordByType.pending]: state => {
+      state.loading = true;
+      state.error = null;
+      state.detailRecord = null;
+    },
+    [fetchUserRecordByType.fulfilled]: (state, { payload: data }) => {
+      state.loading = true;
+      state.error = null;
+      state.detailRecord = data.data.data;
+    },
+    [fetchUserRecordByType.rejected]: (state, action) => {
+      state.loading = true;
+      state.detailRecord = null;
+      if (action.payload) {
+        state.error = action.payload;
+      } else {
+        state.error = action.error.message;
+      }
     },
     [fetchUserRecordTypeByDates.pending]: state => {
       state.loading = true;
@@ -50,34 +77,37 @@ const userSlice = createSlice({
     [fetchAddRecordThunk.pending]: state => {
       state.loading = true;
       state.error = null;
-      state.records = null;
     },
-    [fetchAddRecordThunk.fulfilled]: (state, { payload: data }) => {
+    [fetchAddRecordThunk.fulfilled]: state => {
       state.loading = false;
       state.error = null;
-      state.records = data.data;
     },
-    [fetchAddRecordThunk.rejected]: (state, { payload: error }) => {
+    [fetchAddRecordThunk.rejected]: (state, action) => {
       state.loading = false;
-      state.error = error;
-      state.records = null;
+      if (action.payload) {
+        state.error = action.payload;
+      } else {
+        state.error = action.error.message;
+      }
     },
     [fetchModifyRecordThunk.pending]: state => {
       state.loading = false;
       state.error = null;
-      state.records = null;
     },
-    [fetchModifyRecordThunk.fulfilled]: (state, { payload: data }) => {
+    [fetchModifyRecordThunk.fulfilled]: state => {
       state.loading = true;
       state.error = null;
-      state.records = data.data;
     },
-    [fetchModifyRecordThunk.rejected]: (state, { payload: error }) => {
+    [fetchModifyRecordThunk.rejected]: (state, action) => {
       state.loading = false;
-      state.error = error;
-      state.records = null;
+      if (action.payload) {
+        state.error = action.payload;
+      } else {
+        state.error = action.error.message;
+      }
     },
   },
 });
 
+export const { initializeRecord } = userSlice.actions;
 export default userSlice.reducer;

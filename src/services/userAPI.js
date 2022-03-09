@@ -4,6 +4,9 @@ const userAPI = {
   fetchRecordTenEach() {
     return axios.get(`/records/summary`);
   },
+  fetchRecordByType({ type }) {
+    return axios.get(`/records/${type}`);
+  },
   fetchRecordTypeByDates(payload) {
     const { type, startYear, startMonth, startDate, endYear, endMonth, endDate } = payload;
     return axios.get(

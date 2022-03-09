@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
@@ -9,14 +9,17 @@ import Button from '../components/elements/Button';
 import MoveLink from '../components/common/MoveLink';
 import Ruler from '../components/record/Ruler';
 import Graph from '../components/record/Graph';
-import { fetchAddRecordThunk, fetchModifyRecordThunk } from '../store/user/userAsyncThunk';
+import { fetchAddRecordThunk, fetchModifyRecordThunk, fetchUserRecordByType } from '../store/user/userAsyncThunk';
+import { initializeRecord } from '../store/user/userSlice';
 
 function Shoulder() {
-  const { records } = useSelector(({ user }) => user);
+  const { detailRecord } = useSelector(({ user }) => user);
   const [record, setRecord] = useState(0);
   const [message, setMessage] = useState('');
   const [shoulerRecord, setShoulerRecord] = useState(true);
   const dispatch = useDispatch();
+
+  console.log('shoulder', detailRecord);
 
   const addRecord = () => {
     console.log('클릭이벤트');
@@ -24,7 +27,7 @@ function Shoulder() {
       alert('기록을 입력해주세요.');
       return;
     }
-    if (records) {
+    if (detailRecord) {
       // TODO: 기록 수정하는 기준 수정 필요
       dispatch(fetchModifyRecordThunk({ type: 1, record }));
     }
@@ -34,13 +37,20 @@ function Shoulder() {
 
   const toggle = () => setShoulerRecord(true);
 
+  useEffect(() => {
+    // 컴포넌트 첫 렌더링 시 어깨 부위 기록 API 호출 - 어깨 type 1
+    dispatch(fetchUserRecordByType({ type: 1 }));
+
+    return () => dispatch(initializeRecord());
+  }, []);
+
   return (
     <Main type="record">
       <Nav />
       <StyledWrap>
         <p className="title">어깨 유연성 기록</p>
         <StyledCheckRecord>
-          <Graph records={records?.shoulder.slice().reverse()} type="shoulder" />
+          <Graph records={detailRecord?.slice().reverse()} type="shoulder" />
           <div>
             {shoulerRecord ? (
               <>

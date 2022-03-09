@@ -10,6 +10,22 @@ export const fetchUserRecordTenEach = createAsyncThunk('user/fetchRecordTenEach'
   }
 });
 
+export const fetchUserRecordByType = createAsyncThunk(
+  'user/fetchUserRecordByType',
+  async (payload, { rejectWithValue }) => {
+    try {
+      const response = await userAPI.fetchRecordByType(payload);
+      return response;
+    } catch (error) {
+      const err = error;
+      if (!err.response) {
+        throw error;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 export const fetchUserRecordTypeByDates = createAsyncThunk('user/fetchRecordTypeByDates', async (payload, thunkAPI) => {
   try {
     const response = await userAPI.fetchRecordTypeByDates(payload);

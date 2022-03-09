@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
@@ -9,21 +9,23 @@ import Button from '../components/elements/Button';
 import MoveLink from '../components/common/MoveLink';
 import Ruler from '../components/record/Ruler';
 import Graph from '../components/record/Graph';
-import { fetchAddRecordThunk, fetchModifyRecordThunk } from '../store/user/userAsyncThunk';
+import { fetchAddRecordThunk, fetchModifyRecordThunk, fetchUserRecordByType } from '../store/user/userAsyncThunk';
 
 function WaistLeg() {
-  const { records } = useSelector(({ user }) => user);
+  const { detailRecord } = useSelector(({ user }) => user);
   const [record, setRecord] = useState(0);
   const [message, setMessage] = useState('');
   const [weistLegRecord, setWeistLegRecord] = useState(true);
   const dispatch = useDispatch();
+
+  console.log(detailRecord);
 
   const addRecord = () => {
     if (record === 0) {
       alert('기록을 입력해주세요.');
       return;
     }
-    if (records) {
+    if (detailRecord) {
       // TODO: 기록 수정하는 조건 수정 필요
       dispatch(fetchModifyRecordThunk({ type: 1, record }));
     }
@@ -33,13 +35,18 @@ function WaistLeg() {
 
   const toggle = () => setWeistLegRecord(true);
 
+  useEffect(() => {
+    // 컴포넌트 첫 렌더링 시 어깨 부위 기록 API 호출 - 다리 type 2
+    dispatch(fetchUserRecordByType({ type: 2 }));
+  }, []);
+
   return (
     <Main type="record">
       <Nav />
       <StyledWrap>
         <p className="title">허리 &#183; 다리 유연성 기록</p>
         <StyledCheckRecord>
-          <Graph records={records?.leg.slice().reverse()} type="leg" />
+          <Graph records={detailRecord?.leg.slice().reverse()} type="leg" />
           <div>
             {weistLegRecord ? (
               <>
