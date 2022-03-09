@@ -1,6 +1,6 @@
 import React from 'react';
 import Main from '../components/common/Main';
-import EditPassword from '../components/Auth/EditPassword';
+import EditPassword from '../components/auth/EditPassword';
 
 function EditPasswordPage() {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import Main from '../components/common/Main';
 import AuthTemplate from '../components/common/AuthTemplate';
-import LoginForm from '../components/Auth/LoginForm';
+import LoginForm from '../components/auth/LoginForm';
 
 function LoginPage() {
   return (
