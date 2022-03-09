@@ -12,7 +12,7 @@ import Graph from '../components/record/Graph';
 import { fetchAddRecordThunk, fetchModifyRecordThunk } from '../store/user/userAsyncThunk';
 
 function Shoulder() {
-  const { records } = useSelector(({ user }) => ({ records: user.records }));
+  const { records } = useSelector(({ user }) => user);
   const [record, setRecord] = useState(0);
   const [message, setMessage] = useState('');
   const [shoulerRecord, setShoulerRecord] = useState(true);
@@ -25,6 +25,7 @@ function Shoulder() {
       return;
     }
     if (records) {
+      // TODO: 기록 수정하는 기준 수정 필요
       dispatch(fetchModifyRecordThunk({ type: 1, record }));
     }
     dispatch(fetchAddRecordThunk({ type: 1, record }));
@@ -39,7 +40,7 @@ function Shoulder() {
       <StyledWrap>
         <p className="title">어깨 유연성 기록</p>
         <StyledCheckRecord>
-          <Graph />
+          <Graph records={records?.shoulder.slice().reverse()} type="shoulder" />
           <div>
             {shoulerRecord ? (
               <>

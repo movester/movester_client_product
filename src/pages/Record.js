@@ -13,12 +13,12 @@ import Graph from '../components/record/Graph';
 import { fetchUserRecordTenEach } from '../store/user/userAsyncThunk';
 
 function Record() {
-  const { records } = useSelector(({ user }) => ({ records: user.records }));
+  const { records } = useSelector(({ user }) => user);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchUserRecordTenEach());
   }, []);
-  console.log(records);
+  console.log('user records', records);
   return (
     <Main type="record">
       <Nav />
@@ -30,15 +30,19 @@ function Record() {
         <p className="record-owner">조나현님의 지난 기록</p>
         <div className="graph-wrap">
           <div className="graph-one">
-            <Button type="search" text="어깨" />
-            <Graph records={records?.shoulder} />
+            <Link to="/mypage/record/shoulder">
+              <Button type="search" text="어깨" />
+            </Link>
+            <Graph records={records?.shoulder.slice().reverse()} type="shoulder" />
             <Link to="/mypage/record/shoulder">
               <p>오늘의 어깨 기록하러가기 {'>'}</p>
             </Link>
           </div>
           <div className="graph-one">
-            <Button type="search" text="허리 &#183; 다리" />
-            <Graph records={records?.leg} />
+            <Link to="/mypage/record/waistLeg">
+              <Button type="search" text="허리 &#183; 다리" />
+            </Link>
+            <Graph records={records?.leg.slice().reverse()} type="leg" />
             <Link to="/mypage/record/waistLeg">
               <p>오늘의 허리 &#183; 다리 기록하러가기 {'>'}</p>
             </Link>

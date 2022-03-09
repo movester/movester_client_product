@@ -12,7 +12,7 @@ import Graph from '../components/record/Graph';
 import { fetchAddRecordThunk, fetchModifyRecordThunk } from '../store/user/userAsyncThunk';
 
 function WaistLeg() {
-  const { records } = useSelector(({ user }) => ({ records: user.records }));
+  const { records } = useSelector(({ user }) => user);
   const [record, setRecord] = useState(0);
   const [message, setMessage] = useState('');
   const [weistLegRecord, setWeistLegRecord] = useState(true);
@@ -24,6 +24,7 @@ function WaistLeg() {
       return;
     }
     if (records) {
+      // TODO: 기록 수정하는 조건 수정 필요
       dispatch(fetchModifyRecordThunk({ type: 1, record }));
     }
     dispatch(fetchAddRecordThunk({ type: 1, record }));
@@ -38,7 +39,7 @@ function WaistLeg() {
       <StyledWrap>
         <p className="title">허리 &#183; 다리 유연성 기록</p>
         <StyledCheckRecord>
-          <Graph />
+          <Graph records={records?.leg.slice().reverse()} type="leg" />
           <div>
             {weistLegRecord ? (
               <>
