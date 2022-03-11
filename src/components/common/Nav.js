@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Nav() {
+  const user = useSelector(state => state.auth.user)
+
   const mypageList = [
     {
       id: 0,
@@ -28,8 +31,8 @@ function Nav() {
 
   return (
     <StyledNavWrap>
-      <p>유송현님</p>
-      <p className="email">ysh2987@gmail.com</p>
+      <p>{user.name}</p>
+      <p className="email">{user.email}</p>
       <ul>
         {mypageList.map(item => (
           <li key={item.id}>
@@ -63,6 +66,7 @@ const StyledNavWrap = styled.nav`
     margin-bottom: 15px;
     a.active {
       color: #2a1598;
+      font-weight: 700;
     }
     a:last-child{
       margin-bottom: 0;

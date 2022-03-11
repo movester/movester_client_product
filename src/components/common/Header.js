@@ -6,8 +6,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import { useSelector } from 'react-redux';
 import NavProfileButton from '../elements/NavProfileButton';
-import ProfileDropMenu from '../molecules/ProfileDropMenu';
-import NavigationDropMenu from '../molecules/NavigationDropMenu';
+// import ProfileDropMenu from '../elements/ProfileDropMenu';
+import NavigationDropMenu from '../elements/NavigationDropMenu';
 
 function Header() {
   const { isLogin, user } = useSelector(({ auth }) => ({
@@ -38,6 +38,7 @@ function Header() {
             <Link to="/about">About</Link>
             <Link to="/stretching">Stretching</Link>
             <Link to="/event">Event</Link>
+            <Link to="/mypage/profile">Mypage</Link>
           </StyledNavigation>
         </div>
       </HeaderLeftBlock>
@@ -46,7 +47,8 @@ function Header() {
           {isLogin ? (
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <NavProfileButton handleClick={handleInfo} user={user} />
-              {isInfo && <ProfileDropMenu user={user} />}
+              {isInfo}
+              {/* {isInfo && <ProfileDropMenu user={user} />} */}
             </div>
           ) : (
             <>
@@ -121,13 +123,14 @@ const HeaderLeftBlock = styled.div`
 const HeaderRightBlock = styled.div``;
 
 const StyledNavigation = styled.nav`
+  margin-left: 30px;
   display: flex;
   font-size: 1.2rem;
   font-weight: 400;
   line-height: 2;
 
   a {
-    margin: 0 1rem;
+    margin: 0 2rem;
     cursor: pointer;
   }
 

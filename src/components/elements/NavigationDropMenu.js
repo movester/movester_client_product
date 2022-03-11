@@ -10,6 +10,7 @@ function NavigationDropMenu() {
       <NavLink to="/about">About</NavLink>
       <NavLink to="/stretching">Stretching</NavLink>
       <NavLink to="/event">Event</NavLink>
+      <NavLink to="/mypage/profile">Mypage</NavLink>
     </NavigationDropMenuWrapper>
   );
 }

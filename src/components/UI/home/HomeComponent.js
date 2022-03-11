@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import WeeklyCard from '../../molecules/WeeklyCard';
+import WeeklyCard from '../../elements/WeeklyCard';
 
 function HomeComponent() {
   return (
@@ -18,7 +18,7 @@ function HomeComponent() {
             <span className="content">혼자가 힘들다면 뭅스터와 같이, 함께해요!</span>
           </div>
           <div>
-            <img src="/assets/charactor.png" alt="뭅스터 캐릭터" />
+            <img src="/assets/banner.png" alt="뭅스터 캐릭터" />
           </div>
         </div>
       </Banner>
@@ -64,10 +64,13 @@ const Banner = styled.section`
   }
 
   .banner-wrapper {
+    width: 60%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    gap: 150px;
+    margin-bottom: 45px;
 
     .container {
       display: flex;
@@ -90,7 +93,7 @@ const Banner = styled.section`
   }
 
   img {
-    width: 100%;
+    width: 300px;
   }
 
   @media (max-width: 600px) {
@@ -152,6 +155,10 @@ const ImageWrapper = styled.div`
   &:hover {
     background: ${({ theme }) => theme.darkGray};
     color: #fff;
+  }
+
+  & + & {
+    margin-left: 100px;
   }
 `;
 
