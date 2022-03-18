@@ -14,6 +14,7 @@ const StyledButton = styled.button`
     background-image: url('/assets/kakao_login_large_wide.png');
     background-size: cover;
     background-position: center;
+    display: block;
   }
 
   @media (max-width: 400px) {

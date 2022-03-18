@@ -8,7 +8,7 @@ import emailRegex from '../lib/validation/emailRegex';
 import passwordRegex from '../lib/validation/passwordRegex';
 import { fetchLoginThunk } from '../store/auth/authAsyncThunk';
 
-function SignPage() {
+function SignInPage() {
   const { isAuth } = useSelector(state => state.auth);
   const isError = useSelector(state => state.auth.error);
 
@@ -28,7 +28,6 @@ function SignPage() {
   const [emailMessage, setEmailMessage] = useState('');
   const [passwordMessage, setPasswordMessage] = useState('');
 
-  // 인풋 변경 이벤트 핸들러
   const onChange = e => {
     const { value, name } = e.target;
 
@@ -101,4 +100,4 @@ function SignPage() {
   );
 }
 
-export default SignPage;
+export default SignInPage;

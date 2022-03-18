@@ -25,6 +25,7 @@ MoveLink.propTypes = {
 const StyledText = styled.p`
   margin: 10px 0;
   font-size: 14px;
+  text-align: center;
 
   span {
     font-weight: bold;

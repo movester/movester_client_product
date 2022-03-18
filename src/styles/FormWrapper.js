@@ -12,31 +12,23 @@ const FormWrapper = styled.form`
   }
   & .email-message {
     color: red;
-    transform: translate(-120px, -10px);
-    @media (max-width: 400px) {
-      transform: translate(-55px, -10px);
-    }
+    padding-left: 12px;
+    margin: 5px 0 8px 0;
   }
   & .password-message {
     color: red;
-    transform: translate(-65px, -10px);
-    @media (max-width: 400px) {
-      transform: translate(0, -10px);
-    }
+    padding-left: 12px;
+    margin: 5px 0 8px 0;
   }
   & .confirm-message {
     color: red;
-    transform: translate(-65px, -10px);
-    @media (max-width: 400px) {
-      transform: translate(0px, -10px);
-    }
+    padding-left: 12px;
+    margin: 5px 0 8px 0;
   }
   & .name-message {
     color: red;
-    transform: translate(-110px, -10px);
-    @media (max-width: 400px) {
-      transform: translate(-45px, -10px);
-    }
+    padding-left: 12px;
+    margin: 5px 0 8px 0;
   }
 `;
 

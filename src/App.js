@@ -11,9 +11,8 @@ import About from './pages/About';
 import StretchingList from './pages/StretchingList';
 import StretchingDetail from './pages/StretchingDetail';
 import Event from './pages/Event';
-// import LoginPage from './pages/LoginPage';
-import LoginPage from './pages/SignPage';
-import JoinPage from './pages/JoinPage';
+import SignInPage from './pages/SignInPage';
+import SignUpPage from './pages/SignUpPage';
 import Profile from './pages/Profile';
 import PwChange from './pages/PwChange';
 import Account from './pages/Account';
@@ -36,10 +35,10 @@ function App() {
         <Route path="/stretching" element={<StretchingList />} />
         <Route path="/stretching/detail" element={<StretchingDetail />} />
         <Route path="/event" element={<Event />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<SignInPage />} />
         <Route path="/login/accountInfoFound" element={<FindPasswordPage />} />
         <Route path="/login/accountInfoEdited" element={<EditPasswordPage />} />
-        <Route path="/join" element={<JoinPage />} />
+        <Route path="/join" element={<SignUpPage />} />
         <Route path="/mypage/profile" element={<Profile />} />
         <Route path="/mypage/profile/PwChange" element={<PwChange />} />
         <Route path="/mypage/profile/account" element={<Account />} />

@@ -31,81 +31,76 @@ function SignForm({
   return (
     <>
       <FormWrapper onSubmit={onSubmit}>
-        <StyledInput
-          type="email"
-          name="email"
-          placeholder="이메일"
-          autoComplete="email"
-          onChange={onChange}
-          value={email}
-        />
-        <StyledP className="email-message">{!isEmail && emailMessage}</StyledP>
-        <StyledInput
-          type="password"
-          name="password"
-          placeholder="비밀번호"
-          autoComplete="new-password"
-          onChange={onChange}
-          value={password}
-        />
-        <StyledP className="password-message">{!isPassword && passwordMessage}</StyledP>
-        {type === 'join' && (
-          <>
-            <StyledInput
-              type="password"
-              name="passwordConfirm"
-              placeholder="비밀번호 확인"
-              autoComplete="new-password"
-              onChange={onChange}
-              value={passwordConfirm}
-            />
-            <StyledP className="confirm-message">{!isPasswordConfirm && passwordConfirmMessage}</StyledP>
-            <StyledInput
-              type="text"
-              name="username"
-              placeholder="이름"
-              autoComplete="username"
-              onChange={onChange}
-              value={username}
-            />
-            <StyledP className="name-message">{!isName && nameMessage}</StyledP>
-          </>
-        )}
-        <CheckboxWrapper>
-          {type === 'login' ? (
-            <label className="auto-login">
-              <input type="checkbox" />
-              <StyledSpan>자동 로그인</StyledSpan>
-            </label>
-          ) : (
+        <StyledWrapper>
+          <StyledInput
+            className="sign"
+            type="email"
+            name="email"
+            placeholder="이메일"
+            autoComplete="email"
+            onChange={onChange}
+            value={email}
+          />
+          <StyledP className="email-message">{!isEmail && emailMessage}</StyledP>
+          <StyledInput
+            className="sign"
+            type="password"
+            name="password"
+            placeholder="비밀번호"
+            autoComplete="new-password"
+            onChange={onChange}
+            value={password}
+          />
+          <StyledP className="password-message">{!isPassword && passwordMessage}</StyledP>
+          {type === 'join' && (
             <>
-              <label className="terms">
-                <input type="checkbox" />
-                <StyledSpan>이용약관 및 개인정보 처리 방침에 동의합니다.</StyledSpan>
-              </label>
-              <StyledP>이메일 인증을 통해 회원가입이 진행됩니다.</StyledP>
+              <StyledInput
+                className="sign"
+                type="password"
+                name="passwordConfirm"
+                placeholder="비밀번호 확인"
+                autoComplete="new-password"
+                onChange={onChange}
+                value={passwordConfirm}
+              />
+              <StyledP className="confirm-message">{!isPasswordConfirm && passwordConfirmMessage}</StyledP>
+              <StyledInput
+                className="sign"
+                type="text"
+                name="username"
+                placeholder="이름"
+                autoComplete="username"
+                onChange={onChange}
+                value={username}
+              />
+              <StyledP className="name-message">{!isName && nameMessage}</StyledP>
+              <CheckboxWrapper>
+                <label className="terms">
+                  <input type="checkbox" />
+                  <StyledSpan>이용약관 및 개인정보 처리 방침에 동의합니다.</StyledSpan>
+                </label>
+                <StyledP>이메일 인증을 통해 회원가입이 진행됩니다.</StyledP>
+                </CheckboxWrapper>
             </>
           )}
-        </CheckboxWrapper>
-        {type === 'login' ? (
-          <>
-            <StyledButton type="submit" className="login-btn" aria-label="login">
-              로그인 하기
-            </StyledButton>
-            <StyledButton type="button" className="kakao-login" aria-label="kakao-login" />
-            <Link to="/login/accountInfoFound" style={{ margin: '20px 0' }}>
-              비밀번호 찾기
-            </Link>
-            <MoveLink text="아직 계정이 없으신가요?" address="/join" btnText="계정 만들기" />
-          </>
-        ) : (
-          <>
-            <StyledButton type="submit" className="join-btn" aria-label="join">
-              회원가입 하기
-            </StyledButton>
-            <MoveLink text="이미 계정이 있으신가요?" address="/login" btnText="로그인" />
-          </>
-        )}
+          {type === 'login' ? (
+            <>
+              <StyledButton type="submit" className="login-btn" aria-label="login">
+                로그인 하기
+              </StyledButton>
+              <StyledButton type="button" className="kakao-login" aria-label="kakao-login" />
+              <StyledLink to="/login/accountInfoFound">비밀번호 찾기</StyledLink>
+              <MoveLink text="아직 계정이 없으신가요?" address="/join" btnText="계정 만들기" />
+            </>
+          ) : (
+            <>
+              <StyledButton type="submit" className="join-btn" aria-label="join">
+                회원가입 하기
+              </StyledButton>
+              <MoveLink text="이미 계정이 있으신가요?" address="/login" btnText="로그인" />
+            </>
+          )}
+        </StyledWrapper>
       </FormWrapper>
       {modalOn && (
         <ModalPortal>
@@ -184,5 +179,15 @@ const StyledSpan = styled.span`
 
 const StyledP = styled.p`
   font-size: 14px;
-  margin-left: 47px;
+`;
+
+const StyledWrapper = styled.div`
+  width: auto;
+`;
+
+const StyledLink = styled(Link)`
+  display: block;
+  font-size: 14px;
+  margin: 20px 0;
+  text-align: center;
 `;

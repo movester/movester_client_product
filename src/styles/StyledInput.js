@@ -14,6 +14,10 @@ const StyledInput = styled.input`
     border: 2px solid rgb(109, 102, 170);
   }
 
+  &.sign {
+    margin: 0;
+  }
+
   @media (max-width: 400px) {
     width: 250px;
     height: 40px;
