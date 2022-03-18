@@ -2,24 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import MoveLink from '../../common/MoveLink';
+import MoveLink from '../common/MoveLink';
+import flexCenterAlign from '../../styles/flexCenterAlign';
+import ModalPortal from '../common/Modal/ModalPortal';
+import EmailAuthModal from '../common/Modal/EmailAuthModal';
+import StyledInput from '../../styles/StyledInput';
+import StyledButton from '../../styles/StyledButton';
+import FormWrapper from '../../styles/FormWrapper';
 
-import flexCenterAlign from '../../../styles/flexCenterAlign';
-import ModalPortal from '../../common/Modal/ModalPortal';
-import EmailAuthModal from '../../common/Modal/EmailAuthModal';
-import StyledInput from '../../../styles/StyledInput';
-import StyledButton from '../../../styles/StyledButton';
-import FormWrapper from '../../../styles/FormWrapper';
-
-function AuthForm({
+function SignForm({
   type,
-  form,
   onChange,
   onSubmit,
   modalOn,
+  email,
   emailMessage,
+  password,
   passwordMessage,
+  passwordConfirm,
   passwordConfirmMessage,
+  username,
   nameMessage,
   isEmail,
   isPassword,
@@ -35,18 +37,18 @@ function AuthForm({
           placeholder="이메일"
           autoComplete="email"
           onChange={onChange}
-          value={form?.email}
+          value={email}
         />
-        <p className="email-message">{!isEmail && emailMessage}</p>
+        <StyledP className="email-message">{!isEmail && emailMessage}</StyledP>
         <StyledInput
           type="password"
           name="password"
           placeholder="비밀번호"
           autoComplete="new-password"
           onChange={onChange}
-          value={form?.password}
+          value={password}
         />
-        <p className="password-message">{!isPassword && passwordMessage}</p>
+        <StyledP className="password-message">{!isPassword && passwordMessage}</StyledP>
         {type === 'join' && (
           <>
             <StyledInput
@@ -55,16 +57,16 @@ function AuthForm({
               placeholder="비밀번호 확인"
               autoComplete="new-password"
               onChange={onChange}
-              value={form?.passwordConfirm}
+              value={passwordConfirm}
             />
-            <p className="confirm-message">{!isPasswordConfirm && passwordConfirmMessage}</p>
+            <StyledP className="confirm-message">{!isPasswordConfirm && passwordConfirmMessage}</StyledP>
             <StyledInput
               type="text"
               name="username"
               placeholder="이름"
               autoComplete="username"
               onChange={onChange}
-              value={form?.username}
+              value={username}
             />
             <StyledP className="name-message">{!isName && nameMessage}</StyledP>
           </>
@@ -114,14 +116,17 @@ function AuthForm({
   );
 }
 
-AuthForm.propTypes = {
+SignForm.propTypes = {
   type: PropTypes.string.isRequired,
-  form: PropTypes.instanceOf(Object).isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  email: PropTypes.string.isRequired,
   emailMessage: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
   passwordMessage: PropTypes.string.isRequired,
+  passwordConfirm: PropTypes.string,
   passwordConfirmMessage: PropTypes.string,
+  username: PropTypes.string,
   nameMessage: PropTypes.string,
   isEmail: PropTypes.bool.isRequired,
   isPassword: PropTypes.bool.isRequired,
@@ -130,15 +135,17 @@ AuthForm.propTypes = {
   modalOn: PropTypes.bool,
 };
 
-AuthForm.defaultProps = {
+SignForm.defaultProps = {
   modalOn: false,
   passwordConfirmMessage: '',
   nameMessage: '',
   isPasswordConfirm: false,
   isName: false,
+  passwordConfirm: '',
+  username: '',
 };
 
-export default AuthForm;
+export default SignForm;
 
 const CheckboxWrapper = styled.div`
   position: relative;
@@ -177,4 +184,5 @@ const StyledSpan = styled.span`
 
 const StyledP = styled.p`
   font-size: 14px;
+  margin-left: 47px;
 `;

@@ -24,6 +24,6 @@ export const fetchLoginThunk = createAsyncThunk('user/fetchLogin', async (payloa
     const response = await authAPI.fetchLogin(payload);
     return response;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.reponse.data);
+    return thunkAPI.rejectWithValue(error.response.data);
   }
 });

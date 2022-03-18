@@ -1,61 +1,60 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchJoinThunk, fetchEmailAuthThunk, fetchLoginThunk } from './authAsyncThunk';
+import { fetchLoginThunk } from './authAsyncThunk';
 
 const initialState = {
-  isLogin: false,
+  isAuth: false,
   error: null,
   user: null,
 };
+
+// const authSlice = createSlice({
+//   name: 'auth',
+//   initialState,
+//   reducers: {},
+//   extraReducers: {
+//     [fetchLoginThunk.pending]: state => {
+//       state.isLoading = true;
+//       state.isAuth = false;
+//       state.error = null;
+//       state.user = null;
+//     },
+//     [fetchLoginThunk.fulfilled]: (state, { payload: data }) => {
+//       state.isAuth = true;
+//       state.error = null;
+//       state.user = data.data.data;
+//       state.isLoading = false;
+//     },
+//     [fetchLoginThunk.rejected]: (state, { payload: error }) => {
+//       state.isAuth = false;
+//       state.error = error;
+//       state.user = null;
+//       state.isLoading = false;
+//     },
+//   },
+// });
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchJoinThunk.pending]: state => {
-      state.isLogin = false;
-      state.error = null;
-      state.user = null;
-    },
-    [fetchJoinThunk.fulfilled]: (state, { payload: data }) => {
-      state.isLogin = false;
-      state.error = null;
-      state.user = data.data;
-    },
-    [fetchJoinThunk.rejected]: (state, { payload: error }) => {
-      state.isLogin = false;
-      state.error = error;
-      state.user = null;
-    },
-    [fetchEmailAuthThunk.pending]: state => {
-      state.isLogin = false;
-      state.error = null;
-      state.user = null;
-    },
-    [fetchEmailAuthThunk.fulfilled]: (state, { payload: data }) => {
-      state.isLogin = false;
-      state.error = null;
-      state.user = data.data;
-    },
-    [fetchEmailAuthThunk.rejected]: (state, { payload: error }) => {
-      state.isLogin = false;
-      state.error = error;
-      state.user = null;
-    },
     [fetchLoginThunk.pending]: state => {
-      state.isLogin = false;
+      state.isLoading = true;
+      state.isAuth = false;
       state.error = null;
       state.user = null;
     },
-    [fetchLoginThunk.fulfilled]: (state, { payload: data }) => {
-      state.isLogin = true;
+    [fetchLoginThunk.fulfilled]: (state, { payload }) => {
+      state.isAuth = true;
       state.error = null;
-      state.user = data.data.data;
+      state.user = payload.data.data;
+      state.isLoading = false;
     },
-    [fetchLoginThunk.rejected]: (state, { payload: error }) => {
-      state.isLogin = false;
-      state.error = error;
+    [fetchLoginThunk.rejected]: (state, action) => {
+      state.isAuth = false;
+      state.error = action.payload;
       state.user = null;
+      state.isLoading = false;
     },
   },
 });

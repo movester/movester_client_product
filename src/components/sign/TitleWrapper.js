@@ -2,24 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-function AuthTemplate( { children, title }) {
-
+function TitleWrapper({ children, title }) {
   return (
-    <AuthTemplateWrapper>
+    <StyledWrapper>
       <StyledTitle style={{ margin: '40px' }}>{title}</StyledTitle>
       {children}
-    </AuthTemplateWrapper>
+    </StyledWrapper>
   );
 }
 
-AuthTemplate.propTypes = {
+TitleWrapper.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.element.isRequired,
 };
 
-export default AuthTemplate;
+export default TitleWrapper;
 
-const AuthTemplateWrapper = styled.div`
+const StyledWrapper = styled.div`
+  margin-top: 80px;
   height: 80vh;
   padding-top: 50px;
 `;
