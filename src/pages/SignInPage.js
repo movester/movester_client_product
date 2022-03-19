@@ -89,8 +89,9 @@ function SignInPage() {
         email: '',
         password: '',
       });
-      let errMsg = isError.error || '잘못된 이메일, 혹은 비밀번호입니다.';
-      if ((errMsg = '이메일 인증을 해주세요.')) {
+      const errMsg = isError.error || '잘못된 이메일, 혹은 비밀번호입니다.';
+
+      if ((errMsg === '이메일 인증을 해주세요.')) {
         setUserIdx(isError.data.userIdx);
         setLinkModalOn(prev => !prev);
       } else {
