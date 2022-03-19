@@ -22,6 +22,7 @@ const StyledWrapper = styled.div`
   margin-top: 80px;
   height: 80vh;
   padding-top: 50px;
+  text-align: center;
 `;
 
 const StyledTitle = styled.h2`

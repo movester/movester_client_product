@@ -10,8 +10,8 @@ import NavProfileButton from '../elements/NavProfileButton';
 import NavigationDropMenu from '../elements/NavigationDropMenu';
 
 function Header() {
-  const { isLogin, user } = useSelector(({ auth }) => ({
-    isLogin: auth.isLogin,
+  const { isAuth, user } = useSelector(({ auth }) => ({
+    isAuth: auth.isAuth,
     user: auth.user,
   }));
 
@@ -44,7 +44,7 @@ function Header() {
       </HeaderLeftBlock>
       <HeaderRightBlock>
         <StyledNavigation>
-          {isLogin ? (
+          {isAuth ? (
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <NavProfileButton handleClick={handleInfo} user={user} />
               {isInfo}

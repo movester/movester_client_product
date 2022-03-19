@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 const StyledInput = styled.input`
+display: block;
   width: 380px;
   height: 45px;
   background: rgba(196, 196, 196, 0.5);
   outline: none;
   border: none;
   border-radius: 15px;
-  margin-bottom: 15px;
+  margin: 0 auto 15px auto;
   padding: 15px;
 
   &:focus {

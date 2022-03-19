@@ -5,7 +5,8 @@ import styled from 'styled-components';
 import MoveLink from '../common/MoveLink';
 import flexCenterAlign from '../../styles/flexCenterAlign';
 import ModalPortal from '../common/Modal/ModalPortal';
-import EmailAuthModal from '../common/Modal/EmailAuthModal';
+import ConfirmModal from '../common/Modal/ConfirmModal';
+import LinkModal from '../common/Modal/LinkModal';
 import StyledInput from '../../styles/StyledInput';
 import StyledButton from '../../styles/StyledButton';
 import FormWrapper from '../../styles/FormWrapper';
@@ -14,7 +15,6 @@ function SignForm({
   type,
   onChange,
   onSubmit,
-  modalOn,
   email,
   emailMessage,
   password,
@@ -23,10 +23,13 @@ function SignForm({
   passwordConfirmMessage,
   username,
   nameMessage,
-  isEmail,
-  isPassword,
-  isPasswordConfirm,
-  isName,
+  isSubmit,
+  errModalOn,
+  handleErrModal,
+  errMsg,
+  linkModalOn,
+  handleLinkModal,
+  userIdx,
 }) {
   return (
     <>
@@ -41,7 +44,7 @@ function SignForm({
             onChange={onChange}
             value={email}
           />
-          <StyledP className="email-message">{!isEmail && emailMessage}</StyledP>
+          <StyledP className="email-message">{emailMessage}</StyledP>
           <StyledInput
             className="sign"
             type="password"
@@ -51,7 +54,7 @@ function SignForm({
             onChange={onChange}
             value={password}
           />
-          <StyledP className="password-message">{!isPassword && passwordMessage}</StyledP>
+          <StyledP className="password-message">{passwordMessage}</StyledP>
           {type === 'join' && (
             <>
               <StyledInput
@@ -63,7 +66,7 @@ function SignForm({
                 onChange={onChange}
                 value={passwordConfirm}
               />
-              <StyledP className="confirm-message">{!isPasswordConfirm && passwordConfirmMessage}</StyledP>
+              <StyledP className="confirm-message">{passwordConfirmMessage}</StyledP>
               <StyledInput
                 className="sign"
                 type="text"
@@ -73,19 +76,19 @@ function SignForm({
                 onChange={onChange}
                 value={username}
               />
-              <StyledP className="name-message">{!isName && nameMessage}</StyledP>
+              <StyledP className="name-message">{nameMessage}</StyledP>
               <CheckboxWrapper>
                 <label className="terms">
                   <input type="checkbox" />
                   <StyledSpan>이용약관 및 개인정보 처리 방침에 동의합니다.</StyledSpan>
                 </label>
                 <StyledP>이메일 인증을 통해 회원가입이 진행됩니다.</StyledP>
-                </CheckboxWrapper>
+              </CheckboxWrapper>
             </>
           )}
           {type === 'login' ? (
             <>
-              <StyledButton type="submit" className="login-btn" aria-label="login">
+              <StyledButton type="submit" className="login-btn" aria-label="login" disalbed={!isSubmit}>
                 로그인 하기
               </StyledButton>
               <StyledButton type="button" className="kakao-login" aria-label="kakao-login" />
@@ -102,11 +105,26 @@ function SignForm({
           )}
         </StyledWrapper>
       </FormWrapper>
-      {modalOn && (
-        <ModalPortal>
-          <EmailAuthModal />
-        </ModalPortal>
-      )}
+      <ModalPortal>
+        {errModalOn && (
+          <ConfirmModal
+            onClose={handleErrModal}
+            title={type === 'login' ? '로그인 실패!' : '회원가입 실패!'}
+            content={errMsg}
+          />
+        )}
+      </ModalPortal>
+      <ModalPortal>
+        {linkModalOn && (
+          <LinkModal
+            onClose={handleLinkModal}
+            title="로그인 실패!"
+            content="이메일 인증을 진행해주세요!"
+            btnMsg="이메일 인증하러가기"
+            link={`/emailAuth/${userIdx}`}
+          />
+        )}
+      </ModalPortal>
     </>
   );
 }
@@ -123,21 +141,23 @@ SignForm.propTypes = {
   passwordConfirmMessage: PropTypes.string,
   username: PropTypes.string,
   nameMessage: PropTypes.string,
-  isEmail: PropTypes.bool.isRequired,
-  isPassword: PropTypes.bool.isRequired,
-  isPasswordConfirm: PropTypes.bool,
-  isName: PropTypes.bool,
-  modalOn: PropTypes.bool,
+  isSubmit: PropTypes.bool.isRequired,
+  errModalOn: PropTypes.bool.isRequired,
+  handleErrModal: PropTypes.func.isRequired,
+  errMsg: PropTypes.string.isRequired,
+  linkModalOn: PropTypes.bool,
+  handleLinkModal: PropTypes.func,
+  userIdx: PropTypes.number,
 };
 
 SignForm.defaultProps = {
-  modalOn: false,
   passwordConfirmMessage: '',
   nameMessage: '',
-  isPasswordConfirm: false,
-  isName: false,
   passwordConfirm: '',
   username: '',
+  linkModalOn: false,
+  handleLinkModal: () => {},
+  userIdx: 0,
 };
 
 export default SignForm;

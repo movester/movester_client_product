@@ -13,6 +13,7 @@ import StretchingDetail from './pages/StretchingDetail';
 import Event from './pages/Event';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
+import EmailAuthPage from './pages/EmailAuthPage'
 import Profile from './pages/Profile';
 import PwChange from './pages/PwChange';
 import Account from './pages/Account';
@@ -39,6 +40,7 @@ function App() {
         <Route path="/login/accountInfoFound" element={<FindPasswordPage />} />
         <Route path="/login/accountInfoEdited" element={<EditPasswordPage />} />
         <Route path="/join" element={<SignUpPage />} />
+        <Route path="/emailAuth/:userIdx" element={<EmailAuthPage />} />
         <Route path="/mypage/profile" element={<Profile />} />
         <Route path="/mypage/profile/PwChange" element={<PwChange />} />
         <Route path="/mypage/profile/account" element={<Account />} />

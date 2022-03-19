@@ -1,3 +1,3 @@
-const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{4,8}$/;
 
 export default passwordRegex;

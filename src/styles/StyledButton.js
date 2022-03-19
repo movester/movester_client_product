@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
+display: block;
   width: 380px;
   height: 45px;
   font-size: 18px;
   font-weight: 700;
   color: #fff;
   background-color: ${({ theme }) => theme.lightPurple};
-  margin: 10px 0;
+  margin: 10px auto;
   border-radius: 15px;
 
   &.kakao-login {
