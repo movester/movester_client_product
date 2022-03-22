@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import useAsync from '../../hook/useAsync';
 import axios from '../../services/defaultClient';
-import Loading from '../Loading';
-import Error from '../Error';
+import Loading from '../common/Loading';
+import Error from '../common/Error';
 
 import Main from '../common/Main';
 import Nav from '../common/Nav';

@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import MoveLink from '../../common/MoveLink';
+import MoveLink from '../common/MoveLink';
 
-import flexCenterAlign from '../../../styles/flexCenterAlign';
-import ModalPortal from '../../common/Modal/ModalPortal';
-import EmailAuthModal from '../../common/Modal/EmailAuthModal';
-import StyledInput from '../../../styles/StyledInput';
-import StyledButton from '../../../styles/StyledButton';
-import FormWrapper from '../../../styles/FormWrapper';
+import flexCenterAlign from '../../styles/flexCenterAlign';
+import ModalPortal from '../common/Modal/ModalPortal';
+import EmailAuthModal from '../common/Modal/EmailAuthModal';
+import StyledInput from '../../styles/StyledInput';
+import StyledButton from '../../styles/StyledButton';
+import FormWrapper from '../../styles/FormWrapper';
 
 function AuthForm({
   type,

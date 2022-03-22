@@ -38,7 +38,7 @@ function Header() {
             <Link to="/about">About</Link>
             <Link to="/stretching">Stretching</Link>
             <Link to="/event">Event</Link>
-            <Link to="/mypage/profile">Mypage</Link>
+            {isAuth ? <Link to="/mypage/profile">Mypage</Link> : ''}
           </StyledNavigation>
         </div>
       </HeaderLeftBlock>

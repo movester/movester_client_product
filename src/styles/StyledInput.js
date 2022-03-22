@@ -19,6 +19,10 @@ display: block;
     margin: 0;
   }
 
+  & + & {
+    margin-top: 20px;
+  }
+
   @media (max-width: 400px) {
     width: 250px;
     height: 40px;

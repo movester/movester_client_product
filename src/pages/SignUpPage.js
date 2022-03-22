@@ -105,7 +105,7 @@ function SignUpPage() {
       if (data.success) {
         // TODO: 다음 페이지 연결 전 버튼 disabled
         setIsSubmit(prev => !prev);
-        navigate(`/emailAuth/${data.data.userIdx}`);
+        navigate(`/join/emailAuth/${data.data.userIdx}`);
       }
     } catch (err) {
       setErrModalOn(prev => !prev);

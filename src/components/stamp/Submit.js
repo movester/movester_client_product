@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import useAsync from '../../hook/useAsync';
 import axios from '../../services/defaultClient';
-import Loading from '../Loading';
-import Error from '../Error';
+import Loading from '../common/Loading';
+import Error from '../common/Error';
 
 function Submit({ redirect, setRedirect }) {
   const name = useSelector(state => state.auth.user.name);

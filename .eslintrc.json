@@ -27,6 +27,7 @@
     "no-param-reassign": "off",
     "react/no-array-index-key": "off",
     "no-shadow": "off",
-    "no-cond-assign": "off"
+    "no-cond-assign": "off",
+    "no-nested-ternary": "off"
   }
 }

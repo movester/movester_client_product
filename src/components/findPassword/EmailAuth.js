@@ -2,31 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import StyledButton from '../../../styles/StyledButton';
-import StyledInput from '../../../styles/StyledInput';
-import ModalPortal from '../../common/Modal/ModalPortal';
-import LinkModal from '../../common/Modal/LinkModal';
-import ConfirmModal from '../../common/Modal/ConfirmModal';
+import StyledButton from '../../styles/StyledButton';
+import StyledInput from '../../styles/StyledInput';
+import ModalPortal from '../common/Modal/ModalPortal';
+import ConfirmModal from '../common/Modal/ConfirmModal';
 
-function EmailAuth({ authNum, onChange, onSubmit, linkModalOn, handleLinkModal, errModalOn, handleErrModal, errMsg }) {
+function EmailAuth({ email, authNum, onChange, onSubmit, errModalOn, handleErrModal, errMsg }) {
   return (
     <>
-      <StyledP>입력하신 이메일 계정으로 인증 메일을 발송하였습니다.</StyledP>
-      <StyledP>인증을 통해 가입을 완료해 주세요.</StyledP>
+      <StyledP className="bold margin">{email}</StyledP>
+      <StyledP>비밀번호 재설정을 위한 계정 인증 메인 전송 완료!</StyledP>
+      <StyledP className="margin">전송된 인증번호를 입력해주세요.</StyledP>
       <StyledInput type="text" name="authNum" value={authNum} placeholder="인증번호" onChange={onChange} />
       <StyledButton onClick={onSubmit}>이메일 인증하기</StyledButton>
       <StyledP className="info">혹시 메일을 받지 못하셨다면 스팸 메일함을 확인해주세요.</StyledP>
-      <ModalPortal>
-        {linkModalOn && (
-          <LinkModal
-            onClose={handleLinkModal}
-            title="회원가입 성공!"
-            content="가입한 계정으로 로그인하세요."
-            btnMsg="로그인하기"
-            link="/login"
-          />
-        )}
-      </ModalPortal>
       <ModalPortal>
         {errModalOn && (
           <ConfirmModal onClose={handleErrModal} title="이메일 인증 실패!" content={errMsg} />
@@ -37,11 +26,10 @@ function EmailAuth({ authNum, onChange, onSubmit, linkModalOn, handleLinkModal, 
 }
 
 EmailAuth.propTypes = {
+  email: PropTypes.string.isRequired,
   authNum: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  linkModalOn: PropTypes.bool.isRequired,
-  handleLinkModal: PropTypes.func.isRequired,
   errModalOn: PropTypes.bool.isRequired,
   handleErrModal: PropTypes.func.isRequired,
   errMsg: PropTypes.string.isRequired,
@@ -59,5 +47,15 @@ const StyledP = styled.p`
   &.info {
     margin: 30px 0;
     color: #888383;
+  }
+
+  &.bold {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  &.margin {
+    margin-bottom: 20px;
   }
 `;

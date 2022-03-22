@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from '../services/defaultClient';
 
 import TitleWrapper from '../components/common/TitleWrapper';
-import EmailAuth from '../components/UI/Auth/EmailAuth';
+import EmailAuth from '../components/sign/EmailAuth';
 
 function EmailAuthPage() {
   const { userIdx } = useParams();

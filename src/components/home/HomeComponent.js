@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import WeeklyCard from '../../elements/WeeklyCard';
+import WeeklyCard from '../elements/WeeklyCard';
 
 function HomeComponent() {
   return (
@@ -64,7 +64,6 @@ const Banner = styled.section`
   }
 
   .banner-wrapper {
-    width: 60%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

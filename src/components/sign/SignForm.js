@@ -92,7 +92,7 @@ function SignForm({
                 로그인 하기
               </StyledButton>
               <StyledButton type="button" className="kakao-login" aria-label="kakao-login" />
-              <StyledLink to="/login/accountInfoFound">비밀번호 찾기</StyledLink>
+              <StyledLink to="/login/findPassword">비밀번호 찾기</StyledLink>
               <MoveLink text="아직 계정이 없으신가요?" address="/join" btnText="계정 만들기" />
             </>
           ) : (
@@ -121,7 +121,7 @@ function SignForm({
             title="로그인 실패!"
             content="이메일 인증을 진행해주세요!"
             btnMsg="이메일 인증하러가기"
-            link={`/emailAuth/${userIdx}`}
+            link={`/join/emailAuth/${userIdx}`}
           />
         )}
       </ModalPortal>
