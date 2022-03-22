@@ -7,7 +7,7 @@ import MoveLink from '../components/common/MoveLink';
 function Basket() {
   const BasketArr = [];
   return (
-    <Main type="profill">
+    <Main type="profile">
       <Nav />
       <StyledWrap>
         {BasketArr.length ? null : (

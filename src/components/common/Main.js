@@ -19,8 +19,8 @@ export default Main;
 const StyledMain = styled.main`
   margin-top: 80px;
 
-  &.profill {
-    padding: 40px 5rem;
+  &.profile {
+    padding: 40px 5rem;f
     height: 74vh;
     display: flex;
     @media screen and (max-width: 500px) {
@@ -31,7 +31,7 @@ const StyledMain = styled.main`
   &.padding {
     padding: 0 5rem;
   }
-  
+
   &.record {
     padding: 40px 5rem;
     display: flex;

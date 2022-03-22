@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-function ProfillTitle({ title }) {
+function ProfileTitle({ title }) {
   return (
     <StyledTitle>
       <p>&#183; {title}</p>
@@ -11,7 +11,7 @@ function ProfillTitle({ title }) {
   );
 }
 
-export default ProfillTitle;
+export default ProfileTitle;
 
 const StyledTitle = styled.div`
   font-size: 20px;
@@ -21,6 +21,6 @@ const StyledTitle = styled.div`
   }
 `;
 
-ProfillTitle.propTypes = {
+ProfileTitle.propTypes = {
   title: PropTypes.string.isRequired,
 };

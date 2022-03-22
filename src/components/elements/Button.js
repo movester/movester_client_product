@@ -18,7 +18,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   text: '제출하기',
-  type: '',
+  type: 'btn',
   event: () => {},
 };
 

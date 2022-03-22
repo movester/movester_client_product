@@ -16,15 +16,16 @@ import SignUpPage from './pages/SignUpPage';
 import EmailAuthPage from './pages/EmailAuthPage'
 import FindPasswordPage from './pages/FindPasswordPage';
 
-import Profile from './pages/Profile';
-import PwChange from './pages/PwChange';
-import Account from './pages/Account';
+import ProfilePage from './pages/profile/ProfilePage';
+import PasswordChangePage from './pages/profile/PasswordChangePage';
+import ResignPage from './pages/profile/ResignPage';
+
 import Record from './pages/Record';
 import Basket from './pages/Basket';
-import Stamp from './components/stamp/Stamp';
+import StampPage from './components/stamp/Stamp';
 import Shoulder from './pages/Shoulder';
 import WaistLeg from './pages/WaistLeg';
-import NotPound from './pages/NotPound';
+import NotPound from './pages/NotFound';
 
 function App() {
   return (
@@ -43,11 +44,12 @@ function App() {
         <Route path="/event" element={<Event />} />
 
 
-        <Route path="/mypage/profile" element={<Profile />} />
-        <Route path="/mypage/profile/PwChange" element={<PwChange />} />
-        <Route path="/mypage/profile/account" element={<Account />} />
+        <Route path="/mypage/profile" element={<ProfilePage />} />
+        <Route path="/mypage/profile/passwordChange" element={<PasswordChangePage />} />
+        <Route path="/mypage/profile/resign" element={<ResignPage />} />
+        
         <Route path="/mypage/basket" element={<Basket />} />
-        <Route path="/mypage/stamp" element={<Stamp />} />
+        <Route path="/mypage/stamp" element={<StampPage />} />
         <Route path="/mypage/record" element={<Record />} />
         <Route path="/mypage/record/shoulder" element={<Shoulder />} />
         <Route path="/mypage/record/waistLeg" element={<WaistLeg />} />

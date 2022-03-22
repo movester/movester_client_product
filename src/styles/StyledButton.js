@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
-display: block;
+  display: block;
   width: 380px;
   height: 45px;
   font-size: 18px;
@@ -16,6 +16,10 @@ display: block;
     background-size: cover;
     background-position: center;
     display: block;
+  }
+
+  &.right {
+    float: right;
   }
 
   @media (max-width: 400px) {

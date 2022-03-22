@@ -114,17 +114,16 @@ function SignForm({
           />
         )}
       </ModalPortal>
-      <ModalPortal>
-        {linkModalOn && (
+      {linkModalOn && (
+        <ModalPortal>
           <LinkModal
             onClose={handleLinkModal}
             title="로그인 실패!"
             content="이메일 인증을 진행해주세요!"
-            btnMsg="이메일 인증하러가기"
             link={`/join/emailAuth/${userIdx}`}
           />
-        )}
-      </ModalPortal>
+        </ModalPortal>
+      )}
     </>
   );
 }

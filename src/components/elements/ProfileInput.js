@@ -2,26 +2,30 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-function ProfillInput({ text }) {
+function ProfileInput({ text, name, value, onChange }) {
   return (
-    <StyledInputWrap>
+    <StyledInputWrap className="profile-title">
       <p>{text}</p>
-      <input />
+      <input type="password" name={name} value={value} onChange={onChange} />
     </StyledInputWrap>
   );
 }
 
-ProfillInput.propTypes = {
+ProfileInput.propTypes = {
   text: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
-export default ProfillInput;
+export default ProfileInput;
 
 const StyledInputWrap = styled.div`
   width: 60%;
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  justify-content: space-between;
   @media screen and (max-width: 1024px) {
     flex-flow: column;
     align-items: start;
@@ -30,13 +34,9 @@ const StyledInputWrap = styled.div`
     width: 100%;
   }
   p {
-    width: 25%;
     color: #615b5b;
     font-weight: bold;
     font-size: 18px;
-    @media screen and (max-width: 1024px) {
-      width: 100%;
-    }
   }
   input {
     width: 100%;

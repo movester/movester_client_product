@@ -16,21 +16,18 @@ function EmailAuth({ authNum, onChange, onSubmit, linkModalOn, handleLinkModal, 
       <StyledInput type="text" name="authNum" value={authNum} placeholder="인증번호" onChange={onChange} />
       <StyledButton onClick={onSubmit}>이메일 인증하기</StyledButton>
       <StyledP className="info">혹시 메일을 받지 못하셨다면 스팸 메일함을 확인해주세요.</StyledP>
-      <ModalPortal>
-        {linkModalOn && (
+      {linkModalOn && (
+        <ModalPortal>
           <LinkModal
             onClose={handleLinkModal}
             title="회원가입 성공!"
             content="가입한 계정으로 로그인하세요."
-            btnMsg="로그인하기"
             link="/login"
           />
-        )}
-      </ModalPortal>
+        </ModalPortal>
+      )}
       <ModalPortal>
-        {errModalOn && (
-          <ConfirmModal onClose={handleErrModal} title="이메일 인증 실패!" content={errMsg} />
-        )}
+        {errModalOn && <ConfirmModal onClose={handleErrModal} title="이메일 인증 실패!" content={errMsg} />}
       </ModalPortal>
     </>
   );

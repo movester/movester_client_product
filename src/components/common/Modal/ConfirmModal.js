@@ -1,17 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import flexCenterAlign from '../../../styles/flexCenterAlign';
+import begImage from '../../../assets/pwChange.png';
 
 function ConfirmModal({ title, content, onClose }) {
   return (
     <Container>
       <Content>
         <Title>{title}</Title>
+        <button type="button" onClick={onClose}>
+            x
+          </button>
         <p>{content}</p>
-        <StyledButton type="button" onClick={onClose}>
-          닫기
-        </StyledButton>
+        <Image src={begImage} alt="이미지" />
       </Content>
     </Container>
   );
@@ -40,18 +41,22 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
 `;
 
 const Content = styled.div`
+  position: relative;
   background: #ffffff;
   padding: 20px;
   width: 400px;
+  height: auto;
   border-radius: 12px;
-  ${flexCenterAlign}
-
-  .info {
-    font-size: 12px;
-    color: #888383;
+  text-align: center;
+  button {
+    position: absolute;
+    top: 11px;
+    right: 27px;
+    font-size: 29px;
   }
 `;
 
@@ -61,18 +66,8 @@ const Title = styled.div`
   margin-bottom: 20px;
 `;
 
-const StyledButton = styled.button`
-  box-sizing: border-box;
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  background-color: ${({ theme }) => theme.lightPurple};
-  border-radius: 10px;
-  font-size: 16px;
-  color: #ffffff;
-  font-weight: 800;
-  text-align: center;
-  cursor: pointer;
-  border: none;
-  margin-top: 20px;
+const Image = styled.img`
+  width: 100px;
+  height: auto;
+  margin: 20px 0 10px 0;
 `;
