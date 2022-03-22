@@ -74,6 +74,7 @@ const CalendarWrapper = styled.div`
   flex: 0.8;
   .calendar {
     display: grid;
+    row-gap: 10px;
     margin-top: 30px;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: auto;
@@ -101,9 +102,10 @@ const CalendarWrapper = styled.div`
       background-size: cover;
     }
     &.today {
-      color: #0080ff;
+      color: #ffffff;
+      font-weight: bold;
       border-radius: 50%;
-      background-color: #66b2ff;
+      background-color: #948fbf;
     }
   }
   span {

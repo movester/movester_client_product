@@ -46,6 +46,7 @@ export default Stamp;
 
 const StyledWrap = styled.section`
   width: 100%;
+  margin-bottom: 50px;
   text-align: center;
   p {
     line-height: 2rem;
