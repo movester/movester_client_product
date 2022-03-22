@@ -9,3 +9,12 @@ export const fetchLoginThunk = createAsyncThunk('user/fetchLogin', async (payloa
     return thunkAPI.rejectWithValue(error.response.data);
   }
 });
+
+export const fetchLogoutThunk = createAsyncThunk('user/fetchLogout', async thunkAPI => {
+  try {
+    const response = await authAPI.fetchLogout();
+    return response;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response.data);
+  }
+});

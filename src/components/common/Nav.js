@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+import ModalPortal from './Modal/ModalPortal';
+import LogoutModal from './Modal/LogoutModal';
+
 function Nav() {
-  const user = useSelector(state => state.auth.user)
+  const user = useSelector(state => state.auth.user);
+  const [modalOn, setModalOn] = useState(false);
+
+  const handleModal = () => {
+    setModalOn(prev => !prev);
+  };
 
   const mypageList = [
     {
@@ -29,18 +37,32 @@ function Nav() {
     },
   ];
 
+  const OnModal = () => {
+    setModalOn(prev => !prev);
+  };
+
   return (
-    <StyledNavWrap>
-      <p>{user.name}</p>
-      <p className="email">{user.email}</p>
-      <ul>
-        {mypageList.map(item => (
-          <li key={item.id}>
-            <NavLink to={item.path}>{item.title}</NavLink>
-          </li>
-        ))}
-      </ul>
-    </StyledNavWrap>
+    <>
+      <StyledNavWrap>
+        <p>{user.name}</p>
+        <p className="email">{user.email}</p>
+        <ul>
+          {mypageList.map(item => (
+            <li key={item.id}>
+              <NavLink to={item.path}>{item.title}</NavLink>
+            </li>
+          ))}
+        </ul>
+        <button type="button" onClick={OnModal}>
+          로그아웃
+        </button>
+      </StyledNavWrap>
+      {modalOn && (
+        <ModalPortal>
+          <LogoutModal onClose={handleModal} />
+        </ModalPortal>
+      )}
+    </>
   );
 }
 
@@ -48,7 +70,7 @@ export default Nav;
 
 const StyledNavWrap = styled.nav`
   width: 200px;
-  height: 215px;
+  height: 245px;
   text-align: center;
   padding: 20px 43px;
   border: 1px solid black;
@@ -71,6 +93,9 @@ const StyledNavWrap = styled.nav`
     a:last-child{
       margin-bottom: 0;
     }
+  }
+  button {
+    font-size: 16px;
   }
   .email {
     font-size: 12px;

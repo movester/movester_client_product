@@ -46,7 +46,9 @@ function Header() {
         <StyledNavigation>
           {isAuth ? (
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <NavProfileButton handleClick={handleInfo} user={user} />
+              <Link to="/mypage/profile">
+                <NavProfileButton handleClick={handleInfo} user={user} />
+              </Link>
               {isInfo}
               {/* {isInfo && <ProfileDropMenu user={user} />} */}
             </div>
