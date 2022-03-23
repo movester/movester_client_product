@@ -5,6 +5,7 @@ import Nav from '../components/common/Nav';
 import { GrayBg } from '../components/elements/GrayBg';
 import Button from '../components/elements/Button';
 import MoveLink from '../components/common/MoveLink';
+import Graph from '../components/record/Graph';
 
 function WaistLeg() {
   const [weistLegRecord, setWeistLegRecord] = useState(true);
@@ -17,7 +18,7 @@ function WaistLeg() {
       <StyledWrap>
         <p className="title">허리 &#183; 다리 유연성 기록</p>
         <StyledCheckRecord>
-          <div className="graph" />
+          <Graph />
           <div>
             {weistLegRecord ? (
               <>

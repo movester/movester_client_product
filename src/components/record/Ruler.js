@@ -1,38 +1,40 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Slider from 'rc-slider';
-
 import 'rc-slider/assets/index.css';
 
-function Ruler({ record, message, setRecord, setMessage }) {
-  const onSliderChange = val => {
-    setMessage('');
-    setRecord(val);
-  };
+function Ruler({ record, message, onSliderChange, onInputChange, onSliderClick }) {
+  // const [record, setRecord] = useState(0);
+  // const [message, setMessage] = useState('');
 
-  const onInputChange = e => {
-    setMessage('');
-    setRecord(+e.target.value);
-  };
+  // const onSliderChange = val => {
+  //   setMessage('');
+  //   setRecord(val);
+  // };
 
-  const onClick = e => {
-    setMessage('');
-    if (e.target.name === 'increase') setRecord(prev => +(prev + 0.1).toFixed(1));
-    else setRecord(prev => +(prev - 0.1).toFixed(1));
-  };
+  // const onInputChange = e => {
+  //   setMessage('');
+  //   setRecord(+e.target.value);
+  // };
 
-  useEffect(() => {
-    if (record > 30 || record < -30) {
-      setMessage(`기록은 30cm보다 크거나 -30cm보다 작을 수 없습니다.`);
-      setRecord(0);
-    } else if (String(record).includes('.')) {
-      if (String(record).substring(String(record).indexOf('.') + 1).length > 1) {
-        setMessage('소수점 1자리까지만 입력해 주세요.');
-        setRecord(+record);
-      }
-    }
-  }, [record]);
+  // const onClick = e => {
+  //   setMessage('');
+  //   if (e.target.name === 'increase') setRecord(prev => +(prev + 0.1).toFixed(1));
+  //   else setRecord(prev => +(prev - 0.1).toFixed(1));
+  // };
+
+  // useEffect(() => {
+  //   if (record > 30 || record < -30) {
+  //     setMessage(`기록은 30cm보다 크거나 -30cm보다 작을 수 없습니다.`);
+  //     setRecord(0);
+  //   } else if (String(record).includes('.')) {
+  //     if (String(record).substring(String(record).indexOf('.') + 1).length > 1) {
+  //       setMessage('소수점 1자리까지만 입력해 주세요.');
+  //       setRecord(+record);
+  //     }
+  //   }
+  // }, [record]);
 
   return (
     <SliderContainer>
@@ -59,11 +61,11 @@ function Ruler({ record, message, setRecord, setMessage }) {
           background: 'none',
         }}
       />
-      <RecordButton name="decrease" onClick={onClick}>
+      <RecordButton name="decrease" onClick={onSliderClick}>
         -
       </RecordButton>
       <RecordInput type="number" step={0.1} value={record} onChange={e => onInputChange(e)} />
-      <RecordButton name="increase" onClick={onClick}>
+      <RecordButton name="increase" onClick={onSliderClick}>
         +
       </RecordButton>
       {message && <MessageDisplayer>{message}</MessageDisplayer>}
@@ -72,10 +74,11 @@ function Ruler({ record, message, setRecord, setMessage }) {
 }
 
 Ruler.propTypes = {
-  record: PropTypes.number.isRequired,
+  record: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
-  setRecord: PropTypes.func.isRequired,
-  setMessage: PropTypes.func.isRequired,
+  onSliderChange: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onSliderClick: PropTypes.func.isRequired,
 };
 
 export default Ruler;
