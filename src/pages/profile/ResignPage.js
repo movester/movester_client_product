@@ -14,6 +14,7 @@ function ResignPage() {
   const [modalOn, setModalOn] = useState(false);
   const handleModal = () => {
     setModalOn(!modalOn);
+    setPassword('');
   };
 
   const [errModalOn, setErrModalOn] = useState(false);
