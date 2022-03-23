@@ -68,15 +68,25 @@ function Shoulder({
       </StyledCheckRecord>
       <GrayBg>
         <p className="title">어깨 유연성 측정법</p>
-        <img src="/assets/shoulder1.png" alt="어깨 유연성 측정법1" />
-        <img src="/assets/shoulder2.png" alt="어깨 유연성 측정법2" />
-        <p className="ft-text">정연이가 평균 사람들은 몇인지 자료를 조사해다줄거에용!</p>
+        <p className="margin">준비물 : 30cm로 자른 끈 또는 종이</p>
+        <GridWrapper>
+          <div>
+            <img src="/assets/shoulder/shoulder_how_1.png" alt="어깨 유연성 측정법1" />
+            <p>1) 왼손의 손가락 끝으로 끈의 끝을 잡고 팔을 등뒤로 돌려 등쪽으로 늘어뜨려주세요.</p>
+          </div>
+          <div>
+            <img src="/assets/shoulder/shoulder_how_2.png" alt="어깨 유연성 측정법2" />
+            <p>2) 오른손으로 등에 늘어진 끈을 잡아주세요.</p>
+          </div>
+          <div>
+            <img src="/assets/shoulder/shoulder_how_3.png" alt="어깨 유연성 측정법3" />
+            <p>3) 오른손은 끈을 잡은 채로 왼손을 떼고, 오른손으로 잡고 있는 곳까지 길이를 측정해주세요.</p>
+          </div>
+        </GridWrapper>
       </GrayBg>
       <GrayBg>
         <p className="title">연령대별 어깨 유연성 평균치</p>
-        <img src="/assets/shoulder1.png" alt="어깨 유연성 측정법1" />
-        <img src="/assets/shoulder2.png" alt="어깨 유연성 측정법2" />
-        <p className="ft-text">대한민국 보통 사람은 이정도가 나와요~!!</p>
+        <img src="/assets/shoulder/shoulder_standard.png" alt="어깨 유연성 평균치" />
       </GrayBg>
       {errModalOn && (
         <ModalPortal>
@@ -112,6 +122,9 @@ const StyledWrap = styled.section`
     font-weight: bold;
     color: ${({ theme }) => theme.darkPurple};
   }
+  .margin {
+    margin-top: 10px;
+  }
   .gray-bg {
     text-align: center;
     margin: 40px 0;
@@ -120,6 +133,7 @@ const StyledWrap = styled.section`
     }
     img {
       margin-top: 10px;
+      width: 78%;
     }
     img + img {
       margin-left: 10%;
@@ -218,4 +232,13 @@ const StyledButton = styled.button`
   text-align: center;
   cursor: pointer;
   border: none;
+`;
+
+const GridWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  img {
+    width: 100%;
+  }
 `;

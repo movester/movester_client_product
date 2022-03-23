@@ -6,14 +6,14 @@ import Nav from '../../components/common/Nav';
 import Record from '../../components/record/Record';
 
 function RecordPage() {
-  const [sholuderRecords, setSholuderRecords] = useState([]);
+  const [shoulderecords, setShoulderRecords] = useState([]);
   const [legRecords, setLegRecords] = useState([]);
   useEffect(async () => {
     try {
-      const { data: sholuder } = await axios.get('records/graph/1');
+      const { data: shoulder } = await axios.get('records/graph/1');
       const { data: leg } = await axios.get('records/graph/2');
 
-      setSholuderRecords(sholuder.data);
+      setShoulderRecords(shoulder.data);
       setLegRecords(leg.data);
     } catch (err) {
       console.log(err);
@@ -23,7 +23,7 @@ function RecordPage() {
   return (
     <Main type="record">
       <Nav />
-      <Record sholuderRecords={sholuderRecords} legRecords={legRecords} />
+      <Record shoulderecords={shoulderecords} legRecords={legRecords} />
     </Main>
   );
 }

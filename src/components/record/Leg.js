@@ -68,15 +68,26 @@ function Leg({
         </StyledCheckRecord>
         <GrayBg>
           <p className="title">허리 &#183; 다리 유연성 측정법</p>
-          <img src="/assets/weistLeg1.png" alt="허리, 다리 유연성 측정법1" />
-          <img src="/assets/weistLeg2.png" alt="허리, 다리 유연성 측정법1" />
-          <p className="ft-text">정연이가 평균 사람들은 몇인지 자료를 조사해다줄거에용!</p>
+          <p className="margin">준비물 : 30cm 자, 또는 줄자</p>
+          <p className="margin">손과 발끝 사이의 거리를 측정해주세요.</p>
+        <GridWrapper>
+          <div>
+            <img src="/assets/leg/leg_how_1.png" alt="허리/다리 유연성 측정법1" />
+            <p>1) 앉은 상태에서 다리를 곱게 뻗고, 상체를 최대한 앞으로 숙여주세요.</p>
+          </div>
+          <div>
+            <img src="/assets/leg/leg_how_2.png" alt="허리/다리 유연성 측정법2" />
+            <p>2) [A] 발 끝에 손이 닿지 않을 경우 (표기법, -측정한 거리)</p>
+          </div>
+          <div>
+            <img src="/assets/leg/leg_how_3.png" alt="허리/다리 유연성 측정법3" />
+            <p>3) [B] 발 끝에 손이 닿을 경우 (표기법, +측정한 거리)</p>
+          </div>
+        </GridWrapper>
         </GrayBg>
         <GrayBg>
           <p className="title">연령대별 허리 &#183; 다리 유연성 평균치</p>
-          <img src="/assets/weistLeg1.png" alt="허리, 다리 평균 유연성" />
-          <img src="/assets/shoulder2.png" alt="허리, 다리 평균 유연성" />
-          <p className="ft-text">대한민국 보통 사람은 이정도가 나와요~!!</p>
+          <img src="/assets/leg/leg_standard.png" alt="허리, 다리 평균 유연성 평균치" />
         </GrayBg>
         {errModalOn && (
         <ModalPortal>
@@ -112,6 +123,9 @@ const StyledWrap = styled.section`
     font-weight: bold;
     color: ${({ theme }) => theme.darkPurple};
   }
+  .margin {
+    margin-top: 10px;
+  }
   .gray-bg {
     text-align: center;
     margin: 40px 0;
@@ -120,6 +134,7 @@ const StyledWrap = styled.section`
     }
     img {
       margin-top: 10px;
+      width: 78%;
     }
     img + img {
       margin-left: 10%;
@@ -218,4 +233,13 @@ const StyledButton = styled.button`
   text-align: center;
   cursor: pointer;
   border: none;
+`;
+
+const GridWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  img {
+    width: 100%;
+  }
 `;

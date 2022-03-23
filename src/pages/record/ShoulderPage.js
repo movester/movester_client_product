@@ -3,7 +3,7 @@ import axios from '../../services/defaultClient';
 
 import Main from '../../components/common/Main';
 import Nav from '../../components/common/Nav';
-import Sholuder from '../../components/record/Sholuder';
+import Shoulder from '../../components/record/Shoulder';
 import getToday from '../../util/date';
 
 function ShoulderPage() {
@@ -17,10 +17,10 @@ function ShoulderPage() {
     try {
       const { data } = await axios.get('records/1');
 
-      const sholuderRecords = data.data;
-      setRecords(sholuderRecords.reverse());
+      const shoulderRecords = data.data;
+      setRecords(shoulderRecords.reverse());
 
-      const lastRecord = sholuderRecords[sholuderRecords.length - 1];
+      const lastRecord = shoulderRecords[shoulderRecords.length - 1];
 
       if (lastRecord.date === getToday) {
         setIsCreate(true);
@@ -117,7 +117,7 @@ function ShoulderPage() {
   return (
     <Main type="record">
       <Nav />
-      <Sholuder
+      <Shoulder
         records={records}
         record={record}
         message={message}
