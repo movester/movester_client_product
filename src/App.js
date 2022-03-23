@@ -19,6 +19,7 @@ import FindPasswordPage from './pages/FindPasswordPage';
 import ProfilePage from './pages/profile/ProfilePage';
 import PasswordChangePage from './pages/profile/PasswordChangePage';
 import ResignPage from './pages/profile/ResignPage';
+import ResignAfterPage from './pages/profile/ResignAfterPage';
 
 import Record from './pages/Record';
 import Basket from './pages/Basket';
@@ -47,7 +48,8 @@ function App() {
         <Route path="/mypage/profile" element={<ProfilePage />} />
         <Route path="/mypage/profile/passwordChange" element={<PasswordChangePage />} />
         <Route path="/mypage/profile/resign" element={<ResignPage />} />
-        
+        <Route path="/resign" element={<ResignAfterPage />} />
+
         <Route path="/mypage/basket" element={<Basket />} />
         <Route path="/mypage/stamp" element={<StampPage />} />
         <Route path="/mypage/record" element={<Record />} />

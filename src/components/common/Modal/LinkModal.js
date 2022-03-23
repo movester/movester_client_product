@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import begImage from '../../../assets/pwChange.png';
 
 function LinkModal({ title, content, link, onClose }) {
   return (
@@ -15,7 +14,7 @@ function LinkModal({ title, content, link, onClose }) {
         </Link>
         <Title>{title}</Title>
         <p>{content}</p>
-        <Image src={begImage} alt="이미지" />
+        <Image src="/assets/confirm.png" alt="이미지" />
       </Content>
     </Container>
   );
@@ -45,7 +44,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
+  z-index: 1000;
 `;
 
 const Content = styled.div`

@@ -18,3 +18,12 @@ export const fetchLogoutThunk = createAsyncThunk('user/fetchLogout', async thunk
     return thunkAPI.rejectWithValue(error.response.data);
   }
 });
+
+export const fetchResignThunk = createAsyncThunk('user/fetchResign', async thunkAPI => {
+  try {
+    const response = await authAPI.fetchResign();
+    return response;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response.data);
+  }
+});

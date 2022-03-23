@@ -1,13 +1,25 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { fetchResignThunk } from '../../../store/auth/authAsyncThunk';
 import ModalPortal from './ModalPortal';
-import begImage from '../../../assets/beg.png';
 
-function AccountLeave({ title, onClose, password }) {
-  const onLeave = () => {
-    console.log('api 요청', password);
+function ResignModal({ title, onClose }) {
+  const isError = useSelector(state => state.auth.error);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onResign = () => {
+    dispatch(fetchResignThunk());
+    if (!isError) {
+      navigate('/resign');
+    }
   };
+
   return (
     <ModalPortal>
       <Container>
@@ -15,9 +27,9 @@ function AccountLeave({ title, onClose, password }) {
           <Title>{title}</Title>
           <p>{title} 시, 기존의 데이터가 삭제됩니다.</p>
           <p>정말로 삭제하시겠습니까?</p>
-          <Image src={begImage} alt="삭제 이미지" />
+          <Image src="/assets/beg.png" alt="삭제 이미지" />
           <FlexContainer>
-            <StyledButton type="button" onClick={onLeave}>
+            <StyledButton type="button" onClick={onResign}>
               응, 끝이야
             </StyledButton>
             <StyledButton type="button" onClick={onClose}>
@@ -30,19 +42,12 @@ function AccountLeave({ title, onClose, password }) {
   );
 }
 
-AccountLeave.propTypes = {
-  title: PropTypes.string,
-  password: PropTypes.string,
-  onClose: PropTypes.func,
+ResignModal.propTypes = {
+  title: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
-AccountLeave.defaultProps = {
-  title: '',
-  password: '',
-  onClose: () => {},
-};
-
-export default AccountLeave;
+export default ResignModal;
 
 const Container = styled.div`
   background: rgba(0, 0, 0, 0.25);
@@ -54,16 +59,25 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
+  z-index: 1000;
 `;
 
 const Content = styled.div`
+  position: relative;
   background: #ffffff;
   padding: 20px;
   width: 400px;
   height: auto;
   border-radius: 12px;
   text-align: center;
+  p {
+    margin: 8px 0;
+  }
+
+  span {
+    font-weight: bold;
+    color: #2a1598;
+  }
 `;
 
 const Title = styled.div`

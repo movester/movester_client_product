@@ -1,69 +1,51 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Button from '../elements/Button';
 import ProfileTitle from '../elements/ProfileTitle';
 import ProfileInput from '../elements/ProfileInput';
 import ModalPortal from '../common/Modal/ModalPortal';
-import AccountLeave from '../common/Modal/AccountLeave';
+import ConfirmModal from '../common/Modal/ConfirmModal';
+import ResignModal from '../common/Modal/ResignModal';
+import StyledButton from '../../styles/StyledButton';
 
-function Resign({ setPage }) {
-  const [modalOn, setModalOn] = useState(false);
-  const handleModal = () => {
-    setModalOn(!modalOn);
-  };
-  const prevPage = () => {
-    setPage(1);
-    console.log(setModalOn,handleModal)
-  };
+function Resign({ password, onChange, onSubmit, modalOn, handleModal, errModalOn, handleErrModal, errMsg }) {
   return (
-    <StyledContentWrap>
+    <StyledContentWrap onSubmit={onSubmit}>
       <ProfileTitle title="회원 탈퇴" />
-      <StyledFlexWrap>
-        <ProfileInput text="비밀번호" />
-        <StyledButtonWrap>
-          <Button text="이전으로 돌아가기" event={prevPage} />
-          <Button text="회원 탈퇴" event={handleModal} />
-          <ModalPortal>{modalOn && <AccountLeave onClose={handleModal} title="회원 탈퇴" />}</ModalPortal>
-        </StyledButtonWrap>
-      </StyledFlexWrap>
+      <ProfileInput text="비밀번호" name="password" value={password} onChange={onChange} />
+      <StyledButton type="submit" className="right">
+        회원 탈퇴
+      </StyledButton>
+      {modalOn && (
+        <ModalPortal>
+          <ResignModal
+            onClose={handleModal}
+            title="회원 탈퇴"
+          />
+        </ModalPortal>
+      )}
+      {errModalOn && (
+        <ModalPortal>
+          <ConfirmModal onClose={handleErrModal} title="회원 탈퇴 실패!" content={errMsg} />
+        </ModalPortal>
+      )}
     </StyledContentWrap>
   );
 }
 
 Resign.propTypes = {
-  setPage: PropTypes.func,
-};
-
-Resign.defaultProps = {
-  setPage: () => {},
+  password: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  modalOn: PropTypes.bool.isRequired,
+  handleModal: PropTypes.func.isRequired,
+  errModalOn: PropTypes.bool.isRequired,
+  handleErrModal: PropTypes.func.isRequired,
+  errMsg: PropTypes.string.isRequired,
 };
 
 export default Resign;
 
-const StyledContentWrap = styled.section`
+const StyledContentWrap = styled.form`
   width: 100%;
-`;
-
-const StyledButtonWrap = styled.div`
-  display: flex;
-  width: 60%;
-  max-width: 600px;
-  justify-content: space-between;
-  @media screen and (max-width: 1024px) {
-    flex-direction: column;
-    align-items: start;
-    div + div {
-      margin-left: 0;
-      margin-top: 30px;
-    }
-    .btn {
-      margin-left: 0;
-    }
-  }
-`;
-
-const StyledFlexWrap = styled.div`
-  display: flex;
-  flex-direction: column;
 `;

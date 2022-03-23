@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { fetchLogoutThunk } from '../../../store/auth/authAsyncThunk';
 import ModalPortal from './ModalPortal';
-import begImage from '../../../assets/beg.png';
 
 function LogoutModal({ onClose }) {
   const isError = useSelector(state => state.auth.error);
@@ -26,7 +25,7 @@ function LogoutModal({ onClose }) {
         <Content>
           <Title>로그아웃</Title>
           <p>로그아웃하시겠습니까?</p>
-          <Image src={begImage} alt="삭제 이미지" />
+          <Image src="/assets/confirm.png" alt="삭제 이미지" />
           <FlexContainer>
             <StyledButton type="button" onClick={onLogout}>
               예
@@ -57,7 +56,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
+  z-index: 1000;
 `;
 
 const Content = styled.div`

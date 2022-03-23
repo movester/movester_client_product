@@ -7,6 +7,9 @@ const authAPI = {
   fetchLogout() {
     return axios.get('/users/logout');
   },
+  fetchResign() {
+    return axios.delete('/users');
+  },
 };
 
 export default authAPI;

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import begImage from '../../../assets/pwChange.png';
 
 function ConfirmModal({ title, content, onClose }) {
   return (
@@ -12,7 +11,7 @@ function ConfirmModal({ title, content, onClose }) {
             x
           </button>
         <p>{content}</p>
-        <Image src={begImage} alt="이미지" />
+        <Image src="/assets/beg.png" alt="이미지" />
       </Content>
     </Container>
   );
@@ -41,7 +40,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
+  z-index: 1000;
 `;
 
 const Content = styled.div`
