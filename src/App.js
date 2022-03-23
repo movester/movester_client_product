@@ -21,7 +21,7 @@ import PasswordChangePage from './pages/profile/PasswordChangePage';
 import ResignPage from './pages/profile/ResignPage';
 import ResignAfterPage from './pages/profile/ResignAfterPage';
 
-import Record from './pages/Record';
+import Record from './pages/record/RecordPage';
 import Basket from './pages/Basket';
 import StampPage from './components/stamp/Stamp';
 import Shoulder from './pages/Shoulder';
