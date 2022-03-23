@@ -3,10 +3,10 @@ import axios from '../../services/defaultClient';
 
 import Main from '../../components/common/Main';
 import Nav from '../../components/common/Nav';
-import Sholuder from '../../components/record/Sholuder';
+import Leg from '../../components/record/Leg';
 import getToday from '../../util/date';
 
-function ShoulderPage() {
+function LegPage() {
   const [records, setRecords] = useState([]);
   const [record, setRecord] = useState(0);
   const [todayRecord, setTodayRecord] = useState(0);
@@ -15,12 +15,12 @@ function ShoulderPage() {
 
   useEffect(async () => {
     try {
-      const { data } = await axios.get('records/1');
+      const { data } = await axios.get('records/2');
 
-      const sholuderRecords = data.data;
-      setRecords(sholuderRecords.reverse());
+      const legRecords = data.data;
+      setRecords(legRecords.reverse());
 
-      const lastRecord = sholuderRecords[sholuderRecords.length - 1];
+      const lastRecord = legRecords[legRecords.length - 1];
 
       if (lastRecord.date === getToday) {
         setIsCreate(true);
@@ -29,7 +29,7 @@ function ShoulderPage() {
     } catch (err) {
       console.log(err);
     }
-  }, [isCreate]);
+  }, [isCreate, todayRecord]);
 
   const [errModalOn, setErrModalOn] = useState(false);
   const [errMsg, setErrMsg] = useState('');
@@ -42,7 +42,7 @@ function ShoulderPage() {
     e.preventDefault();
     try {
       const { data } = await axios.post('records', {
-        type: 1,
+        type: 2,
         record,
       });
 
@@ -59,7 +59,7 @@ function ShoulderPage() {
     e.preventDefault();
     try {
       const { data } = await axios.patch('records', {
-        type: 1,
+        type: 2,
         record,
       });
 
@@ -75,7 +75,7 @@ function ShoulderPage() {
   const onDelete = async e => {
     e.preventDefault();
     try {
-      const { data } = await axios.delete('records/1');
+      const { data } = await axios.delete('records/2');
 
       if (data.success) {
         setIsCreate(prev => !prev);
@@ -117,7 +117,7 @@ function ShoulderPage() {
   return (
     <Main type="record">
       <Nav />
-      <Sholuder
+      <Leg
         records={records}
         record={record}
         message={message}
@@ -137,4 +137,4 @@ function ShoulderPage() {
   );
 }
 
-export default ShoulderPage;
+export default LegPage;

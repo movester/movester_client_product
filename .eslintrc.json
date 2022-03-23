@@ -29,6 +29,7 @@
     "no-shadow": "off",
     "no-cond-assign": "off",
     "no-nested-ternary": "off",
-    "import/no-named-as-default": 0
+    "import/no-named-as-default": 0,
+    "prefer-template": "off"
   }
 }

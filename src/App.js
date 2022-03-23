@@ -21,11 +21,12 @@ import PasswordChangePage from './pages/profile/PasswordChangePage';
 import ResignPage from './pages/profile/ResignPage';
 import ResignAfterPage from './pages/profile/ResignAfterPage';
 
-import Record from './pages/record/RecordPage';
+import RecordPage from './pages/record/RecordPage';
+import ShoulderPage from './pages/record/ShoulderPage';
+import LegPage from './pages/record/LegPage';
+
 import Basket from './pages/Basket';
 import StampPage from './components/stamp/Stamp';
-import Shoulder from './pages/record/ShoulderPage';
-import WaistLeg from './pages/WaistLeg';
 import NotPound from './pages/NotFound';
 
 function App() {
@@ -52,9 +53,10 @@ function App() {
 
         <Route path="/mypage/basket" element={<Basket />} />
         <Route path="/mypage/stamp" element={<StampPage />} />
-        <Route path="/mypage/record" element={<Record />} />
-        <Route path="/mypage/record/shoulder" element={<Shoulder />} />
-        <Route path="/mypage/record/waistLeg" element={<WaistLeg />} />
+
+        <Route path="/mypage/record" element={<RecordPage />} />
+        <Route path="/mypage/record/shoulder" element={<ShoulderPage />} />
+        <Route path="/mypage/record/leg" element={<LegPage />} />
         <Route path="*" element={<NotPound />} />
       </Routes>
       <Footer />

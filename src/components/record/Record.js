@@ -27,11 +27,11 @@ function Record({ sholuderRecords, legRecords }) {
           </Link>
         </div>
         <div className="graph-one">
-          <Link to="/mypage/record/waistLeg">
+          <Link to="/mypage/record/leg">
             <Button type="search" text="허리 &#183; 다리" />
           </Link>
           <Graph records={legRecords} type="leg" />
-          <Link to="/mypage/record/waistLeg">
+          <Link to="/mypage/record/leg">
             <p>오늘의 허리 &#183; 다리 기록하러가기 {'>'}</p>
           </Link>
         </div>

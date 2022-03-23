@@ -4,8 +4,8 @@ import axios from '../services/defaultClient';
 
 import TitleWrapper from '../components/common/TitleWrapper';
 import SignForm from '../components/sign/SignForm';
-import emailRegex from '../lib/validation/emailRegex';
-import passwordRegex from '../lib/validation/passwordRegex';
+import emailRegex from '../util/emailRegex';
+import passwordRegex from '../util/passwordRegex';
 
 function SignUpPage() {
   const navigate = useNavigate();
