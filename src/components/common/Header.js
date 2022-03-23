@@ -6,7 +6,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import { useSelector } from 'react-redux';
 import NavProfileButton from '../elements/NavProfileButton';
-// import ProfileDropMenu from '../elements/ProfileDropMenu';
 import NavigationDropMenu from '../elements/NavigationDropMenu';
 
 function Header() {
@@ -50,7 +49,6 @@ function Header() {
                 <NavProfileButton handleClick={handleInfo} user={user} />
               </Link>
               {isInfo}
-              {/* {isInfo && <ProfileDropMenu user={user} />} */}
             </div>
           ) : (
             <>

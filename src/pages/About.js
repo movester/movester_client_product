@@ -103,6 +103,7 @@ const StyledMiddle = styled.div`
     margin-top: 30px;
   }
   span {
-    color: #897dc6;
+    color: ${({ theme }) => theme.darkPurple};
+    font-weight: bold;
   }
 `;

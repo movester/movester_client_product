@@ -18,11 +18,7 @@ NavProfileButton.propTypes = {
 export default NavProfileButton;
 
 const ProfileWrapper = styled.div`
-<<<<<<< HEAD
   width: 100px;
-=======
-  width: 100%;
->>>>>>> 515e79206e41d1b26f12f1be98bc1e359c17f81f
   font-size: 1rem;
   color: #2a1598;
   border: 2px solid #2a1598;
