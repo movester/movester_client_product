@@ -4,6 +4,9 @@ const authAPI = {
   fetchLogin(payload) {
     return axios.post('/users/login', payload);
   },
+  fetchKakaoLogin(payload) {
+    return axios.get(`/auth/kakao/callback?code=${payload}` );
+  },
   fetchLogout() {
     return axios.get('/users/logout');
   },

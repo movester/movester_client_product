@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchLoginThunk, fetchLogoutThunk, fetchResignThunk } from './authAsyncThunk';
+import { fetchLoginThunk, fetchKakaoLoginThunk, fetchLogoutThunk, fetchResignThunk } from './authAsyncThunk';
 
 const initialState = {
   isAuth: false,
@@ -25,6 +25,24 @@ const authSlice = createSlice({
       state.isLoading = false;
     },
     [fetchLoginThunk.rejected]: (state, action) => {
+      state.isAuth = false;
+      state.error = action.payload;
+      state.user = null;
+      state.isLoading = false;
+    },
+    [fetchKakaoLoginThunk.pending]: state => {
+      state.isLoading = true;
+      state.isAuth = false;
+      state.error = null;
+      state.user = null;
+    },
+    [fetchKakaoLoginThunk.fulfilled]: (state, { payload }) => {
+      state.isAuth = true;
+      state.error = null;
+      state.user = payload.data.data;
+      state.isLoading = false;
+    },
+    [fetchKakaoLoginThunk.rejected]: (state, action) => {
       state.isAuth = false;
       state.error = action.payload;
       state.user = null;

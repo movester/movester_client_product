@@ -11,10 +11,13 @@ import StyledInput from '../../styles/StyledInput';
 import StyledButton from '../../styles/StyledButton';
 import FormWrapper from '../../styles/FormWrapper';
 
+const kakaoAuthURL = `${process.env.REACT_APP_KAKAO_GET_AUTH_CODE_URL}client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_CALLBACK_URL}&response_type=code`;
+
 function SignForm({
   type,
   onChange,
   onSubmit,
+  // onKakaoSubmit,
   email,
   emailMessage,
   password,
@@ -32,6 +35,7 @@ function SignForm({
   userIdx,
 }) {
   return (
+
     <>
       <FormWrapper onSubmit={onSubmit}>
         <StyledWrapper>
@@ -91,7 +95,11 @@ function SignForm({
               <StyledButton type="submit" className="login-btn" aria-label="login" disalbed={!isSubmit}>
                 로그인 하기
               </StyledButton>
-              <StyledButton type="button" className="kakao-login" aria-label="kakao-login" />
+              <StyledButton
+                type="button"
+                className="kakao-login"
+                onClick={() => window.open(kakaoAuthURL)}
+              />
               <StyledLink to="/login/findPassword">비밀번호 찾기</StyledLink>
               <MoveLink text="아직 계정이 없으신가요?" address="/join" btnText="계정 만들기" />
             </>
@@ -132,6 +140,7 @@ SignForm.propTypes = {
   type: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  // onKakaoSubmit: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
   emailMessage: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,

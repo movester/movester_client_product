@@ -6,7 +6,7 @@ import TitleWrapper from '../components/common/TitleWrapper';
 import SignForm from '../components/sign/SignForm';
 import emailRegex from '../util/emailRegex';
 import passwordRegex from '../util/passwordRegex';
-import { fetchLoginThunk } from '../store/auth/authAsyncThunk';
+import { fetchLoginThunk, fetchKakaoLoginThunk } from '../store/auth/authAsyncThunk';
 
 function SignInPage() {
   const { isAuth } = useSelector(state => state.auth);
@@ -83,6 +83,11 @@ function SignInPage() {
     }
   };
 
+  const onKakaoSubmit = e => {
+    e.preventDefault();
+    dispatch(fetchKakaoLoginThunk());
+  };
+
   useEffect(() => {
     if (isError) {
       setInputs({
@@ -91,7 +96,7 @@ function SignInPage() {
       });
       const errMsg = isError.error || '잘못된 이메일, 혹은 비밀번호입니다.';
 
-      if ((errMsg === '이메일 인증을 해주세요.')) {
+      if (errMsg === '이메일 인증을 해주세요.') {
         setUserIdx(isError.data.userIdx);
         setLinkModalOn(prev => !prev);
       } else {
@@ -116,6 +121,7 @@ function SignInPage() {
         type="login"
         onChange={onChange}
         onSubmit={onSubmit}
+        onKakaoSubmit={onKakaoSubmit}
         email={email}
         password={password}
         emailMessage={emailMessage}

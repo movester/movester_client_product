@@ -13,6 +13,7 @@ import StretchingDetail from './pages/StretchingDetail';
 import Event from './pages/Event';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
+import KakaoRedirectPage from './pages/KakaoRedirectPage';
 import EmailAuthPage from './pages/EmailAuthPage'
 import FindPasswordPage from './pages/FindPasswordPage';
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<SignInPage />} />
         <Route path="/login/findPassword" element={<FindPasswordPage />} />
+        <Route path="/auth/kakao/callback" element={<KakaoRedirectPage />} />
         <Route path="/join" element={<SignUpPage />} />
         <Route path="/join/emailAuth/:userIdx" element={<EmailAuthPage />} />
 

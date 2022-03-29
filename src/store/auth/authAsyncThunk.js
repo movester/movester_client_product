@@ -10,6 +10,15 @@ export const fetchLoginThunk = createAsyncThunk('user/fetchLogin', async (payloa
   }
 });
 
+export const fetchKakaoLoginThunk = createAsyncThunk('user/fetchKakaoLogin', async (payload, thunkAPI) => {
+  try {
+    const response = await authAPI.fetchKakaoLogin(payload);
+    return response;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response.data);
+  }
+});
+
 export const fetchLogoutThunk = createAsyncThunk('user/fetchLogout', async thunkAPI => {
   try {
     const response = await authAPI.fetchLogout();
