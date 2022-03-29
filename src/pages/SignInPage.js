@@ -6,7 +6,7 @@ import TitleWrapper from '../components/common/TitleWrapper';
 import SignForm from '../components/sign/SignForm';
 import emailRegex from '../util/emailRegex';
 import passwordRegex from '../util/passwordRegex';
-import { fetchLoginThunk, fetchKakaoLoginThunk } from '../store/auth/authAsyncThunk';
+import { fetchLoginThunk } from '../store/auth/authAsyncThunk';
 
 function SignInPage() {
   const { isAuth } = useSelector(state => state.auth);
@@ -83,11 +83,6 @@ function SignInPage() {
     }
   };
 
-  const onKakaoSubmit = e => {
-    e.preventDefault();
-    dispatch(fetchKakaoLoginThunk());
-  };
-
   useEffect(() => {
     if (isError) {
       setInputs({
@@ -121,7 +116,6 @@ function SignInPage() {
         type="login"
         onChange={onChange}
         onSubmit={onSubmit}
-        onKakaoSubmit={onKakaoSubmit}
         email={email}
         password={password}
         emailMessage={emailMessage}
