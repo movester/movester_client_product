@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import StarIcon from '@material-ui/icons/Star';
+import ReactStars from 'react-rating-stars-component';
 import StretchingItem from '../elements/StretchingItem';
 import { mainBodyEnum, subBodyEnum, postureEnum, effectEnum } from '../../util/stretchingEnum';
 
-function StretchingDetail({ stretching, recommendStretchings, isAuth }) {
+function StretchingDetail({ stretching, recommendStretchings, isAuth,  handleDifficulty, userDifficulty}) {
   return (
     <>
       <OutLine>
@@ -43,25 +44,23 @@ function StretchingDetail({ stretching, recommendStretchings, isAuth }) {
       </OutLine>
       <Content>
         <StyledPre dangerouslySetInnerHTML={{ __html: stretching.contents }} />
-        <ScoreResearch>
-          <p>뭅스터와 함께 스트레칭을 따라해보셨나요?</p>
-          <span>조나현님께서 느낀 스트레칭의 강도를 표시해주세요!</span>
-          <StarWrap>
-            <Star>
-              <input type="radio" id="5-star" name="rating" value="5" disabled />
-              <label htmlFor="5-star">&#9733;</label>
-              <input type="radio" id="4-star" name="rating" value="4" disabled />
-              <label htmlFor="4-star">&#9733;</label>
-              <input type="radio" id="3-star" name="rating" value="3" disabled />
-              <label htmlFor="3-star">&#9733;</label>
-              <input type="radio" id="2-star" name="rating" value="2" disabled />
-              <label htmlFor="2-star">&#9733;</label>
-              <input type="radio" id="1-star" name="rating" value="1" disabled />
-              <label htmlFor="1-star">&#9733;</label>
-            </Star>
-          </StarWrap>
-          <SubmitBtn>제출</SubmitBtn>
-        </ScoreResearch>
+        {isAuth ? (
+          <ScoreResearch>
+            <p>뭅스터와 함께 스트레칭을 따라해보셨나요?</p>
+            <p>조나현님께서 느낀 스트레칭의 강도를 표시해주세요!</p>
+            <ReactStars
+              count={5}
+              onChange={handleDifficulty}
+              size={24}
+              emptyIcon={<i className="far fa-star" />}
+              fullIcon={<i className="fa fa-star" />}
+              value={userDifficulty}
+              activeColor="#fc0"
+            />
+          </ScoreResearch>
+        ) : (
+          ''
+        )}
       </Content>
       <RecommendWrap>
         <Title>이 스트레칭이 마음에 들었다면</Title>
@@ -96,6 +95,8 @@ StretchingDetail.propTypes = {
   ).isRequired,
   recommendStretchings: PropTypes.arrayOf(PropTypes.object).isRequired,
   isAuth: PropTypes.bool.isRequired,
+  handleDifficulty: PropTypes.func.isRequired,
+  userDifficulty: PropTypes.number.isRequired,
 };
 
 export default StretchingDetail;
@@ -190,30 +191,6 @@ const StarWrap = styled.div`
   }
 `;
 
-const Star = styled.div`
-  margin: 0 5px 10px 0;
-  display: inline-flex;
-  flex-direction: row-reverse;
-  font-size: 20px;
-  input {
-    display: none;
-  }
-
-  label {
-    color: #ccc;
-  }
-
-  &:checked ~ label {
-    color: #fc0;
-  }
-
-  label:hover,
-  label:hover ~ label {
-    color: #fc0;
-    cursor: pointer;
-  }
-`;
-
 const StyledStarIcon = styled(StarIcon)`
   color: #ccc;
 
@@ -282,31 +259,7 @@ const ScoreResearch = styled.section`
   padding: 2rem;
 
   p {
-    margin-bottom: 10px;
-  }
-
-  span {
-    margin-right: 10px;
-
-    @media screen and (max-width: 870px) {
-      display: block;
-      margin-bottom: 10px;
-    }
-  }
-`;
-
-const SubmitBtn = styled.button`
-  font-size: 16px;
-  font-weight: 800;
-  color: #ffffff;
-  width: 100px;
-  height: 30px;
-  background: ${({ theme }) => theme.lightPurple};
-  border-radius: 10px;
-  float: right;
-
-  @media screen and (max-width: 870px) {
-    float: none;
+    margin-bottom: 15px;
   }
 `;
 
