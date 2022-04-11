@@ -9,6 +9,7 @@ import theme from './theme';
 import Index from './pages/Index';
 import About from './pages/About';
 import StretchingListPage from './pages/stretching/StretchingListPage';
+import StretchingDetailPage from './pages/stretching/StretchingDetailPage';
 import StretchingDetail from './pages/StretchingDetail';
 import StretchingList from './pages/StretchingList';
 import Event from './pages/Event';
@@ -46,7 +47,8 @@ function App() {
 
         <Route path="/stretching" element={<StretchingListPage />} />
         <Route path="/stretching/test" element={<StretchingList />} />
-        <Route path="/stretching/detail" element={<StretchingDetail />} />
+        <Route path="/stretching/detail/:idx" element={<StretchingDetailPage />} />
+        <Route path="/stretching/detaill" element={<StretchingDetail />} />
         <Route path="/event" element={<Event />} />
 
 
