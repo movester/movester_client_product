@@ -8,8 +8,9 @@ import Footer from './components/common/Footer';
 import theme from './theme';
 import Index from './pages/Index';
 import About from './pages/About';
-import StretchingList from './pages/StretchingList';
+import StretchingListPage from './pages/stretching/StretchingListPage';
 import StretchingDetail from './pages/StretchingDetail';
+import StretchingList from './pages/StretchingList';
 import Event from './pages/Event';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
@@ -43,7 +44,8 @@ function App() {
         <Route path="/join" element={<SignUpPage />} />
         <Route path="/join/emailAuth/:userIdx" element={<EmailAuthPage />} />
 
-        <Route path="/stretching" element={<StretchingList />} />
+        <Route path="/stretching" element={<StretchingListPage />} />
+        <Route path="/stretching/test" element={<StretchingList />} />
         <Route path="/stretching/detail" element={<StretchingDetail />} />
         <Route path="/event" element={<Event />} />
 

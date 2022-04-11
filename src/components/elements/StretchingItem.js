@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-function StretchingItem({ title, category, posture, effect }) {
+function StretchingItem({ title, category, posture, effect, image }) {
+  const user = useSelector(state => state.auth.isAuth);
   return (
     <Item>
       <ImageWrap>
-        <StyledImg src="/assets/stretching-list.png" alt="스트레칭 대표 이미지" />
-        <LikeButton />
+        <StyledImg src={`https://movester-bucket.s3.ap-northeast-2.amazonaws.com/${image}.png`} alt="대표 이미지" />
+        {user ? <LikeButton /> : ''}
       </ImageWrap>
       <Title>{title}</Title>
       <Category>{category}</Category>
@@ -22,6 +24,7 @@ StretchingItem.propTypes = {
   category: PropTypes.string.isRequired,
   posture: PropTypes.string.isRequired,
   effect: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
 };
 
 export default StretchingItem;
