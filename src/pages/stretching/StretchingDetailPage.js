@@ -6,6 +6,7 @@ import Main from '../../components/common/Main';
 import Loading from '../../components/common/Loading';
 import ConfirmModal from '../../components/common/Modal/ConfirmModal';
 import StretchingDetail from '../../components/stretching/StretchingDetail';
+import StretchingRecommend from '../../components/stretching/StretchingRecommend';
 
 function StretchingDetailPage() {
   const { idx } = useParams();
@@ -33,7 +34,7 @@ function StretchingDetailPage() {
           stretchingIdx: idx,
         });
       }
-      setIsStretchingActive(prev => !prev)
+      setIsStretchingActive(prev => !prev);
     } catch (err) {
       console.log(err);
       setErrModalOn(prev => !prev);
@@ -81,7 +82,7 @@ function StretchingDetailPage() {
     const getRecommendStretchings = async () => {
       try {
         setLoading(true);
-        const result = await axios.get(`/stretchings/recommend/${idx}`);
+        const result = await axios.get(`/stretchings/recommend/${idx}?userIdx=${userIdx}`);
         setRecommendStretchings(result.data.data);
       } catch (err) {
         setErrMsg(err.response.data.error);
@@ -90,7 +91,7 @@ function StretchingDetailPage() {
       setLoading(false);
     };
     getRecommendStretchings();
-  }, []);
+  }, [isStretchingActive]);
 
   const handleDifficulty = async score => {
     const createDifficulty = async () => {
@@ -135,6 +136,7 @@ function StretchingDetailPage() {
         userDifficulty={userDifficulty}
         handleLike={handleLike}
       />
+      <StretchingRecommend recommendStretchings={recommendStretchings} handleRecommendLike={handleLike} />
       {errModalOn && <ConfirmModal onClose={handleErrModal} title="다시 시도해주세요" content={errMsg} />}
     </Main>
   );

@@ -4,10 +4,9 @@ import styled from 'styled-components';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import StarIcon from '@material-ui/icons/Star';
 import ReactStars from 'react-rating-stars-component';
-import StretchingItem from '../elements/StretchingItem';
 import { mainBodyEnum, subBodyEnum, postureEnum, effectEnum } from '../../util/stretchingEnum';
 
-function StretchingDetail({ stretching, recommendStretchings, isAuth, handleDifficulty, userDifficulty, handleLike }) {
+function StretchingDetail({ stretching, isAuth, handleDifficulty, userDifficulty, handleLike }) {
   return (
     <>
       <OutLine>
@@ -23,7 +22,6 @@ function StretchingDetail({ stretching, recommendStretchings, isAuth, handleDiff
                 handleLike(stretching.stretchingIdx, stretching.like);
               }}
               className={stretching.like ? 'active' : ''}
-              // className="active"
             />
           ) : (
             ''
@@ -72,24 +70,6 @@ function StretchingDetail({ stretching, recommendStretchings, isAuth, handleDiff
           ''
         )}
       </Content>
-      <RecommendWrap>
-        <Title>이 스트레칭이 마음에 들었다면</Title>
-        <StretchingContainer>
-          {recommendStretchings.map(stretching => {
-            const { stretchingIdx, title, mainBody, subBody, effect, posture, image } = stretching;
-            return (
-              <StretchingItem
-                idx={stretchingIdx}
-                title={title}
-                category={`${mainBodyEnum[mainBody]} - ${subBodyEnum[subBody]}`}
-                posture={posture ? posture.map(v => postureEnum[v]).join(' · ') : '-'}
-                effect={effect ? effect.map(v => effectEnum[v]).join(' · ') : '-'}
-                image={image}
-              />
-            );
-          })}
-        </StretchingContainer>
-      </RecommendWrap>
     </>
   );
 }
@@ -102,7 +82,6 @@ StretchingDetail.propTypes = {
       PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
     ])
   ).isRequired,
-  recommendStretchings: PropTypes.arrayOf(PropTypes.object).isRequired,
   isAuth: PropTypes.bool.isRequired,
   handleDifficulty: PropTypes.func.isRequired,
   userDifficulty: PropTypes.number.isRequired,
@@ -289,29 +268,3 @@ const ScoreResearch = styled.section`
   }
 `;
 
-const RecommendWrap = styled.section`
-  height: auto;
-  background-color: ${({ theme }) => theme.lightGray};
-  padding: 2rem 15%;
-
-  @media screen and (max-width: 600px) {
-    padding: 2rem 3rem;
-  }
-`;
-
-const StretchingContainer = styled.div`
-  margin-top: 30px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 5rem;
-  justify-content: center;
-
-  @media screen and (max-width: 1340px) {
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 3rem;
-  }
-
-  @media screen and (max-width: 700px) {
-    grid-template-columns: 1fr;
-  }
-`;
