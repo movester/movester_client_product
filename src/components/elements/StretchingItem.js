@@ -1,17 +1,32 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-function StretchingItem({ title, category, posture, effect, image }) {
+function StretchingItem({ idx, title, category, posture, effect, image, active, handleLike }) {
   const user = useSelector(state => state.auth.isAuth);
   return (
     <Item>
       <ImageWrap>
-        <StyledImg src={`https://movester-bucket.s3.ap-northeast-2.amazonaws.com/${image}.png`} alt="대표 이미지" />
-        {user ? <LikeButton /> : ''}
+        <Link key={idx} to={`/stretching/detail/${idx}`}>
+          <StyledImg src={`https://movester-bucket.s3.ap-northeast-2.amazonaws.com/${image}.png`} alt="대표 이미지" />
+        </Link>
+        {user ? (
+          <LikeButton
+            onClick={e => {
+              e.stopPropagation();
+              handleLike(e, idx, active);
+            }}
+            className={active ? 'active' : ''}
+          />
+        ) : (
+          ''
+        )}
       </ImageWrap>
-      <Title>{title}</Title>
+      <Link key={idx} to={`/stretching/detail/${idx}`}>
+        <Title>{title}</Title>
+      </Link>
       <Category>{category}</Category>
       <Posture>{posture}</Posture>
       <Effect>{effect}</Effect>
@@ -20,11 +35,19 @@ function StretchingItem({ title, category, posture, effect, image }) {
 }
 
 StretchingItem.propTypes = {
+  idx: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   posture: PropTypes.string.isRequired,
   effect: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
+  active: PropTypes.number,
+  handleLike: PropTypes.func,
+};
+
+StretchingItem.defaultProps = {
+  active: false,
+  handleLike: () => {},
 };
 
 export default StretchingItem;
@@ -70,6 +93,22 @@ const LikeButton = styled.div`
 
   &::after {
     top: -50%;
+  }
+
+  &:hover {
+    background: ${({ theme }) => theme.darkPurple};
+    &:before,
+    &:after {
+      background: ${({ theme }) => theme.darkPurple};
+    }
+  }
+
+  &.active {
+    background: ${({ theme }) => theme.darkPurple};
+    &:before,
+    &:after {
+      background: ${({ theme }) => theme.darkPurple};
+    }
   }
 `;
 

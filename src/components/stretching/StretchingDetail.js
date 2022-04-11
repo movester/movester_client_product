@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import YouTubeIcon from '@material-ui/icons/YouTube';
@@ -8,7 +7,7 @@ import ReactStars from 'react-rating-stars-component';
 import StretchingItem from '../elements/StretchingItem';
 import { mainBodyEnum, subBodyEnum, postureEnum, effectEnum } from '../../util/stretchingEnum';
 
-function StretchingDetail({ stretching, recommendStretchings, isAuth,  handleDifficulty, userDifficulty}) {
+function StretchingDetail({ stretching, recommendStretchings, isAuth, handleDifficulty, userDifficulty }) {
   return (
     <>
       <OutLine>
@@ -68,15 +67,14 @@ function StretchingDetail({ stretching, recommendStretchings, isAuth,  handleDif
           {recommendStretchings.map(stretching => {
             const { stretchingIdx, title, mainBody, subBody, effect, posture, image } = stretching;
             return (
-              <Link key={stretchingIdx} to={`/stretching/detail/${stretchingIdx}`}>
                 <StretchingItem
+                  idx={stretchingIdx}
                   title={title}
                   category={`${mainBodyEnum[mainBody]} - ${subBodyEnum[subBody]}`}
                   posture={posture ? posture.map(v => postureEnum[v]).join(' · ') : '-'}
                   effect={effect ? effect.map(v => effectEnum[v]).join(' · ') : '-'}
                   image={image}
                 />
-              </Link>
             );
           })}
         </StretchingContainer>

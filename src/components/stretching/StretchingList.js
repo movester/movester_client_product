@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Main from '../common/Main';
 import StretchingItem from '../elements/StretchingItem';
 import { mainBodyEnum, subBodyEnum, postureEnum, effectEnum } from '../../util/stretchingEnum';
 
-function StretchingList({ stretchings, handleTagModal }) {
+function StretchingList({ stretchings, handleTagModal, handleLike }) {
   return (
     <Main>
       <StyledNav>
@@ -34,17 +33,18 @@ function StretchingList({ stretchings, handleTagModal }) {
       </StyledNav>
       <StretchingContainer>
         {stretchings.map(stretching => {
-          const { stretchingIdx, title, mainBody, subBody, effect, posture, image } = stretching;
+          const { stretchingIdx, title, mainBody, subBody, effect, posture, image, like } = stretching;
           return (
-            <Link key={stretchingIdx} to={`/stretching/detail/${stretchingIdx}`}>
               <StretchingItem
-                title={title }
+                idx={stretchingIdx}
+                title={title}
                 category={`${mainBodyEnum[mainBody]} - ${subBodyEnum[subBody]}`}
                 posture={posture ? posture.map(v => postureEnum[v]).join(' · ') : '-'}
                 effect={effect ? effect.map(v => effectEnum[v]).join(' · ') : '-'}
                 image={image}
+                active={like}
+                handleLike={handleLike}
               />
-            </Link>
           );
         })}
       </StretchingContainer>
@@ -55,6 +55,7 @@ function StretchingList({ stretchings, handleTagModal }) {
 StretchingList.propTypes = {
   stretchings: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleTagModal: PropTypes.func.isRequired,
+  handleLike: PropTypes.func.isRequired,
 };
 
 export default StretchingList;
