@@ -8,7 +8,7 @@ import StretchingTagModal from '../../components/common/Modal/StretchingTagModal
 import ConfirmModal from '../../components/common/Modal/ConfirmModal';
 
 function StretchingListPage() {
-  const userIdx = useSelector(state => state.auth.user?.userIdx);
+  const userIdx = useSelector(state => state.auth.user?.userIdx) || "";
   const [loading, setLoading] = useState(true);
   const [stretchings, setStretchings] = useState([]);
   const [isStretchingActive, setIsStretchingActive] = useState(false);

@@ -11,7 +11,7 @@ import StretchingRecommend from '../../components/stretching/StretchingRecommend
 function StretchingDetailPage() {
   const { idx } = useParams();
   const isAuth = useSelector(state => state.auth.isAuth);
-  const userIdx = useSelector(state => state.auth?.user?.userIdx);
+  const userIdx = useSelector(state => state.auth?.user?.userIdx) || '';
   const [loading, setLoading] = useState(true);
   const [stretching, setStretching] = useState({});
   const [recommendStretchings, setRecommendStretchings] = useState([]);
