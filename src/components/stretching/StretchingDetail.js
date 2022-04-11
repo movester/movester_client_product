@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import YouTubeIcon from '@material-ui/icons/YouTube';
+import StarIcon from '@material-ui/icons/Star';
 import StretchingItem from '../elements/StretchingItem';
 import { mainBodyEnum, subBodyEnum, postureEnum, effectEnum } from '../../util/stretchingEnum';
 
@@ -15,26 +16,18 @@ function StretchingDetail({ stretching, recommendStretchings, isAuth }) {
             src={`https://movester-bucket.s3.ap-northeast-2.amazonaws.com/${stretching.image}.png`}
             alt="대표 이미지"
           />
-          {isAuth ? <LikeButton /> : ""}
+          {isAuth ? <LikeButton /> : ''}
         </ImageWrap>
         <DetailWrap>
           <Title>{stretching.title}</Title>
           <Category>{`${mainBodyEnum[stretching.mainBody]} - ${subBodyEnum[stretching.subBody]}`}</Category>
           <Posture>{stretching.posture ? stretching.posture.map(v => postureEnum[v]).join(' · ') : '-'}</Posture>
           <StarWrap>
-            <Star>
-              <input type="radio" id="5-star" name="rating" value="5" disabled />
-              <label htmlFor="5-star">&#9733;</label>
-              <input type="radio" id="4-star" name="rating" value="4" disabled />
-              <label htmlFor="4-star">&#9733;</label>
-              <input type="radio" id="3-star" name="rating" value="3" disabled />
-              <label htmlFor="3-star">&#9733;</label>
-              <input type="radio" id="2-star" name="rating" value="2" disabled />
-              <label htmlFor="2-star">&#9733;</label>
-              <input type="radio" id="1-star" name="rating" value="1" disabled />
-              <label htmlFor="1-star">&#9733;</label>
-            </Star>
-            {stretching.difficulty}
+            {[0, 0, 0, 0, 0]
+              .map((_, index) => (stretching.difficulty >= index + 1 ? 1 : 0))
+              .map(active => (
+                <StyledStarIcon className={active ? 'active' : ''} />
+              ))}
           </StarWrap>
           <EffectWrap>
             {stretching.effect.map(effect => (
@@ -190,6 +183,7 @@ const Posture = styled.p`
 const StarWrap = styled.div`
   display: inline;
   font-size: 16px;
+  height: auto;
 
   @media screen and (max-width: 870px) {
     display: block;
@@ -220,8 +214,16 @@ const Star = styled.div`
   }
 `;
 
+const StyledStarIcon = styled(StarIcon)`
+  color: #ccc;
+
+  &.active {
+    color: #fc0;
+  }
+`;
+
 const EffectWrap = styled.div`
-  margin: 10px 0 20px 0;
+  margin: 18px 0 20px 0;
 `;
 
 const EffectTag = styled.div`
