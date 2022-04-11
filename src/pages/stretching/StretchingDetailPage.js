@@ -23,6 +23,10 @@ function StretchingDetailPage() {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
+  useEffect(() => {
     const getStretching = async () => {
       try {
         setLoading(true);
