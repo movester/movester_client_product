@@ -53,7 +53,9 @@ function StretchingDetailPage() {
       }
       setLoading(false);
     };
-    getUserDifficulty();
+    if (isAuth) {
+      getUserDifficulty();
+    }
   }, [userDifficultyFlag]);
 
   useEffect(() => {
