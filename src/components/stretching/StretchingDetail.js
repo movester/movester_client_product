@@ -6,14 +6,7 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import StretchingItem from '../elements/StretchingItem';
 import { mainBodyEnum, subBodyEnum, postureEnum, effectEnum } from '../../util/stretchingEnum';
 
-const STRETCHING_LIST = [
-  { title: '팔 접어 어깨 스트레칭', category: '상체 > 팔/어께', posture: '서서, 앉아서', effect: '라운드숄더 거북목' },
-  { title: '팔 접어 어깨 스트레칭', category: '상체 > 팔/어께', posture: '서서, 앉아서', effect: '라운드숄더 거북목' },
-  { title: '팔 접어 어깨 스트레칭', category: '상체 > 팔/어께', posture: '서서, 앉아서', effect: '라운드숄더 거북목' },
-  { title: '팔 접어 어깨 스트레칭', category: '상체 > 팔/어께', posture: '서서, 앉아서', effect: '라운드숄더 거북목' },
-];
-
-function StretchingDetail({ stretching }) {
+function StretchingDetail({ stretching, recommendStretchings, isAuth }) {
   return (
     <>
       <OutLine>
@@ -22,7 +15,7 @@ function StretchingDetail({ stretching }) {
             src={`https://movester-bucket.s3.ap-northeast-2.amazonaws.com/${stretching.image}.png`}
             alt="대표 이미지"
           />
-          <LikeButton />
+          {isAuth ? <LikeButton /> : ""}
         </ImageWrap>
         <DetailWrap>
           <Title>{stretching.title}</Title>
@@ -80,16 +73,20 @@ function StretchingDetail({ stretching }) {
       <RecommendWrap>
         <Title>이 스트레칭이 마음에 들었다면</Title>
         <StretchingContainer>
-          {STRETCHING_LIST.map(stretching => (
-            <Link to="/stretching/detail">
-              <StretchingItem
-                title={stretching.title}
-                category={stretching.category}
-                posture={stretching.posture}
-                effect={stretching.effect}
-              />
-            </Link>
-          ))}
+          {recommendStretchings.map(stretching => {
+            const { stretchingIdx, title, mainBody, subBody, effect, posture, image } = stretching;
+            return (
+              <Link key={stretchingIdx} to={`/stretching/detail/${stretchingIdx}`}>
+                <StretchingItem
+                  title={title}
+                  category={`${mainBodyEnum[mainBody]} - ${subBodyEnum[subBody]}`}
+                  posture={posture ? posture.map(v => postureEnum[v]).join(' · ') : '-'}
+                  effect={effect ? effect.map(v => effectEnum[v]).join(' · ') : '-'}
+                  image={image}
+                />
+              </Link>
+            );
+          })}
         </StretchingContainer>
       </RecommendWrap>
     </>
@@ -104,6 +101,8 @@ StretchingDetail.propTypes = {
       PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
     ])
   ).isRequired,
+  recommendStretchings: PropTypes.arrayOf(PropTypes.object).isRequired,
+  isAuth: PropTypes.bool.isRequired,
 };
 
 export default StretchingDetail;
