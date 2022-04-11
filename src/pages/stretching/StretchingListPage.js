@@ -23,9 +23,7 @@ function StretchingListPage() {
     setErrModalOn(!errModalOn);
   };
 
-  const handleLike = async (e, idx, active) => {
-    e.stopPropagation();
-    e.nativeEvent.stopImmediatePropagation();
+  const handleLike = async (idx, active) => {
     try {
       if (active) {
         await axios.delete(`likes/${idx}`);

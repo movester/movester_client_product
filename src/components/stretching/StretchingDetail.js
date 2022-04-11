@@ -7,7 +7,7 @@ import ReactStars from 'react-rating-stars-component';
 import StretchingItem from '../elements/StretchingItem';
 import { mainBodyEnum, subBodyEnum, postureEnum, effectEnum } from '../../util/stretchingEnum';
 
-function StretchingDetail({ stretching, recommendStretchings, isAuth, handleDifficulty, userDifficulty }) {
+function StretchingDetail({ stretching, recommendStretchings, isAuth, handleDifficulty, userDifficulty, handleLike }) {
   return (
     <>
       <OutLine>
@@ -16,7 +16,18 @@ function StretchingDetail({ stretching, recommendStretchings, isAuth, handleDiff
             src={`https://movester-bucket.s3.ap-northeast-2.amazonaws.com/${stretching.image}.png`}
             alt="대표 이미지"
           />
-          {isAuth ? <LikeButton /> : ''}
+          {isAuth ? (
+            <LikeButton
+              onClick={e => {
+                e.stopPropagation();
+                handleLike(stretching.stretchingIdx, stretching.like);
+              }}
+              className={stretching.like ? 'active' : ''}
+              // className="active"
+            />
+          ) : (
+            ''
+          )}
         </ImageWrap>
         <DetailWrap>
           <Title>{stretching.title}</Title>
@@ -67,14 +78,14 @@ function StretchingDetail({ stretching, recommendStretchings, isAuth, handleDiff
           {recommendStretchings.map(stretching => {
             const { stretchingIdx, title, mainBody, subBody, effect, posture, image } = stretching;
             return (
-                <StretchingItem
-                  idx={stretchingIdx}
-                  title={title}
-                  category={`${mainBodyEnum[mainBody]} - ${subBodyEnum[subBody]}`}
-                  posture={posture ? posture.map(v => postureEnum[v]).join(' · ') : '-'}
-                  effect={effect ? effect.map(v => effectEnum[v]).join(' · ') : '-'}
-                  image={image}
-                />
+              <StretchingItem
+                idx={stretchingIdx}
+                title={title}
+                category={`${mainBodyEnum[mainBody]} - ${subBodyEnum[subBody]}`}
+                posture={posture ? posture.map(v => postureEnum[v]).join(' · ') : '-'}
+                effect={effect ? effect.map(v => effectEnum[v]).join(' · ') : '-'}
+                image={image}
+              />
             );
           })}
         </StretchingContainer>
@@ -95,6 +106,7 @@ StretchingDetail.propTypes = {
   isAuth: PropTypes.bool.isRequired,
   handleDifficulty: PropTypes.func.isRequired,
   userDifficulty: PropTypes.number.isRequired,
+  handleLike: PropTypes.func.isRequired,
 };
 
 export default StretchingDetail;
@@ -155,6 +167,22 @@ const LikeButton = styled.div`
 
   &::after {
     top: -50%;
+  }
+
+  &:hover {
+    background: ${({ theme }) => theme.darkPurple};
+    &:before,
+    &:after {
+      background: ${({ theme }) => theme.darkPurple};
+    }
+  }
+
+  &.active {
+    background: ${({ theme }) => theme.darkPurple};
+    &:before,
+    &:after {
+      background: ${({ theme }) => theme.darkPurple};
+    }
   }
 `;
 

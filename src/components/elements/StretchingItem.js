@@ -16,7 +16,7 @@ function StretchingItem({ idx, title, category, posture, effect, image, active, 
           <LikeButton
             onClick={e => {
               e.stopPropagation();
-              handleLike(e, idx, active);
+              handleLike(idx, active);
             }}
             className={active ? 'active' : ''}
           />

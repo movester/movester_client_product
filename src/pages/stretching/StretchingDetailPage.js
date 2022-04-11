@@ -10,16 +10,35 @@ import StretchingDetail from '../../components/stretching/StretchingDetail';
 function StretchingDetailPage() {
   const { idx } = useParams();
   const isAuth = useSelector(state => state.auth.isAuth);
+  const userIdx = useSelector(state => state.auth?.user?.userIdx);
   const [loading, setLoading] = useState(true);
   const [stretching, setStretching] = useState({});
   const [recommendStretchings, setRecommendStretchings] = useState([]);
   const [userDifficulty, setUserDifficulty] = useState(0);
   const [userDifficultyFlag, setUserDifficultyFlag] = useState(false);
+  const [isStretchingActive, setIsStretchingActive] = useState(false);
 
   const [errModalOn, setErrModalOn] = useState(false);
   const [errMsg, setErrMsg] = useState('');
   const handleErrModal = () => {
     setErrModalOn(!errModalOn);
+  };
+
+  const handleLike = async (idx, active) => {
+    try {
+      if (active) {
+        await axios.delete(`likes/${idx}`);
+      } else {
+        await axios.post('likes/', {
+          stretchingIdx: idx,
+        });
+      }
+      setIsStretchingActive(prev => !prev)
+    } catch (err) {
+      console.log(err);
+      setErrModalOn(prev => !prev);
+      setErrMsg(err.response.data.error);
+    }
   };
 
   useEffect(() => {
@@ -30,7 +49,7 @@ function StretchingDetailPage() {
     const getStretching = async () => {
       try {
         setLoading(true);
-        const result = await axios.get(`/stretchings/${idx}`);
+        const result = await axios.get(`/stretchings/${idx}?userIdx=${userIdx}`);
         setStretching(result.data.data);
       } catch (err) {
         setErrMsg(err.response.data.error);
@@ -39,7 +58,7 @@ function StretchingDetailPage() {
       setLoading(false);
     };
     getStretching();
-  }, [userDifficulty]);
+  }, [userDifficulty, isStretchingActive]);
 
   useEffect(() => {
     const getUserDifficulty = async () => {
@@ -114,6 +133,7 @@ function StretchingDetailPage() {
         isAuth={isAuth}
         handleDifficulty={handleDifficulty}
         userDifficulty={userDifficulty}
+        handleLike={handleLike}
       />
       {errModalOn && <ConfirmModal onClose={handleErrModal} title="다시 시도해주세요" content={errMsg} />}
     </Main>
