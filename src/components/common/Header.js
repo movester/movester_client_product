@@ -42,20 +42,18 @@ function Header() {
         </div>
       </HeaderLeftBlock>
       <HeaderRightBlock>
-        <StyledNavigation>
-          {isAuth ? (
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <Link to="/mypage/profile">
-                <NavProfileButton handleClick={handleInfo} user={user} />
-              </Link>
-              {isInfo}
-            </div>
-          ) : (
-            <>
-              <Link to="/join">Join</Link> | <Link to="/login">Login</Link>
-            </>
-          )}
-        </StyledNavigation>
+        {isAuth ? (
+          <>
+            <Link to="/mypage/profile">
+              <NavProfileButton handleClick={handleInfo} user={user} />
+            </Link>
+            {isInfo}
+          </>
+        ) : (
+          <>
+            <Link to="/join">Join</Link> | <Link to="/login">Login</Link>
+          </>
+        )}
       </HeaderRightBlock>
     </HeaderWrapper>
   );
@@ -73,7 +71,7 @@ const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 5rem;
+  padding: 0 4rem 0 5rem;
 
   border-bottom: 2px solid #2a1598;
   background: #fff;
@@ -120,7 +118,10 @@ const HeaderLeftBlock = styled.div`
   }
 `;
 
-const HeaderRightBlock = styled.div``;
+const HeaderRightBlock = styled.div`
+  width: 150px;
+  height: 40px;
+`;
 
 const StyledNavigation = styled.nav`
   margin-left: 30px;

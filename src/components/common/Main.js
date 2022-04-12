@@ -20,7 +20,7 @@ const StyledMain = styled.main`
   margin-top: 80px;
 
   &.profile {
-    padding: 40px 5rem;f
+    padding: 40px 5rem;
     height: 74vh;
     display: flex;
     @media screen and (max-width: 500px) {
