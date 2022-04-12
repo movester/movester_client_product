@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Main from '../common/Main';
 import StretchingItem from '../elements/StretchingItem';
+import NoContent from '../elements/NoContent';
 import {
   mainBodyEnum,
   mainBodyArr,
@@ -51,7 +52,6 @@ function StretchingList({
             >
               전체
             </StyledCurBtn>
-
             {main ? (
               <>
                 <StyledArrow>&gt;</StyledArrow>
@@ -87,23 +87,27 @@ function StretchingList({
         </SubCategory>
         <StyledTagBtn onClick={handleTagModal}>태그 맞춤 동작 찾기</StyledTagBtn>
       </StyledNav>
-      <StretchingContainer>
-        {stretchings.map(stretching => {
-          const { stretchingIdx, title, mainBody, subBody, effect, posture, image, like } = stretching;
-          return (
-            <StretchingItem
-              idx={stretchingIdx}
-              title={title}
-              category={`${mainBodyEnum[mainBody]} - ${subBodyEnum[subBody]}`}
-              posture={posture ? posture.map(v => postureEnum[v]).join(' · ') : '-'}
-              effect={effect ? effect.map(v => effectEnum[v]).join(' · ') : '-'}
-              image={image}
-              active={like}
-              handleLike={handleLike}
-            />
-          );
-        })}
-      </StretchingContainer>
+      {stretchings.length ? (
+        <StretchingContainer>
+          {stretchings.map(stretching => {
+            const { stretchingIdx, title, mainBody, subBody, effect, posture, image, like } = stretching;
+            return (
+              <StretchingItem
+                idx={stretchingIdx}
+                title={title}
+                category={`${mainBodyEnum[mainBody]} - ${subBodyEnum[subBody]}`}
+                posture={posture ? posture.map(v => postureEnum[v]).join(' · ') : '-'}
+                effect={effect ? effect.map(v => effectEnum[v]).join(' · ') : '-'}
+                image={image}
+                active={like}
+                handleLike={handleLike}
+              />
+            );
+          })}
+        </StretchingContainer>
+      ) : (
+        <NoContent />
+      )}
     </Main>
   );
 }

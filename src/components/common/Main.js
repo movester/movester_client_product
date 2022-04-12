@@ -18,10 +18,11 @@ export default Main;
 
 const StyledMain = styled.main`
   margin-top: 80px;
+  height: auto;
 
   &.profile {
     padding: 40px 5rem;
-    height: 74vh;
+    min-height: 74vh;
     display: flex;
     @media screen and (max-width: 500px) {
       padding: 40px 2rem;
