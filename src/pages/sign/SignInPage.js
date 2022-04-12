@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import TitleWrapper from '../components/common/TitleWrapper';
-import SignForm from '../components/sign/SignForm';
-import emailRegex from '../util/emailRegex';
-import passwordRegex from '../util/passwordRegex';
-import { fetchLoginThunk } from '../store/auth/authAsyncThunk';
+import TitleWrapper from '../../components/common/TitleWrapper';
+import SignForm from '../../components/sign/SignForm';
+import emailRegex from '../../util/emailRegex';
+import passwordRegex from '../../util/passwordRegex';
+import { fetchLoginThunk } from '../../store/auth/authAsyncThunk';
 
 function SignInPage() {
   const { isAuth } = useSelector(state => state.auth);

@@ -36,7 +36,6 @@ function StretchingDetailPage() {
       }
       setIsStretchingActive(prev => !prev);
     } catch (err) {
-      console.log(err);
       setErrModalOn(prev => !prev);
       setErrMsg(err.response.data.error);
     }

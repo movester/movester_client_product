@@ -13,11 +13,11 @@ import StretchingListPage from './pages/stretching/StretchingListPage';
 import StretchingDetailPage from './pages/stretching/StretchingDetailPage';
 
 import Event from './pages/Event';
-import SignInPage from './pages/SignInPage';
-import SignUpPage from './pages/SignUpPage';
-import KakaoRedirectPage from './pages/KakaoRedirectPage';
-import EmailAuthPage from './pages/EmailAuthPage'
-import FindPasswordPage from './pages/FindPasswordPage';
+import SignInPage from './pages/sign/SignInPage';
+import SignUpPage from './pages/sign/SignUpPage';
+import KakaoRedirectPage from './pages/sign/KakaoRedirectPage';
+import EmailAuthPage from './pages/sign/EmailAuthPage'
+import FindPasswordPage from './pages/sign/FindPasswordPage';
 
 import ProfilePage from './pages/profile/ProfilePage';
 import PasswordChangePage from './pages/profile/PasswordChangePage';
@@ -28,8 +28,8 @@ import RecordPage from './pages/record/RecordPage';
 import ShoulderPage from './pages/record/ShoulderPage';
 import LegPage from './pages/record/LegPage';
 
-import Basket from './pages/Basket';
 import StampPage from './components/stamp/Stamp';
+import LikePage from './pages/like/LikePage';
 import NotPound from './pages/NotFound';
 
 function App() {
@@ -56,7 +56,7 @@ function App() {
         <Route path="/mypage/profile/resign" element={<ResignPage />} />
         <Route path="/resign" element={<ResignAfterPage />} />
 
-        <Route path="/mypage/basket" element={<Basket />} />
+        <Route path="/mypage/like" element={<LikePage />} />
         <Route path="/mypage/stamp" element={<StampPage />} />
 
         <Route path="/mypage/record" element={<RecordPage />} />

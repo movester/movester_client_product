@@ -23,7 +23,7 @@ function Nav() {
     {
       id: 1,
       title: '찜한 스트레칭',
-      path: '/mypage/basket',
+      path: '/mypage/like',
     },
     {
       id: 2,

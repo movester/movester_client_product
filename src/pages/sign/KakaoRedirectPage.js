@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Loading from '../components/common/Loading';
-import { fetchKakaoLoginThunk } from '../store/auth/authAsyncThunk';
+import Loading from '../../components/common/Loading';
+import { fetchKakaoLoginThunk } from '../../store/auth/authAsyncThunk';
 
 function KakaoRedirectPage() {
   const dispatch = useDispatch();

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import axios from '../services/defaultClient';
-import TitleWrapper from '../components/common/TitleWrapper';
-import SendEmailAuth from '../components/findPassword/SendEmailAuth';
-import EmailAuth from '../components/findPassword/EmailAuth';
-import ResetPassword from '../components/findPassword/ResetPassword';
+import axios from '../../services/defaultClient';
+import TitleWrapper from '../../components/common/TitleWrapper';
+import SendEmailAuth from '../../components/findPassword/SendEmailAuth';
+import EmailAuth from '../../components/findPassword/EmailAuth';
+import ResetPassword from '../../components/findPassword/ResetPassword';
 
 function FindPasswordPage() {
   const [isSendMail, setIsSendMail] = useState(false);

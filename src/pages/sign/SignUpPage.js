@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from '../services/defaultClient';
+import axios from '../../services/defaultClient';
 
-import TitleWrapper from '../components/common/TitleWrapper';
-import SignForm from '../components/sign/SignForm';
-import emailRegex from '../util/emailRegex';
-import passwordRegex from '../util/passwordRegex';
+import TitleWrapper from '../../components/common/TitleWrapper';
+import SignForm from '../../components/sign/SignForm';
+import emailRegex from '../../util/emailRegex';
+import passwordRegex from '../../util/passwordRegex';
 
 function SignUpPage() {
   const navigate = useNavigate();

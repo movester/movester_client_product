@@ -7,7 +7,6 @@ import Button from '../elements/Button';
 import MoveLink from '../common/MoveLink';
 import Graph from './Graph';
 import Ruler from './Ruler';
-import ModalPortal from '../common/Modal/ModalPortal';
 import ConfirmModal from '../common/Modal/ConfirmModal';
 
 function Leg({
@@ -90,9 +89,7 @@ function Leg({
           <img src="/assets/leg/leg_standard.png" alt="허리, 다리 평균 유연성 평균치" />
         </GrayBg>
         {errModalOn && (
-        <ModalPortal>
           <ConfirmModal onClose={handleErrModal} title="기록 등록 실패" content={errMsg} />
-        </ModalPortal>
       )}
       </StyledWrap>
   );
