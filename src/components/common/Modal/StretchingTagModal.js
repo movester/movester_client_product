@@ -1,9 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ModalPortal from './ModalPortal';
+import { tagArr, tagSet } from '../../../util/stretchingEnum';
 
-function StretchingTagModal({ onClose }) {
+function StretchingTagModal({ onClose, handleTagSearch, onTagChange }) {
+  const [category, setCategory] = useState(0);
+  const handleCategory = type => {
+    setCategory(() => type);
+  };
+  const [selected, setSelected] = useState([]);
+  const insertSelected = value => {
+    if (!selected.includes(value) && selected.length < 8) {
+      setSelected(prev => [...prev, value]);
+    }
+  };
+  const deleteSelected = value => {
+    setSelected(prev => prev.filter(v => v !== value));
+  };
+
+  const onSubmit = () => {
+    if (selected.length && selected.length <= 8) {
+      selected.forEach(select => {
+        const category = tagSet[select].type;
+        const { value } = tagSet[select];
+        onTagChange(category, value);
+      });
+      onClose();
+      handleTagSearch(() => true);
+    }
+  };
+
+  // const categorySet = {
+  //   1: 'mainBody',
+  //   2: 'subBody',
+  //   3: 'subBody',
+  //   4: 'subBody',
+  //   5: 'posture',
+  //   6: 'effect',
+  //   7: 'tool',
+  // };
   return (
     <ModalPortal>
       <Container>
@@ -15,43 +51,34 @@ function StretchingTagModal({ onClose }) {
           <Wrap>
             <p>1. 카테고리 선택</p>
             <CategoryWrap>
-              <TagBtn>전신</TagBtn>
-              <TagBtn>상체</TagBtn>
-              <TagBtn>하체</TagBtn>
-              <TagBtn>코어</TagBtn>
-              <TagBtn>자세</TagBtn>
-              <TagBtn>효과</TagBtn>
-              <TagBtn>도구</TagBtn>
+              <TagBtn onClick={() => handleCategory(0)}>전신</TagBtn>
+              <TagBtn onClick={() => handleCategory(1)}>상체</TagBtn>
+              <TagBtn onClick={() => handleCategory(2)}>코어</TagBtn>
+              <TagBtn onClick={() => handleCategory(3)}>하체</TagBtn>
+              <TagBtn onClick={() => handleCategory(4)}>자세</TagBtn>
+              <TagBtn onClick={() => handleCategory(5)}>효과</TagBtn>
+              <TagBtn onClick={() => handleCategory(6)}>도구</TagBtn>
             </CategoryWrap>
             <p>2. 태그 선택</p>
             <TagWrap>
-              <TagBtn>무릎/다리</TagBtn>
-              <TagBtn>발목/발</TagBtn>
+              {tagArr[category].map(tag => (
+                <TagBtn onClick={() => insertSelected(tag)}>{tag}</TagBtn>
+              ))}
             </TagWrap>
             <p>3. 선택한 태그</p>
-            <span>해당 태그를 모두 만족하는 스트레칭이 노출됩니다.(최대 5개 선택 가능)</span>
+            <span>해당 태그에 만족하는 스트레칭이 노출됩니다.(최대 8개 선택 가능)</span>
             <SelectedWrap>
-              <SelectedTagBtn>
-                무릎/다리<span>X</span>
-              </SelectedTagBtn>
-              <SelectedTagBtn>
-                폼롤러<span>X</span>
-              </SelectedTagBtn>
-              <SelectedTagBtn>
-                누워서
-                <span>X</span>
-              </SelectedTagBtn>
-              <SelectedTagBtn>
-                서서
-                <span>X</span>
-              </SelectedTagBtn>
-              <SelectedTagBtn>
-                거북목
-                <span>X</span>
-              </SelectedTagBtn>
+              {selected.map(select => (
+                <SelectedTagBtn>
+                  {select}
+                  <button type="button" onClick={() => deleteSelected(select)}>
+                    X
+                  </button>
+                </SelectedTagBtn>
+              ))}
             </SelectedWrap>
           </Wrap>
-          <StyledButton type="button" onClick={onClose}>
+          <StyledButton type="button" onClick={onSubmit}>
             확인
           </StyledButton>
         </Content>
@@ -62,6 +89,8 @@ function StretchingTagModal({ onClose }) {
 
 StretchingTagModal.propTypes = {
   onClose: PropTypes.func.isRequired,
+  handleTagSearch: PropTypes.func.isRequired,
+  onTagChange: PropTypes.func.isRequired,
 };
 
 export default StretchingTagModal;
@@ -165,7 +194,7 @@ const TagWrap = styled.div`
   padding: 8px;
   display: grid;
   grid-template-rows: repeat(2, 1fr);
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px 10px;
 `;
 
@@ -175,7 +204,7 @@ const SelectedWrap = styled.div`
   padding: 8px;
   display: grid;
   grid-template-rows: repeat(2, 1fr);
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px 20px;
 `;
 
@@ -187,11 +216,11 @@ const SelectedTagBtn = styled.button`
   border: 2px solid ${({ theme }) => theme.darkPurple};
   border-radius: 10px;
   color: ${({ theme }) => theme.darkPurple};
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 800;
   line-height: 16px;
 
-  span {
+  button {
     float: right;
   }
 `;

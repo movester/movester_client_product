@@ -24,6 +24,29 @@ function StretchingListPage() {
   const handleSub = type => {
     setSub(() => type);
   };
+
+  const [tags, setTags] = useState({
+    mainBody: [],
+    subBody: [],
+    tool: [],
+    posture: [],
+    effect: [],
+  });
+
+  const { mainBody, subBody, tool, posture, effect } = tags;
+
+  const onTagChange = (category, value) => {
+    setTags(prev => ({
+      ...prev,
+      [category]: prev[`${category}`].concat(value),
+    }));
+  };
+
+  const [tagSearch, setTagSearch] = useState(false);
+  const handleTagSearch = flag => {
+    setTagSearch(() => flag);
+  };
+
   const [tagModalOn, setTagModalOn] = useState(false);
   const handleTagModal = () => {
     setTagModalOn(!tagModalOn);
@@ -64,9 +87,42 @@ function StretchingListPage() {
       }
       setLoading(false);
     };
-
-    getStretchingList();
-  }, [isStretchingActive, main, sub]);
+    const getTagStretchingList = async () => {
+      const arrayToString = arr => `[${arr.join(',')}]`;
+      try {
+        setLoading(true);
+        console.log(
+          `/stretchings/tag/match?main=${arrayToString(mainBody)}&sub=${arrayToString(subBody)}&tool=${arrayToString(
+            tool
+          )}&posture=${arrayToString(posture)}&effect=${arrayToString(effect)}&userIdx=${userIdx}`
+        );
+        const res = await axios.get(
+          `/stretchings/tag/match?main=${arrayToString(mainBody)}&sub=${arrayToString(subBody)}&tool=${arrayToString(
+            tool
+          )}&posture=${arrayToString(posture)}&effect=${arrayToString(effect)}&userIdx=${userIdx}`
+        );
+        const result = res.data.data;
+        setStretchings(result);
+        setTags({
+          mainBody: [],
+          subBody: [],
+          tool: [],
+          posture: [],
+          effect: [],
+        });
+      } catch (err) {
+        setErrMsg(err.response.data.error);
+        handleErrModal();
+      }
+      setLoading(false);
+    };
+    if (!tagSearch) {
+      getStretchingList();
+    } else {
+      getTagStretchingList();
+      // setTagSearch(() => false);
+    }
+  }, [isStretchingActive, main, sub, tagSearch]);
   return loading ? (
     <Loading />
   ) : (
@@ -80,8 +136,16 @@ function StretchingListPage() {
         handleMain={handleMain}
         sub={sub}
         handleSub={handleSub}
+        handleTagModal={handleTagModal}
       />
-      {tagModalOn && <StretchingTagModal onClose={handleTagModal} title="계정 삭제" />}
+      {tagModalOn && (
+        <StretchingTagModal
+          onClose={handleTagModal}
+          tags={tags}
+          handleTagSearch={handleTagSearch}
+          onTagChange={onTagChange}
+        />
+      )}
       {errModalOn && <ConfirmModal onClose={handleErrModal} title="스트레칭 리스트 응답 실패" content={errMsg} />}
     </Main>
   );
