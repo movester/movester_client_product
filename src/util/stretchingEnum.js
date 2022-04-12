@@ -5,6 +5,8 @@ const mainBodyEnum = {
   4: '코어',
 };
 
+const mainBodyArr = ['전신', '상체', '하체', '코어'];
+
 const subBodyEnum = {
   1: '얼굴 / 머리',
   2: '목 / 어깨',
@@ -15,6 +17,12 @@ const subBodyEnum = {
   7: '발목 / 발',
 };
 
+const subBodyArr = [
+  [],
+  ['얼굴 / 머리', '목 / 어깨', '팔 / 손목 / 손'],
+  ['등 / 허리', '골반 / 엉덩이'],
+  ['무릎 / 다리', '발목 / 발'],
+];
 const postureEnum = {
   1: '앉아서',
   2: '의자에 앉아서',
@@ -22,6 +30,8 @@ const postureEnum = {
   4: '누워서',
   5: '엎드려서',
 };
+
+const postureArr = ['앉아서', '의자에 앉아서', '일어서서', '누워서', '엎드려서'];
 
 const effectEnum = {
   1: '근이완',
@@ -33,6 +43,8 @@ const effectEnum = {
   7: '라운드숄더 개선',
 };
 
+const effectArr = ['근이완', '근강화', '바른 자세', '통증 완화', '혈액 순환 촉진', '거북목 개선', '라운드숄더 개선'];
+
 const toolEnum = {
   1: '폼롤러',
   2: '마사지볼',
@@ -41,10 +53,4 @@ const toolEnum = {
   5: '짐볼',
 };
 
-export {
-  mainBodyEnum,
-  subBodyEnum,
-  postureEnum,
-  effectEnum,
-  toolEnum,
-};
+export { mainBodyEnum, mainBodyArr, subBodyEnum, subBodyArr, postureEnum, postureArr, effectEnum, effectArr, toolEnum };

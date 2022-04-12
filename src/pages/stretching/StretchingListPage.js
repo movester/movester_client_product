@@ -8,10 +8,22 @@ import StretchingTagModal from '../../components/common/Modal/StretchingTagModal
 import ConfirmModal from '../../components/common/Modal/ConfirmModal';
 
 function StretchingListPage() {
-  const userIdx = useSelector(state => state.auth.user?.userIdx) || "";
+  const userIdx = useSelector(state => state.auth.user?.userIdx) || '';
   const [loading, setLoading] = useState(true);
   const [stretchings, setStretchings] = useState([]);
   const [isStretchingActive, setIsStretchingActive] = useState(false);
+  const [searchType, setSearchType] = useState(1);
+  const [main, setMain] = useState('');
+  const [sub, setSub] = useState('');
+  const handleSearchType = type => {
+    setSearchType(() => type);
+  };
+  const handleMain = type => {
+    setMain(() => type);
+  };
+  const handleSub = type => {
+    setSub(() => type);
+  };
   const [tagModalOn, setTagModalOn] = useState(false);
   const handleTagModal = () => {
     setTagModalOn(!tagModalOn);
@@ -32,9 +44,8 @@ function StretchingListPage() {
           stretchingIdx: idx,
         });
       }
-      setIsStretchingActive(prev => !prev)
+      setIsStretchingActive(prev => !prev);
     } catch (err) {
-      console.log(err);
       setErrModalOn(prev => !prev);
       setErrMsg(err.response.data.error);
     }
@@ -44,7 +55,7 @@ function StretchingListPage() {
     const getStretchingList = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`/stretchings?searchType=1&main=&sub=&userIdx=${userIdx}`);
+        const res = await axios.get(`/stretchings?searchType=${searchType}&main=${main}&sub=${sub}&userIdx=${userIdx}`);
         const result = res.data.data;
         setStretchings(result);
       } catch (err) {
@@ -55,12 +66,21 @@ function StretchingListPage() {
     };
 
     getStretchingList();
-  }, [isStretchingActive]);
+  }, [isStretchingActive, main, sub]);
   return loading ? (
     <Loading />
   ) : (
     <Main>
-      <StretchingList stretchings={stretchings} handleLike={handleLike} />
+      <StretchingList
+        stretchings={stretchings}
+        handleLike={handleLike}
+        searchType={searchType}
+        handleSearchType={handleSearchType}
+        main={main}
+        handleMain={handleMain}
+        sub={sub}
+        handleSub={handleSub}
+      />
       {tagModalOn && <StretchingTagModal onClose={handleTagModal} title="계정 삭제" />}
       {errModalOn && <ConfirmModal onClose={handleErrModal} title="스트레칭 리스트 응답 실패" content={errMsg} />}
     </Main>

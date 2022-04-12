@@ -3,31 +3,87 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Main from '../common/Main';
 import StretchingItem from '../elements/StretchingItem';
-import { mainBodyEnum, subBodyEnum, postureEnum, effectEnum } from '../../util/stretchingEnum';
+import {
+  mainBodyEnum,
+  mainBodyArr,
+  subBodyEnum,
+  subBodyArr,
+  postureEnum,
+  postureArr,
+  effectEnum,
+  effectArr,
+} from '../../util/stretchingEnum';
 
-function StretchingList({ stretchings, handleTagModal, handleLike }) {
+function StretchingList({
+  stretchings,
+  handleTagModal,
+  handleLike,
+  searchType,
+  handleSearchType,
+  main,
+  handleMain,
+  sub,
+  handleSub,
+}) {
   return (
     <Main>
       <StyledNav>
         <MainCategory>
-          <StyledMainBtn>부위별</StyledMainBtn>
+          <StyledMainBtn className={searchType === 1 ? 'active' : ''} onClick={() => handleSearchType(1)}>
+            부위별
+          </StyledMainBtn>
           <StyledBar>|</StyledBar>
-          <StyledMainBtn>자세별</StyledMainBtn>
+          <StyledMainBtn className={searchType === 2 ? 'active' : ''} onClick={() => handleSearchType(2)}>
+            자세별
+          </StyledMainBtn>
           <StyledBar>|</StyledBar>
-          <StyledMainBtn>효과별</StyledMainBtn>
+          <StyledMainBtn className={searchType === 3 ? 'active' : ''} onClick={() => handleSearchType(3)}>
+            효과별
+          </StyledMainBtn>
         </MainCategory>
-        <CurrentCategory>
-          <StyledCurBtn>전체</StyledCurBtn>
-          <StyledArrow>&gt;</StyledArrow>
-          <StyledCurBtn>상체</StyledCurBtn>
-          <StyledArrow>&gt;</StyledArrow>
-          <StyledCurBtn>목/어깨</StyledCurBtn>
-        </CurrentCategory>
+        {searchType === 1 ? (
+          <CurrentCategory>
+            <StyledCurBtn
+              onClick={() => {
+                handleMain('');
+                handleSub('');
+              }}
+            >
+              전체
+            </StyledCurBtn>
+
+            {main ? (
+              <>
+                <StyledArrow>&gt;</StyledArrow>
+                <StyledCurBtn>{mainBodyArr[main - 1]}</StyledCurBtn>
+              </>
+            ) : (
+              ''
+            )}
+            {sub ? (
+              <>
+                <StyledArrow>&gt;</StyledArrow>
+                <StyledCurBtn>{subBodyArr[main - 1][sub - 1]}</StyledCurBtn>
+              </>
+            ) : (
+              ''
+            )}
+          </CurrentCategory>
+        ) : (
+          ''
+        )}
         <SubCategory>
-          <StyledSubBtn>전신</StyledSubBtn>
-          <StyledSubBtn>상체</StyledSubBtn>
-          <StyledSubBtn>하체</StyledSubBtn>
-          <StyledSubBtn>코어</StyledSubBtn>
+          {searchType === 1
+            ? main
+              ? subBodyArr[main - 1].map((subBody, i) => (
+                  <StyledSubBtn onClick={() => handleSub(i + 1)}>{subBody}</StyledSubBtn>
+                ))
+              : mainBodyArr.map((mainBody, i) => (
+                  <StyledSubBtn onClick={() => handleMain(i + 1)}>{mainBody}</StyledSubBtn>
+                ))
+            : searchType === 2
+            ? postureArr.map((posture, i) => <StyledSubBtn onClick={() => handleMain(i + 1)}>{posture}</StyledSubBtn>)
+            : effectArr.map((effect, i) => <StyledSubBtn onClick={() => handleMain(i + 1)}>{effect}</StyledSubBtn>)}
         </SubCategory>
         <StyledTagBtn onClick={handleTagModal}>태그 맞춤 동작 찾기</StyledTagBtn>
       </StyledNav>
@@ -35,16 +91,16 @@ function StretchingList({ stretchings, handleTagModal, handleLike }) {
         {stretchings.map(stretching => {
           const { stretchingIdx, title, mainBody, subBody, effect, posture, image, like } = stretching;
           return (
-              <StretchingItem
-                idx={stretchingIdx}
-                title={title}
-                category={`${mainBodyEnum[mainBody]} - ${subBodyEnum[subBody]}`}
-                posture={posture ? posture.map(v => postureEnum[v]).join(' · ') : '-'}
-                effect={effect ? effect.map(v => effectEnum[v]).join(' · ') : '-'}
-                image={image}
-                active={like}
-                handleLike={handleLike}
-              />
+            <StretchingItem
+              idx={stretchingIdx}
+              title={title}
+              category={`${mainBodyEnum[mainBody]} - ${subBodyEnum[subBody]}`}
+              posture={posture ? posture.map(v => postureEnum[v]).join(' · ') : '-'}
+              effect={effect ? effect.map(v => effectEnum[v]).join(' · ') : '-'}
+              image={image}
+              active={like}
+              handleLike={handleLike}
+            />
           );
         })}
       </StretchingContainer>
@@ -56,6 +112,12 @@ StretchingList.propTypes = {
   stretchings: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleTagModal: PropTypes.func.isRequired,
   handleLike: PropTypes.func.isRequired,
+  searchType: PropTypes.number.isRequired,
+  handleSearchType: PropTypes.func.isRequired,
+  main: PropTypes.number.isRequired,
+  handleMain: PropTypes.func.isRequired,
+  sub: PropTypes.number.isRequired,
+  handleSub: PropTypes.func.isRequired,
 };
 
 export default StretchingList;
@@ -78,6 +140,11 @@ const MainCategory = styled.div`
 const StyledMainBtn = styled.button`
   font-size: 18px;
 
+  &.active {
+    color: ${({ theme }) => theme.darkPurple};
+    font-weight: 700;
+  }
+
   & + & {
     margin-left: 1rem;
   }
@@ -91,7 +158,7 @@ const StyledBar = styled.span`
 const CurrentCategory = styled.div`
   font-size: 20px;
   font-weight: 800;
-  margin: 1rem 0;
+  margin-top: 1rem;
 `;
 
 const StyledArrow = styled.span`
@@ -109,6 +176,7 @@ const StyledCurBtn = styled.button`
 
 const SubCategory = styled.div`
   font-size: 20px;
+  margin-top: 1rem;
   @media screen and (max-width: 400px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -118,8 +186,9 @@ const SubCategory = styled.div`
 
 const StyledSubBtn = styled.button`
   font-size: 18px;
-  width: 80px;
+  width: auto;
   height: 40px;
+  padding: 0 20px;
   border-radius: 10px;
 
   & + & {
@@ -153,14 +222,22 @@ const StyledSubBtn = styled.button`
   }
 
   &:nth-child(3) {
-    background-color: #bfd0a2;
+    background-color: #ede58b;
   }
 
   &:nth-child(4) {
-    background-color: #97bfb8;
+    background-color: #bfd0a2;
   }
 
   &:nth-child(5) {
+    background-color: #97bfb8;
+  }
+
+  &:nth-child(6) {
+    background-color: #b8dff8;
+  }
+
+  &:nth-child(7) {
     background-color: #bf97be;
   }
 `;
