@@ -51,7 +51,7 @@ function Header() {
           </>
         ) : (
           <>
-            <Link to="/join">Join</Link> | <Link to="/login">Login</Link>
+            <Link to="/join">Join</Link> <span>|</span> <Link to="/login">Login</Link>
           </>
         )}
       </HeaderRightBlock>
@@ -121,6 +121,12 @@ const HeaderLeftBlock = styled.div`
 const HeaderRightBlock = styled.div`
   width: 150px;
   height: 40px;
+  font-size: 1.2rem;
+  line-height: 2;
+
+  span{
+    margin: 0 10px;
+  }
 `;
 
 const StyledNavigation = styled.nav`

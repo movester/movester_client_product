@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
-import ModalPortal from './Modal/ModalPortal';
 import LogoutModal from './Modal/LogoutModal';
 
 function Nav() {
@@ -57,11 +55,7 @@ function Nav() {
           로그아웃
         </button>
       </StyledNavWrap>
-      {modalOn && (
-        <ModalPortal>
-          <LogoutModal onClose={handleModal} />
-        </ModalPortal>
-      )}
+      {modalOn && <LogoutModal onClose={handleModal} />}
     </>
   );
 }
