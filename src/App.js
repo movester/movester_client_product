@@ -6,7 +6,7 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 
 import theme from './theme';
-import Index from './pages/Index';
+import IndexPage from './pages/IndexPage';
 import About from './pages/About';
 
 import StretchingListPage from './pages/stretching/StretchingListPage';
@@ -37,7 +37,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Header />
       <Routes>
-        <Route path="/" element={<Index />} />
+        <Route path="/" element={<IndexPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<SignInPage />} />
         <Route path="/login/findPassword" element={<FindPasswordPage />} />

@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import WeeklyCard from '../elements/WeeklyCard';
 
-function HomeComponent() {
+function Index({ weekStretching }) {
   return (
     <>
       <Banner>
@@ -24,7 +25,13 @@ function HomeComponent() {
       </Banner>
       <WeeklyStretching>
         <h2>#일주일 #추천 스트레칭</h2>
-        <WeeklyCard />
+        {weekStretching ? (
+          <WeeklyCard />
+        ) : (
+          <div>
+            <NoWeek src="/assets/week_empty.png" alt="스트레칭 없음" />
+          </div>
+        )}
       </WeeklyStretching>
       <Service>
         <h2>#뭅스터만의 #힙한 서비스</h2>
@@ -47,7 +54,11 @@ function HomeComponent() {
   );
 }
 
-export default HomeComponent;
+Index.propTypes = {
+  weekStretching: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+export default Index;
 
 const Banner = styled.section`
   display: flex;
@@ -178,4 +189,9 @@ const ItemImage = styled.img`
   width: 200px;
   height: 200px;
   opacity: 0.6;
+`;
+
+const NoWeek = styled.img`
+  width: 100%;
+  height: 300px;
 `;
