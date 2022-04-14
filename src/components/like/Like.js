@@ -3,29 +3,34 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import MoveLink from '../common/MoveLink';
 import StretchingItem from '../elements/StretchingItem';
+import Pagination from '../elements/Pagination';
 import { mainBodyEnum, subBodyEnum, postureEnum, effectEnum } from '../../util/stretchingEnum';
 
-function Like({ likeStretchings, handleLike }) {
+function Like({ likeStretchings, handleLike, total, page, setPage }) {
+  const offset = (page - 1) * 12;
   return (
     <StyledWrap>
       {likeStretchings.length ? (
-        <StretchingContainer>
-          {likeStretchings.map(stretching => {
-            const { stretchingIdx, title, mainBody, subBody, effects, postures, image } = stretching;
-            return (
-              <StretchingItem
-                idx={stretchingIdx}
-                title={title}
-                category={`${mainBodyEnum[mainBody]} - ${subBodyEnum[subBody]}`}
-                posture={postures ? postures.map(v => postureEnum[v]).join(' · ') : '-'}
-                effect={effects ? effects.map(v => effectEnum[v]).join(' · ') : '-'}
-                image={image}
-                active="1"
-                handleLike={handleLike}
-              />
-            );
-          })}
-        </StretchingContainer>
+        <>
+          <StretchingContainer>
+            {likeStretchings.slice(offset, offset + 12).map(stretching => {
+              const { stretchingIdx, title, mainBody, subBody, effects, postures, image } = stretching;
+              return (
+                <StretchingItem
+                  idx={stretchingIdx}
+                  title={title}
+                  category={`${mainBodyEnum[mainBody]} - ${subBodyEnum[subBody]}`}
+                  posture={postures ? postures.map(v => postureEnum[v]).join(' · ') : '-'}
+                  effect={effects ? effects.map(v => effectEnum[v]).join(' · ') : '-'}
+                  image={image}
+                  active="1"
+                  handleLike={handleLike}
+                />
+              );
+            })}
+          </StretchingContainer>
+          <Pagination total={total} page={page} setPage={setPage} />
+        </>
       ) : (
         <div className="not-Like">
           <img src="/assets/sorry.png" alt="스트레칭 없음" />
@@ -40,6 +45,9 @@ function Like({ likeStretchings, handleLike }) {
 Like.propTypes = {
   likeStretchings: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleLike: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  setPage: PropTypes.func.isRequired,
 };
 
 export default Like;

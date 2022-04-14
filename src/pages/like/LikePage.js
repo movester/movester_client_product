@@ -17,7 +17,10 @@ function LikePage() {
     setErrModalOn(!errModalOn);
   };
 
-  const handleLike = async (idx) => {
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(0);
+
+  const handleLike = async idx => {
     try {
       await axios.delete(`likes/${idx}`);
 
@@ -34,6 +37,7 @@ function LikePage() {
         const result = await axios.get(`/likes`);
 
         setLikeStretchings([...result.data.data]);
+        setTotal([...result.data.data].length);
       } catch (err) {
         setErrMsg(err.response.data.error);
         handleErrModal();
@@ -42,14 +46,14 @@ function LikePage() {
 
     getLikeStretchingList();
     setLoading(false);
-  }, [isStretchingActive]);
+  }, [isStretchingActive, page, total]);
 
   return loading ? (
     <Loading />
   ) : (
     <Main type="profile">
       <Nav />
-      <Like likeStretchings={likeStretchings} handleLike={handleLike}/>
+      <Like likeStretchings={likeStretchings} handleLike={handleLike} total={total} page={page} setPage={setPage} />
       {errModalOn && <ConfirmModal onClose={handleErrModal} title="찜한 스트레칭 리스트 응답 실패" content={errMsg} />}
     </Main>
   );
