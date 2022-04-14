@@ -33,7 +33,5 @@
     "prefer-template": "off",
     "no-return-assign": "off",
     "react/jsx-props-no-spreading": "off",
-    "import/no-named-as-default-member": "off",
-    "react/button-has-type": "off"
-  }
+    "import/no-named-as-default-member": "off"  }
 }

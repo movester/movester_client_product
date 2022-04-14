@@ -12,6 +12,7 @@ function StretchingListPage() {
   const userIdx = useSelector(state => state.auth.user?.userIdx) || '';
   const [loading, setLoading] = useState(true);
   const [stretchings, setStretchings] = useState([]);
+  const [moreStretchings, setMoreStretchings] = useState([]);
   const [page, setPage] = useState(1);
   const [isStretchingActive, setIsStretchingActive] = useState(false);
   const [searchType, setSearchType] = useState(1);
@@ -78,11 +79,12 @@ function StretchingListPage() {
 
   const getStretchingList = async () => {
     try {
-      setLoading(true);
+      // setLoading(true);
       const res = await axios.get(
         `/stretchings?searchType=${searchType}&main=${main}&sub=${sub}&userIdx=${userIdx}&page=${page}`
       );
       const result = res.data.data;
+      setMoreStretchings(result)
       setStretchings(prev => [...prev, ...result]);
       setLoading(false);
     } catch (err) {
@@ -154,6 +156,9 @@ function StretchingListPage() {
           handleSub={handleSub}
           handleTagModal={handleTagModal}
           setPage={setPage}
+          loading={loading}
+          setLoading={setLoading}
+          moreStretchings={moreStretchings}
         />
       )}
       {tagModalOn && (
