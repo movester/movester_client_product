@@ -63,7 +63,6 @@ const ImageWrap = styled.div`
 `;
 
 const StyledImg = styled.img`
-  border: 1px solid gray;
   width: 100%;
   border-radius: 15px;
 `;
