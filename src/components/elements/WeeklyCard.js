@@ -1,68 +1,53 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-function WeeklyCard() {
+function WeeklyCard({ weekStretching }) {
   return (
     <WeeklyCardWrapper>
-      {/* TODO: 첫번째 두번째 카드 margin-right 처리 안되는 부분 해결하고, 중복 요소 리팩토링 */}
-      <WeeklyCardContainer style={{ marginRight: '10px' }}>
-        <h3>MON</h3>
-        <img src="/assets/stretching.png" alt="스트레칭" />
-      </WeeklyCardContainer>
-      <WeeklyCardContainer>
-        <h3>TUE</h3>
-        <img src="/assets/stretching.png" alt="스트레칭" />
-      </WeeklyCardContainer>
-      <WeeklyCardContainer>
-        <h3>WED</h3>
-        <img src="/assets/stretching.png" alt="스트레칭" />
-      </WeeklyCardContainer>
-      <WeeklyCardContainer>
-        <h3>THU</h3>
-        <img src="/assets/stretching.png" alt="스트레칭" />
-      </WeeklyCardContainer>
-      <WeeklyCardContainer>
-        <h3>FRI</h3>
-        <img src="/assets/stretching.png" alt="스트레칭" />
-      </WeeklyCardContainer>
-      <WeeklyCardContainer>
-        <h3>SAT</h3>
-        <img src="/assets/stretching.png" alt="스트레칭" />
-      </WeeklyCardContainer>
-      <WeeklyCardContainer>
-        <h3>SUN</h3>
-        <img src="/assets/stretching.png" alt="스트레칭" />
-      </WeeklyCardContainer>
+      {['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUM'].map((day, index) => (
+        <WeeklyCardContainer>
+          <h3>{day}</h3>
+          <img
+            src={`https://movester-bucket.s3.ap-northeast-2.amazonaws.com/${weekStretching[index]}.png`}
+            alt="스트레칭"
+          />
+        </WeeklyCardContainer>
+      ))}
     </WeeklyCardWrapper>
   );
 }
 
+WeeklyCard.propTypes = {
+  weekStretching: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
 export default WeeklyCard;
 
 const WeeklyCardWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  height: 270px;
+  grid-template-columns: repeat(7, 1fr);
+  column-gap: 10px;
   justify-content: center;
   margin-bottom: 30px;
   cursor: pointer;
 `;
 
 const WeeklyCardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-rows: 1fr 8fr;
+  text-align: center;
 
   h3 {
     font-size: 20px;
     font-weight: 700;
     color: rgba(42, 21, 152, 1);
-    margin-bottom: 6px;
   }
 
-  & + & {
-    margin-right: 10px;
+  img {
+    width: 100%;
+    height: 100%;
   }
 
   @media (max-width: 405px) {

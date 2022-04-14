@@ -26,7 +26,7 @@ function Index({ weekStretching }) {
       <WeeklyStretching>
         <h2>#일주일 #추천 스트레칭</h2>
         {weekStretching ? (
-          <WeeklyCard />
+          <WeeklyCard weekStretching={weekStretching} />
         ) : (
           <div>
             <NoWeek src="/assets/week_empty.png" alt="스트레칭 없음" />

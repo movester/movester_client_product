@@ -7,7 +7,7 @@ import Loading from '../components/common/Loading';
 
 function IndexPage() {
   const [loading, setLoading] = useState(true);
-  const [weekStretchings, setWeekStretching] = useState([]);
+  const [weekStretching, setWeekStretching] = useState([]);
 
   const [errModalOn, setErrModalOn] = useState(false);
   const [errMsg, setErrMsg] = useState('');
@@ -18,11 +18,11 @@ function IndexPage() {
   useEffect(() => {
     const getWeekStretching = async () => {
       try {
-        const result = await axios.get(`/weeks/expose`);
-
-        setWeekStretching([...result.data.data]);
+        const res = await axios.get(`/weeks/expose`);
+        const result = res.data.data;
+        setWeekStretching(() => result);
       } catch (err) {
-        setErrMsg(err.response.data.error);
+        setErrMsg('오류 발생');
         handleErrModal();
       }
     };
@@ -35,7 +35,7 @@ function IndexPage() {
     <Loading />
   ) : (
     <Main>
-      <Index weekStretchings={weekStretchings} />
+      <Index weekStretching={weekStretching} />
       {errModalOn && <ConfirmModal onClose={handleErrModal} title="오류" content={errMsg} />}
     </Main>
   );
