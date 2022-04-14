@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { memo } from 'react';
+import ReactLoading from 'react-loading';
 import styled from 'styled-components';
-import { RotatingLines } from 'react-loader-spinner';
 
-function Loading() {
-  return (
-    <StyledLoading className="loading">
-      <RotatingLines width="70" />
-    </StyledLoading>
-  );
-}
+const Loader = () => (
+  <LoaderWrap>
+    <ReactLoading type="spin" color="#A593E0" />
+  </LoaderWrap>
+);
 
-export default Loading;
+export default memo(Loader);
 
-const StyledLoading = styled.div`
+const LoaderWrap = styled.div`
   width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 `;

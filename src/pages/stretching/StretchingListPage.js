@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import axios from '../../services/defaultClient';
 import Main from '../../components/common/Main';
 import Loading from '../../components/common/Loading';
+import StretchingMenu from '../../components/stretching/StretchingMenu';
 import StretchingList from '../../components/stretching/StretchingList';
 import StretchingTagModal from '../../components/common/Modal/StretchingTagModal';
 import ConfirmModal from '../../components/common/Modal/ConfirmModal';
@@ -11,6 +12,7 @@ function StretchingListPage() {
   const userIdx = useSelector(state => state.auth.user?.userIdx) || '';
   const [loading, setLoading] = useState(true);
   const [stretchings, setStretchings] = useState([]);
+  const [page, setPage] = useState(1);
   const [isStretchingActive, setIsStretchingActive] = useState(false);
   const [searchType, setSearchType] = useState(1);
   const [main, setMain] = useState('');
@@ -74,62 +76,62 @@ function StretchingListPage() {
     }
   };
 
+  const getStretchingList = async () => {
+    try {
+      setLoading(true);
+      const res = await axios.get(
+        `/stretchings?searchType=${searchType}&main=${main}&sub=${sub}&userIdx=${userIdx}&page=${page}`
+      );
+      const result = res.data.data;
+      setStretchings(prev => [...prev, ...result]);
+      setLoading(false);
+    } catch (err) {
+      setErrMsg(err.response.data.error);
+      handleErrModal();
+    }
+  };
+
+  const getTagStretchingList = async () => {
+    const arrayToString = arr => `[${arr.join(',')}]`;
+    try {
+      setLoading(true);
+      console.log(
+        `/stretchings/tag/match?main=${arrayToString(mainBody)}&sub=${arrayToString(subBody)}&tool=${arrayToString(
+          tool
+        )}&posture=${arrayToString(posture)}&effect=${arrayToString(effect)}&userIdx=${userIdx}`
+      );
+      const res = await axios.get(
+        `/stretchings/tag/match?main=${arrayToString(mainBody)}&sub=${arrayToString(subBody)}&tool=${arrayToString(
+          tool
+        )}&posture=${arrayToString(posture)}&effect=${arrayToString(effect)}&userIdx=${userIdx}`
+      );
+      const result = res.data.data;
+      setStretchings(result);
+      setTags({
+        mainBody: [],
+        subBody: [],
+        tool: [],
+        posture: [],
+        effect: [],
+      });
+    } catch (err) {
+      setErrMsg(err.response.data.error);
+      handleErrModal();
+    }
+    setLoading(false);
+  };
+
   useEffect(() => {
-    const getStretchingList = async () => {
-      try {
-        setLoading(true);
-        const res = await axios.get(`/stretchings?searchType=${searchType}&main=${main}&sub=${sub}&userIdx=${userIdx}`);
-        const result = res.data.data;
-        setStretchings(result);
-      } catch (err) {
-        setErrMsg(err.response.data.error);
-        handleErrModal();
-      }
-      setLoading(false);
-    };
-    const getTagStretchingList = async () => {
-      const arrayToString = arr => `[${arr.join(',')}]`;
-      try {
-        setLoading(true);
-        console.log(
-          `/stretchings/tag/match?main=${arrayToString(mainBody)}&sub=${arrayToString(subBody)}&tool=${arrayToString(
-            tool
-          )}&posture=${arrayToString(posture)}&effect=${arrayToString(effect)}&userIdx=${userIdx}`
-        );
-        const res = await axios.get(
-          `/stretchings/tag/match?main=${arrayToString(mainBody)}&sub=${arrayToString(subBody)}&tool=${arrayToString(
-            tool
-          )}&posture=${arrayToString(posture)}&effect=${arrayToString(effect)}&userIdx=${userIdx}`
-        );
-        const result = res.data.data;
-        setStretchings(result);
-        setTags({
-          mainBody: [],
-          subBody: [],
-          tool: [],
-          posture: [],
-          effect: [],
-        });
-      } catch (err) {
-        setErrMsg(err.response.data.error);
-        handleErrModal();
-      }
-      setLoading(false);
-    };
     if (!tagSearch) {
       getStretchingList();
     } else {
       getTagStretchingList();
-      // setTagSearch(() => false);
     }
-  }, [isStretchingActive, main, sub, tagSearch]);
-  return loading ? (
-    <Loading />
-  ) : (
+  }, [isStretchingActive, main, sub, tagSearch, page]);
+
+  return (
     <Main>
-      <StretchingList
-        stretchings={stretchings}
-        handleLike={handleLike}
+      <StretchingMenu
         searchType={searchType}
         handleSearchType={handleSearchType}
         main={main}
@@ -138,6 +140,22 @@ function StretchingListPage() {
         handleSub={handleSub}
         handleTagModal={handleTagModal}
       />
+      {loading ? (
+        <Loading />
+      ) : (
+        <StretchingList
+          stretchings={stretchings}
+          handleLike={handleLike}
+          searchType={searchType}
+          handleSearchType={handleSearchType}
+          main={main}
+          handleMain={handleMain}
+          sub={sub}
+          handleSub={handleSub}
+          handleTagModal={handleTagModal}
+          setPage={setPage}
+        />
+      )}
       {tagModalOn && (
         <StretchingTagModal
           onClose={handleTagModal}

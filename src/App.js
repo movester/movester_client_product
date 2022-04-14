@@ -16,7 +16,7 @@ import Event from './pages/Event';
 import SignInPage from './pages/sign/SignInPage';
 import SignUpPage from './pages/sign/SignUpPage';
 import KakaoRedirectPage from './pages/sign/KakaoRedirectPage';
-import EmailAuthPage from './pages/sign/EmailAuthPage'
+import EmailAuthPage from './pages/sign/EmailAuthPage';
 import FindPasswordPage from './pages/sign/FindPasswordPage';
 
 import ProfilePage from './pages/profile/ProfilePage';
@@ -49,7 +49,6 @@ function App() {
         <Route path="/stretching/detail/:idx" element={<StretchingDetailPage />} />
 
         <Route path="/event" element={<Event />} />
-
 
         <Route path="/mypage/profile" element={<ProfilePage />} />
         <Route path="/mypage/profile/passwordChange" element={<PasswordChangePage />} />

@@ -30,6 +30,10 @@
     "no-cond-assign": "off",
     "no-nested-ternary": "off",
     "import/no-named-as-default": 0,
-    "prefer-template": "off"
+    "prefer-template": "off",
+    "no-return-assign": "off",
+    "react/jsx-props-no-spreading": "off",
+    "import/no-named-as-default-member": "off",
+    "react/button-has-type": "off"
   }
 }
