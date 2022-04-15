@@ -35,32 +35,14 @@ function Event() {
       </StyledNav>
       <ContentWrap className="progress">
         <Item>
-          <Title>출석왕 포인트 대결</Title>
+          <Title>5월 출석왕 포인트 대결</Title>
           <Detail>
             <StyledImg src="/assets/stretching-list.png" alt="이벤트 대표 이미지" />
             <Wrap>
-              <Date>기간 : 2021.05.01 ~ 2021.05.31</Date>
+              <Date>기간 : 2022.05.01 ~ 2022.05.31</Date>
               <Content>
                 매달 진행하는 뭅스터만의 출석이벤트. <br />
                 매일 출석 도장을 통해 포인트를 쌓아보세요! <br />
-                전신 · 코어 · 상체 · 하체 부위별 10포인트를 적립해드립니다. <br />
-                하루 최대 40포인트를 적립하여 뭅스터 출석왕이 되보세요! <br />
-                출석왕을 위해 뭅스터는 선물을 준비한답니다.
-              </Content>
-            </Wrap>
-          </Detail>
-        </Item>
-        <Item>
-          <Title>출석왕 포인트 대결</Title>
-          <Detail>
-            <StyledImg src="/assets/stretching-list.png" alt="이벤트 대표 이미지" />
-            <Wrap>
-              <Date>기간 : 2021.05.01 ~ 2021.05.31</Date>
-              <Content>
-                매달 진행하는 뭅스터만의 출석이벤트. <br />
-                매일 출석 도장을 통해 포인트를 쌓아보세요! <br />
-                전신 · 코어 · 상체 · 하체 부위별 10포인트를 적립해드립니다. <br />
-                하루 최대 40포인트를 적립하여 뭅스터 출석왕이 되보세요! <br />
                 출석왕을 위해 뭅스터는 선물을 준비한답니다.
               </Content>
             </Wrap>
@@ -70,33 +52,16 @@ function Event() {
 
       <ContentWrap className="winner-announce hidden">
         <Item>
-          <Title>winner 출석왕 포인트 대결</Title>
+          <Title>4월 출석왕 포인트 대결</Title>
           <Detail>
             <StyledImg src="/assets/stretching-list.png" alt="이벤트 대표 이미지" />
             <Wrap>
-              <Date>기간 : 2021.05.01 ~ 2021.05.31</Date>
+              <Date>기간 : 2022.04.01 ~ 2022.04.30</Date>
               <Content>
-                매달 진행하는 뭅스터만의 출석이벤트. <br />
-                매일 출석 도장을 통해 포인트를 쌓아보세요! <br />
-                전신 · 코어 · 상체 · 하체 부위별 10포인트를 적립해드립니다. <br />
-                하루 최대 40포인트를 적립하여 뭅스터 출석왕이 되보세요! <br />
-                출석왕을 위해 뭅스터는 선물을 준비한답니다.
-              </Content>
-            </Wrap>
-          </Detail>
-        </Item>
-        <Item>
-          <Title>winner 출석왕 포인트 대결</Title>
-          <Detail>
-            <StyledImg src="/assets/stretching-list.png" alt="이벤트 대표 이미지" />
-            <Wrap>
-              <Date>기간 : 2021.05.01 ~ 2021.05.31</Date>
-              <Content>
-                매달 진행하는 뭅스터만의 출석이벤트. <br />
-                매일 출석 도장을 통해 포인트를 쌓아보세요! <br />
-                전신 · 코어 · 상체 · 하체 부위별 10포인트를 적립해드립니다. <br />
-                하루 최대 40포인트를 적립하여 뭅스터 출석왕이 되보세요! <br />
-                출석왕을 위해 뭅스터는 선물을 준비한답니다.
+                축하합니다! <br />
+                jnh***@gmail.com (조*현) <br />
+                뭅스터가 해당 이메일로 메일을 보냈습니다! <br />
+                확인 부탁드려요!
               </Content>
             </Wrap>
           </Detail>
@@ -105,38 +70,34 @@ function Event() {
 
       <ContentWrap className="closed hidden">
         <Item>
-          <Title>closed 출석왕 포인트 대결</Title>
+          <Title>4월 출석왕 포인트 대결</Title>
           <Detail>
             <ImageWrap>
               <ImageLetter>마감</ImageLetter>
               <StyledImg className="dark" src="/assets/stretching-list.png" alt="이벤트 대표 이미지" />
             </ImageWrap>
             <Wrap>
-              <Date>기간 : 2021.05.01 ~ 2021.05.31</Date>
+              <Date>기간 : 2022.04.01 ~ 2022.04.30</Date>
               <Content>
                 매달 진행하는 뭅스터만의 출석이벤트. <br />
                 매일 출석 도장을 통해 포인트를 쌓아보세요! <br />
-                전신 · 코어 · 상체 · 하체 부위별 10포인트를 적립해드립니다. <br />
-                하루 최대 40포인트를 적립하여 뭅스터 출석왕이 되보세요! <br />
                 출석왕을 위해 뭅스터는 선물을 준비한답니다.
               </Content>
             </Wrap>
           </Detail>
         </Item>
         <Item>
-          <Title>closed 출석왕 포인트 대결</Title>
+          <Title>3월 출석왕 포인트 대결</Title>
           <Detail>
             <ImageWrap>
               <ImageLetter>마감</ImageLetter>
               <StyledImg className="dark" src="/assets/stretching-list.png" alt="이벤트 대표 이미지" />
             </ImageWrap>
             <Wrap>
-              <Date>기간 : 2021.05.01 ~ 2021.05.31</Date>
+              <Date>기간 : 2022.03.01 ~ 2022.03.31</Date>
               <Content>
                 매달 진행하는 뭅스터만의 출석이벤트. <br />
                 매일 출석 도장을 통해 포인트를 쌓아보세요! <br />
-                전신 · 코어 · 상체 · 하체 부위별 10포인트를 적립해드립니다. <br />
-                하루 최대 40포인트를 적립하여 뭅스터 출석왕이 되보세요! <br />
                 출석왕을 위해 뭅스터는 선물을 준비한답니다.
               </Content>
             </Wrap>
@@ -299,4 +260,5 @@ const Date = styled.p`
 
 const Content = styled.p`
   font-size: 16px;
+  line-height: 28px;
 `;
