@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, {  useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -24,7 +24,7 @@ function StretchingItem({ idx, title, category, posture, effect, image, like }) 
       alert('에러 발생')
     }
   };
-  useEffect(() => {}, [handleLike]);
+
   return (
     <Item>
       <ImageWrap>

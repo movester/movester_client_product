@@ -5,7 +5,8 @@ import axios from '../../services/defaultClient';
 import Main from '../../components/common/Main';
 import Loading from '../../components/common/Loading';
 import ConfirmModal from '../../components/common/Modal/ConfirmModal';
-import StretchingDetail from '../../components/stretching/StretchingDetail';
+import StretchingHeader from '../../components/stretching/detail/StretchingHeader';
+import StretchingDetail from '../../components/stretching/detail/StretchingDetail';
 import StretchingRecommend from '../../components/stretching/StretchingRecommend';
 
 function StretchingDetailPage() {
@@ -17,33 +18,12 @@ function StretchingDetailPage() {
   const [recommendStretchings, setRecommendStretchings] = useState([]);
   const [userDifficulty, setUserDifficulty] = useState(0);
   const [userDifficultyFlag, setUserDifficultyFlag] = useState(false);
-  const [isStretchingActive, setIsStretchingActive] = useState(false);
 
   const [errModalOn, setErrModalOn] = useState(false);
   const [errMsg, setErrMsg] = useState('');
   const handleErrModal = () => {
     setErrModalOn(!errModalOn);
   };
-
-  const handleLike = async (idx, active) => {
-    try {
-      if (active) {
-        await axios.delete(`likes/${idx}`);
-      } else {
-        await axios.post('likes/', {
-          stretchingIdx: idx,
-        });
-      }
-      setIsStretchingActive(prev => !prev);
-    } catch (err) {
-      setErrModalOn(prev => !prev);
-      setErrMsg(err.response.data.error);
-    }
-  };
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  });
 
   useEffect(() => {
     const getStretching = async () => {
@@ -58,7 +38,7 @@ function StretchingDetailPage() {
       setLoading(false);
     };
     getStretching();
-  }, [userDifficulty, isStretchingActive]);
+  }, [userDifficulty]);
 
   useEffect(() => {
     const getUserDifficulty = async () => {
@@ -90,7 +70,7 @@ function StretchingDetailPage() {
       setLoading(false);
     };
     getRecommendStretchings();
-  }, [isStretchingActive]);
+  }, []);
 
   const handleDifficulty = async score => {
     const createDifficulty = async () => {
@@ -127,15 +107,15 @@ function StretchingDetailPage() {
     <Loading />
   ) : (
     <Main>
+      <StretchingHeader stretching={stretching} isAuth={isAuth} />
       <StretchingDetail
         stretching={stretching}
         recommendStretchings={recommendStretchings}
         isAuth={isAuth}
         handleDifficulty={handleDifficulty}
         userDifficulty={userDifficulty}
-        handleLike={handleLike}
       />
-      <StretchingRecommend recommendStretchings={recommendStretchings} handleRecommendLike={handleLike} />
+      <StretchingRecommend recommendStretchings={recommendStretchings} />
       {errModalOn && <ConfirmModal onClose={handleErrModal} title="다시 시도해주세요" content={errMsg} />}
     </Main>
   );
