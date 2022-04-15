@@ -6,7 +6,7 @@ import NoContent from '../elements/NoContent';
 import Loader from '../common/Loading';
 import { mainBodyEnum, subBodyEnum, postureEnum, effectEnum } from '../../util/stretchingEnum';
 
-function StretchingList({ stretchings, handleLike, setPage, setLoading, loading, moreStretchings }) {
+function StretchingList({ stretchings, setPage, setLoading, loading, moreStretchings }) {
   const [target, setTarget] = useState(null);
   const loadMore = () => {
     setLoading(true);
@@ -46,8 +46,7 @@ function StretchingList({ stretchings, handleLike, setPage, setLoading, loading,
               posture={posture ? posture.map(v => postureEnum[v]).join(' · ') : '-'}
               effect={effect ? effect.map(v => effectEnum[v]).join(' · ') : '-'}
               image={image}
-              active={like}
-              handleLike={handleLike}
+              like={like}
             />
           </div>
         );
@@ -61,7 +60,6 @@ function StretchingList({ stretchings, handleLike, setPage, setLoading, loading,
 
 StretchingList.propTypes = {
   stretchings: PropTypes.arrayOf(PropTypes.object).isRequired,
-  handleLike: PropTypes.func.isRequired,
   setPage: PropTypes.func.isRequired,
   setLoading: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,

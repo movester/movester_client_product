@@ -1,28 +1,37 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import axios from '../../services/defaultClient';
 
-function StretchingItem({ idx, title, category, posture, effect, image, active, handleLike }) {
+function StretchingItem({ idx, title, category, posture, effect, image, like }) {
   const user = useSelector(state => state.auth.isAuth);
+  const likeBtn = useRef(null);
+  const handleLike = async e => {
+    try {
+      e.stopPropagation();
+      const isActive = likeBtn.current.classList.contains('active');
+      likeBtn.current.classList.toggle('active');
+      if (isActive) {
+        await axios.delete(`likes/${idx}`);
+      } else {
+        await axios.post('likes/', {
+          stretchingIdx: idx,
+        });
+      }
+    } catch (err) {
+      alert('에러 발생')
+    }
+  };
+  useEffect(() => {}, [handleLike]);
   return (
     <Item>
       <ImageWrap>
         <Link key={idx} to={`/stretching/detail/${idx}`}>
           <StyledImg src={`https://movester-bucket.s3.ap-northeast-2.amazonaws.com/${image}.png`} alt="대표 이미지" />
         </Link>
-        {user ? (
-          <LikeButton
-            onClick={e => {
-              e.stopPropagation();
-              handleLike(idx, active);
-            }}
-            className={active ? 'active' : ''}
-          />
-        ) : (
-          ''
-        )}
+        {user ? <LikeButton ref={likeBtn} onClick={handleLike} className={like ? 'active' : ''} /> : ''}
       </ImageWrap>
       <Link key={idx} to={`/stretching/detail/${idx}`}>
         <Title>{title}</Title>
@@ -41,13 +50,11 @@ StretchingItem.propTypes = {
   posture: PropTypes.string.isRequired,
   effect: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  active: PropTypes.number,
-  handleLike: PropTypes.func,
+  like: PropTypes.number,
 };
 
 StretchingItem.defaultProps = {
-  active: false,
-  handleLike: () => {},
+  like: 0,
 };
 
 export default StretchingItem;

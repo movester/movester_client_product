@@ -14,7 +14,6 @@ function StretchingListPage() {
   const [stretchings, setStretchings] = useState([]);
   const [moreStretchings, setMoreStretchings] = useState([]);
   const [page, setPage] = useState(1);
-  const [isStretchingActive, setIsStretchingActive] = useState(false);
   const [searchType, setSearchType] = useState(1);
   const [main, setMain] = useState('');
   const [sub, setSub] = useState('');
@@ -59,22 +58,6 @@ function StretchingListPage() {
   const [errMsg, setErrMsg] = useState('');
   const handleErrModal = () => {
     setErrModalOn(!errModalOn);
-  };
-
-  const handleLike = async (idx, active) => {
-    try {
-      if (active) {
-        await axios.delete(`likes/${idx}`);
-      } else {
-        await axios.post('likes/', {
-          stretchingIdx: idx,
-        });
-      }
-      setIsStretchingActive(prev => !prev);
-    } catch (err) {
-      setErrModalOn(prev => !prev);
-      setErrMsg(err.response.data.error);
-    }
   };
 
   const getStretchingList = async () => {
@@ -129,7 +112,7 @@ function StretchingListPage() {
     } else {
       getTagStretchingList();
     }
-  }, [isStretchingActive, main, sub, tagSearch, page]);
+  }, [main, sub, tagSearch, page]);
 
   return (
     <Main>
@@ -147,7 +130,6 @@ function StretchingListPage() {
       ) : (
         <StretchingList
           stretchings={stretchings}
-          handleLike={handleLike}
           searchType={searchType}
           handleSearchType={handleSearchType}
           main={main}
