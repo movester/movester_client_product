@@ -7,7 +7,7 @@ import Loading from '../../components/common/Loading';
 import ConfirmModal from '../../components/common/Modal/ConfirmModal';
 import StretchingHeader from '../../components/stretching/detail/StretchingHeader';
 import StretchingDetail from '../../components/stretching/detail/StretchingDetail';
-import StretchingRecommend from '../../components/stretching/StretchingRecommend';
+import StretchingRecommend from '../../components/stretching/detail/StretchingRecommend';
 
 function StretchingDetailPage() {
   const { idx } = useParams();

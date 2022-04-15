@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import StretchingItem from '../elements/StretchingItem';
-import { mainBodyEnum, subBodyEnum, postureEnum, effectEnum } from '../../util/stretchingEnum';
+import StretchingItem from '../../elements/StretchingItem';
+import { mainBodyEnum, subBodyEnum, postureEnum, effectEnum } from '../../../util/stretchingEnum';
 
 function StretchingRecommend({ recommendStretchings }) {
   return (
