@@ -4,34 +4,32 @@ import styled from 'styled-components';
 import StretchingItem from '../elements/StretchingItem';
 import { mainBodyEnum, subBodyEnum, postureEnum, effectEnum } from '../../util/stretchingEnum';
 
-function StretchingRecommend({ recommendStretchings, handleRecommendLike }) {
+function StretchingRecommend({ recommendStretchings }) {
   return (
-      <RecommendWrap>
-        <Title>이 스트레칭이 마음에 들었다면</Title>
-        <StretchingContainer>
-          {recommendStretchings.map(stretching => {
-            const { stretchingIdx, title, mainBody, subBody, effect, posture, image, like } = stretching;
-            return (
-              <StretchingItem
-                idx={stretchingIdx}
-                title={title}
-                category={`${mainBodyEnum[mainBody]} - ${subBodyEnum[subBody]}`}
-                posture={posture ? posture.map(v => postureEnum[v]).join(' · ') : '-'}
-                effect={effect ? effect.map(v => effectEnum[v]).join(' · ') : '-'}
-                image={image}
-                active={like}
-                handleLike={handleRecommendLike}
-              />
-            );
-          })}
-        </StretchingContainer>
-      </RecommendWrap>
+    <RecommendWrap>
+      <Title>이 스트레칭이 마음에 들었다면</Title>
+      <StretchingContainer>
+        {recommendStretchings.map(stretching => {
+          const { stretchingIdx, title, mainBody, subBody, effect, posture, image, like } = stretching;
+          return (
+            <StretchingItem
+              idx={stretchingIdx}
+              title={title}
+              category={`${mainBodyEnum[mainBody]} - ${subBodyEnum[subBody]}`}
+              posture={posture ? posture.map(v => postureEnum[v]).join(' · ') : '-'}
+              effect={effect ? effect.map(v => effectEnum[v]).join(' · ') : '-'}
+              image={image}
+              like={like}
+            />
+          );
+        })}
+      </StretchingContainer>
+    </RecommendWrap>
   );
 }
 
 StretchingRecommend.propTypes = {
   recommendStretchings: PropTypes.arrayOf(PropTypes.object).isRequired,
-  handleRecommendLike: PropTypes.func.isRequired,
 };
 
 export default StretchingRecommend;
