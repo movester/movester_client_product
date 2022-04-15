@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import MoveLink from '../common/MoveLink';
-import StretchingItem from '../elements/StretchingItem';
+import LikeStretchingItem from './LikeStretchingItem';
 import Pagination from '../elements/Pagination';
 import { mainBodyEnum, subBodyEnum, postureEnum, effectEnum } from '../../util/stretchingEnum';
 
@@ -16,7 +16,7 @@ function Like({ likeStretchings, handleLike, total, page, setPage }) {
             {likeStretchings.slice(offset, offset + 12).map(stretching => {
               const { stretchingIdx, title, mainBody, subBody, effects, postures, image } = stretching;
               return (
-                <StretchingItem
+                <LikeStretchingItem
                   idx={stretchingIdx}
                   title={title}
                   category={`${mainBodyEnum[mainBody]} - ${subBodyEnum[subBody]}`}
