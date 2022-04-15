@@ -7,7 +7,7 @@ import Loading from '../components/common/Loading';
 
 function IndexPage() {
   const [loading, setLoading] = useState(true);
-  const [weekStretching, setWeekStretching] = useState([]);
+  const [weekStretching, setWeekStretching] = useState(null);
 
   const [errModalOn, setErrModalOn] = useState(false);
   const [errMsg, setErrMsg] = useState('');
@@ -26,9 +26,9 @@ function IndexPage() {
         handleErrModal();
       }
     };
-
+    setLoading(() => true);
     getWeekStretching();
-    setLoading(false);
+    setLoading(() => false);
   }, []);
 
   return loading ? (

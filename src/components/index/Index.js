@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import WeeklyCard from '../elements/WeeklyCard';
 
@@ -28,9 +29,11 @@ function Index({ weekStretching }) {
         {weekStretching ? (
           <WeeklyCard weekStretching={weekStretching} />
         ) : (
-          <div>
-            <NoWeek src="/assets/week_empty.png" alt="스트레칭 없음" />
-          </div>
+          <Link key="week_stretching" to="/stretching">
+            <div>
+              <NoWeek src="/assets/week_empty.png" alt="스트레칭 없음" />
+            </div>
+          </Link>
         )}
       </WeeklyStretching>
       <Service>

@@ -1,25 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 function WeeklyCard({ weekStretching }) {
   return (
     <WeeklyCardWrapper>
       {['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUM'].map((day, index) => (
-        <WeeklyCardContainer>
-          <h3>{day}</h3>
-          <img
-            src={`https://movester-bucket.s3.ap-northeast-2.amazonaws.com/${weekStretching[index]}.png`}
-            alt="스트레칭"
-          />
-        </WeeklyCardContainer>
+        <Link key={day} to={`/stretching/detail/${weekStretching[index].stretchingIdx}`}>
+          <WeeklyCardContainer>
+            <h3>{day}</h3>
+            <img
+              src={`https://movester-bucket.s3.ap-northeast-2.amazonaws.com/${weekStretching[index].image}.png`}
+              alt="스트레칭"
+            />
+          </WeeklyCardContainer>
+        </Link>
       ))}
     </WeeklyCardWrapper>
   );
 }
 
 WeeklyCard.propTypes = {
-  weekStretching: PropTypes.arrayOf(PropTypes.string).isRequired,
+  weekStretching: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default WeeklyCard;
