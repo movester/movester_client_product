@@ -24,6 +24,7 @@ const StyledMain = styled.main`
     padding: 40px 5rem;
     min-height: 74vh;
     display: flex;
+    text-align: left;
     @media screen and (max-width: 500px) {
       padding: 40px 2rem;
     }

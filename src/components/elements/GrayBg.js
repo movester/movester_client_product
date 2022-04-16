@@ -8,7 +8,7 @@ function GrayBg({ children }) {
 
 const StyledGrayBg = styled.div`
   width: 100%;
-  background-color: rgba(229, 229, 229, 0.6);
+  // background-color: rgba(229, 229, 229, 0.6);
   border-radius: 5px;
   padding: 20px;
 `;

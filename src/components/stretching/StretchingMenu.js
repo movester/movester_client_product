@@ -75,7 +75,7 @@ function StretchingMenu({
             ? postureArr.map((posture, i) => <StyledSubBtn onClick={() => handleMain(i + 1)}>{posture}</StyledSubBtn>)
             : effectArr.map((effect, i) => <StyledSubBtn onClick={() => handleMain(i + 1)}>{effect}</StyledSubBtn>)}
         </SubCategory>
-        <StyledTagBtn onClick={handleTagModal}>태그 맞춤 동작 찾기</StyledTagBtn>
+        <StyledTagBtn onClick={handleTagModal}>태그별 찾기</StyledTagBtn>
       </StyledNav>
   );
 }
@@ -94,8 +94,7 @@ export default StretchingMenu;
 
 const StyledNav = styled.nav`
   width: 100%;
-  padding: 1rem 5rem;
-  border-bottom: 2px solid ${({ theme }) => theme.darkPurple};
+  padding: 2rem 5rem 0 5rem;
   position: relative;
 
   @media screen and (max-width: 600px) {
@@ -159,10 +158,10 @@ const StyledSubBtn = styled.button`
   width: auto;
   height: 40px;
   padding: 0 20px;
-  border-radius: 10px;
+  border-radius: 20px;
 
   & + & {
-    margin-left: 2rem;
+    margin-left: 12px;
 
     @media screen and (max-width: 600px) {
       margin-left: 1rem;
@@ -183,44 +182,22 @@ const StyledSubBtn = styled.button`
     }
   }
 
+  background-color: ${({ theme }) => theme.lightPurple};
+  color: #ffffff;
   &:nth-child(1) {
-    background-color: #d6b4b4;
-  }
-
-  &:nth-child(2) {
-    background-color: #f0c36a;
-  }
-
-  &:nth-child(3) {
-    background-color: #ede58b;
-  }
-
-  &:nth-child(4) {
-    background-color: #bfd0a2;
-  }
-
-  &:nth-child(5) {
-    background-color: #97bfb8;
-  }
-
-  &:nth-child(6) {
-    background-color: #b8dff8;
-  }
-
-  &:nth-child(7) {
-    background-color: #bf97be;
+    background-color: ${({ theme }) => theme.darkPurple};
   }
 `;
 
 const StyledTagBtn = styled.button`
   font-size: 16px;
-  color: ${({ theme }) => theme.darkPurple};
+  background-color: #ADADAD;
+  color: #ffffff;
   width: 150px;
   height: 40px;
-  border: 2px solid ${({ theme }) => theme.darkPurple};
-  border-radius: 10px;
+  border-radius: 20px;
   position: absolute;
-  top: 1rem;
+  top: 2rem;
   right: 5rem;
 
   @media screen and (max-width: 770px) {

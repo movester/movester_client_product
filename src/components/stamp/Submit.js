@@ -32,17 +32,22 @@ function Submit({ redirect, setRedirect }) {
     <StyledStampSubmit>
       {loading && <Loading />}
       {error && <Error />}
-      {monthData && (
-        <p>
-          이달의 {name}님의 출석 포인트는 {monthData.filter(el => el === 1).length * 10}점 입니다.
-        </p>
-      )}
       {monthData && monthData[today.getDate() - 1] === 0 ? (
         <>
           <p className="stamp-title">오늘의 출석 도장 찍기</p>
+          {monthData && (
+            <p>
+              이달의 {name}님의 출석 포인트는 {monthData.filter(el => el === 1).length * 10}점 입니다.
+            </p>
+          )}
           <StyledButton onClick={onClick} type="button">
             제출하기
           </StyledButton>
+
+          <StyledP className="title">매달 진행하는 뭅스터만의 특별한 출석이벤트!</StyledP>
+          <StyledP>매일 스트레칭 한 부위에 따라 포인트가 주어집니다!</StyledP>
+          <StyledP> 가장 많은 점수를 받은 사람을 위해 매달 말 뭅스터는 특별한 선물을 준비해요!</StyledP>
+          <StyledP>하루당 10점의 포인트가 적립됩니다.</StyledP>
         </>
       ) : (
         <>
@@ -64,29 +69,38 @@ Submit.propTypes = {
 export default React.memo(Submit);
 
 const StyledStampSubmit = styled.div`
-  margin-right: 10%;
-  min-width: 300px;
   @media screen and (max-width: 1024px) {
     margin-right: 0;
     margin-top: 30px;
   }
-  p {
-    margin-bottom: 20px;
-  }
+
   .stamp-title {
-    font-size: 1.3rem;
+    font-size: 24px;
     font-weight: bold;
     color: ${({ theme }) => theme.darkPurple};
+    margin-bottom: 20px;
   }
 `;
 
 const StyledButton = styled.button`
-  width: 100%;
+  width: 25%;
   max-width: 500px;
   height: 40px;
-  margin-top: 20px;
+  margin: 20px 0 50px 0;
   font-weight: bold;
-  border-radius: 10px;
+  border-radius: 20px;
   color: #fff;
   background-color: ${({ theme }) => theme.lightPurple};
+`;
+
+const StyledP = styled.p`
+  text-align: left;
+  line-height: 20px;
+  font-size: 12px;
+  &.title {
+    font-size: 14px;
+    font-weight: bold;
+    color: ${({ theme }) => theme.darkPurple};
+    margin-bottom: 10px;
+  }
 `;

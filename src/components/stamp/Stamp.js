@@ -8,7 +8,7 @@ import Error from '../common/Error';
 import Main from '../common/Main';
 import Nav from '../common/Nav';
 import Calendar from './Calendar';
-import Header from './Header';
+// import Header from './Header';
 import Submit from './Submit';
 
 function Stamp() {
@@ -30,7 +30,7 @@ function Stamp() {
     <Main type="record">
       <Nav />
       <StyledWrap>
-        <Header />
+        {/* <Header /> */}
         <div className="flex-wrap">
           {loading && <Loading />}
           {error && <Error />}
@@ -47,15 +47,13 @@ export default Stamp;
 const StyledWrap = styled.section`
   width: 100%;
   margin-bottom: 50px;
-  text-align: center;
-  p {
-    line-height: 2rem;
-  }
+  text-align: left;
+
   .flex-wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 60px;
+
     @media screen and (max-width: 1024px) {
       margin-top: 20px;
       display: block;

@@ -9,7 +9,7 @@ const StyledButton = styled.button`
   color: #fff;
   background-color: ${({ theme }) => theme.lightPurple};
   margin: 10px auto;
-  border-radius: 15px;
+  border-radius: 25px;
 
   &.kakao-login {
     background-image: url('/assets/kakao_login_large_wide.png');

@@ -71,7 +71,7 @@ const StretchingContainer = styled.section`
   height: auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem 5rem;
+  gap: 2rem 2rem;
   justify-content: center;
 
   @media screen and (max-width: 1340px) {

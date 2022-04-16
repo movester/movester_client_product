@@ -35,6 +35,11 @@ function StretchingHeader({ stretching, isAuth }) {
       </ImageWrap>
       <DetailWrap>
         <Title>{stretching.title}</Title>
+        <EffectWrap>
+          {stretching.effect.map(effect => (
+            <EffectTag>{effectEnum[effect]}</EffectTag>
+          ))}
+        </EffectWrap>
         <Category>{`${mainBodyEnum[stretching.mainBody]} - ${subBodyEnum[stretching.subBody]}`}</Category>
         <Posture>{stretching.posture ? stretching.posture.map(v => postureEnum[v]).join(' · ') : '-'}</Posture>
         <StarWrap>
@@ -44,16 +49,11 @@ function StretchingHeader({ stretching, isAuth }) {
               <StyledStarIcon className={active ? 'active' : ''} />
             ))}
         </StarWrap>
-        <EffectWrap>
-          {stretching.effect.map(effect => (
-            <EffectTag>{effectEnum[effect]}</EffectTag>
-          ))}
-        </EffectWrap>
         <YoutubeWrap>
           <StyledYouTubeIcon />
           {stretching.youtube || '-'}
         </YoutubeWrap>
-        <KaKaoBtn>카카오톡 공유하기</KaKaoBtn>
+        {/* <KaKaoBtn>카카오톡 공유하기</KaKaoBtn> */}
       </DetailWrap>
     </OutLine>
   );
@@ -153,14 +153,14 @@ const DetailWrap = styled.div`
 `;
 
 const Title = styled.p`
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 800;
   margin-bottom: 14px;
 `;
 
 const Category = styled.p`
   font-size: 16px;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 `;
 
 const Posture = styled.p`
@@ -187,7 +187,7 @@ const StyledStarIcon = styled(StarIcon)`
 `;
 
 const EffectWrap = styled.div`
-  margin: 18px 0 20px 0;
+  margin: 18px 0 81px 0;
 `;
 
 const EffectTag = styled.div`
@@ -195,13 +195,13 @@ const EffectTag = styled.div`
   font-size: 16px;
   width: auto;
   height: 16px;
-  padding: 5px;
+  padding: 5px 10px;
   background: ${({ theme }) => theme.lightPurple};
-  border: 2px solid ${({ theme }) => theme.darkPurple};
-  border-radius: 5px;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
 
   & + & {
-    margin-left: 1rem;
+    margin-left: 10px;
   }
 `;
 
@@ -216,10 +216,10 @@ const StyledYouTubeIcon = styled(YouTubeIcon)`
   margin-right: 5px;
 `;
 
-const KaKaoBtn = styled.button`
-  width: auto;
-  height: 24px;
-  padding: 5px 10px;
-  background: #f7e600;
-  border-radius: 10px;
-`;
+// const KaKaoBtn = styled.button`
+//   width: auto;
+//   height: 24px;
+//   padding: 5px 10px;
+//   background: #f7e600;
+//   border-radius: 10px;
+// `;

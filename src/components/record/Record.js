@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import { StyledGrayBg } from '../elements/GrayBg';
-import Button from '../elements/Button';
 import Graph from './Graph';
 
 function Record({ shoulderecords, legRecords }) {
@@ -14,21 +13,15 @@ function Record({ shoulderecords, legRecords }) {
       <div className="graph-wrap">
         <div className="graph-one">
           <Link to="/mypage/record/shoulder">
-            <Button type="search" text="어깨" />
+            <StyledButton>어깨</StyledButton>
           </Link>
           <Graph records={shoulderecords} type="shoulder" />
-          <Link to="/mypage/record/shoulder">
-            <p>오늘의 어깨 기록하러가기 {'>'}</p>
-          </Link>
         </div>
         <div className="graph-one">
           <Link to="/mypage/record/leg">
-            <Button type="search" text="허리 &#183; 다리" />
+            <StyledButton>허리 &#183; 다리</StyledButton>
           </Link>
           <Graph records={legRecords} type="leg" />
-          <Link to="/mypage/record/leg">
-            <p>오늘의 허리 &#183; 다리 기록하러가기 {'>'}</p>
-          </Link>
         </div>
       </div>
 
@@ -89,7 +82,6 @@ const StyledWrap = styled.section`
       align-items: start;
     }
     display: flex;
-    padding: 0 5%;
     .graph-one {
       width: 50%;
       @media screen and (max-width: 768px) {
@@ -134,6 +126,7 @@ const StyledWrap = styled.section`
 `;
 
 const StyledGrayWrap = styled(StyledGrayBg)`
+  background-color: #ffffff;
   margin-top: 40px;
   p:first-child {
     font-size: 18px;
@@ -159,4 +152,19 @@ const GridWrapper = styled.div`
     width: 30%;
     margin-bottom: 20px;
   }
+`;
+
+const StyledButton = styled.div`
+  box-sizing: border-box;
+  width: 150px;
+  height: 40px;
+  line-height: 40px;
+  display: inline-block;
+  background-color: ${({ theme }) => theme.lightPurple};
+  border-radius: 20px;
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
 `;

@@ -51,7 +51,12 @@ function Header() {
           </>
         ) : (
           <>
-            <Link to="/join">Join</Link> <span>|</span> <Link to="/login">Login</Link>
+            <Link to="/join">
+              <span>Join</span>
+            </Link>
+            <Link to="/login">
+              <span>Login</span>
+            </Link>
           </>
         )}
       </HeaderRightBlock>
@@ -73,7 +78,6 @@ const HeaderWrapper = styled.header`
   align-items: center;
   padding: 0 4rem 0 5rem;
 
-  border-bottom: 2px solid #2a1598;
   background: #fff;
 
   svg {
@@ -124,8 +128,8 @@ const HeaderRightBlock = styled.div`
   font-size: 1.2rem;
   line-height: 2;
 
-  span{
-    margin: 0 10px;
+  span {
+    margin-left: 20px;
   }
 `;
 

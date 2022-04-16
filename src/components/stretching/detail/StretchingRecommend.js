@@ -54,7 +54,7 @@ const StretchingContainer = styled.div`
   margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 5rem;
+  column-gap: 2rem;
   justify-content: center;
 
   @media screen and (max-width: 1340px) {

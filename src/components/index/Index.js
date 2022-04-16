@@ -119,7 +119,7 @@ const WeeklyStretching = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 30px 5rem;
 
   h2 {
     font-size: 2rem;

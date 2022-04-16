@@ -41,7 +41,6 @@ const FooterWrapper = styled.footer`
   flex-direction: column;
   justify-content: space-around;
   padding: 4rem 5rem;
-  border-top: 2px solid #2a1598;
   color: #2a1598;
   background: #fff;
 

@@ -64,7 +64,6 @@ const StyledTitle = styled.div`
   }
   p:last-child {
     font-size: 20px;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-bottom: 50px;
   }
   p + p {
@@ -90,10 +89,6 @@ const Styledposture = styled.div`
 const StyledMiddle = styled.div`
   p {
     line-height: 30px;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-  p:first-child {
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
   p:last-child {
     font-weight: 700;

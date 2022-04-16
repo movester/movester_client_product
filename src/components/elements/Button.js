@@ -31,7 +31,7 @@ const StyledButton = styled.div`
   line-height: 40px;
   display: inline-block;
   background-color: ${({ theme }) => theme.lightPurple};
-  border-radius: 10px;
+  border-radius: 20px;
   font-size: 20px;
   color: #ffffff;
   font-weight: 700;

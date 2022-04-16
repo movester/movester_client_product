@@ -23,7 +23,7 @@ const ProfileWrapper = styled.div`
   font-size: 1rem;
   color: #2a1598;
   border: 2px solid #2a1598;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 0.3rem;
   display: flex;
   justify-content: center;

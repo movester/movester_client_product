@@ -65,18 +65,16 @@ export default Nav;
 const StyledNavWrap = styled.nav`
   width: 200px;
   height: 245px;
-  text-align: center;
-  padding: 20px 43px;
-  border: 1px solid black;
+  padding: 0 4px;
   border-radius: 5px;
   margin-right: 60px;
   p {
     margin-bottom: 10px;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
   }
   ul{
-    margin-top 20px;
+    margin-top 43px;
   }
   li {
     margin-bottom: 15px;
@@ -94,6 +92,7 @@ const StyledNavWrap = styled.nav`
   .email {
     font-size: 12px;
     font-weight: normal;
+    color: #595959;
   }
   @media screen and (max-width: 1024px) {
     display:none;

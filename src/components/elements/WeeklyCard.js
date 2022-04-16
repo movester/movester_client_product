@@ -29,7 +29,6 @@ export default WeeklyCard;
 
 const WeeklyCardWrapper = styled.div`
   display: grid;
-  height: 270px;
   grid-template-columns: repeat(7, 1fr);
   column-gap: 10px;
   justify-content: center;

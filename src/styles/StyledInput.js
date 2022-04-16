@@ -7,7 +7,7 @@ display: block;
   background: rgba(196, 196, 196, 0.5);
   outline: none;
   border: none;
-  border-radius: 15px;
+  border-radius: 25px;
   margin: 0 auto 15px auto;
   padding: 15px;
 
