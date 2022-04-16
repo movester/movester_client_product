@@ -27,5 +27,6 @@ Graph.propTypes = {
 export default Graph;
 
 const GraphContainer = styled.div`
-  margin: 30px auto;
+  margin: 30px 0;
+  transform: translateX(-25px);
 `;

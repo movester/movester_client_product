@@ -4,38 +4,7 @@ import PropTypes from 'prop-types';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-function Ruler({ record, message, onSliderChange, onInputChange, onSliderClick }) {
-  // const [record, setRecord] = useState(0);
-  // const [message, setMessage] = useState('');
-
-  // const onSliderChange = val => {
-  //   setMessage('');
-  //   setRecord(val);
-  // };
-
-  // const onInputChange = e => {
-  //   setMessage('');
-  //   setRecord(+e.target.value);
-  // };
-
-  // const onClick = e => {
-  //   setMessage('');
-  //   if (e.target.name === 'increase') setRecord(prev => +(prev + 0.1).toFixed(1));
-  //   else setRecord(prev => +(prev - 0.1).toFixed(1));
-  // };
-
-  // useEffect(() => {
-  //   if (record > 30 || record < -30) {
-  //     setMessage(`기록은 30cm보다 크거나 -30cm보다 작을 수 없습니다.`);
-  //     setRecord(0);
-  //   } else if (String(record).includes('.')) {
-  //     if (String(record).substring(String(record).indexOf('.') + 1).length > 1) {
-  //       setMessage('소수점 1자리까지만 입력해 주세요.');
-  //       setRecord(+record);
-  //     }
-  //   }
-  // }, [record]);
-
+function Ruler({ record, message, onSliderChange,}) {
   return (
     <SliderContainer>
       <RecordDisplayer>{record}cm</RecordDisplayer>
@@ -50,10 +19,10 @@ function Ruler({ record, message, onSliderChange, onInputChange, onSliderClick }
           height: 2,
         }}
         handleStyle={{
-          height: 28,
-          width: 28,
-          marginLeft: -14,
-          marginTop: -14,
+          height: 15,
+          width: 15,
+          marginLeft: -5,
+          marginTop: -6,
           backgroundColor: '#2a1598',
           border: 0,
         }}
@@ -61,13 +30,7 @@ function Ruler({ record, message, onSliderChange, onInputChange, onSliderClick }
           background: 'none',
         }}
       />
-      <RecordButton name="decrease" onClick={onSliderClick}>
-        -
-      </RecordButton>
-      <RecordInput type="number" step={0.1} value={record} onChange={e => onInputChange(e)} />
-      <RecordButton name="increase" onClick={onSliderClick}>
-        +
-      </RecordButton>
+
       {message && <MessageDisplayer>{message}</MessageDisplayer>}
     </SliderContainer>
   );
@@ -77,8 +40,6 @@ Ruler.propTypes = {
   record: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
   onSliderChange: PropTypes.func.isRequired,
-  onInputChange: PropTypes.func.isRequired,
-  onSliderClick: PropTypes.func.isRequired,
 };
 
 export default Ruler;
@@ -93,20 +54,7 @@ const RecordDisplayer = styled.span`
 `;
 
 const Margin = styled.div`
-  margin: 20px;
-`;
-
-const RecordInput = styled.input`
-  margin: 20px 5px;
-  -webkit-appearance: none;
-`;
-
-const RecordButton = styled.button`
-  width: 20px;
-  height: 20px;
-  color: #fff;
-  background: ${({ theme }) => theme.lightPurple};
-  border-radius: 50%;
+  margin: 40px;
 `;
 
 const MessageDisplayer = styled.p`

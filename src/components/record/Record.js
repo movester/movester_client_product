@@ -2,14 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 import { StyledGrayBg } from '../elements/GrayBg';
 import Graph from './Graph';
 
 function Record({ shoulderecords, legRecords }) {
+  const userName = useSelector(state => state.auth.user.name);
   return (
     <StyledWrap>
-      <p className="record-owner">조나현님의 지난 기록</p>
+      <p className="record-owner">{userName}님의 지난 기록</p>
       <div className="graph-wrap">
         <div className="graph-one">
           <Link to="/mypage/record/shoulder">
@@ -29,7 +31,7 @@ function Record({ shoulderecords, legRecords }) {
         <p>Q. 왜 스트레칭 기록이 필요할까요?</p>
         <GridWrapper>
           <div>
-            <p>A1. 동기부여</p>
+            <p className="title">A1. 동기부여</p>
             <img src="/assets/record/need_1.png" alt="동기부여" />
             <p>유지 또는 변화하는 나의 몸과 기록을 한눈에 확인할 수 있습니다.</p>
             <p>
@@ -37,7 +39,7 @@ function Record({ shoulderecords, legRecords }) {
             </p>
           </div>
           <div>
-            <p>A2. 몸의 중요한 요소 유연성</p>
+            <p className="title">A2. 몸의 중요한 요소 유연성</p>
             <img src="/assets/record/need_2.png" alt="몸의 중요한 요소 유연성" />
             <p>유연성 향상 시 움직임을 잘 조절하게 되며</p>
             <p>
@@ -71,7 +73,7 @@ const StyledWrap = styled.section`
     color: ${({ theme }) => theme.darkPurple};
     font-size: 18px;
     font-weight: bold;
-    margin: 30px 0;
+    margin-bottom: 30px;
     @media screen and (max-width: 768px) {
       text-align: center;
     }
@@ -132,7 +134,13 @@ const StyledGrayWrap = styled(StyledGrayBg)`
     font-size: 18px;
     font-weight: bold;
     color: ${({ theme }) => theme.darkPurple};
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+  }
+
+  p {
+    &.title {
+      font-size: 16px;
+    }
   }
   p + p {
     margin-top: 10px;
@@ -156,13 +164,13 @@ const GridWrapper = styled.div`
 
 const StyledButton = styled.div`
   box-sizing: border-box;
-  width: 150px;
+  width: 130px;
   height: 40px;
   line-height: 40px;
   display: inline-block;
   background-color: ${({ theme }) => theme.lightPurple};
   border-radius: 20px;
-  font-size: 20px;
+  font-size: 16px;
   color: #ffffff;
   font-weight: 700;
   text-align: center;

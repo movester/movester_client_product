@@ -32,32 +32,25 @@ function Submit({ redirect, setRedirect }) {
     <StyledStampSubmit>
       {loading && <Loading />}
       {error && <Error />}
-      {monthData && monthData[today.getDate() - 1] === 0 ? (
-        <>
-          <p className="stamp-title">오늘의 출석 도장 찍기</p>
-          {monthData && (
-            <p>
-              이달의 {name}님의 출석 포인트는 {monthData.filter(el => el === 1).length * 10}점 입니다.
-            </p>
-          )}
-          <StyledButton onClick={onClick} type="button">
-            제출하기
-          </StyledButton>
-
-          <StyledP className="title">매달 진행하는 뭅스터만의 특별한 출석이벤트!</StyledP>
-          <StyledP>매일 스트레칭 한 부위에 따라 포인트가 주어집니다!</StyledP>
-          <StyledP> 가장 많은 점수를 받은 사람을 위해 매달 말 뭅스터는 특별한 선물을 준비해요!</StyledP>
-          <StyledP>하루당 10점의 포인트가 적립됩니다.</StyledP>
-        </>
-      ) : (
-        <>
-          <p className="stamp-title">훌륭해요! 오늘도 출석을 해냈습니다!</p>
-          <p>
-            건강한 신체를 위한 한걸음, <br />
-            뭅스터와 매달 함께해요!
-          </p>
-        </>
+      <p className="stamp-title">오늘의 출석 도장 찍기</p>
+      {monthData && (
+        <p className="point">
+          이달의 {name}님의 출석 포인트는 {monthData.filter(el => el === 1).length * 10}점 입니다.
+        </p>
       )}
+      {monthData && monthData[today.getDate() - 1] === 0 ? (
+        <StyledButton onClick={onClick} type="button">
+          제출하기
+        </StyledButton>
+      ) : (
+        <p className="stamped">훌륭해요! 오늘도 출석을 해냈습니다!</p>
+      )}
+      <Wrap>
+      <StyledP className="title">매달 진행하는 뭅스터만의 특별한 출석이벤트!</StyledP>
+      <StyledP>매일 스트레칭 한 부위에 따라 포인트가 주어집니다!</StyledP>
+      <StyledP> 가장 많은 점수를 받은 사람을 위해 매달 말 뭅스터는 특별한 선물을 준비해요!</StyledP>
+      <StyledP>하루당 10점의 포인트가 적립됩니다.</StyledP>
+      </Wrap>
     </StyledStampSubmit>
   );
 }
@@ -78,7 +71,21 @@ const StyledStampSubmit = styled.div`
     font-size: 24px;
     font-weight: bold;
     color: ${({ theme }) => theme.darkPurple};
-    margin-bottom: 20px;
+    margin-bottom: 53px;
+  }
+
+  .point {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 12px;
+  }
+
+  .stamped {
+    font-size: 18px;
+    color: ${({ theme }) => theme.darkPurple};
+    font-weight: bold;
+    margin: 10px 0 20px 0;
+    line-height: 40px;
   }
 `;
 
@@ -86,8 +93,8 @@ const StyledButton = styled.button`
   width: 25%;
   max-width: 500px;
   height: 40px;
-  margin: 20px 0 50px 0;
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 16px;
   border-radius: 20px;
   color: #fff;
   background-color: ${({ theme }) => theme.lightPurple};
@@ -103,4 +110,8 @@ const StyledP = styled.p`
     color: ${({ theme }) => theme.darkPurple};
     margin-bottom: 10px;
   }
+`;
+
+const Wrap = styled.div`
+  margin-top: 40px;
 `;
