@@ -8,21 +8,29 @@ function Footer() {
         <FooterLeftBlock>
           <img src="/assets/logo.png" alt="뭅스터 로고" />
           <div className="footer-top">
-            |&nbsp;&nbsp;<span>개인 정보 취급 방침</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>이용 약관</span>&nbsp;&nbsp;|
-            &nbsp;&nbsp;
-            <span>고객 센터</span>
+            |&nbsp;&nbsp;<span>개인 정보 취급 방침</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>이용 약관</span>
           </div>
           <div className="footer-middle">
-            <span>대표자: 표정연&nbsp;&nbsp;|</span>&nbsp;&nbsp;<span>사업자번호: 000-000000-0000&nbsp;&nbsp;|</span>
-            &nbsp;&nbsp;<span>주소: 인천광역시 어쩌구 저쩌구&nbsp;&nbsp;|</span>&nbsp;&nbsp;
-            <span>이메일: jnhro1@gmail.com&nbsp;&nbsp;|</span>
+            <span>대표자: 조나현&nbsp;&nbsp;| </span>&nbsp;&nbsp;
+            <span>이메일: jnhro1@gmail.com&nbsp;&nbsp;</span>
           </div>
         </FooterLeftBlock>
         <FooterRightBlock>
-          <img src="/assets/naver_logo.png" alt="네이버 블로그 링크" />
-          <img src="/assets/youtube_logo.png" alt="유튜브 링크" />
-          <img src="/assets/insta_logo.png" alt="인스타그램 링크" />
-          <img src="/assets/kakao_logo.png" alt="카카오 오픈채팅방 링크" />
+          <button
+            type="button"
+            onClick={() => window.open('https://www.youtube.com/channel/UCQvag-Y43ypnVPnkh47mP-w', '_blank')}
+          >
+            <img src="/assets/youtube_logo.png" alt="유튜브 링크" />
+          </button>
+          <button
+            type="button"
+            onClick={() => window.open('https://www.instagram.com/mus.movester', '_blank')}
+          >
+            <img src="/assets/insta_logo.png" alt="인스타그램 링크" />
+          </button>
+          <button type="button" onClick={() => window.open('https://open.kakao.com/o/gDHdxN0c', '_blank')}>
+            <img src="/assets/kakao_logo.png" alt="카카오 오픈채팅방 링크" />
+          </button>
         </FooterRightBlock>
       </LeftRightContainer>
       <div className="footer-bottom">
@@ -53,6 +61,7 @@ const FooterLeftBlock = styled.div`
   img {
     width: 100px;
     margin-right: 10px;
+    transform: translateY(3px);
   }
 
   .footer-top {

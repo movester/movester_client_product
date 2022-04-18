@@ -59,9 +59,6 @@ const StyledButton = styled.div`
     color: #000000;
     margin: 0;
   }
-  &.wide {
-    width: 100%;
-  }
 
   & + & {
     margin-left: 10%;

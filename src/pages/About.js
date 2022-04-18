@@ -28,8 +28,53 @@ function About() {
           <p>누구나, 어디서든, 가볍게 할 수 있는 스트레칭으로 한걸음씩 함께 나아가요.</p>
         </StyledMiddle>
         <div className="service-information">
-          <p>SERVICE</p>
-          <img src="/assets/service.png" alt="서비스 정보" />
+          <h1>SERVICE</h1>
+          <Grid>
+            <img src="/assets/stretching_ex.png" alt="서비스 정보" />
+            <Contents>
+              <Title>맞춤 스트레칭 검색 기능</Title>
+              <p>신체부위별로 원하는 스트레칭을 찾아볼 수 있도록</p>
+              <p>홈페이지를 제작하였습니다.</p>
+              <p>내가 원하는 스트레칭을 손쉽게 찾아보세요.</p>
+            </Contents>
+          </Grid>
+          <Grid>
+            <img src="/assets/week_recommend.png" alt="서비스 정보" />
+            <Contents>
+              <Title>매주 달라지는 일주일 추천 스트레칭</Title>
+              <p>나에게 딱 맞는 스트레칭을 고르기 귀찮다면,</p>
+              <p>뭅스터가 추천하는 일주일 스트레칭을 따라해보아요!</p>
+              <p>현대인에게 딱인 스트레칭들로만 골랐답니다.</p>
+            </Contents>
+          </Grid>
+
+          <Grid>
+            <img src="/assets/like_ex.png" alt="서비스 정보" />
+            <Contents>
+              <Title>찜한 스트레칭 리스트</Title>
+              <p>나에게 필요한 스트레칭만 골라 찜 리스트에 담아보세요!</p>
+              <p>오로지 나만을 위한 맞춤형 스트레칭 공간입니다.</p>
+            </Contents>
+          </Grid>
+          <Grid>
+            <img src="/assets/attemp_ex.png" alt="서비스 정보" />
+            <Contents>
+              <Title>매달 진행하는 출석 이벤트</Title>
+              <p>매일 뭅스터와 함께 스트레칭하며, 출석 도장을 찍어보세요.</p>
+              <p>매달 말일, 출석왕을 위해 뭅스터가 특별한 선물을 준비했어요!</p>
+            </Contents>
+          </Grid>
+          <Grid>
+            <img src="/assets/record_ex.png" alt="서비스 정보" />
+            <Contents>
+              <Title>유연성 셀프 측정 및 기록시스템</Title>
+              <p>유연성 유지 및 향상은 몸 건강의 지표입니다.</p>
+              <p>꾸준한 기록을 통해 어제보다 나은 오늘의 나를 위해</p>
+              <p>함께 나아가요.</p>
+            </Contents>
+          </Grid>
+
+          {/* <img src="/assets/service.png" alt="서비스 정보" /> */}
         </div>
       </StyledAboutWrap>
     </Main>
@@ -47,12 +92,16 @@ const StyledAboutWrap = styled.section`
   .service-information {
     img {
       max-width: 655px;
-      width: 100%;
+      width: 250px;
+      height: 100%;
+      border-radius: 30px;
+      // border: 1px solid red;
+      background-color: gray;
+
     }
-    P {
-      color: #897dc6;
+    h1 {
       font-size: 28px;
-      margin-bottom: 40px;
+      margin: 80px 0 50px 0;
     }
   }
 `;
@@ -101,4 +150,30 @@ const StyledMiddle = styled.div`
     color: ${({ theme }) => theme.darkPurple};
     font-weight: bold;
   }
+  margin-bottom: 50px;
+`;
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 250px 500px;
+  // border: 1px solid red;
+  margin: 0 27%;
+
+  &+& {
+    margin-top: 70px;
+  }
+`;
+
+const Contents = styled.div`
+  p {
+    line-height: 30px;
+    font-size: 16px;
+  }
+`;
+
+const Title = styled.h2`
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 80px;
+  margin-top: 20px;
 `;

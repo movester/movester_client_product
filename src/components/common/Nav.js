@@ -95,6 +95,6 @@ const StyledNavWrap = styled.nav`
     color: #595959;
   }
   @media screen and (max-width: 1024px) {
-    display:none;
+    // display:none;
   }
 `;

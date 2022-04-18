@@ -57,7 +57,7 @@ function Leg({
                   onInputChange={onInputChange}
                   onSliderClick={onSliderClick}
                 />
-                <Button event={onCreate} type="wide" />
+                <Button event={onCreate} />
               </div>
             </>
           )}
@@ -171,6 +171,7 @@ const StyledCheckRecord = styled.div`
   }
   .ruler-wrap {
     padding: 0 20%;
+    margin-bottom: 30px;
   }
   .ruler {
     width: 100%;
@@ -184,7 +185,7 @@ const StyledCheckRecord = styled.div`
   }
   .ruler-send {
     .search {
-      border-radius: 5px;
+      border-radius: 20px;
       margin-top: 30px;
       width: 150px;
       height: 40px;
@@ -196,7 +197,7 @@ const StyledCheckRecord = styled.div`
       font-size: 1rem;
       color: #2a1598;
       border: 2px solid #2a1598;
-      border-radius: 10px;
+      border-radius: 20px;
       padding: 0.3rem;
       margin: 20px 0;
     }
@@ -223,7 +224,7 @@ const StyledButton = styled.button`
   height: 40px;
   line-height: 40px;
   background-color: ${({ theme }) => theme.lightPurple};
-  border-radius: 10px;
+  border-radius: 20px;
   font-size: 16px;
   color: #ffffff;
   font-weight: 800;
