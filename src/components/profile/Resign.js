@@ -11,9 +11,9 @@ import StyledButton from '../../styles/StyledButton';
 function Resign({ password, onChange, onSubmit, modalOn, handleModal, errModalOn, handleErrModal, errMsg }) {
   return (
     <StyledContentWrap onSubmit={onSubmit}>
-      <ProfileTitle title="회원 탈퇴" />
+     <ProfileTitle className="margin">회원 탈퇴</ProfileTitle>
       <ProfileInput text="비밀번호" name="password" value={password} onChange={onChange} />
-      <StyledButton type="submit" className="right">
+      <StyledButton type="submit" className="left">
         회원 탈퇴
       </StyledButton>
       {modalOn && (

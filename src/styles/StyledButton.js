@@ -23,6 +23,10 @@ const StyledButton = styled.button`
     float: right;
   }
 
+  &.left {
+    float: left;
+  }
+
   @media (max-width: 400px) {
     width: 250px;
     height: 40px;

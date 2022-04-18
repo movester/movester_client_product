@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import ProfileTitle from '../elements/ProfileTitle';
 import ProfileInput from '../elements/ProfileInput';
 import StyledButton from '../../styles/StyledButton';
-import ModalPortal from '../common/Modal/ModalPortal';
 import LinkModal from '../common/Modal/LinkModal';
 import ConfirmModal from '../common/Modal/ConfirmModal';
 
@@ -12,8 +11,11 @@ function PasswordChange({
   curPassword,
   newPassword,
   confirmPassword,
+  passwordMessage,
+  passwordConfirmMessage,
   onChange,
   onSubmit,
+  isSubmit,
   modalOn,
   handleModal,
   errModalOn,
@@ -23,29 +25,35 @@ function PasswordChange({
   return (
     <>
       <StyledContentWrap onSubmit={onSubmit}>
-        <ProfileTitle title="기본 정보" />
+        <ProfileTitle className="margin">비밀번호 변경</ProfileTitle>
         <ProfileInput text="현재 비밀번호" name="curPassword" value={curPassword} onChange={onChange} />
-        <ProfileInput text="새 비밀번호" name="newPassword" value={newPassword} onChange={onChange} />
-        <ProfileInput text="비밀번호 확인" name="confirmPassword" value={confirmPassword} onChange={onChange} />
-        <StyledButton className="right" type="submit">
+        <ProfileInput
+          text="새 비밀번호"
+          name="newPassword"
+          value={newPassword}
+          message={passwordMessage}
+          onChange={onChange}
+        />
+        <ProfileInput
+          text="비밀번호 확인"
+          name="confirmPassword"
+          value={confirmPassword}
+          message={passwordConfirmMessage}
+          onChange={onChange}
+        />
+        <StyledButton className="left" type="submit" disalbed={!isSubmit}>
           비밀번호 변경
         </StyledButton>
       </StyledContentWrap>
       {modalOn && (
-        <ModalPortal>
-          <LinkModal
-            onClose={handleModal}
-            title="비밀번호 변경"
-            content="비밀번호 변경이 완료되었습니다!"
-            link="/mypage/profile"
-          />
-        </ModalPortal>
+        <LinkModal
+          onClose={handleModal}
+          title="비밀번호 변경"
+          content="비밀번호 변경이 완료되었습니다!"
+          link="/mypage/profile"
+        />
       )}
-      {errModalOn && (
-        <ModalPortal>
-          <ConfirmModal onClose={handleErrModal} title="비밀번호 변경 실패!" content={errMsg} />
-        </ModalPortal>
-      )}
+      {errModalOn && <ConfirmModal onClose={handleErrModal} title="비밀번호 변경 실패!" content={errMsg} />}
     </>
   );
 }
@@ -54,8 +62,11 @@ PasswordChange.propTypes = {
   curPassword: PropTypes.string.isRequired,
   newPassword: PropTypes.string.isRequired,
   confirmPassword: PropTypes.string.isRequired,
+  passwordMessage: PropTypes.string.isRequired,
+  passwordConfirmMessage: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  isSubmit: PropTypes.bool.isRequired,
   modalOn: PropTypes.bool.isRequired,
   handleModal: PropTypes.func.isRequired,
   errModalOn: PropTypes.bool.isRequired,

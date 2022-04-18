@@ -7,15 +7,15 @@ import ProfileTitle from '../elements/ProfileTitle';
 function Profile() {
   return (
     <StyledWrap>
-      <ProfileTitle title="비밀번호 변경" />
+      <ProfileTitle>비밀번호 변경</ProfileTitle>
       <Link to="/mypage/profile/passwordChange">
         <StyledButton type="button">비밀번호 변경</StyledButton>
       </Link>
       <Styledmt50>
-        <ProfileTitle title="회원 탈퇴" />
+      <ProfileTitle>회원 탈퇴</ProfileTitle>
         <p>
           회원 탈퇴 시, 기존 정보를 다시 복구시킬 수 없습니다. <br />
-          그래도 정말로 회원 탈퇴를 원하시나요 ?
+          그래도 정말 회원 탈퇴를 원하시나요 ?
         </p>
         <Link to="/mypage/profile/resign">
           <StyledButton type="button">탈퇴</StyledButton>
@@ -30,9 +30,8 @@ export default Profile;
 const StyledWrap = styled.section`
   width: 100%;
   text-align: left;
-
   p {
-    line-height: 20px;
+    line-height: 24px;
     margin-bottom: 15px;
   }
 `;
