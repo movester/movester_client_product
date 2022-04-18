@@ -11,13 +11,16 @@ function Index({ weekStretching }) {
         <h2>#1일 #1스트레칭 #습관 만들기</h2>
         <div className="banner-wrapper">
           <div className="container">
-            <span className="title">Move U, Start U, With me.</span>
-            <span className="sub-title">Move.</span>
-            <span className="content">부담스러운 운동은 NO!</span>
-            <span className="sub-title">Start.</span>
-            <span className="content">가볍게 스트레칭으로 시작하세요!</span>
-            <span className="sub-title">With, Together.</span>
-            <span className="content">혼자가 힘들다면 뭅스터와 같이, 함께해요!</span>
+            <p className="title">Move U, Start U, With me.</p>
+
+            <p className="sub-title">Move.</p>
+            <p className="content">부담스러운 운동은 NO!</p>
+
+            <p className="sub-title">Start.</p>
+            <p className="content">가볍게 스트레칭으로 시작하세요!</p>
+
+            <p className="sub-title">With, Together.</p>
+            <p className="content">혼자가 힘들다면 뭅스터와 같이, 함께해요!</p>
           </div>
           <div>
             <img src="/assets/banner.png" alt="뭅스터 캐릭터" />
@@ -89,18 +92,19 @@ const Banner = styled.section`
       display: flex;
       flex-direction: column;
       .title {
-        font-size: 2.5rem;
-        margin-bottom: 20px;
+        font-size: 28px;
+        margin-bottom: 40px;
       }
 
       .sub-title {
-        font-size: 1.8rem;
-        margin-bottom: 20px;
+        font-size: 20px;
+        margin-bottom: 10px;
       }
 
+
       .content {
-        font-size: 1.2rem;
-        margin-bottom: 20px;
+        font-size: 18px;
+        margin-bottom: 40px;
       }
     }
   }
