@@ -51,13 +51,13 @@ function StretchingTagModal({ onClose, handleTagSearch, onTagChange }) {
           <Wrap>
             <p>1. 카테고리 선택</p>
             <CategoryWrap>
-              <TagBtn onClick={() => handleCategory(0)}>전신</TagBtn>
-              <TagBtn onClick={() => handleCategory(1)}>상체</TagBtn>
-              <TagBtn onClick={() => handleCategory(2)}>코어</TagBtn>
-              <TagBtn onClick={() => handleCategory(3)}>하체</TagBtn>
-              <TagBtn onClick={() => handleCategory(4)}>자세</TagBtn>
-              <TagBtn onClick={() => handleCategory(5)}>효과</TagBtn>
-              <TagBtn onClick={() => handleCategory(6)}>도구</TagBtn>
+              <TagBtn className='gray' onClick={() => handleCategory(0)}>전신</TagBtn>
+              <TagBtn className='gray' onClick={() => handleCategory(1)}>상체</TagBtn>
+              <TagBtn className='gray' onClick={() => handleCategory(2)}>코어</TagBtn>
+              <TagBtn className='gray' onClick={() => handleCategory(3)}>하체</TagBtn>
+              <TagBtn className='gray' onClick={() => handleCategory(4)}>자세</TagBtn>
+              <TagBtn className='gray' onClick={() => handleCategory(5)}>효과</TagBtn>
+              <TagBtn className='gray' onClick={() => handleCategory(6)}>도구</TagBtn>
             </CategoryWrap>
             <p>2. 태그 선택</p>
             <TagWrap>
@@ -156,35 +156,12 @@ const TagBtn = styled.button`
   width: 100%;
   height: 30px;
   padding: 5px 10px;
-  background: #f1d0bd;
+  background: ${({ theme }) => theme.lightPurple};
   border-radius: 10px;
+  color: #ffffff;
 
-  &:nth-child(1) {
-    background-color: #d6b4b4;
-  }
-
-  &:nth-child(2) {
-    background-color: #feb580;
-  }
-
-  &:nth-child(3) {
-    background-color: #f0c36a;
-  }
-
-  &:nth-child(4) {
-    background-color: #bfd0a2;
-  }
-
-  &:nth-child(5) {
-    background-color: #97bfb8;
-  }
-
-  &:nth-child(6) {
-    background-color: #9a97bf;
-  }
-
-  &:nth-child(7) {
-    background-color: #bf97be;
+  &.gray {
+    background: #ADADAD
   }
 `;
 
