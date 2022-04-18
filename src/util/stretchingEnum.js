@@ -19,9 +19,19 @@ const subBodyEnum = {
 
 const subBodyArr = [
   [],
-  ['얼굴 / 머리', '목 / 어깨', '팔 / 손목 / 손'],
-  ['등 / 허리', '골반 / 엉덩이'],
-  ['무릎 / 다리', '발목 / 발'],
+  [
+    ['얼굴 / 머리', 1],
+    ['목 / 어깨', 2],
+    ['팔 / 손목 / 손', 3],
+    ['등 / 허리', 4],
+  ],
+  [
+    ['무릎 / 다리', 6],
+    ['발목 / 발', 7],
+  ],
+  [
+    ['골반 / 엉덩이', 5],
+  ],
 ];
 
 const postureEnum = {
@@ -113,7 +123,7 @@ const tagSet = {
     type: 'posture',
     value: 1,
   },
-  "의자에 앉아서": {
+  '의자에 앉아서': {
     type: 'posture',
     value: 2,
   },
@@ -137,23 +147,23 @@ const tagSet = {
     type: 'effect',
     value: 2,
   },
-  "바른 자세": {
+  '바른 자세': {
     type: 'effect',
     value: 3,
   },
-  "통증 완화": {
+  '통증 완화': {
     type: 'effect',
     value: 4,
   },
-  "혈액 순환 촉진": {
+  '혈액 순환 촉진': {
     type: 'effect',
     value: 5,
   },
-  "거북목 개선": {
+  '거북목 개선': {
     type: 'effect',
     value: 6,
   },
-  "라운드숄더 개선": {
+  '라운드숄더 개선': {
     type: 'effect',
     value: 7,
   },
@@ -165,7 +175,7 @@ const tagSet = {
     type: 'tool',
     value: 2,
   },
-  "라텍스 밴드": {
+  '라텍스 밴드': {
     type: 'tool',
     value: 3,
   },

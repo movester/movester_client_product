@@ -1,82 +1,84 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {
-  mainBodyArr,
-  subBodyArr,
-  postureArr,
-  effectArr,
-} from '../../util/stretchingEnum';
+import { mainBodyArr, subBodyArr, subBodyEnum, postureArr, effectArr } from '../../util/stretchingEnum';
 
-function StretchingMenu({
-  handleTagModal,
-  searchType,
-  handleSearchType,
-  main,
-  handleMain,
-  sub,
-  handleSub,
-}) {
+function StretchingMenu({ handleTagModal, searchType, handleSearchType, main, handleMain, sub, handleSub }) {
   return (
-      <StyledNav>
-        <MainCategory>
-          <StyledMainBtn className={searchType === 1 ? 'active' : ''} onClick={() => handleSearchType(1)}>
-            부위별
-          </StyledMainBtn>
-          <StyledBar>|</StyledBar>
-          <StyledMainBtn className={searchType === 2 ? 'active' : ''} onClick={() => handleSearchType(2)}>
-            자세별
-          </StyledMainBtn>
-          <StyledBar>|</StyledBar>
-          <StyledMainBtn className={searchType === 3 ? 'active' : ''} onClick={() => handleSearchType(3)}>
-            효과별
-          </StyledMainBtn>
-        </MainCategory>
-        {searchType === 1 ? (
-          <CurrentCategory>
-            <StyledCurBtn
-              onClick={() => {
-                handleMain('');
-                handleSub('');
-              }}
-            >
-              전체
-            </StyledCurBtn>
-            {main ? (
-              <>
-                <StyledArrow>&gt;</StyledArrow>
-                <StyledCurBtn>{mainBodyArr[main - 1]}</StyledCurBtn>
-              </>
-            ) : (
-              ''
-            )}
-            {sub ? (
-              <>
-                <StyledArrow>&gt;</StyledArrow>
-                <StyledCurBtn>{subBodyArr[main - 1][sub - 1]}</StyledCurBtn>
-              </>
-            ) : (
-              ''
-            )}
-          </CurrentCategory>
-        ) : (
-          ''
-        )}
-        <SubCategory>
-          {searchType === 1
-            ? main
-              ? subBodyArr[main - 1].map((subBody, i) => (
-                  <StyledSubBtn onClick={() => handleSub(i + 1)}>{subBody}</StyledSubBtn>
-                ))
-              : mainBodyArr.map((mainBody, i) => (
-                  <StyledSubBtn onClick={() => handleMain(i + 1)}>{mainBody}</StyledSubBtn>
-                ))
-            : searchType === 2
-            ? postureArr.map((posture, i) => <StyledSubBtn onClick={() => handleMain(i + 1)}>{posture}</StyledSubBtn>)
-            : effectArr.map((effect, i) => <StyledSubBtn onClick={() => handleMain(i + 1)}>{effect}</StyledSubBtn>)}
-        </SubCategory>
-        <StyledTagBtn onClick={handleTagModal}>태그별 찾기</StyledTagBtn>
-      </StyledNav>
+    <StyledNav>
+      <MainCategory>
+        <StyledMainBtn className={searchType === 1 ? 'active' : ''} onClick={() => handleSearchType(1)}>
+          부위별
+        </StyledMainBtn>
+        <StyledBar>|</StyledBar>
+        <StyledMainBtn className={searchType === 2 ? 'active' : ''} onClick={() => handleSearchType(2)}>
+          자세별
+        </StyledMainBtn>
+        <StyledBar>|</StyledBar>
+        <StyledMainBtn className={searchType === 3 ? 'active' : ''} onClick={() => handleSearchType(3)}>
+          효과별
+        </StyledMainBtn>
+      </MainCategory>
+      {searchType === 1 ? (
+        <CurrentCategory>
+          <StyledCurBtn
+            onClick={() => {
+              handleMain('');
+              handleSub('');
+            }}
+          >
+            전체
+          </StyledCurBtn>
+          {main ? (
+            <>
+              <StyledArrow>&gt;</StyledArrow>
+              <StyledCurBtn onClick={() => {
+              handleMain(main);
+              handleSub('');
+            }}>{mainBodyArr[main - 1]}</StyledCurBtn>
+            </>
+          ) : (
+            ''
+          )}
+          {sub ? (
+            <>
+              <StyledArrow>&gt;</StyledArrow>
+              <StyledCurBtn>{subBodyEnum[sub]}</StyledCurBtn>
+            </>
+          ) : (
+            ''
+          )}
+        </CurrentCategory>
+      ) : (
+        ''
+      )}
+      <SubCategory>
+        {searchType === 1
+          ? main
+            ? subBodyArr[main - 1].map(([string, number]) => (
+                <StyledSubBtn onClick={() => handleSub(number)}>{string}</StyledSubBtn>
+              ))
+            : mainBodyArr.map((mainBody, i) => (
+                <StyledSubBtn onClick={() => handleMain(i + 1)}>{mainBody}</StyledSubBtn>
+              ))
+          : searchType === 2
+          ? postureArr.map((posture, i) => (
+              <StyledSubBtn
+                onClick={e => {
+                  handleMain(i + 1);
+                  console.log(main, e.target.textContent, postureArr[main - 1]);
+                  if (e.target.textContent === postureArr[main - 1]) {
+                    e.target.classList.add('active');
+                  }
+                }}
+              >
+                {posture}
+              </StyledSubBtn>
+            ))
+          : effectArr.map((effect, i) => <StyledSubBtn onClick={() => handleMain(i + 1)}>{effect}</StyledSubBtn>)}
+      </SubCategory>
+      <StyledTagBtn onClick={handleTagModal}>태그별 찾기</StyledTagBtn>
+    </StyledNav>
   );
 }
 
@@ -184,14 +186,14 @@ const StyledSubBtn = styled.button`
 
   background-color: ${({ theme }) => theme.lightPurple};
   color: #ffffff;
-  &:nth-child(1) {
+  &.active {
     background-color: ${({ theme }) => theme.darkPurple};
   }
 `;
 
 const StyledTagBtn = styled.button`
   font-size: 16px;
-  background-color: #ADADAD;
+  background-color: #adadad;
   color: #ffffff;
   width: 150px;
   height: 40px;

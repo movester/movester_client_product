@@ -55,6 +55,8 @@ const Content = styled.section`
 const StyledPre = styled.pre`
   padding: 10px;
   min-height: 40px;
+  line-height: 25px;
+  text-align: center;
 `;
 
 const ScoreResearch = styled.section`
