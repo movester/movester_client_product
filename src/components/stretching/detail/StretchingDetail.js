@@ -1,30 +1,32 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactStars from 'react-rating-stars-component';
 
 function StretchingDetail({ stretching, isAuth, handleDifficulty, userDifficulty }) {
+  const user = useSelector(state => state.auth?.user?.name);
   return (
-      <Content>
-        <StyledPre dangerouslySetInnerHTML={{ __html: stretching.contents }} />
-        {isAuth ? (
-          <ScoreResearch>
-            <p>뭅스터와 함께 스트레칭을 따라해보셨나요?</p>
-            <p>조나현님께서 느낀 스트레칭의 강도를 표시해주세요!</p>
-            <ReactStars
-              count={5}
-              onChange={handleDifficulty}
-              size={24}
-              emptyIcon={<i className="far fa-star" />}
-              fullIcon={<i className="fa fa-star" />}
-              value={userDifficulty}
-              activeColor="#fc0"
-            />
-          </ScoreResearch>
-        ) : (
-          ''
-        )}
-      </Content>
+    <Content>
+      <StyledPre dangerouslySetInnerHTML={{ __html: stretching.contents }} />
+      {isAuth ? (
+        <ScoreResearch>
+          <p>뭅스터와 함께 스트레칭을 따라해보셨나요?</p>
+          <p>{user}님께서 느낀 스트레칭의 강도를 표시해주세요!</p>
+          <ReactStars
+            count={5}
+            onChange={handleDifficulty}
+            size={24}
+            emptyIcon={<i className="far fa-star" />}
+            fullIcon={<i className="fa fa-star" />}
+            value={userDifficulty}
+            activeColor="#fc0"
+          />
+        </ScoreResearch>
+      ) : (
+        ''
+      )}
+    </Content>
   );
 }
 
@@ -70,4 +72,3 @@ const ScoreResearch = styled.section`
     margin-bottom: 15px;
   }
 `;
-
