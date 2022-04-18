@@ -68,7 +68,7 @@ const StyledWrap = styled.section`
 `;
 
 const StretchingContainer = styled.section`
-  height: auto;
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem 2rem;

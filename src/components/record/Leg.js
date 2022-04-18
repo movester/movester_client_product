@@ -25,15 +25,15 @@ function Leg({
   errMsg,
 }) {
   return (
-      <StyledWrap>
-        <p className="title">허리 &#183; 다리 유연성 기록</p>
-        <StyledCheckRecord>
-          <Graph records={records}/>
-          <div className="create">
+    <StyledWrap>
+      <p className="title">허리 &#183; 다리 유연성 기록</p>
+      <StyledCheckRecord>
+        <Graph records={records} />
+        <div className="create">
           {isCreate ? (
-              <>
-                <p className="title">멋져요! 오늘도 허리 &#183; 다리 유연성을 기록했습니다.</p>
-                <div className="ruler-send">
+            <>
+              <p className="title">멋져요! 오늘도 허리 &#183; 다리 유연성을 기록했습니다.</p>
+              <div className="ruler-send">
                 <button type="button" className="created-record" disabled>
                   {todayRecord} cm
                 </button>
@@ -45,10 +45,10 @@ function Leg({
                 <p>건강한 신체를 위한 한걸음</p>
                 <p>뭅스터와 매일 함께해요!</p>
               </div>
-              </>
-            ) : (
-              <>
-                <p className="title">오늘의 허리 &#183; 다리 유연성 기록하기</p>
+            </>
+          ) : (
+            <>
+              <p className="title">오늘의 허리 &#183; 다리 유연성 기록하기</p>
               <div className="ruler-wrap">
                 <Ruler
                   record={record}
@@ -59,16 +59,16 @@ function Leg({
                 />
                 <Button event={onCreate} type="wide" />
               </div>
-              </>
-            )}
+            </>
+          )}
 
-            <MoveLink text="기록이 부진하신가요?" btnText="스트레칭 하러가기" address="/stretching" />
-          </div>
-        </StyledCheckRecord>
-        <GrayBg>
-          <p className="title">허리 &#183; 다리 유연성 측정법</p>
-          <p className="margin">준비물 : 30cm 자, 또는 줄자</p>
-          <p className="margin">손과 발끝 사이의 거리를 측정해주세요.</p>
+          <MoveLink text="기록이 부진하신가요?" btnText="스트레칭 하러가기" address="/stretching" />
+        </div>
+      </StyledCheckRecord>
+      <GrayBg>
+        <p className="title">허리 &#183; 다리 유연성 측정법</p>
+        <p className="margin">준비물 : 30cm 자, 또는 줄자</p>
+        <p className="margin">손과 발끝 사이의 거리를 측정해주세요.</p>
         <GridWrapper>
           <div>
             <img src="/assets/leg/leg_how_1.png" alt="허리/다리 유연성 측정법1" />
@@ -76,22 +76,22 @@ function Leg({
           </div>
           <div>
             <img src="/assets/leg/leg_how_2.png" alt="허리/다리 유연성 측정법2" />
-            <p>2) [A] 발 끝에 손이 닿지 않을 경우 (표기법, -측정한 거리)</p>
+            <p>2) [A] 발 끝에 손이 닿지 않을 경우</p>
+            <p>(표기법, -측정한 거리)</p>
           </div>
           <div>
             <img src="/assets/leg/leg_how_3.png" alt="허리/다리 유연성 측정법3" />
-            <p>3) [B] 발 끝에 손이 닿을 경우 (표기법, +측정한 거리)</p>
+            <p>3) [B] 발 끝에 손이 닿을 경우</p>
+            <p>(표기법, +측정한 거리)</p>
           </div>
         </GridWrapper>
-        </GrayBg>
-        <GrayBg>
-          <p className="title">연령대별 허리 &#183; 다리 유연성 평균치</p>
-          <img src="/assets/leg/leg_standard.png" alt="허리, 다리 평균 유연성 평균치" />
-        </GrayBg>
-        {errModalOn && (
-          <ConfirmModal onClose={handleErrModal} title="기록 등록 실패" content={errMsg} />
-      )}
-      </StyledWrap>
+      </GrayBg>
+      <GrayBg>
+        <p className="title">연령대별 허리 &#183; 다리 유연성 평균치</p>
+        <img className="image" src="/assets/leg/leg_standard.png" alt="허리, 다리 평균 유연성 평균치" />
+      </GrayBg>
+      {errModalOn && <ConfirmModal onClose={handleErrModal} title="기록 등록 실패" content={errMsg} />}
+    </StyledWrap>
   );
 }
 
@@ -234,9 +234,12 @@ const StyledButton = styled.button`
 
 const GridWrapper = styled.div`
   display: grid;
+  padding: 0 100px;
   grid-template-columns: repeat(3, 1fr);
-
+  p {
+    line-height: 24px;
+  }
   img {
-    width: 100%;
+    width: 80%;
   }
 `;

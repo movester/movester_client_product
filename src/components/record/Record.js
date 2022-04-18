@@ -175,4 +175,5 @@ const StyledButton = styled.div`
   font-weight: 700;
   text-align: center;
   cursor: pointer;
+  transform: translateX(-55px);
 `;

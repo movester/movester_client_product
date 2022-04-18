@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from '../../services/defaultClient';
 import Main from '../../components/common/Main';
@@ -25,18 +25,26 @@ function StretchingDetailPage() {
     setErrModalOn(!errModalOn);
   };
 
+  const { pathname } = useLocation();
+
+  const getStretching = async () => {
+    try {
+      setLoading(true);
+      const result = await axios.get(`/stretchings/${idx}?userIdx=${userIdx}`);
+      setStretching(result.data.data);
+    } catch (err) {
+      setErrMsg(err.response.data.error);
+      handleErrModal();
+    }
+    setLoading(false);
+  };
+
   useEffect(() => {
-    const getStretching = async () => {
-      try {
-        setLoading(true);
-        const result = await axios.get(`/stretchings/${idx}?userIdx=${userIdx}`);
-        setStretching(result.data.data);
-      } catch (err) {
-        setErrMsg(err.response.data.error);
-        handleErrModal();
-      }
-      setLoading(false);
-    };
+    window.scrollTo(0, 0);
+    getStretching();
+  }, [pathname]);
+
+  useEffect(() => {
     getStretching();
   }, [userDifficulty]);
 
