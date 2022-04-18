@@ -19,6 +19,12 @@ function StretchingListPage() {
   const [sub, setSub] = useState('');
   const handleSearchType = type => {
     setSearchType(() => type);
+    setSub(() => '');
+    if (type === 1) {
+      setMain(() => '');
+    } else {
+      setMain(() => 1);
+    }
   };
   const handleMain = type => {
     setMain(() => type);
@@ -82,11 +88,6 @@ function StretchingListPage() {
     const arrayToString = arr => `[${arr.join(',')}]`;
     try {
       setLoading(true);
-      console.log(
-        `/stretchings/tag/match?main=${arrayToString(mainBody)}&sub=${arrayToString(subBody)}&tool=${arrayToString(
-          tool
-        )}&posture=${arrayToString(posture)}&effect=${arrayToString(effect)}&userIdx=${userIdx}`
-      );
       const res = await axios.get(
         `/stretchings/tag/match?main=${arrayToString(mainBody)}&sub=${arrayToString(subBody)}&tool=${arrayToString(
           tool
@@ -101,22 +102,25 @@ function StretchingListPage() {
         posture: [],
         effect: [],
       });
+      setTagSearch(prev => !prev)
     } catch (err) {
       setErrMsg(err.response.data.error);
       handleErrModal();
     }
     setLoading(false);
   };
-  // console.log(getTagStretchingList)
 
   useEffect(() => {
     if (!tagSearch) {
-      console.log('useEfefe');
       getStretchingList();
-    } else {
+    }
+  }, [main, sub]);
+
+  useEffect(() => {
+    if (tagSearch) {
       getTagStretchingList();
     }
-  }, [main, sub, tagSearch]);
+  }, [tagSearch]);
 
   useEffect(() => {
     const getMoreStretchingList = async () => {

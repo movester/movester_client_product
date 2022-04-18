@@ -32,10 +32,14 @@ function StretchingMenu({ handleTagModal, searchType, handleSearchType, main, ha
           {main ? (
             <>
               <StyledArrow>&gt;</StyledArrow>
-              <StyledCurBtn onClick={() => {
-              handleMain(main);
-              handleSub('');
-            }}>{mainBodyArr[main - 1]}</StyledCurBtn>
+              <StyledCurBtn
+                onClick={() => {
+                  handleMain(main);
+                  handleSub('');
+                }}
+              >
+                {mainBodyArr[main - 1]}
+              </StyledCurBtn>
             </>
           ) : (
             ''
@@ -55,27 +59,19 @@ function StretchingMenu({ handleTagModal, searchType, handleSearchType, main, ha
       <SubCategory>
         {searchType === 1
           ? main
-            ? subBodyArr[main - 1].map(([string, number]) => (
-                <StyledSubBtn onClick={() => handleSub(number)}>{string}</StyledSubBtn>
+            ? subBodyArr[main - 1].map(([string, number], i) => (
+                <StyledSubBtn className={sub - 1 === i ? 'active' : ''} onClick={() => handleSub(number)}>{string}</StyledSubBtn>
               ))
             : mainBodyArr.map((mainBody, i) => (
                 <StyledSubBtn onClick={() => handleMain(i + 1)}>{mainBody}</StyledSubBtn>
               ))
           : searchType === 2
           ? postureArr.map((posture, i) => (
-              <StyledSubBtn
-                onClick={e => {
-                  handleMain(i + 1);
-                  console.log(main, e.target.textContent, postureArr[main - 1]);
-                  if (e.target.textContent === postureArr[main - 1]) {
-                    e.target.classList.add('active');
-                  }
-                }}
-              >
+              <StyledSubBtn className={main - 1 === i ? 'active' : ''} onClick={() => handleMain(i + 1)}>
                 {posture}
               </StyledSubBtn>
             ))
-          : effectArr.map((effect, i) => <StyledSubBtn onClick={() => handleMain(i + 1)}>{effect}</StyledSubBtn>)}
+          : effectArr.map((effect, i) => <StyledSubBtn className={main - 1 === i ? 'active' : ''} onClick={() => handleMain(i + 1)}>{effect}</StyledSubBtn>)}
       </SubCategory>
       <StyledTagBtn onClick={handleTagModal}>태그별 찾기</StyledTagBtn>
     </StyledNav>

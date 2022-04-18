@@ -30,16 +30,6 @@ function StretchingTagModal({ onClose, handleTagSearch, onTagChange }) {
       handleTagSearch(() => true);
     }
   };
-
-  // const categorySet = {
-  //   1: 'mainBody',
-  //   2: 'subBody',
-  //   3: 'subBody',
-  //   4: 'subBody',
-  //   5: 'posture',
-  //   6: 'effect',
-  //   7: 'tool',
-  // };
   return (
     <ModalPortal>
       <Container>
