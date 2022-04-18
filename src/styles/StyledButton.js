@@ -12,6 +12,7 @@ const StyledButton = styled.button`
   border-radius: 25px;
 
   &.kakao-login {
+    margin-top: 23px;
     background-image: url('/assets/kakao_login_large_wide.png');
     background-size: cover;
     background-position: center;

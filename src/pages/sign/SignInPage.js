@@ -52,33 +52,33 @@ function SignInPage() {
 
     if (name === 'email') {
       if (value.length > 0 && !emailRegex.test(value)) {
-        setIsEmail(false);
+        setIsEmail(() => false);
         setEmailMessage('올바른 이메일 형식이 아닙니다.');
       } else if (emailRegex.test(value)) {
-        setIsEmail(true);
+        setIsEmail(() => true);
         setEmailMessage('');
       } else if (value === '') {
-        setIsEmail(false);
+        setIsEmail(() => false);
         setEmailMessage('');
       }
     } else if (name === 'password') {
       if (value.length > 0 && !passwordRegex.test(value)) {
-        setIsPassword(false);
+        setIsPassword(() => false);
         setPasswordMessage('영문자, 숫자 조합으로 8자리 이상 입력해주세요.');
       } else if (passwordRegex.test(value)) {
-        setIsPassword(true);
+        setIsPassword(() => true);
         setPasswordMessage('');
       } else if (password === '') {
-        setIsPassword(false);
+        setIsPassword(() => false);
         setPasswordMessage('');
       }
     }
+    setIsSubmit(isEmail && isPassword);
   };
 
   const onSubmit = e => {
     e.preventDefault();
-    setIsSubmit(isEmail && isPassword);
-    if (isSubmit) {
+    if (isEmail && isPassword) {
       dispatch(fetchLoginThunk({ email, password }));
     }
   };

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import MoveLink from '../common/MoveLink';
 import flexCenterAlign from '../../styles/flexCenterAlign';
-import ModalPortal from '../common/Modal/ModalPortal';
 import ConfirmModal from '../common/Modal/ConfirmModal';
 import LinkModal from '../common/Modal/LinkModal';
 import StyledInput from '../../styles/StyledInput';
@@ -104,7 +103,7 @@ function SignForm({
             </>
           ) : (
             <>
-              <StyledButton type="submit" className="join-btn" aria-label="join">
+              <StyledButton type="submit" className="join-btn" aria-label="join" disalbed={!isSubmit}>
                 회원가입 하기
               </StyledButton>
               <MoveLink text="이미 계정이 있으신가요?" address="/login" btnText="로그인" />
@@ -112,7 +111,6 @@ function SignForm({
           )}
         </StyledWrapper>
       </FormWrapper>
-      <ModalPortal>
         {errModalOn && (
           <ConfirmModal
             onClose={handleErrModal}
@@ -120,16 +118,13 @@ function SignForm({
             content={errMsg}
           />
         )}
-      </ModalPortal>
       {linkModalOn && (
-        <ModalPortal>
           <LinkModal
             onClose={handleLinkModal}
             title="로그인 실패!"
             content="이메일 인증을 진행해주세요!"
             link={`/join/emailAuth/${userIdx}`}
           />
-        </ModalPortal>
       )}
     </>
   );

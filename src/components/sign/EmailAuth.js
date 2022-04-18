@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import StyledButton from '../../styles/StyledButton';
 import StyledInput from '../../styles/StyledInput';
-import ModalPortal from '../common/Modal/ModalPortal';
 import LinkModal from '../common/Modal/LinkModal';
 import ConfirmModal from '../common/Modal/ConfirmModal';
 
@@ -17,18 +16,14 @@ function EmailAuth({ authNum, onChange, onSubmit, linkModalOn, handleLinkModal, 
       <StyledButton onClick={onSubmit}>이메일 인증하기</StyledButton>
       <StyledP className="info">혹시 메일을 받지 못하셨다면 스팸 메일함을 확인해주세요.</StyledP>
       {linkModalOn && (
-        <ModalPortal>
-          <LinkModal
-            onClose={handleLinkModal}
-            title="회원가입 성공!"
-            content="가입한 계정으로 로그인하세요."
-            link="/login"
-          />
-        </ModalPortal>
+        <LinkModal
+          onClose={handleLinkModal}
+          title="회원가입 성공!"
+          content="가입한 계정으로 로그인하세요."
+          link="/login"
+        />
       )}
-      <ModalPortal>
-        {errModalOn && <ConfirmModal onClose={handleErrModal} title="이메일 인증 실패!" content={errMsg} />}
-      </ModalPortal>
+      {errModalOn && <ConfirmModal onClose={handleErrModal} title="이메일 인증 실패!" content={errMsg} />}
     </>
   );
 }
@@ -47,7 +42,8 @@ EmailAuth.propTypes = {
 export default EmailAuth;
 
 const StyledP = styled.p`
-  font-size: 0.9rem;
+  font-size: 14px;
+  margin-bottom: 5px;
 
   &:nth-child(3) {
     margin-bottom: 30px;

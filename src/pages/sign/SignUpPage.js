@@ -47,53 +47,53 @@ function SignUpPage() {
 
     if (name === 'email') {
       if (value.length > 0 && !emailRegex.test(value)) {
-        setIsEmail(false);
+        setIsEmail(() => false);
         setEmailMessage('올바른 이메일 형식이 아닙니다.');
       } else if (emailRegex.test(value)) {
-        setIsEmail(true);
+        setIsEmail(() => true);
         setEmailMessage('');
       } else if (value === '') {
-        setIsEmail(false);
+        setIsEmail(() => false);
         setEmailMessage('');
       }
     } else if (name === 'password') {
       if (value.length > 0 && !passwordRegex.test(value)) {
-        setIsPassword(false);
+        setIsPassword(() => false);
         setPasswordMessage('영문자, 숫자 조합으로 8자리 이상 입력해주세요.');
       } else if (passwordRegex.test(value)) {
-        setIsPassword(true);
+        setIsPassword(() => true);
         setPasswordMessage('');
       } else if (password === '') {
-        setIsPassword(false);
+        setIsPassword(() => false);
         setPasswordMessage('');
       }
     } else if (name === 'passwordConfirm') {
       if (value !== password) {
-        setIsPasswordConfirm(false);
+        setIsPasswordConfirm(() => false);
         setPasswordConfirmMessage('비밀번호 확인이 일치하지 않습니다.');
       } else {
-        setIsPasswordConfirm(true);
+        setIsPasswordConfirm(() => true);
         setPasswordConfirmMessage('');
       }
     } else if (name === 'username') {
       if (value !== '' && value.length < 2) {
-        setIsName(false);
+        setIsName(() => false);
         setNameMessage('2글자 이상의 이름을 입력해주세요.');
       } else if (value.length >= 2) {
-        setIsName(true);
+        setIsName(() => true);
         setNameMessage('');
       } else if (value === '') {
-        setIsName(false);
+        setIsName(() => false);
         setNameMessage('');
       }
     }
+    setIsSubmit(isEmail && isPassword && isPasswordConfirm && isName);
   };
 
   const onSubmit = async e => {
     e.preventDefault();
 
-    setIsSubmit(isEmail && isPassword && isPasswordConfirm && isName);
-    if (!isSubmit) return;
+    if (!(isEmail && isPassword && isPasswordConfirm && isName)) return;
 
     try {
       const { data } = await axios.post('users/join', {
@@ -127,6 +127,7 @@ function SignUpPage() {
         passwordMessage={passwordMessage}
         passwordConfirmMessage={passwordConfirmMessage}
         nameMessage={nameMessage}
+        isSubmit={isSubmit}
         errModalOn={errModalOn}
         handleErrModal={handleErrModal}
         errMsg={errMsg}
