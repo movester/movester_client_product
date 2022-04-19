@@ -73,8 +73,6 @@ function About() {
               <p>함께 나아가요.</p>
             </Contents>
           </Grid>
-
-          {/* <img src="/assets/service.png" alt="서비스 정보" /> */}
         </div>
       </StyledAboutWrap>
     </Main>
@@ -91,18 +89,15 @@ const StyledAboutWrap = styled.section`
   text-align: center;
   .service-information {
     img {
-      max-width: 655px;
       width: 250px;
-      height: 100%;
-      border-radius: 30px;
-      // border: 1px solid red;
-      background-color: gray;
-
+      height: 250px;
+      border-radius: 50%;
     }
     h1 {
       font-size: 28px;
       margin: 80px 0 50px 0;
     }
+    margin: 0 30%;
   }
 `;
 
@@ -154,25 +149,28 @@ const StyledMiddle = styled.div`
 `;
 
 const Grid = styled.div`
+  text-align: center;
   display: grid;
   grid-template-columns: 250px 500px;
-  // border: 1px solid red;
-  margin: 0 27%;
+  column-gap: 50px;
 
-  &+& {
+  & + & {
     margin-top: 70px;
   }
 `;
 
 const Contents = styled.div`
   p {
-    line-height: 30px;
-    font-size: 16px;
+    line-height: 28px;
+    font-size: 14px;
+    text-align: left;
   }
 `;
 
 const Title = styled.h2`
-  font-size: 20px;
+  text-align: left;
+  font-size: 22px;
+  color: rgba(42, 21, 152, 1);
   font-weight: 700;
   line-height: 80px;
   margin-top: 20px;

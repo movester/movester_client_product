@@ -6,7 +6,7 @@ import styled from 'styled-components';
 function WeeklyCard({ weekStretching }) {
   return (
     <WeeklyCardWrapper>
-      {['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUM'].map((day, index) => (
+      {['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'].map((day, index) => (
         <Link key={day} to={`/stretching/detail/${weekStretching[index].stretchingIdx}`}>
           <WeeklyCardContainer>
             <h3>{day}</h3>

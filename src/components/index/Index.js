@@ -80,6 +80,10 @@ const Banner = styled.section`
     font-weight: 700;
     color: rgba(42, 21, 152, 1);
     margin: 45px 0;
+
+    @media screen and (max-width: 600px) {
+      margin-top: 20px;
+    }
   }
 
   h3 {
@@ -122,13 +126,13 @@ const Banner = styled.section`
   }
 
   @media (max-width: 600px) {
-    padding: 3rem;
+    padding: 0 3rem 3rem 3rem;
   }
 `;
 
 const WeeklyStretching = styled.section`
   text-align: center;
-  padding: 30px 5rem;
+  padding: 60px 5rem 40px;
 
   h2 {
     font-size: 2rem;
@@ -144,7 +148,7 @@ const Service = styled.section`
   justify-content: center;
   align-items: center;
   background: rgba(229, 229, 229, 0.6);
-  padding: 30px;
+  padding: 60px 5rem;
 
   h2 {
     font-size: 2rem;
@@ -156,9 +160,8 @@ const Service = styled.section`
   .image-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    column-gap: 100px;
     padding: 0 5rem;
-    justify-content: center;
-    align-items: center;
 
     @media screen and (max-width: 600px) {
       grid-template-columns: repeat(1, 1fr);
@@ -170,8 +173,6 @@ const Service = styled.section`
 
 const ImageWrapper = styled.div`
   width: 100%;
-  display: flex;
-  align-items: space-between;
   width: 200px;
   height: 200px;
   margin: 10px;
@@ -185,12 +186,7 @@ const ImageWrapper = styled.div`
     background: ${({ theme }) => theme.darkGray};
     color: #fff;
   }
-
-  @media screen and (min-width: 600px) {
-    & + & {
-      margin-left: 100px;
-    }
-  }
+ }
 `;
 
 const ItemText = styled.span`

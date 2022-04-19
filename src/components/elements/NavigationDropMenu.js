@@ -1,31 +1,37 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-import flexCenterAlign from '../../styles/flexCenterAlign';
-
-function NavigationDropMenu() {
+function NavigationDropMenu({ isAuth }) {
   return (
     <NavigationDropMenuWrapper>
       <NavLink to="/about">About</NavLink>
       <NavLink to="/stretching">Stretching</NavLink>
       <NavLink to="/event">Event</NavLink>
-      <NavLink to="/mypage/profile">Mypage</NavLink>
+      {isAuth && <NavLink to="/mypage/profile">Mypage</NavLink>}
     </NavigationDropMenuWrapper>
   );
 }
 
+NavigationDropMenu.propTypes = {
+  isAuth: PropTypes.bool.isRequired,
+};
+
 export default NavigationDropMenu;
 
 const NavigationDropMenuWrapper = styled.div`
-  ${flexCenterAlign}
-  width: 120px;
+  display: grid;
+  grid-template-colums: repeat(1, 1fr);
+  row-gap: 10px;
+  width: 90px;
   position: absolute;
   top: 50px;
   left: 10px;
   background: #fff;
-  border: 1px solid #615b5b;
-  border-radius: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
   z-index: 10;
-  padding: 16px;
+  padding: 5px;
+  text-align: left;
 `;

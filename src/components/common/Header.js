@@ -28,7 +28,7 @@ function Header() {
     <HeaderWrapper>
       <HeaderLeftBlock>
         {isMenu ? <CloseIcon onClick={handleMenu} /> : <MenuIcon name="menu" onClick={handleMenu} />}
-        {isMenu && <NavigationDropMenu />}
+        {isMenu && <NavigationDropMenu isAuth={isAuth}/>}
         <Link to="/">
           <img src="/assets/logo.png" alt="뭅스터 로고" />
         </Link>
@@ -99,11 +99,12 @@ const HeaderWrapper = styled.header`
 
     svg {
       display: block;
-      margin: 0 0.5rem;
+      margin: 0 10px;
       cursor: pointer;
+      transform: translateY(-2px);
     }
     img {
-      width: 5rem;
+      width: 100px;
     }
     .navigation-wrapper {
       display: none;
@@ -117,7 +118,7 @@ const HeaderLeftBlock = styled.div`
   align-items: center;
   justify-content: flex-start;
 
-  @media (max-width: 850px) {
+  @media (max-width: 600px) {
     justify-content: flex-start;
   }
 `;
