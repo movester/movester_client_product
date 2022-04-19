@@ -57,7 +57,6 @@ const StyledWrap = styled.section`
       display: block;
     }
     @media screen and (max-width: 600px) {
-      margin-top: 20px;
       display: block;
     }
     .loading,

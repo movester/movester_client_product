@@ -14,6 +14,7 @@ function LogoutModal({ onClose }) {
   const navigate = useNavigate();
 
   const onLogout = () => {
+    onClose();
     dispatch(fetchLogoutThunk());
     if (!isError) {
       navigate('/');

@@ -35,10 +35,6 @@ function Nav() {
     },
   ];
 
-  const OnModal = () => {
-    setModalOn(prev => !prev);
-  };
-
   return (
     <>
       <StyledNavWrap>
@@ -51,7 +47,7 @@ function Nav() {
             </li>
           ))}
         </ul>
-        <button type="button" onClick={OnModal}>
+        <button type="button" onClick={handleModal}>
           로그아웃
         </button>
       </StyledNavWrap>

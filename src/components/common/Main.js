@@ -25,8 +25,8 @@ const StyledMain = styled.main`
     min-height: 74vh;
     display: flex;
     text-align: left;
-    @media screen and (max-width: 500px) {
-      padding: 40px 2rem;
+    @media screen and (max-width: 600px) {
+      padding: 0px 2rem;
     }
   }
 
@@ -37,8 +37,8 @@ const StyledMain = styled.main`
   &.record {
     padding: 40px 5rem;
     display: flex;
-    @media screen and (max-width: 500px) {
-      padding: 40px 2rem;
+    @media screen and (max-width: 600px) {
+      padding: 0px 2rem;
     }
   }
 `;

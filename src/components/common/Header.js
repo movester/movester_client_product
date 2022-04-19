@@ -28,7 +28,7 @@ function Header() {
     <HeaderWrapper>
       <HeaderLeftBlock>
         {isMenu ? <CloseIcon onClick={handleMenu} /> : <MenuIcon name="menu" onClick={handleMenu} />}
-        {isMenu && <NavigationDropMenu isAuth={isAuth}/>}
+        {isMenu && <NavigationDropMenu isAuth={isAuth} handleMenu={handleMenu}/>}
         <Link to="/">
           <img src="/assets/logo.png" alt="뭅스터 로고" />
         </Link>
