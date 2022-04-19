@@ -156,6 +156,10 @@ const Title = styled.p`
   font-size: 30px;
   font-weight: 800;
   margin-bottom: 14px;
+
+  @media (max-width: 600px) {
+    font-size: 20px;
+  }
 `;
 
 const Category = styled.p`
@@ -188,6 +192,15 @@ const StyledStarIcon = styled(StarIcon)`
 
 const EffectWrap = styled.div`
   margin: 18px 0 81px 0;
+
+  @media (max-width: 600px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 10px;
+    margin: 30px 0;
+    height: auto;
+  }
 `;
 
 const EffectTag = styled.div`
@@ -203,23 +216,27 @@ const EffectTag = styled.div`
   & + & {
     margin-left: 10px;
   }
+
+  @media (max-width: 600px) {
+    height: auto;
+    & + & {
+      margin-left: 0;
+    }
+    text-align: center;
+  }
 `;
 
 const YoutubeWrap = styled.div`
   font-size: 16px;
   display: flex;
   line-height: 24px;
-  margin-bottom: 10px;
+  margin: 5px 0 10px 0;
 `;
 
 const StyledYouTubeIcon = styled(YouTubeIcon)`
-  margin-right: 5px;
+  margin: 0 5px 0 0;
+  @media (max-width: 600px) {
+    transform: translateY(2px);
+  }
 `;
 
-// const KaKaoBtn = styled.button`
-//   width: auto;
-//   height: 24px;
-//   padding: 5px 10px;
-//   background: #f7e600;
-//   border-radius: 10px;
-// `;

@@ -31,7 +31,7 @@ function StretchingMenu({ handleTagModal, searchType, handleSearchType, main, ha
           </StyledCurBtn>
           {main ? (
             <>
-              <StyledArrow>&gt;</StyledArrow>
+              <StyledArrow>·</StyledArrow>
               <StyledCurBtn
                 onClick={() => {
                   handleMain(main);
@@ -46,7 +46,7 @@ function StretchingMenu({ handleTagModal, searchType, handleSearchType, main, ha
           )}
           {sub ? (
             <>
-              <StyledArrow>&gt;</StyledArrow>
+              <StyledArrow>·</StyledArrow>
               <StyledCurBtn>{subBodyEnum[sub]}</StyledCurBtn>
             </>
           ) : (
@@ -60,7 +60,9 @@ function StretchingMenu({ handleTagModal, searchType, handleSearchType, main, ha
         {searchType === 1
           ? main
             ? subBodyArr[main - 1].map(([string, number], i) => (
-                <StyledSubBtn className={sub - 1 === i ? 'active' : ''} onClick={() => handleSub(number)}>{string}</StyledSubBtn>
+                <StyledSubBtn className={sub - 1 === i ? 'active' : ''} onClick={() => handleSub(number)}>
+                  {string}
+                </StyledSubBtn>
               ))
             : mainBodyArr.map((mainBody, i) => (
                 <StyledSubBtn onClick={() => handleMain(i + 1)}>{mainBody}</StyledSubBtn>
@@ -71,7 +73,11 @@ function StretchingMenu({ handleTagModal, searchType, handleSearchType, main, ha
                 {posture}
               </StyledSubBtn>
             ))
-          : effectArr.map((effect, i) => <StyledSubBtn className={main - 1 === i ? 'active' : ''} onClick={() => handleMain(i + 1)}>{effect}</StyledSubBtn>)}
+          : effectArr.map((effect, i) => (
+              <StyledSubBtn className={main - 1 === i ? 'active' : ''} onClick={() => handleMain(i + 1)}>
+                {effect}
+              </StyledSubBtn>
+            ))}
       </SubCategory>
       <StyledTagBtn onClick={handleTagModal}>태그별 찾기</StyledTagBtn>
     </StyledNav>
@@ -123,7 +129,7 @@ const StyledBar = styled.span`
 `;
 
 const CurrentCategory = styled.div`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800;
   margin-top: 1rem;
 `;
@@ -162,21 +168,7 @@ const StyledSubBtn = styled.button`
     margin-left: 12px;
 
     @media screen and (max-width: 600px) {
-      margin-left: 1rem;
-    }
-  }
-
-  @media screen and (max-width: 600px) {
-    width: 60px;
-    height: 30px;
-  }
-
-  @media screen and (max-width: 400px) {
-    width: auto;
-    height: 30px;
-
-    & + & {
-      margin: 0;
+      margin : 0 0 10px 10px;
     }
   }
 

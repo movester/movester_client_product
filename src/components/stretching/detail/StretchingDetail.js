@@ -47,7 +47,7 @@ export default StretchingDetail;
 
 const Content = styled.section`
   height: auto;
-  padding: 3rem 15%;
+  padding: 3rem 5rem;
 
   @media screen and (max-width: 600px) {
     padding: 3rem;
@@ -55,10 +55,24 @@ const Content = styled.section`
 `;
 
 const StyledPre = styled.pre`
-  padding: 10px;
-  min-height: 40px;
   line-height: 25px;
   text-align: center;
+  overflow: scroll;
+
+  img {
+    @media (max-width: 1200px) {
+      width: 33%;
+    }
+
+    @media (max-width: 600px) {
+      width: 80%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin: 30px 0 30px 10%;
+      height: auto;
+      justify-content: space-around;
+    }
+  }
 `;
 
 const ScoreResearch = styled.section`
