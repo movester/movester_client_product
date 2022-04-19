@@ -32,7 +32,7 @@ function About() {
           <Grid>
             <img src="/assets/stretching_ex.png" alt="서비스 정보" />
             <Contents>
-              <Title>맞춤 스트레칭 검색 기능</Title>
+              <Title>맞춤 스트레칭 검색</Title>
               <p>신체부위별로 원하는 스트레칭을 찾아볼 수 있도록</p>
               <p>홈페이지를 제작하였습니다.</p>
               <p>내가 원하는 스트레칭을 손쉽게 찾아보세요.</p>
@@ -41,7 +41,7 @@ function About() {
           <Grid>
             <img src="/assets/week_recommend.png" alt="서비스 정보" />
             <Contents>
-              <Title>매주 달라지는 일주일 추천 스트레칭</Title>
+              <Title>일주일 추천 스트레칭</Title>
               <p>나에게 딱 맞는 스트레칭을 고르기 귀찮다면,</p>
               <p>뭅스터가 추천하는 일주일 스트레칭을 따라해보아요!</p>
               <p>현대인에게 딱인 스트레칭들로만 골랐답니다.</p>
@@ -80,14 +80,15 @@ function About() {
 }
 export default About;
 
-const StyledAboutWrap = styled.section`
-  max-width: 1024px;
-  min-width: 100%;
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 50px 5%;
+const StyledAboutWrap = styled.div`
   text-align: center;
+  padding-top: 30px;
   .service-information {
+    text-align: center;
+    padding: 0 25%;
+    @media (max-width: 1500px) {
+      padding: 0 10%;
+    }
     img {
       width: 250px;
       height: 250px;
@@ -97,7 +98,10 @@ const StyledAboutWrap = styled.section`
       font-size: 28px;
       margin: 80px 0 50px 0;
     }
-    margin: 0 30%;
+  }
+  @media (max-width: 600px) {
+    padding: 0 1rem;
+    margin: 0;
   }
 `;
 
@@ -149,13 +153,21 @@ const StyledMiddle = styled.div`
 `;
 
 const Grid = styled.div`
+  padding: 0 3rem;
   text-align: center;
   display: grid;
-  grid-template-columns: 250px 500px;
+  grid-template-columns: repeat(2, 1fr);
   column-gap: 50px;
+  justify-content: center;
+  justify-items: center;
 
   & + & {
-    margin-top: 70px;
+    margin-top: 90px;
+  }
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+    text-align: center;
   }
 `;
 
@@ -164,6 +176,10 @@ const Contents = styled.div`
     line-height: 28px;
     font-size: 14px;
     text-align: left;
+
+    @media screen and (max-width: 768px) {
+      text-align: center;
+    }
   }
 `;
 
@@ -174,4 +190,8 @@ const Title = styled.h2`
   font-weight: 700;
   line-height: 80px;
   margin-top: 20px;
+  @media screen and (max-width: 768px) {
+    text-align: center;
+    font-size: 20px;
+  }
 `;
