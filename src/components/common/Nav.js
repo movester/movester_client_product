@@ -94,7 +94,7 @@ const StyledNavWrap = styled.nav`
     font-weight: normal;
     color: #595959;
   }
-  @media screen and (max-width: 1024px) {
-    // display:none;
+  @media screen and (max-width: 850px) {
+    display:none;
   }
 `;

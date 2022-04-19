@@ -9,7 +9,11 @@ function NavigationDropMenu({ isAuth }) {
       <NavLink to="/about">About</NavLink>
       <NavLink to="/stretching">Stretching</NavLink>
       <NavLink to="/event">Event</NavLink>
-      {isAuth && <NavLink to="/mypage/profile">Mypage</NavLink>}
+      {isAuth && <NavLink to="/mypage/profile">프로필</NavLink>}
+      {isAuth && <NavLink to="/mypage/like">찜한 스트레칭</NavLink>}
+      {isAuth && <NavLink to="/mypage/stamp">출석도장</NavLink>}
+      {isAuth && <NavLink to="/mypage/record">기록</NavLink>}
+      {isAuth && <NavLink to="/mypage/profile">로그아웃</NavLink>}
     </NavigationDropMenuWrapper>
   );
 }
@@ -22,8 +26,9 @@ export default NavigationDropMenu;
 
 const NavigationDropMenuWrapper = styled.div`
   display: grid;
+  padding: 10px 0;
   grid-template-colums: repeat(1, 1fr);
-  row-gap: 10px;
+  row-gap: 20px;
   width: 90px;
   position: absolute;
   top: 50px;

@@ -83,6 +83,7 @@ const Banner = styled.section`
 
     @media screen and (max-width: 600px) {
       margin-top: 20px;
+      font-size: 24px;
     }
   }
 
@@ -91,6 +92,9 @@ const Banner = styled.section`
     font-weight: 700;
     color: #9993c6;
     margin: 0 0 50px 0;
+    @media screen and (max-width: 600px) {
+      font-size: 32px;
+    }
   }
 
   .banner-wrapper {
@@ -139,6 +143,10 @@ const WeeklyStretching = styled.section`
     font-weight: 700;
     color: rgba(42, 21, 152, 1);
     margin-bottom: 30px;
+
+    @media screen and (max-width: 600px) {
+      font-size: 24px;
+    }
   }
 `;
 
@@ -155,6 +163,10 @@ const Service = styled.section`
     font-weight: 700;
     color: rgba(42, 21, 152, 1);
     margin-bottom: 30px;
+
+    @media screen and (max-width: 600px) {
+      font-size: 24px;
+    }
   }
 
   .image-container {

@@ -93,6 +93,10 @@ const CalendarWrapper = styled.div`
     justify-self: center;
     width: 60px;
     height: 60px;
+    @media screen and (max-width: 800px) {
+      width: 50px;
+      height: 50px;
+    }
     &.calendar-header {
       font-weight: bold;
     }

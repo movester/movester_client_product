@@ -7,6 +7,9 @@ const ProfileTitle = styled.h1`
 
   &.margin {
     margin-bottom: 60px;
+    @media screen and (max-width: 850px) {
+      margin-bottom: 20px;
+    }
   }
 `;
 

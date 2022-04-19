@@ -140,7 +140,7 @@ const StyledArrow = styled.span`
 `;
 
 const StyledCurBtn = styled.button`
-  font-size: 20px;
+  font-size: 18px;
 
   & + & {
     margin-left: 1rem;

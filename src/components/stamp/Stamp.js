@@ -8,7 +8,6 @@ import Error from '../common/Error';
 import Main from '../common/Main';
 import Nav from '../common/Nav';
 import Calendar from './Calendar';
-// import Header from './Header';
 import Submit from './Submit';
 
 function Stamp() {
@@ -30,7 +29,6 @@ function Stamp() {
     <Main type="record">
       <Nav />
       <StyledWrap>
-        {/* <Header /> */}
         <div className="flex-wrap">
           {loading && <Loading />}
           {error && <Error />}
@@ -55,6 +53,10 @@ const StyledWrap = styled.section`
     column-gap: 60px;
 
     @media screen and (max-width: 1024px) {
+      margin-top: 20px;
+      display: block;
+    }
+    @media screen and (max-width: 600px) {
       margin-top: 20px;
       display: block;
     }

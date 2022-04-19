@@ -46,10 +46,10 @@ function Submit({ redirect, setRedirect }) {
         <p className="stamped">훌륭해요! 오늘도 출석을 해냈습니다!</p>
       )}
       <Wrap>
-      <StyledP className="title">매달 진행하는 뭅스터만의 특별한 출석이벤트!</StyledP>
-      <StyledP>하루 한번 뭅스터와 함께 스트레칭을 한 뒤, 출석도장을 찍어주세요!</StyledP>
-      <StyledP>가장 많은 점수를 받은 사람을 위해 매달 말 뭅스터는 특별한 선물을 준비해요!</StyledP>
-      <StyledP>하루당 10점의 포인트가 적립됩니다.</StyledP>
+        <StyledP className="title">매달 진행하는 뭅스터만의 특별한 출석이벤트!</StyledP>
+        <StyledP>하루 한번 뭅스터와 함께 스트레칭을 한 뒤, 출석도장을 찍어주세요!</StyledP>
+        <StyledP>가장 많은 점수를 받은 사람을 위해 매달 말 뭅스터는 특별한 선물을 준비해요!</StyledP>
+        <StyledP>하루당 10점의 포인트가 적립됩니다.</StyledP>
       </Wrap>
     </StyledStampSubmit>
   );
@@ -72,6 +72,9 @@ const StyledStampSubmit = styled.div`
     font-weight: bold;
     color: ${({ theme }) => theme.darkPurple};
     margin-bottom: 53px;
+    @media screen and (max-width: 850px) {
+      margin: 20px 0;
+    }
   }
 
   .point {

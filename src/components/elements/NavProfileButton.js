@@ -37,6 +37,7 @@ const ProfileWrapper = styled.div`
   }
 
   @media (max-width: 850px) {
-    margin-right: 1.5rem;
+    margin-right: 0;
+    width: 100px;
   }
 `;
