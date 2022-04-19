@@ -30,35 +30,36 @@ export default WeeklyCard;
 const WeeklyCardWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  height: auto;
   column-gap: 10px;
   justify-content: center;
   margin-bottom: 30px;
   cursor: pointer;
+
+  @media screen and (max-width: 1100px) {
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 30px;
+    justify-self: center;
+  }
+
+  @media screen and (max-width: 500px) {
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 30px;
+  }
 `;
 
 const WeeklyCardContainer = styled.div`
-  display: grid;
-  grid-template-rows: 1fr 8fr;
-  text-align: center;
-
   h3 {
     font-size: 20px;
     font-weight: 700;
     color: rgba(42, 21, 152, 1);
+    line-height: 24px;
   }
 
   img {
     width: 100%;
     height: 100%;
-    border-radius: 10px;
+    border-radius: 20px;
   }
-
-  @media (max-width: 405px) {
-    width: 100%;
-
-    img {
-      width: 100%;
-      margin-bottom: 1rem;
-    }
-  }
+}
 `;

@@ -85,8 +85,7 @@ const FooterLeftBlock = styled.div`
 
     .footer-middle,
     .footer-bottom {
-      font-size: 0.5rem;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
   }
 `;

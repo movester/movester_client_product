@@ -68,11 +68,12 @@ Index.propTypes = {
 export default Index;
 
 const Banner = styled.section`
+  padding: 0 5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient( to top, #E5E4F0 1%, #ffffff );
+  background: linear-gradient(to top, #e5e4f0 1%, #ffffff);
 
   h2 {
     font-size: 2rem;
@@ -84,7 +85,7 @@ const Banner = styled.section`
   h3 {
     font-size: 3.5rem;
     font-weight: 700;
-    color: #9993C6;
+    color: #9993c6;
     margin: 0 0 50px 0;
   }
 
@@ -126,10 +127,7 @@ const Banner = styled.section`
 `;
 
 const WeeklyStretching = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   padding: 30px 5rem;
 
   h2 {
@@ -156,10 +154,17 @@ const Service = styled.section`
   }
 
   .image-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 5rem;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: 600px) {
+      grid-template-columns: repeat(1, 1fr);
+      row-gap: 30px;
+      justify-self: center;
+    }
   }
 `;
 
@@ -181,8 +186,10 @@ const ImageWrapper = styled.div`
     color: #fff;
   }
 
-  & + & {
-    margin-left: 100px;
+  @media screen and (min-width: 600px) {
+    & + & {
+      margin-left: 100px;
+    }
   }
 `;
 
