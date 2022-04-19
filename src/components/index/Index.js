@@ -9,21 +9,22 @@ function Index({ weekStretching }) {
     <>
       <Banner>
         <h2>#1일 #1스트레칭 #습관 만들기</h2>
-        <div className="banner-wrapper">
-          <div className="container">
-            <p className="title">Move U, Start U, With me.</p>
+        <div className="wrap">
+          <h3>Move U, &nbsp; Start U, &nbsp; With me.</h3>
+          <div className="banner-wrapper">
+            <div className="container">
+              <p className="sub-title">Move.</p>
+              <p className="content">부담스러운 운동은 NO!</p>
 
-            <p className="sub-title">Move.</p>
-            <p className="content">부담스러운 운동은 NO!</p>
+              <p className="sub-title">Start.</p>
+              <p className="content">가볍게 스트레칭으로 시작하세요!</p>
 
-            <p className="sub-title">Start.</p>
-            <p className="content">가볍게 스트레칭으로 시작하세요!</p>
-
-            <p className="sub-title">With, Together.</p>
-            <p className="content">혼자가 힘들다면 뭅스터와 같이, 함께해요!</p>
-          </div>
-          <div>
-            <img src="/assets/banner.png" alt="뭅스터 캐릭터" />
+              <p className="sub-title">With, Together.</p>
+              <p className="content">혼자가 힘들다면 뭅스터와 같이, 함께해요!</p>
+            </div>
+            <div>
+              <img src="/assets/banner.png" alt="뭅스터 캐릭터" />
+            </div>
           </div>
         </div>
       </Banner>
@@ -71,7 +72,7 @@ const Banner = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(229, 229, 229, 0.6);
+  background: linear-gradient( to top, #E5E4F0 1%, #ffffff );
 
   h2 {
     font-size: 2rem;
@@ -80,17 +81,24 @@ const Banner = styled.section`
     margin: 45px 0;
   }
 
+  h3 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #9993C6;
+    margin: 0 0 50px 0;
+  }
+
   .banner-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 150px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
     margin-bottom: 45px;
+    font-weight: 700;
 
     .container {
       display: flex;
       flex-direction: column;
+      text-align: left;
       .title {
         font-size: 28px;
         margin-bottom: 40px;
@@ -101,7 +109,6 @@ const Banner = styled.section`
         margin-bottom: 10px;
       }
 
-
       .content {
         font-size: 18px;
         margin-bottom: 40px;
@@ -110,7 +117,7 @@ const Banner = styled.section`
   }
 
   img {
-    width: 300px;
+    width: 200px;
   }
 
   @media (max-width: 600px) {
