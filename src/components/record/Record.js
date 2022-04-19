@@ -75,7 +75,7 @@ const StyledWrap = styled.section`
     font-weight: bold;
     margin-bottom: 30px;
     @media screen and (max-width: 768px) {
-      text-align: center;
+      text-align: left;
     }
   }
   .graph-wrap {
@@ -160,6 +160,10 @@ const GridWrapper = styled.div`
     width: 30%;
     margin-bottom: 20px;
   }
+  @media screen and (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 60px;
+  }
 `;
 
 const StyledButton = styled.div`
@@ -175,5 +179,4 @@ const StyledButton = styled.div`
   font-weight: 700;
   text-align: center;
   cursor: pointer;
-  transform: translateX(-55px);
 `;

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import { GrayBg } from '../elements/GrayBg';
-import Button from '../elements/Button';
 import MoveLink from '../common/MoveLink';
 import Graph from './Graph';
 import Ruler from './Ruler';
@@ -57,7 +56,9 @@ function Shoulder({
                   onInputChange={onInputChange}
                   onSliderClick={onSliderClick}
                 />
-                <Button event={onCreate} type="wide" />
+                <StyledButton type="button" onClick={onCreate}>
+                    제출하기
+                  </StyledButton>
               </div>
             </>
           )}
@@ -85,7 +86,7 @@ function Shoulder({
       </GrayBg>
       <GrayBg>
         <p className="title">연령대별 어깨 유연성 평균치</p>
-        <img src="/assets/shoulder/shoulder_standard.png" alt="어깨 유연성 평균치" />
+        <img className="average" src="/assets/shoulder/shoulder_standard.png" alt="어깨 유연성 평균치" />
       </GrayBg>
       {errModalOn && (
           <ConfirmModal onClose={handleErrModal} title="기록 등록 실패" content={errMsg} />
@@ -238,5 +239,13 @@ const GridWrapper = styled.div`
 
   img {
     width: 100%;
+  }
+
+  p {
+    line-height: 24px;
+  }
+
+  @media screen and (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
   }
 `;

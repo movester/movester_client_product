@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import { GrayBg } from '../elements/GrayBg';
-import Button from '../elements/Button';
 import MoveLink from '../common/MoveLink';
 import Graph from './Graph';
 import Ruler from './Ruler';
@@ -57,7 +56,9 @@ function Leg({
                   onInputChange={onInputChange}
                   onSliderClick={onSliderClick}
                 />
-                <Button event={onCreate} />
+                <StyledButton type="button" onClick={onCreate}>
+                  제출하기
+                </StyledButton>
               </div>
             </>
           )}
@@ -235,12 +236,17 @@ const StyledButton = styled.button`
 
 const GridWrapper = styled.div`
   display: grid;
-  padding: 0 100px;
   grid-template-columns: repeat(3, 1fr);
+
+  img {
+    width: 100%;
+  }
+
   p {
     line-height: 24px;
   }
-  img {
-    width: 80%;
+
+  @media screen and (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
   }
 `;

@@ -6,8 +6,8 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 function Graph({ records, type }) {
   return (
     <GraphContainer>
-      <ResponsiveContainer width={500} height={250}>
-        <LineChart width={500} height={250} data={records}>
+      <ResponsiveContainer width="100%" height={250}>
+        <LineChart width="100%" height={250} data={records}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" />
           <YAxis domain={type === 'shoulder' ? [-10, 30] : [-15, 40]} />
