@@ -15,7 +15,7 @@ function Profile() {
       <ProfileTitle>회원 탈퇴</ProfileTitle>
         <p>
           회원 탈퇴 시, 기존 정보를 다시 복구시킬 수 없습니다. <br />
-          그래도 정말 회원 탈퇴를 원하시나요 ?
+          그럼에도 회원 탈퇴를 원하시나요?
         </p>
         <Link to="/mypage/profile/resign">
           <StyledButton type="button">탈퇴</StyledButton>
@@ -33,6 +33,7 @@ const StyledWrap = styled.section`
   p {
     line-height: 24px;
     margin-bottom: 15px;
+    font-size: 14px;
   }
 `;
 

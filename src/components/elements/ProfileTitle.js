@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const ProfileTitle = styled.h1`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   margin-bottom: 15px;
 
