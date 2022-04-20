@@ -6,7 +6,7 @@ function EmailAuthModal() {
   return (
     <Container>
       <Content>
-        <Title>이메일 인증 메일 발송!</Title>
+        <Title>이메일 인증 메일 발송</Title>
         <p>입력하신 이메일 계정으로 인증 메일을 발송하였습니다.</p>
         <p>인증을 통해 가입을 완료해 주세요.</p>
         <img src="/assets/modal-charactor.png" alt="뭅스터 캐릭터" />

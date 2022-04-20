@@ -18,7 +18,7 @@ function EmailAuth({ authNum, onChange, onSubmit, linkModalOn, handleLinkModal, 
       {linkModalOn && (
         <LinkModal
           onClose={handleLinkModal}
-          title="회원가입 성공!"
+          title="회원가입 성공"
           content="가입한 계정으로 로그인하세요."
           link="/login"
         />

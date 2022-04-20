@@ -81,7 +81,7 @@ function SignForm({
               <StyledP className="name-message">{nameMessage}</StyledP>
               <CheckboxWrapper>
                 <label className="terms">
-                  <input type="checkbox" />
+                  <input type="checkbox" className="agree-check"/>
                   <StyledSpan>이용약관 및 개인정보 처리 방침에 동의합니다.</StyledSpan>
                 </label>
                 <StyledP>이메일 인증을 통해 회원가입이 진행됩니다.</StyledP>
@@ -114,14 +114,14 @@ function SignForm({
         {errModalOn && (
           <ConfirmModal
             onClose={handleErrModal}
-            title={type === 'login' ? '로그인 실패!' : '회원가입 실패!'}
+            title={type === 'login' ? '로그인 실패' : '회원가입 실패'}
             content={errMsg}
           />
         )}
       {linkModalOn && (
           <LinkModal
             onClose={handleLinkModal}
-            title="로그인 실패!"
+            title="로그인 실패"
             content="이메일 인증을 진행해주세요!"
             link={`/join/emailAuth/${userIdx}`}
           />
@@ -191,6 +191,10 @@ const CheckboxWrapper = styled.div`
   p {
     text-align: center;
     margin: 20px auto;
+  }
+
+  input, progress {
+    accent-color: #948fbf;
   }
 `;
 

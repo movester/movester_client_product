@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from '../../services/defaultClient';
 
@@ -10,6 +10,7 @@ import passwordRegex from '../../util/passwordRegex';
 function SignUpPage() {
   const navigate = useNavigate();
 
+  const agreeCheckRef = useRef(null);
   const [inputs, setInputs] = useState({
     email: '',
     password: '',
@@ -92,7 +93,11 @@ function SignUpPage() {
 
   const onSubmit = async e => {
     e.preventDefault();
-
+    const isAgreeChecked = document.querySelector('.agree-check').checked;
+    if (!isAgreeChecked) {
+      setErrModalOn(prev => !prev);
+      setErrMsg('이용약관에 동의해주세요.');
+    }
     if (!(isEmail && isPassword && isPasswordConfirm && isName)) return;
 
     try {
@@ -131,6 +136,7 @@ function SignUpPage() {
         errModalOn={errModalOn}
         handleErrModal={handleErrModal}
         errMsg={errMsg}
+        ref={agreeCheckRef}
       />
     </TitleWrapper>
   );

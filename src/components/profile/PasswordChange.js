@@ -53,7 +53,7 @@ function PasswordChange({
           link="/mypage/profile"
         />
       )}
-      {errModalOn && <ConfirmModal onClose={handleErrModal} title="비밀번호 변경 실패!" content={errMsg} />}
+      {errModalOn && <ConfirmModal onClose={handleErrModal} title="비밀번호 변경 실패" content={errMsg} />}
     </>
   );
 }
