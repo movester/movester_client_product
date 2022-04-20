@@ -33,19 +33,19 @@ function Event() {
         <p>MOVESTER에서만 제공하는 다양한 이벤트</p>
         <p>함께 스트레칭하며 다양한 활동을 경험해보세요!</p>
       </StyledNav>
+
       <ContentWrap className="progress">
         <Item>
           <Title>5월 출석왕 포인트 대결</Title>
+          <Date>2022.05.01 ~ 2022.05.31</Date>
           <Detail>
-            <StyledImg src="/assets/stretching-list.png" alt="이벤트 대표 이미지" />
-            <Wrap>
-              <Date>기간 : 2022.05.01 ~ 2022.05.31</Date>
-              <Content>
-                매달 진행하는 뭅스터만의 출석이벤트. <br />
-                매일 출석 도장을 통해 포인트를 쌓아보세요! <br />
-                출석왕을 위해 뭅스터는 선물을 준비한답니다.
-              </Content>
-            </Wrap>
+            <StyledImg src="/assets/stamp.png" alt="이벤트 대표 이미지" />
+
+            <Content>
+              매달 진행하는 뭅스터만의 출석이벤트. <br />
+              매일 출석 도장을 통해 포인트를 쌓아보세요! <br />
+              출석왕을 위해 뭅스터는 선물을 준비한답니다.
+            </Content>
           </Detail>
         </Item>
       </ContentWrap>
@@ -53,54 +53,31 @@ function Event() {
       <ContentWrap className="winner-announce hidden">
         <Item>
           <Title>4월 출석왕 포인트 대결</Title>
+          <Date>2022.04.01 ~ 2022.04.30</Date>
           <Detail>
-            <StyledImg src="/assets/stretching-list.png" alt="이벤트 대표 이미지" />
-            <Wrap>
-              <Date>기간 : 2022.04.01 ~ 2022.04.30</Date>
-              <Content>
-                축하합니다! <br />
-                jnh***@gmail.com (조*현) <br />
-                뭅스터가 해당 이메일로 메일을 보냈습니다! <br />
-                확인 부탁드려요!
-              </Content>
-            </Wrap>
+            <StyledImg src="/assets/stamp.png" alt="이벤트 대표 이미지" />
+
+            <Content>
+              매달 진행하는 뭅스터만의 출석이벤트. <br />
+              매일 출석 도장을 통해 포인트를 쌓아보세요! <br />
+              출석왕을 위해 뭅스터는 선물을 준비한답니다.
+            </Content>
           </Detail>
         </Item>
       </ContentWrap>
 
       <ContentWrap className="closed hidden">
         <Item>
-          <Title>4월 출석왕 포인트 대결</Title>
-          <Detail>
-            <ImageWrap>
-              <ImageLetter>마감</ImageLetter>
-              <StyledImg className="dark" src="/assets/stretching-list.png" alt="이벤트 대표 이미지" />
-            </ImageWrap>
-            <Wrap>
-              <Date>기간 : 2022.04.01 ~ 2022.04.30</Date>
-              <Content>
-                매달 진행하는 뭅스터만의 출석이벤트. <br />
-                매일 출석 도장을 통해 포인트를 쌓아보세요! <br />
-                출석왕을 위해 뭅스터는 선물을 준비한답니다.
-              </Content>
-            </Wrap>
-          </Detail>
-        </Item>
-        <Item>
           <Title>3월 출석왕 포인트 대결</Title>
+          <Date>2022.03.01 ~ 2022.03.31</Date>
           <Detail>
-            <ImageWrap>
-              <ImageLetter>마감</ImageLetter>
-              <StyledImg className="dark" src="/assets/stretching-list.png" alt="이벤트 대표 이미지" />
-            </ImageWrap>
-            <Wrap>
-              <Date>기간 : 2022.03.01 ~ 2022.03.31</Date>
-              <Content>
-                매달 진행하는 뭅스터만의 출석이벤트. <br />
-                매일 출석 도장을 통해 포인트를 쌓아보세요! <br />
-                출석왕을 위해 뭅스터는 선물을 준비한답니다.
-              </Content>
-            </Wrap>
+            <StyledImg src="/assets/stamp.png" alt="이벤트 대표 이미지" />
+
+            <Content>
+              매달 진행하는 뭅스터만의 출석이벤트. <br />
+              매일 출석 도장을 통해 포인트를 쌓아보세요! <br />
+              출석왕을 위해 뭅스터는 선물을 준비한답니다.
+            </Content>
           </Detail>
         </Item>
       </ContentWrap>
@@ -112,49 +89,49 @@ export default Event;
 
 const StyledNav = styled.nav`
   width: 100%;
-  height: 10rem;
-  padding: 2rem 5rem;
-  background: ${({ theme }) => theme.lightPurple};
+  height: 16rem;
+  padding: 5rem 5rem;
+  background: linear-gradient(to bottom, #e5e4f0 1%, #ffffff);
   text-align: center;
 
   ul {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   }
 
   p {
     font-size: 16px;
-    color: #ffffff;
+    line-height: 20px;
+    color: #000000;
     margin-top: 0.5rem;
-    font-weight: 700;
   }
 
   @media screen and (max-width: 500px) {
-    height: 12rem;
+    height: 14rem;
+    padding: 5rem 2rem;
   }
 `;
 
 const StyledLi = styled.li`
   display: inline;
-  font-size: 20px;
-  color: #ffffff;
+  font-size: 22px;
+  color: #adadad;
   cursor: pointer;
   font-weight: 700;
 
   &.active {
-    font-size: 24px;
     color: ${({ theme }) => theme.darkPurple};
 
     @media screen and (max-width: 500px) {
-      font-size: 20px;
+      font-size: 18px;
     }
   }
 
   & + & {
-    margin-left: 2rem;
+    margin-left: 6rem;
   }
 
   @media screen and (max-width: 500px) {
-    font-size: 16px;
+    font-size: 18px;
   }
 `;
 
@@ -186,9 +163,10 @@ const Item = styled.div`
 `;
 
 const Detail = styled.div`
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 10px;
+  grid-template-columns: 4fr 5fr;
+  column-gap: 40px;
   @media screen and (max-width: 1100px) {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -199,66 +177,44 @@ const Title = styled.div`
   height: 40px;
   line-height: 40px;
   border-radius: 10px;
-  background: ${({ theme }) => theme.lightGray};
-  font-size: 20px;
+  font-size: 50px;
   font-weight: 700;
-  color: ${({ theme }) => theme.darkPurple};
-  margin-bottom: 1rem;
+  color: ${({ theme }) => theme.lightPurple};
+  margin-bottom: 1.5rem;
   text-align: center;
-`;
 
-const ImageWrap = styled.div`
-  width: 100%;
-  height: auto;
-  position: relative;
-`;
-
-const StyledImg = styled.img`
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-
-  &.dark {
-    filter: brightness(50%);
-  }
-}
-
-`;
-
-const ImageLetter = styled.span`
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  position: absolute;
-  top: 75%;
-  transform: translateY(-50%);
-  color: #923737;
-  font-size: 10rem;
-  font-weight: 700;
-  z-index: 1;
-
-  @media screen and (max-width: 430px) {
-    font-size: 8rem;
-  }
-`;
-
-const Wrap = styled.div`
-  padding: 2rem 1rem 1rem 1rem;
-
-  @media screen and (max-width: 1100px) {
-    width: 100%;
-    height: auto;
+  @media screen and (max-width: 500px) {
+    font-size: 30px;
   }
 `;
 
 const Date = styled.p`
-  font-size: 18px;
-  font-weight: 700;
-  color: ${({ theme }) => theme.darkPurple};
-  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 24px;
+  color: ${({ theme }) => theme.lightPurple};
+  margin-bottom: 3rem;
+  line-height: 30px;
+  @media screen and (max-width: 500px) {
+    font-size: 20px;
+  }
+`;
+
+const StyledImg = styled.img`
+  width: 150px;
+  height: auto;
+  justify-self: right;
+  @media screen and (max-width: 500px) {
+    justify-self: center;
+  }
 `;
 
 const Content = styled.p`
   font-size: 16px;
   line-height: 28px;
+  padding-left: 10%;
+  padding-top: 30px;
+  @media screen and (max-width: 500px) {
+    padding-left: 0;
+    text-align: center;
+  }
 `;
