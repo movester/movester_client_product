@@ -6,7 +6,7 @@ module.exports = function (app) {
   app.use(
     "/api",
     createProxyMiddleware({
-      target: "http://localhost:8000",
+      target: "http://ec2-3-39-191-168.ap-northeast-2.compute.amazonaws.com:8000/",
       changeOrigin: true,
     })
   );
