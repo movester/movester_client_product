@@ -33,5 +33,6 @@
     "prefer-template": "off",
     "no-return-assign": "off",
     "react/jsx-props-no-spreading": "off",
-    "import/no-named-as-default-member": "off"  }
+    "import/no-named-as-default-member": "off",
+    "no-alert": "off"  }
 }

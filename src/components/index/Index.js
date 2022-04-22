@@ -121,6 +121,9 @@ const Banner = styled.section`
       .content {
         font-size: 18px;
         margin-bottom: 40px;
+        @media (max-width: 600px) {
+          line-height: 24px;
+        }
       }
     }
   }
@@ -130,7 +133,7 @@ const Banner = styled.section`
   }
 
   @media (max-width: 600px) {
-    padding: 0 3rem 3rem 3rem;
+    padding: 0 1rem;
   }
 `;
 
@@ -157,6 +160,9 @@ const Service = styled.section`
   align-items: center;
   background: rgba(229, 229, 229, 0.6);
   padding: 60px 5rem;
+  @media screen and (max-width: 600px) {
+    padding: 60px 1rem;
+  }
 
   h2 {
     font-size: 2rem;
@@ -206,7 +212,7 @@ const ItemText = styled.span`
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  z-index: 1000;
+  z-index: 1;
   font-size: 1.4rem;
   font-weight: 700;
   width: 200px;

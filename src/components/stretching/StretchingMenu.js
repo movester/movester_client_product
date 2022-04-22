@@ -102,7 +102,7 @@ const StyledNav = styled.nav`
   position: relative;
 
   @media screen and (max-width: 600px) {
-    padding: 1rem 3rem;
+    padding: 1rem 1rem;
   }
 `;
 
@@ -150,10 +150,11 @@ const StyledCurBtn = styled.button`
 const SubCategory = styled.div`
   font-size: 20px;
   margin-top: 1rem;
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 600px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    row-gap: 10px;
+    column-gap: 20px;
   }
 `;
 
@@ -168,7 +169,7 @@ const StyledSubBtn = styled.button`
     margin-left: 12px;
 
     @media screen and (max-width: 600px) {
-      margin : 0 0 10px 10px;
+      margin : 0;
     }
   }
 
@@ -176,6 +177,10 @@ const StyledSubBtn = styled.button`
   color: #ffffff;
   &.active {
     background-color: ${({ theme }) => theme.darkPurple};
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: 16px;
   }
 `;
 
@@ -194,6 +199,6 @@ const StyledTagBtn = styled.button`
     position: relative;
     top: 0;
     right: 0;
-    margin-top: 1rem;
+    margin-top: 10px;
   }
 `;

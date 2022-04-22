@@ -25,11 +25,6 @@ const StyledNotFound = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  // p {
-  //   margin-top: 20px;
-  //   font-size: 1.2rem;
-  //   font-weight: bold;
-  // }
   .not-pound-title {
     font-size: 2rem;
     font-weight: bold;

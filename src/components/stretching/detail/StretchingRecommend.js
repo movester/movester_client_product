@@ -46,7 +46,7 @@ const RecommendWrap = styled.section`
   padding: 2rem 15%;
 
   @media screen and (max-width: 600px) {
-    padding: 2rem 3rem;
+    padding: 2rem 1rem;
   }
 `;
 

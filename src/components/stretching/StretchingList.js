@@ -85,6 +85,6 @@ const StretchingContainer = styled.section`
   }
 
   @media screen and (max-width: 600px) {
-    padding: 1rem 3rem;
+    padding: 1rem 1rem;
   }
 `;

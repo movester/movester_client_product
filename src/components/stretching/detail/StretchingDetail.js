@@ -50,14 +50,16 @@ const Content = styled.section`
   padding: 3rem 5rem;
 
   @media screen and (max-width: 600px) {
-    padding: 3rem;
+    padding: 1rem;
   }
 `;
 
 const StyledPre = styled.pre`
   line-height: 25px;
   text-align: center;
-  overflow: scroll;
+  @media (max-width: 600px) {
+    overflow: scroll;
+  }
 
   img {
     @media (max-width: 1200px) {

@@ -84,7 +84,7 @@ const OutLine = styled.section`
   @media screen and (max-width: 700px) {
     flex-flow: column;
     align-items: start;
-    padding: 1rem 4rem;
+    padding: 1rem 1rem;
   }
 `;
 

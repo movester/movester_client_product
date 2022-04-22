@@ -107,7 +107,7 @@ const StyledNav = styled.nav`
 
   @media screen and (max-width: 500px) {
     height: 14rem;
-    padding: 5rem 2rem;
+    padding: 5rem 1rem;
   }
 `;
 
@@ -132,6 +132,9 @@ const StyledLi = styled.li`
 
   @media screen and (max-width: 500px) {
     font-size: 18px;
+    & + & {
+      margin-left: 3rem;
+    }
   }
 `;
 

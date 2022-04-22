@@ -140,14 +140,3 @@ const Effect = styled.p`
   padding: 0 10px;
   color: ${({ theme }) => theme.darkPurple};
 `;
-
-// 참고
-// const StretchingContainer = styled.section`
-//   height: auto;
-//   padding: 2rem 5rem;
-//   display: grid;
-//   grid-template-rows: repeat(3, 1fr);
-//   grid-template-columns: repeat(4, 1fr);
-//   gap: 2rem 5rem;
-//   justify-content: center;
-// `;
