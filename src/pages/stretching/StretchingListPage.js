@@ -75,8 +75,7 @@ function StretchingListPage() {
       );
       const result = res.data.data;
       setMoreStretchings(result);
-      setStretchings(() => [...result]);
-      setPage(() => 1);
+      setStretchings(prev => [...prev, ...result]);
       setLoading(false);
     } catch (err) {
       setErrMsg(err.response.data.error);
@@ -114,31 +113,13 @@ function StretchingListPage() {
     if (!tagSearch) {
       getStretchingList();
     }
-  }, [main, sub]);
+  }, [main, sub, page]);
 
   useEffect(() => {
     if (tagSearch) {
       getTagStretchingList();
     }
   }, [tagSearch]);
-
-  useEffect(() => {
-    const getMoreStretchingList = async () => {
-      try {
-        const res = await axios.get(
-          `/stretchings?searchType=${searchType}&main=${main}&sub=${sub}&userIdx=${userIdx}&page=${page}`
-        );
-        const result = res.data.data;
-        setMoreStretchings(result);
-        setStretchings(prev => [...prev, ...result]);
-        setLoading(false);
-      } catch (err) {
-        setErrMsg(err.response.data.error);
-        handleErrModal();
-      }
-    };
-    getMoreStretchingList();
-  }, [page]);
 
   return (
     <Main>
