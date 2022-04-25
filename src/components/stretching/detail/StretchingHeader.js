@@ -51,7 +51,13 @@ function StretchingHeader({ stretching, isAuth }) {
         </StarWrap>
         <YoutubeWrap>
           <StyledYouTubeIcon />
-          {stretching.youtube || '-'}
+          {stretching.youtube ? (
+            <a target="_blank" href={stretching.youtube} rel="noreferrer">
+              {stretching.youtube}
+            </a>
+          ) : (
+            '-'
+          )}
         </YoutubeWrap>
         {/* <KaKaoBtn>카카오톡 공유하기</KaKaoBtn> */}
       </DetailWrap>
@@ -231,6 +237,10 @@ const YoutubeWrap = styled.div`
   display: flex;
   line-height: 24px;
   margin: 5px 0 10px 0;
+
+  a {
+    color: #ffffff;
+  }
 `;
 
 const StyledYouTubeIcon = styled(YouTubeIcon)`
