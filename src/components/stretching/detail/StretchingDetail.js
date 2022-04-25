@@ -9,7 +9,7 @@ function StretchingDetail({ stretching, isAuth, handleDifficulty, userDifficulty
   return (
     <Content>
       <StyledPre dangerouslySetInnerHTML={{ __html: stretching.contents }} />
-      {isAuth ? (
+      {isAuth && (
         <ScoreResearch>
           <p>뭅스터와 함께 스트레칭을 따라해보셨나요?</p>
           <p>{user}님께서 느낀 스트레칭의 강도를 표시해주세요!</p>
@@ -23,8 +23,6 @@ function StretchingDetail({ stretching, isAuth, handleDifficulty, userDifficulty
             activeColor="#fc0"
           />
         </ScoreResearch>
-      ) : (
-        ''
       )}
     </Content>
   );
@@ -81,10 +79,14 @@ const ScoreResearch = styled.section`
   background: ${({ theme }) => theme.lightGray};
   border-radius: 30px;
   height: auto;
-  margin-top: 2rem;
+  margin: 2rem 15%;
   padding: 2rem;
 
   p {
     margin-bottom: 15px;
+  }
+
+  @media (max-width: 600px) {
+    margin: 2rem 0;
   }
 `;
