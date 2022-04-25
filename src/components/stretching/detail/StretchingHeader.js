@@ -37,7 +37,7 @@ function StretchingHeader({ stretching, isAuth }) {
         <Title>{stretching.title}</Title>
         <EffectWrap>
           {stretching.effect.map(effect => (
-            <EffectTag>{effectEnum[effect]}</EffectTag>
+            <EffectTag key={effect}>{effectEnum[effect]}</EffectTag>
           ))}
         </EffectWrap>
         <Category>{`${mainBodyEnum[stretching.mainBody]} - ${subBodyEnum[stretching.subBody]}`}</Category>
@@ -45,8 +45,8 @@ function StretchingHeader({ stretching, isAuth }) {
         <StarWrap>
           {[0, 0, 0, 0, 0]
             .map((_, index) => (stretching.difficulty >= index + 1 ? 1 : 0))
-            .map(active => (
-              <StyledStarIcon className={active ? 'active' : ''} />
+            .map((active, index) => (
+              <StyledStarIcon className={active ? 'active' : ''} key={index} />
             ))}
         </StarWrap>
         <YoutubeWrap>
@@ -239,4 +239,3 @@ const StyledYouTubeIcon = styled(YouTubeIcon)`
     transform: translateY(2px);
   }
 `;
-

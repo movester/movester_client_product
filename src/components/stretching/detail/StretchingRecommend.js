@@ -13,6 +13,7 @@ function StretchingRecommend({ recommendStretchings }) {
           const { stretchingIdx, title, mainBody, subBody, effect, posture, image, like } = stretching;
           return (
             <StretchingItem
+              key={stretchingIdx}
               idx={stretchingIdx}
               title={title}
               category={`${mainBodyEnum[mainBody]} - ${subBodyEnum[subBody]}`}
