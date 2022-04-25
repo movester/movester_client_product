@@ -17,6 +17,7 @@ function Like({ likeStretchings, handleLike, total, page, setPage }) {
               const { stretchingIdx, title, mainBody, subBody, effects, postures, image } = stretching;
               return (
                 <LikeStretchingItem
+                  key={stretchingIdx}
                   idx={stretchingIdx}
                   title={title}
                   category={`${mainBodyEnum[mainBody]} - ${subBodyEnum[subBody]}`}

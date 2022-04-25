@@ -1,5 +1,6 @@
 import React, { useRef, useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactStars from 'react-rating-stars-component';
@@ -41,6 +42,23 @@ function StretchingDetail({ stretching, isAuth, handleDifficulty, userDifficulty
           />
         </ScoreResearch>
       )}
+      <RecommendBox>
+        <p>
+          <span className="black">훌륭해요!</span> 오늘도 뭅스터와 함께 스트레칭을 해냈습니다!
+        </p>
+        <p>
+          출석도장을 찍어 이벤트에 참여해보세요.
+          <Link key="toAttend" to={isAuth ? '/mypage/stamp' : '/login'}>
+            <span> 출석도장 찍으러 가기</span>
+          </Link>
+        </p>
+        <p>
+          유연성 기록을 통해 변화되는 자신의 모습을 관찰해보세요.
+          <Link key="toRecord" to={isAuth ? '/mypage/record' : '/login'}>
+            <span> 기록하러가기</span>
+          </Link>
+        </p>
+      </RecommendBox>
     </Content>
   );
 }
@@ -105,6 +123,31 @@ const ScoreResearch = styled.section`
     &.gray {
       font-size: 12px;
       color: gray;
+    }
+  }
+
+  @media (max-width: 600px) {
+    margin: 2rem 0;
+  }
+`;
+
+const RecommendBox = styled.section`
+  background: ${({ theme }) => theme.lightGray};
+  border-radius: 30px;
+  text-align: center;
+  height: auto;
+  margin: 2rem 15%;
+  padding: 2rem;
+
+  p {
+    margin-bottom: 15px;
+  }
+
+  span {
+    color: #2a1598;
+    font-weight: 800;
+    &.black {
+      color: #000000;
     }
   }
 

@@ -12,7 +12,7 @@ function LikeStretchingItem({ idx, title, category, posture, effect, image, acti
         <Link key={idx} to={`/stretching/detail/${idx}`}>
           <StyledImg src={`https://movester-bucket.s3.ap-northeast-2.amazonaws.com/${image}.png`} alt="대표 이미지" />
         </Link>
-        {user ? (
+        {user && (
           <LikeButton
             onClick={e => {
               e.stopPropagation();
@@ -20,8 +20,6 @@ function LikeStretchingItem({ idx, title, category, posture, effect, image, acti
             }}
             className={active ? 'active' : ''}
           />
-        ) : (
-          ''
         )}
       </ImageWrap>
       <Link key={idx} to={`/stretching/detail/${idx}`}>
@@ -46,7 +44,7 @@ LikeStretchingItem.propTypes = {
 };
 
 LikeStretchingItem.defaultProps = {
-  active: false,
+  active: 0,
   handleLike: () => {},
 };
 
