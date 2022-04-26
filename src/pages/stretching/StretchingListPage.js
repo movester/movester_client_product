@@ -68,54 +68,72 @@ function StretchingListPage() {
     setErrModalOn(!errModalOn);
   };
 
-  const getStretchingList = async () => {
-    try {
-      const res = await axios.get(
-        `/stretchings?searchType=${searchType}&main=${main}&sub=${sub}&userIdx=${userIdx}&page=${page}`
-      );
-      const result = res.data.data;
-      setMoreStretchings(result);
-      setStretchings(prev => [...prev, ...result]);
-      setLoading(false);
-    } catch (err) {
-      setErrMsg(err.response.data.error);
-      handleErrModal();
+  useEffect(() => {
+    const getMoreStretchingList = async () => {
+      try {
+        const res = await axios.get(
+          `/stretchings?searchType=${searchType}&main=${main}&sub=${sub}&userIdx=${userIdx}&page=${page}`
+        );
+        const result = res.data.data;
+        setMoreStretchings(result);
+        setStretchings(prev => [...prev, ...result]);
+        setLoading(false);
+      } catch (err) {
+        setErrMsg(err.response.data.error);
+        handleErrModal();
+      }
+    };
+    if (page !== 1) {
+      getMoreStretchingList();
     }
-  };
-
-  const getTagStretchingList = async () => {
-    const arrayToString = arr => `[${arr.join(',')}]`;
-    try {
-      setLoading(true);
-      const res = await axios.get(
-        `/stretchings/tag/match?main=${arrayToString(mainBody)}&sub=${arrayToString(subBody)}&tool=${arrayToString(
-          tool
-        )}&posture=${arrayToString(posture)}&effect=${arrayToString(effect)}&userIdx=${userIdx}`
-      );
-      const result = res.data.data;
-      setStretchings(result);
-      setTags({
-        mainBody: [],
-        subBody: [],
-        tool: [],
-        posture: [],
-        effect: [],
-      });
-      setTagSearch(prev => !prev)
-    } catch (err) {
-      setErrMsg(err.response.data.error);
-      handleErrModal();
-    }
-    setLoading(false);
-  };
+  }, [page]);
 
   useEffect(() => {
+    const getStretchingList = async () => {
+      try {
+        const res = await axios.get(
+          `/stretchings?searchType=${searchType}&main=${main}&sub=${sub}&userIdx=${userIdx}&page=${page}`
+        );
+        const result = res.data.data;
+        setMoreStretchings(result);
+        setStretchings(() => [...result]);
+        setLoading(false);
+      } catch (err) {
+        setErrMsg(err.response.data.error);
+        handleErrModal();
+      }
+    };
     if (!tagSearch) {
       getStretchingList();
     }
-  }, [main, sub, page]);
+  }, [main, sub]);
 
   useEffect(() => {
+    const getTagStretchingList = async () => {
+      const arrayToString = arr => `[${arr.join(',')}]`;
+      try {
+        setLoading(true);
+        const res = await axios.get(
+          `/stretchings/tag/match?main=${arrayToString(mainBody)}&sub=${arrayToString(subBody)}&tool=${arrayToString(
+            tool
+          )}&posture=${arrayToString(posture)}&effect=${arrayToString(effect)}&userIdx=${userIdx}`
+        );
+        const result = res.data.data;
+        setStretchings(result);
+        setTags({
+          mainBody: [],
+          subBody: [],
+          tool: [],
+          posture: [],
+          effect: [],
+        });
+        setTagSearch(prev => !prev);
+      } catch (err) {
+        setErrMsg(err.response.data.error);
+        handleErrModal();
+      }
+      setLoading(false);
+    };
     if (tagSearch) {
       getTagStretchingList();
     }

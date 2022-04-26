@@ -41,13 +41,27 @@ function StretchingTagModal({ onClose, handleTagSearch, onTagChange }) {
           <Wrap>
             <p>1. 카테고리 선택</p>
             <CategoryWrap>
-              <TagBtn className='gray' onClick={() => handleCategory(0)}>전신</TagBtn>
-              <TagBtn className='gray' onClick={() => handleCategory(1)}>상체</TagBtn>
-              <TagBtn className='gray' onClick={() => handleCategory(2)}>코어</TagBtn>
-              <TagBtn className='gray' onClick={() => handleCategory(3)}>하체</TagBtn>
-              <TagBtn className='gray' onClick={() => handleCategory(4)}>자세</TagBtn>
-              <TagBtn className='gray' onClick={() => handleCategory(5)}>효과</TagBtn>
-              <TagBtn className='gray' onClick={() => handleCategory(6)}>도구</TagBtn>
+              <TagBtn className={category === 0 ? 'active' : 'gray'} onClick={() => handleCategory(0)}>
+                전신
+              </TagBtn>
+              <TagBtn className={category === 1 ? 'active' : 'gray'} onClick={() => handleCategory(1)}>
+                상체
+              </TagBtn>
+              <TagBtn className={category === 2 ? 'active' : 'gray'} onClick={() => handleCategory(2)}>
+                코어
+              </TagBtn>
+              <TagBtn className={category === 3 ? 'active' : 'gray'} onClick={() => handleCategory(3)}>
+                하체
+              </TagBtn>
+              <TagBtn className={category === 4 ? 'active' : 'gray'} onClick={() => handleCategory(4)}>
+                자세
+              </TagBtn>
+              <TagBtn className={category === 5 ? 'active' : 'gray'} onClick={() => handleCategory(5)}>
+                효과
+              </TagBtn>
+              <TagBtn className={category === 6 ? 'active' : 'gray'} onClick={() => handleCategory(6)}>
+                도구
+              </TagBtn>
             </CategoryWrap>
             <p>2. 태그 선택</p>
             <TagWrap>
@@ -153,6 +167,11 @@ const TagBtn = styled.button`
   &.gray {
     background: #ADADAD
   }
+
+  &.active {
+    background: #ffffff;
+    border: 2px solid #000000;
+    color: #000000;
 `;
 
 const TagWrap = styled.div`
