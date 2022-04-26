@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from '../../services/defaultClient';
 
@@ -9,6 +9,8 @@ import passwordRegex from '../../util/passwordRegex';
 
 function SignUpPage() {
   const navigate = useNavigate();
+
+  useEffect(() => window.scrollTo(0, 0));
 
   const agreeCheckRef = useRef(null);
   const [inputs, setInputs] = useState({

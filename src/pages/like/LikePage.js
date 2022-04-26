@@ -43,7 +43,7 @@ function LikePage() {
         handleErrModal();
       }
     };
-
+    window.scrollTo(0, 0);
     getLikeStretchingList();
     setLoading(false);
   }, [isStretchingActive, page, total]);

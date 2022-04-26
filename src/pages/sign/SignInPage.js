@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 import TitleWrapper from '../../components/common/TitleWrapper';
 import SignForm from '../../components/sign/SignForm';
@@ -9,11 +8,11 @@ import passwordRegex from '../../util/passwordRegex';
 import { fetchLoginThunk } from '../../store/auth/authAsyncThunk';
 
 function SignInPage() {
-  const { isAuth } = useSelector(state => state.auth);
+  useEffect(() => window.scrollTo(0, 0));
+
   const isError = useSelector(state => state.auth.error);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [inputs, setInputs] = useState({
     email: '',
@@ -100,10 +99,6 @@ function SignInPage() {
       }
     }
   }, [isError]);
-
-  useEffect(() => {
-    if (isAuth) navigate('/');
-  }, [isAuth]);
 
   useEffect(() => {
     setErrModalOn(false);

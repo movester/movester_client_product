@@ -6,6 +6,7 @@ import Nav from '../../components/common/Nav';
 import Record from '../../components/record/Record';
 
 function RecordPage() {
+  useEffect(() => window.scrollTo(0, 0));
   const [shoulderecords, setShoulderRecords] = useState([]);
   const [legRecords, setLegRecords] = useState([]);
   useEffect(async () => {

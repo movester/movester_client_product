@@ -36,7 +36,7 @@ StretchingRecommend.propTypes = {
 export default StretchingRecommend;
 
 const Title = styled.p`
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 800;
   margin-bottom: 14px;
 `;

@@ -1,6 +1,8 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Routes, Route } from 'react-router-dom';
+import PublicRoute from './lib/PublicRoute';
+import PrivateRoute from './lib/PrivateRoute';
 
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
@@ -30,7 +32,7 @@ import LegPage from './pages/record/LegPage';
 
 import StampPage from './components/stamp/Stamp';
 import LikePage from './pages/like/LikePage';
-import NotPound from './pages/NotFound';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -39,29 +41,126 @@ function App() {
       <Routes>
         <Route path="/" element={<IndexPage />} />
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<SignInPage />} />
-        <Route path="/login/findPassword" element={<FindPasswordPage />} />
-        <Route path="/auth/kakao/callback" element={<KakaoRedirectPage />} />
-        <Route path="/join" element={<SignUpPage />} />
-        <Route path="/join/emailAuth/:userIdx" element={<EmailAuthPage />} />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <SignInPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/login/findPassword"
+          element={
+            <PublicRoute>
+              <FindPasswordPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/auth/kakao/callback"
+          element={
+            <PublicRoute>
+              <KakaoRedirectPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/join"
+          element={
+            <PublicRoute>
+              <SignUpPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/join/emailAuth/:userIdx"
+          element={
+            <PublicRoute>
+              <EmailAuthPage />
+            </PublicRoute>
+          }
+        />
 
         <Route path="/stretching" element={<StretchingListPage />} />
         <Route path="/stretching/detail/:idx" element={<StretchingDetailPage />} />
 
         <Route path="/event" element={<Event />} />
 
-        <Route path="/mypage/profile" element={<ProfilePage />} />
-        <Route path="/mypage/profile/passwordChange" element={<PasswordChangePage />} />
-        <Route path="/mypage/profile/resign" element={<ResignPage />} />
-        <Route path="/resign" element={<ResignAfterPage />} />
+        <Route
+          path="/mypage/profile"
+          element={
+            <PrivateRoute>
+              <ProfilePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/mypage/profile/passwordChange"
+          element={
+            <PrivateRoute>
+              <PasswordChangePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/mypage/profile/resign"
+          element={
+            <PrivateRoute>
+              <ResignPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/resign"
+          element={
+            <PrivateRoute>
+              <ResignAfterPage />
+            </PrivateRoute>
+          }
+        />
 
-        <Route path="/mypage/like" element={<LikePage />} />
-        <Route path="/mypage/stamp" element={<StampPage />} />
-
-        <Route path="/mypage/record" element={<RecordPage />} />
-        <Route path="/mypage/record/shoulder" element={<ShoulderPage />} />
-        <Route path="/mypage/record/leg" element={<LegPage />} />
-        <Route path="*" element={<NotPound />} />
+        <Route
+          path="/mypage/like"
+          element={
+            <PrivateRoute>
+              <LikePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/mypage/stamp"
+          element={
+            <PrivateRoute>
+              <StampPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/mypage/record"
+          element={
+            <PrivateRoute>
+              <RecordPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/mypage/record/shoulder"
+          element={
+            <PrivateRoute>
+              <ShoulderPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/mypage/record/leg"
+          element={
+            <PrivateRoute>
+              <LegPage />
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </ThemeProvider>

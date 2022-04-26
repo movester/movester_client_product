@@ -39,9 +39,22 @@ function StretchingDetailPage() {
     setLoading(false);
   };
 
+  const getRecommendStretchings = async () => {
+    try {
+      setLoading(true);
+      const result = await axios.get(`/stretchings/recommend/${idx}?userIdx=${userIdx}`);
+      setRecommendStretchings(result.data.data);
+    } catch (err) {
+      setErrMsg(err.response.data.error);
+      handleErrModal();
+    }
+    setLoading(false);
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
     getStretching();
+    getRecommendStretchings();
   }, [pathname]);
 
   useEffect(() => {
@@ -61,21 +74,6 @@ function StretchingDetailPage() {
       getUserDifficulty();
     }
   }, [userDifficultyFlag]);
-
-  useEffect(() => {
-    const getRecommendStretchings = async () => {
-      try {
-        setLoading(true);
-        const result = await axios.get(`/stretchings/recommend/${idx}?userIdx=${userIdx}`);
-        setRecommendStretchings(result.data.data);
-      } catch (err) {
-        setErrMsg(err.response.data.error);
-        handleErrModal();
-      }
-      setLoading(false);
-    };
-    getRecommendStretchings();
-  }, []);
 
   const handleDifficulty = async score => {
     const createDifficulty = async () => {
