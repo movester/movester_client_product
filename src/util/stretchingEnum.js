@@ -1,11 +1,11 @@
 const mainBodyEnum = {
   1: '전신',
   2: '상체',
-  3: '하체',
-  4: '코어',
+  3: '코어',
+  4: '하체',
 };
 
-const mainBodyArr = ['전신', '상체', '하체', '코어'];
+const mainBodyArr = ['전신', '상체', '코어', '하체'];
 
 const subBodyEnum = {
   1: '얼굴 / 머리',
@@ -23,14 +23,14 @@ const subBodyArr = [
     ['얼굴 / 머리', 1],
     ['목 / 어깨', 2],
     ['팔 / 손목 / 손', 3],
+  ],
+  [
     ['등 / 허리', 4],
+    ['골반 / 엉덩이', 5],
   ],
   [
     ['무릎 / 다리', 6],
     ['발목 / 발', 7],
-  ],
-  [
-    ['골반 / 엉덩이', 5],
   ],
 ];
 
@@ -83,11 +83,11 @@ const tagSet = {
     type: 'mainBody',
     value: 2,
   },
-  하체: {
+  코어: {
     type: 'mainBody',
     value: 3,
   },
-  코어: {
+  하체: {
     type: 'mainBody',
     value: 4,
   },
