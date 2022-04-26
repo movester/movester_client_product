@@ -43,18 +43,24 @@ function Index({ weekStretching }) {
       <Service>
         <h2>#뭅스터만의 #힙한 서비스</h2>
         <div className="image-container">
-          <ImageWrapper>
-            <ItemText>다양한 스트레칭 제공</ItemText>
-            <ItemImage src="/assets/bottom-stretching.png" alt="스트레칭" />
-          </ImageWrapper>
-          <ImageWrapper>
-            <ItemText>기록 변화</ItemText>
-            <ItemImage src="/assets/bottom-record.png" alt="기록 변화" />
-          </ImageWrapper>
-          <ImageWrapper>
-            <ItemText>카톡 알림</ItemText>
-            <ItemImage src="/assets/bottom-kakao.png" alt="카톡 알림" />
-          </ImageWrapper>
+          <Link key="stretching" to="/stretching">
+            <ImageWrapper>
+              <ItemText>다양한 스트레칭 제공</ItemText>
+              <ItemImage src="/assets/bottom-stretching.png" alt="스트레칭" />
+            </ImageWrapper>
+          </Link>
+          <Link key="record" to="/mypage/record">
+            <ImageWrapper>
+              <ItemText>기록 변화</ItemText>
+              <ItemImage src="/assets/bottom-record.png" alt="기록 변화" />
+            </ImageWrapper>
+          </Link>
+          <a href="https://open.kakao.com/o/gDHdxN0c" target="_blank" rel="noreferrer">
+            <ImageWrapper>
+              <ItemText>카톡 알림</ItemText>
+              <ItemImage src="/assets/bottom-kakao.png" alt="카톡 알림" />
+            </ImageWrapper>
+          </a>
         </div>
       </Service>
     </>
