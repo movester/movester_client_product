@@ -62,14 +62,7 @@ function StretchingMenu({ handleTagModal, searchType, handleSearchType, main, ha
             ? subBodyArr[main - 1].map(([string, number], i) => (
                 <StyledSubBtn
                   key={string}
-                  className={
-                    sub - 1 === i ||
-                    (main === 4 && sub === 5 && i === 0) ||
-                    (main === 3 && sub === 6 && i === 0) ||
-                    (main === 3 && sub === 7 && i === 1)
-                      ? 'active'
-                      : ''
-                  }
+                  className={sub === subBodyArr[main - 1][i][1] ? 'active' : ''}
                   onClick={() => handleSub(number)}
                 >
                   {string}
