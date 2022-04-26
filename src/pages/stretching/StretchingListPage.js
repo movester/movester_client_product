@@ -126,7 +126,7 @@ function StretchingListPage() {
           posture: [],
           effect: [],
         });
-        // setTagSearch(prev => !prev);
+        setSearchType('')
       } catch (err) {
         setErrMsg(err.response.data.error);
         handleErrModal();

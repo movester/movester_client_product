@@ -60,7 +60,17 @@ function StretchingMenu({ handleTagModal, searchType, handleSearchType, main, ha
         {searchType === 1
           ? main
             ? subBodyArr[main - 1].map(([string, number], i) => (
-                <StyledSubBtn className={sub - 1 === i ? 'active' : ''} onClick={() => handleSub(number)}>
+                <StyledSubBtn
+                  className={
+                    sub - 1 === i ||
+                    (main === 4 && sub === 5 && i === 0) ||
+                    (main === 3 && sub === 6 && i === 0) ||
+                    (main === 3 && sub === 7 && i === 1)
+                      ? 'active'
+                      : ''
+                  }
+                  onClick={() => handleSub(number)}
+                >
                   {string}
                 </StyledSubBtn>
               ))
@@ -73,11 +83,13 @@ function StretchingMenu({ handleTagModal, searchType, handleSearchType, main, ha
                 {posture}
               </StyledSubBtn>
             ))
-          : effectArr.map((effect, i) => (
+          : searchType === 3
+          ? effectArr.map((effect, i) => (
               <StyledSubBtn className={main - 1 === i ? 'active' : ''} onClick={() => handleMain(i + 1)}>
                 {effect}
               </StyledSubBtn>
-            ))}
+            ))
+          : ''}
       </SubCategory>
       <StyledTagBtn onClick={handleTagModal}>태그별 찾기</StyledTagBtn>
     </StyledNav>
