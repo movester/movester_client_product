@@ -45,15 +45,12 @@ function StretchingDetailPage() {
   }, [pathname]);
 
   useEffect(() => {
-    getStretching();
-  }, [userDifficulty]);
-
-  useEffect(() => {
     const getUserDifficulty = async () => {
       try {
         setLoading(true);
         const result = await axios.get(`/stretchings/difficulty/${idx}`);
         setUserDifficulty(() => result.data.data?.difficulty);
+        getStretching();
       } catch (err) {
         setErrMsg(err.response.data.error);
         handleErrModal();

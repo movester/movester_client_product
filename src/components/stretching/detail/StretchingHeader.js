@@ -5,6 +5,7 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import StarIcon from '@material-ui/icons/Star';
 import axios from '../../../services/defaultClient';
 import { mainBodyEnum, subBodyEnum, postureEnum, effectEnum } from '../../../util/stretchingEnum';
+import Loading from '../../common/Loading';
 
 function StretchingHeader({ stretching, isAuth }) {
   const likeBtn = useRef(null);
@@ -24,7 +25,7 @@ function StretchingHeader({ stretching, isAuth }) {
       alert('에러 발생');
     }
   };
-  return (
+  return Object.values(stretching).length ? (
     <OutLine>
       <ImageWrap>
         <StyledImg
@@ -62,6 +63,8 @@ function StretchingHeader({ stretching, isAuth }) {
         {/* <KaKaoBtn>카카오톡 공유하기</KaKaoBtn> */}
       </DetailWrap>
     </OutLine>
+  ) : (
+    <Loading />
   );
 }
 
