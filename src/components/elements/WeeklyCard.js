@@ -22,7 +22,7 @@ function WeeklyCard({ weekStretching }) {
 }
 
 WeeklyCard.propTypes = {
-  weekStretching: PropTypes.arrayOf(PropTypes.object).isRequired,
+  weekStretching: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.object)]).isRequired,
 };
 
 export default WeeklyCard;

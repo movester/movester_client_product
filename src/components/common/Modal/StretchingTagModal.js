@@ -66,14 +66,16 @@ function StretchingTagModal({ onClose, handleTagSearch, onTagChange }) {
             <p>2. 태그 선택</p>
             <TagWrap>
               {tagArr[category].map(tag => (
-                <TagBtn onClick={() => insertSelected(tag)}>{tag}</TagBtn>
+                <TagBtn key={tag} onClick={() => insertSelected(tag)}>
+                  {tag}
+                </TagBtn>
               ))}
             </TagWrap>
             <p>3. 선택한 태그</p>
             <span>해당 태그에 만족하는 스트레칭이 노출됩니다.(최대 8개 선택 가능)</span>
             <SelectedWrap>
               {selected.map(select => (
-                <SelectedTagBtn>
+                <SelectedTagBtn key={select}>
                   {select}
                   <button type="button" onClick={() => deleteSelected(select)}>
                     X

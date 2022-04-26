@@ -68,7 +68,11 @@ function Index({ weekStretching }) {
 }
 
 Index.propTypes = {
-  weekStretching: PropTypes.arrayOf(PropTypes.string).isRequired,
+  weekStretching: PropTypes.arrayOf(PropTypes.object),
+};
+
+Index.defaultProps = {
+  weekStretching: null,
 };
 
 export default Index;

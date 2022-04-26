@@ -61,6 +61,7 @@ function StretchingMenu({ handleTagModal, searchType, handleSearchType, main, ha
           ? main
             ? subBodyArr[main - 1].map(([string, number], i) => (
                 <StyledSubBtn
+                  key={string}
                   className={
                     sub - 1 === i ||
                     (main === 4 && sub === 5 && i === 0) ||
@@ -75,17 +76,19 @@ function StretchingMenu({ handleTagModal, searchType, handleSearchType, main, ha
                 </StyledSubBtn>
               ))
             : mainBodyArr.map((mainBody, i) => (
-                <StyledSubBtn onClick={() => handleMain(i + 1)}>{mainBody}</StyledSubBtn>
+                <StyledSubBtn onClick={() => handleMain(i + 1)} key={mainBody}>
+                  {mainBody}
+                </StyledSubBtn>
               ))
           : searchType === 2
           ? postureArr.map((posture, i) => (
-              <StyledSubBtn className={main - 1 === i ? 'active' : ''} onClick={() => handleMain(i + 1)}>
+              <StyledSubBtn key={posture} className={main - 1 === i ? 'active' : ''} onClick={() => handleMain(i + 1)}>
                 {posture}
               </StyledSubBtn>
             ))
           : searchType === 3
           ? effectArr.map((effect, i) => (
-              <StyledSubBtn className={main - 1 === i ? 'active' : ''} onClick={() => handleMain(i + 1)}>
+              <StyledSubBtn key={effect} className={main - 1 === i ? 'active' : ''} onClick={() => handleMain(i + 1)}>
                 {effect}
               </StyledSubBtn>
             ))
@@ -98,11 +101,11 @@ function StretchingMenu({ handleTagModal, searchType, handleSearchType, main, ha
 
 StretchingMenu.propTypes = {
   handleTagModal: PropTypes.func.isRequired,
-  searchType: PropTypes.number.isRequired,
+  searchType: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   handleSearchType: PropTypes.func.isRequired,
-  main: PropTypes.number.isRequired,
+  main: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   handleMain: PropTypes.func.isRequired,
-  sub: PropTypes.number.isRequired,
+  sub: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   handleSub: PropTypes.func.isRequired,
 };
 

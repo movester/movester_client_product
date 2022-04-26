@@ -66,7 +66,7 @@ StretchingList.propTypes = {
   setLoading: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   moreStretchings: PropTypes.arrayOf(PropTypes.object).isRequired,
-  tagSearch: PropTypes.bool.isRequired,
+  tagSearch: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]).isRequired,
 };
 
 export default StretchingList;
