@@ -6,12 +6,14 @@ import NoContent from '../elements/NoContent';
 import Loader from '../common/Loading';
 import { mainBodyEnum, subBodyEnum, postureEnum, effectEnum } from '../../util/stretchingEnum';
 
-function StretchingList({ stretchings, setPage, setLoading, loading, moreStretchings }) {
+function StretchingList({ stretchings, setPage, setLoading, loading, moreStretchings, tagSearch }) {
   const [target, setTarget] = useState(null);
   const loadMore = () => {
-    setLoading(true);
-    setPage(prev => prev + 1);
-    setLoading(false);
+    if (!tagSearch) {
+      setLoading(true);
+      setPage(prev => prev + 1);
+      setLoading(false);
+    }
   };
 
   const onIntersect = async ([entry], observer) => {
@@ -64,6 +66,7 @@ StretchingList.propTypes = {
   setLoading: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   moreStretchings: PropTypes.arrayOf(PropTypes.object).isRequired,
+  tagSearch: PropTypes.bool.isRequired,
 };
 
 export default StretchingList;

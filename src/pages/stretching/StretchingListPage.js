@@ -103,9 +103,8 @@ function StretchingListPage() {
         handleErrModal();
       }
     };
-    if (!tagSearch) {
-      getStretchingList();
-    }
+    setTagSearch(() => false);
+    getStretchingList();
   }, [main, sub]);
 
   useEffect(() => {
@@ -127,7 +126,7 @@ function StretchingListPage() {
           posture: [],
           effect: [],
         });
-        setTagSearch(prev => !prev);
+        // setTagSearch(prev => !prev);
       } catch (err) {
         setErrMsg(err.response.data.error);
         handleErrModal();
@@ -166,6 +165,7 @@ function StretchingListPage() {
           loading={loading}
           setLoading={setLoading}
           moreStretchings={moreStretchings}
+          tagSearch={tagSearch}
         />
       )}
       {tagModalOn && (

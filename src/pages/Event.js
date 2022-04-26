@@ -6,15 +6,6 @@ import getDate from '../util/date';
 function Event() {
   const [activeMenu, setActiveMenu] = useState('progress');
 
-  // const handleActiveMenu = (e, menu) => {
-  //   e.target.classList.add('active');
-  //   document.querySelector(activeMenu).classList.add('hidden');
-  //   document.querySelector(menu).classList.remove('hidden');
-  //   setActiveMenu(menu);
-
-  //   ['.progress-menu'].forEach(li => document.querySelector(li).classList.remove('active'));
-  //   e.target.classList.add('active');
-  // };
   return (
     <Main>
       <StyledNav>

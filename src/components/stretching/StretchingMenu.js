@@ -169,7 +169,7 @@ const StyledSubBtn = styled.button`
     margin-left: 12px;
 
     @media screen and (max-width: 600px) {
-      margin : 0;
+      margin: 0;
     }
   }
 
