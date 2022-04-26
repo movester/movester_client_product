@@ -1,43 +1,45 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Main from '../components/common/Main';
+import getDate from '../util/date';
 
 function Event() {
-  const [activeMenu, setActiveMenu] = useState('.progress');
+  const [activeMenu, setActiveMenu] = useState('progress');
 
-  const handleActiveMenu = (e, menu) => {
-    e.target.classList.add('active');
-    document.querySelector(activeMenu).classList.add('hidden');
-    document.querySelector(menu).classList.remove('hidden');
-    setActiveMenu(menu);
+  // const handleActiveMenu = (e, menu) => {
+  //   e.target.classList.add('active');
+  //   document.querySelector(activeMenu).classList.add('hidden');
+  //   document.querySelector(menu).classList.remove('hidden');
+  //   setActiveMenu(menu);
 
-    ['.progress-menu', '.winner-announce-menu', '.closed-menu'].forEach(li =>
-      document.querySelector(li).classList.remove('active')
-    );
-    e.target.classList.add('active');
-  };
+  //   ['.progress-menu'].forEach(li => document.querySelector(li).classList.remove('active'));
+  //   e.target.classList.add('active');
+  // };
   return (
     <Main>
       <StyledNav>
         <ul>
-          <StyledLi className="progress-menu active" onClick={e => handleActiveMenu(e, '.progress')}>
+          <StyledLi className={activeMenu === 'progress' ? 'active' : ''} onClick={() => setActiveMenu('progress')}>
             진행중
           </StyledLi>
-          <StyledLi className="winner-announce-menu" onClick={e => handleActiveMenu(e, '.winner-announce')}>
+          <StyledLi
+            className={activeMenu === 'winner-announce' ? 'active' : ''}
+            onClick={() => setActiveMenu('winner-announce')}
+          >
             당첨자발표
           </StyledLi>
-          <StyledLi className="closed-menu" onClick={e => handleActiveMenu(e, '.closed')}>
+          {/* <StyledLi className="closed-menu" onClick={e => handleActiveMenu(e, '.closed')}>
             마감
-          </StyledLi>
+          </StyledLi> */}
         </ul>
         <p>MOVESTER에서만 제공하는 다양한 이벤트</p>
         <p>함께 스트레칭하며 다양한 활동을 경험해보세요!</p>
       </StyledNav>
 
-      <ContentWrap className="progress">
+      <ContentWrap className={activeMenu === 'progress' ? '' : 'hidden'}>
         <Item>
-          <Title>5월 출석왕 포인트 대결</Title>
-          <Date>2022.05.01 ~ 2022.05.31</Date>
+          <Title>{getDate.month}월 출석왕 포인트 대결</Title>
+          <Date>{`${getDate.year}.${getDate.month}.1 ~ ${getDate.year}.${getDate.month}.${getDate.lastDateOfCurMonth}`}</Date>
           <Detail>
             <StyledImg src="/assets/stamp.png" alt="이벤트 대표 이미지" />
 
@@ -50,10 +52,10 @@ function Event() {
         </Item>
       </ContentWrap>
 
-      <ContentWrap className="winner-announce hidden">
+      <ContentWrap className={activeMenu === 'winner-announce' ? '' : 'hidden'}>
         <Item>
-          <Title>4월 출석왕 포인트 대결</Title>
-          <Date>2022.04.01 ~ 2022.04.30</Date>
+          <Title>{getDate.lastMonth}월 출석왕 포인트 대결</Title>
+          <Date>{`${getDate.year}.${getDate.lastMonth}.1 ~ ${getDate.year}.${getDate.lastMonth}.${getDate.lastDateOfLastMonth}`}</Date>
           <Detail>
             <StyledImg src="/assets/stamp.png" alt="이벤트 대표 이미지" />
 
@@ -66,7 +68,7 @@ function Event() {
         </Item>
       </ContentWrap>
 
-      <ContentWrap className="closed hidden">
+      {/* <ContentWrap className="closed hidden">
         <Item>
           <Title>3월 출석왕 포인트 대결</Title>
           <Date>2022.03.01 ~ 2022.03.31</Date>
@@ -80,7 +82,7 @@ function Event() {
             </Content>
           </Detail>
         </Item>
-      </ContentWrap>
+      </ContentWrap> */}
     </Main>
   );
 }
@@ -139,7 +141,7 @@ const StyledLi = styled.li`
 `;
 
 const ContentWrap = styled.div`
-  height: auto;
+  min-height: 49vh;
   width: 100%;
   padding: 3rem 22%;
 

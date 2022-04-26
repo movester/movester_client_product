@@ -1,9 +1,12 @@
-const formatDate = (() => {
-  const format = n => (n < 10 ? '0' + n : n + '');
-  return date => `${date.getFullYear()}-${format(date.getMonth() + 1)}-${format(date.getDate())}`;
-})();
+const today = new Date();
+const lastMonth = today.getMonth();
 
-// yyyy-mm-dd로 오늘 날짜 출력
-const getToday = formatDate(new Date());
+const getDate = {
+  year: today.getFullYear(),
+  month: today.getMonth() + 1,
+  lastMonth,
+  lastDateOfCurMonth: new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate(),
+  lastDateOfLastMonth: new Date(today.getFullYear(), lastMonth, 0).getDate(),
+};
 
-export default getToday;
+export default getDate;
