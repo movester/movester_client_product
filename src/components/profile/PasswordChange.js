@@ -11,11 +11,11 @@ function PasswordChange({
   curPassword,
   newPassword,
   confirmPassword,
+  passwordCurMessage,
   passwordMessage,
   passwordConfirmMessage,
   onChange,
   onSubmit,
-  isSubmit,
   modalOn,
   handleModal,
   errModalOn,
@@ -26,7 +26,7 @@ function PasswordChange({
     <>
       <StyledContentWrap onSubmit={onSubmit}>
         <ProfileTitle className="margin">비밀번호 변경</ProfileTitle>
-        <ProfileInput text="현재 비밀번호" name="curPassword" value={curPassword} onChange={onChange} />
+        <ProfileInput text="현재 비밀번호" name="curPassword" value={curPassword} message={passwordCurMessage} onChange={onChange} />
         <ProfileInput
           text="새 비밀번호"
           name="newPassword"
@@ -41,7 +41,7 @@ function PasswordChange({
           message={passwordConfirmMessage}
           onChange={onChange}
         />
-        <StyledButton className="left" type="submit" disalbed={!isSubmit}>
+        <StyledButton className="left" type="submit">
           비밀번호 변경
         </StyledButton>
       </StyledContentWrap>
@@ -62,11 +62,11 @@ PasswordChange.propTypes = {
   curPassword: PropTypes.string.isRequired,
   newPassword: PropTypes.string.isRequired,
   confirmPassword: PropTypes.string.isRequired,
+  passwordCurMessage: PropTypes.string.isRequired,
   passwordMessage: PropTypes.string.isRequired,
   passwordConfirmMessage: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  isSubmit: PropTypes.bool.isRequired,
   modalOn: PropTypes.bool.isRequired,
   handleModal: PropTypes.func.isRequired,
   errModalOn: PropTypes.bool.isRequired,

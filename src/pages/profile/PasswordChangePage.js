@@ -10,12 +10,9 @@ import passwordRegex from '../../util/passwordRegex';
 function PasswordChangePage() {
   const navigate = useNavigate();
 
-  const [isPassword, setIsPassword] = useState(false);
-  const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
-
+  const [passwordCurMessage, setCurPasswordMessage] = useState('');
   const [passwordMessage, setPasswordMessage] = useState('');
   const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('');
-  const [isSubmit, setIsSubmit] = useState(false);
 
   const [inputs, setInputs] = useState({
     curPassword: '',
@@ -45,32 +42,22 @@ function PasswordChangePage() {
       [name]: value,
     });
 
-    if (name === 'newPassword') {
-      if (value.length > 0 && !passwordRegex.test(value)) {
-        setIsPassword(() => false);
-        setPasswordMessage('영문자, 숫자 조합으로 8자리 이상 입력해주세요.');
-      } else if (passwordRegex.test(value)) {
-        setIsPassword(() => true);
-        setPasswordMessage('');
-      } else if (newPassword === '') {
-        setIsPassword(() => false);
-        setPasswordMessage('');
-      }
+    if (name === 'curPassword') {
+      setCurPasswordMessage(
+        passwordRegex.test(value) ? '' : '영문, 숫자를 반드시 포함하여 8자리 이상 20자리 이하로 입력해주세요.'
+      );
+    } else if (name === 'newPassword') {
+      setPasswordMessage(
+        passwordRegex.test(value) ? '' : '영문, 숫자를 반드시 포함하여 8자리 이상 20자리 이하로 입력해주세요.'
+      );
     } else if (name === 'confirmPassword') {
-      if (value !== newPassword) {
-        setIsPasswordConfirm(() => false);
-        setPasswordConfirmMessage('비밀번호 확인이 일치하지 않습니다.');
-      } else {
-        setIsPasswordConfirm(() => true);
-        setPasswordConfirmMessage('');
-      }
+      setPasswordConfirmMessage(value === newPassword ? '' : '비밀번호 확인이 일치하지 않습니다.');
     }
-
-    setIsSubmit(isPassword && isPasswordConfirm);
   };
 
   const onSubmit = async e => {
     e.preventDefault();
+    if (!passwordRegex.test(curPassword) || !passwordRegex.test(newPassword) || confirmPassword !== newPassword) return;
     try {
       const { data } = await axios.patch('users/password', {
         curPassword,
@@ -101,10 +88,10 @@ function PasswordChangePage() {
         curPassword={curPassword}
         newPassword={newPassword}
         confirmPassword={confirmPassword}
+        passwordCurMessage={passwordCurMessage}
         passwordMessage={passwordMessage}
         passwordConfirmMessage={passwordConfirmMessage}
         onChange={onChange}
-        isSubmit={isSubmit}
         onSubmit={onSubmit}
         modalOn={modalOn}
         handleModal={handleModal}
