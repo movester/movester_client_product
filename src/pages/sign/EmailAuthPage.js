@@ -43,7 +43,7 @@ function EmailAuthPage() {
       }
     } catch (err) {
       setErrModalOn(prev => !prev);
-      setErrMsg(err.response.data.error);
+      setErrMsg('인증번호가 일치하지 않습니다.');
       setAuthNum('');
     }
   };

@@ -31,7 +31,7 @@ function EmailAuth({ authNum, onChange, onSubmit, onResend,linkModalOn, handleLi
           content="인증 메일을 재발송하였습니다."
         />
       )}
-      {errModalOn && <ConfirmModal onClose={handleErrModal} title="이메일 인증 실패!" content={errMsg} />}
+      {errModalOn && <ConfirmModal onClose={handleErrModal} title="이메일 인증 실패" content={errMsg} />}
     </>
   );
 }

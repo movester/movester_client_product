@@ -203,7 +203,7 @@ const StyledSpan = styled.span`
 `;
 
 const StyledP = styled.p`
-  font-size: 14px;
+  font-size: 12px;
 `;
 
 const StyledWrapper = styled.div`

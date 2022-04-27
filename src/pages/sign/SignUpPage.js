@@ -4,13 +4,17 @@ import axios from '../../services/defaultClient';
 
 import TitleWrapper from '../../components/common/TitleWrapper';
 import SignForm from '../../components/sign/SignForm';
+import Loading from '../../components/common/Loading';
 import emailRegex from '../../util/emailRegex';
 import passwordRegex from '../../util/passwordRegex';
+import nameRegex from '../../util/nameRegex';
 
 function SignUpPage() {
   const navigate = useNavigate();
 
   useEffect(() => window.scrollTo(0, 0));
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const agreeCheckRef = useRef(null);
   const [inputs, setInputs] = useState({
@@ -62,7 +66,7 @@ function SignUpPage() {
     } else if (name === 'password') {
       if (value.length > 0 && !passwordRegex.test(value)) {
         setIsPassword(() => false);
-        setPasswordMessage('영문자, 숫자 조합으로 8자리 이상 입력해주세요.');
+        setPasswordMessage('영문, 숫자를 반드시 포함하여 8자리 이상 20자리 이하로 입력해주세요.');
       } else if (passwordRegex.test(value)) {
         setIsPassword(() => true);
         setPasswordMessage('');
@@ -79,10 +83,10 @@ function SignUpPage() {
         setPasswordConfirmMessage('');
       }
     } else if (name === 'username') {
-      if (value !== '' && value.length < 2) {
+      if (value !== '' && !nameRegex.test(value)) {
         setIsName(() => false);
-        setNameMessage('2글자 이상의 이름을 입력해주세요.');
-      } else if (value.length >= 2) {
+        setNameMessage('한글, 영문, 숫자로 조합된 2자리 이상 12자리 이하로 입력해주세요.');
+      } else if (nameRegex.test(value)) {
         setIsName(() => true);
         setNameMessage('');
       } else if (value === '') {
@@ -99,10 +103,13 @@ function SignUpPage() {
     if (!isAgreeChecked) {
       setErrModalOn(prev => !prev);
       setErrMsg('이용약관에 동의해주세요.');
+      return;
     }
     if (!(isEmail && isPassword && isPasswordConfirm && isName)) return;
 
     try {
+      document.querySelector('.join-btn').disabled = true;
+      setIsLoading(() => true);
       const { data } = await axios.post('users/join', {
         email,
         password,
@@ -120,25 +127,29 @@ function SignUpPage() {
   };
 
   return (
-    <TitleWrapper title="회원가입">
-      <SignForm
-        type="join"
-        onChange={onChange}
-        onSubmit={onSubmit}
-        email={email}
-        password={password}
-        username={username}
-        passwordConfirm={passwordConfirm}
-        emailMessage={emailMessage}
-        passwordMessage={passwordMessage}
-        passwordConfirmMessage={passwordConfirmMessage}
-        nameMessage={nameMessage}
-        isSubmit={isSubmit}
-        errModalOn={errModalOn}
-        handleErrModal={handleErrModal}
-        errMsg={errMsg}
-        ref={agreeCheckRef}
-      />
+    <TitleWrapper title={isLoading ? '인증 메일 전송중...' : '회원가입'}>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <SignForm
+          type="join"
+          onChange={onChange}
+          onSubmit={onSubmit}
+          email={email}
+          password={password}
+          username={username}
+          passwordConfirm={passwordConfirm}
+          emailMessage={emailMessage}
+          passwordMessage={passwordMessage}
+          passwordConfirmMessage={passwordConfirmMessage}
+          nameMessage={nameMessage}
+          isSubmit={isSubmit}
+          errModalOn={errModalOn}
+          handleErrModal={handleErrModal}
+          errMsg={errMsg}
+          ref={agreeCheckRef}
+        />
+      )}
     </TitleWrapper>
   );
 }
