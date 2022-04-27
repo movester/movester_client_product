@@ -10,8 +10,8 @@ function Ruler({ record, message, onSliderChange,}) {
       <RecordDisplayer>{record}cm</RecordDisplayer>
       <Margin />
       <Slider
-        min={-30}
-        max={30}
+        min={-15}
+        max={40}
         value={record}
         step={0.1}
         onChange={onSliderChange}

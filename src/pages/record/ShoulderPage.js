@@ -4,7 +4,7 @@ import axios from '../../services/defaultClient';
 import Main from '../../components/common/Main';
 import Nav from '../../components/common/Nav';
 import Shoulder from '../../components/record/Shoulder';
-import getToday from '../../util/date';
+import getDate from '../../util/date';
 
 function ShoulderPage() {
   const [records, setRecords] = useState([]);
@@ -21,8 +21,7 @@ function ShoulderPage() {
       setRecords(shoulderRecords.reverse());
 
       const lastRecord = shoulderRecords[shoulderRecords.length - 1];
-
-      if (lastRecord.date === getToday) {
+      if (lastRecord.date === getDate.today) {
         setIsCreate(true);
         setTodayRecord(lastRecord.record);
       }
@@ -101,18 +100,6 @@ function ShoulderPage() {
     if (e.target.name === 'increase') setRecord(prev => +(prev + 0.1).toFixed(1));
     else setRecord(prev => +(prev - 0.1).toFixed(1));
   };
-
-  useEffect(() => {
-    if (record > 30 || record < -30) {
-      setMessage(`기록은 30cm보다 크거나 -30cm보다 작을 수 없습니다.`);
-      setRecord(0);
-    } else if (String(record).includes('.')) {
-      if (String(record).substring(String(record).indexOf('.') + 1).length > 1) {
-        setMessage('소수점 1자리까지만 입력해 주세요.');
-        setRecord(+record);
-      }
-    }
-  }, [record]);
 
   return (
     <Main type="record">

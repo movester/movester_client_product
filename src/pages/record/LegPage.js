@@ -4,7 +4,7 @@ import axios from '../../services/defaultClient';
 import Main from '../../components/common/Main';
 import Nav from '../../components/common/Nav';
 import Leg from '../../components/record/Leg';
-import getToday from '../../util/date';
+import getDate from '../../util/date';
 
 function LegPage() {
   const [records, setRecords] = useState([]);
@@ -21,8 +21,7 @@ function LegPage() {
       setRecords(legRecords.reverse());
 
       const lastRecord = legRecords[legRecords.length - 1];
-
-      if (lastRecord.date === getToday) {
+      if (lastRecord.date === getDate.today) {
         setIsCreate(true);
         setTodayRecord(lastRecord.record);
       }
@@ -103,8 +102,8 @@ function LegPage() {
   };
 
   useEffect(() => {
-    if (record > 30 || record < -30) {
-      setMessage(`기록은 30cm보다 크거나 -30cm보다 작을 수 없습니다.`);
+    if (record > 40 || record < -15) {
+      setMessage(`기록은 40cm보다 크거나 -15cm보다 작을 수 없습니다.`);
       setRecord(0);
     } else if (String(record).includes('.')) {
       if (String(record).substring(String(record).indexOf('.') + 1).length > 1) {
