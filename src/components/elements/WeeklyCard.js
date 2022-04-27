@@ -11,7 +11,7 @@ function WeeklyCard({ weekStretching }) {
           <WeeklyCardContainer>
             <h3>{day}</h3>
             <img
-              src={`https://movester-bucket.s3.ap-northeast-2.amazonaws.com/${weekStretching[index].image}.png`}
+              src={`${process.env.REACT_APP_S3_URL}/${weekStretching[index].image}.png`}
               alt="스트레칭"
             />
           </WeeklyCardContainer>

@@ -10,7 +10,7 @@ function LikeStretchingItem({ idx, title, category, posture, effect, image, acti
     <Item>
       <ImageWrap>
         <Link key={idx} to={`/stretching/detail/${idx}`}>
-          <StyledImg src={`https://movester-bucket.s3.ap-northeast-2.amazonaws.com/${image}.png`} alt="대표 이미지" />
+          <StyledImg src={`${process.env.REACT_APP_S3_URL}/${image}.png`} alt="대표 이미지" />
         </Link>
         {user && (
           <LikeButton

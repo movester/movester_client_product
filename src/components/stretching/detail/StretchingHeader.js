@@ -29,7 +29,7 @@ function StretchingHeader({ stretching, isAuth }) {
     <OutLine>
       <ImageWrap>
         <StyledImg
-          src={`https://movester-bucket.s3.ap-northeast-2.amazonaws.com/${stretching.image}.png`}
+          src={`${process.env.REACT_APP_S3_URL}/${stretching.image}.png`}
           alt="대표 이미지"
         />
         {isAuth ? <LikeButton ref={likeBtn} onClick={handleLike} className={stretching.like ? 'active' : ''} /> : ''}
