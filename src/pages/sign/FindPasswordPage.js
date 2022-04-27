@@ -42,23 +42,13 @@ function FindPasswordPage() {
     });
 
     if (name === 'email') {
-      if (value.length > 0 && !emailRegex.test(value)) {
-        setEmailMessage('올바른 이메일 형식이 아닙니다.');
-      } else {
-        setEmailMessage('');
-      }
+      setEmailMessage(emailRegex.test(value) ? '' : '올바른 이메일 형식이 아닙니다.');
     } else if (name === 'password') {
-      if (value.length > 0 && !passwordRegex.test(value)) {
-        setPasswordMessage('영문, 숫자를 반드시 포함하여 8자리 이상 20자리 이하로 입력해주세요.');
-      } else {
-        setPasswordMessage('');
-      }
+      setPasswordMessage(
+        passwordRegex.test(value) ? '' : '영문, 숫자를 반드시 포함하여 8자리 이상 20자리 이하로 입력해주세요.'
+      );
     } else if (name === 'passwordConfirm') {
-      if (value !== password) {
-        setPasswordConfirmMessage('비밀번호 확인이 일치하지 않습니다.');
-      } else {
-        setPasswordConfirmMessage('');
-      }
+      setPasswordConfirmMessage(value === password ? '' : '비밀번호 확인이 일치하지 않습니다.');
     }
   };
 

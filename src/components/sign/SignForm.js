@@ -24,7 +24,6 @@ function SignForm({
   passwordConfirmMessage,
   username,
   nameMessage,
-  isSubmit,
   errModalOn,
   handleErrModal,
   errMsg,
@@ -90,7 +89,7 @@ function SignForm({
           )}
           {type === 'login' ? (
             <>
-              <StyledButton type="submit" className="login-btn" aria-label="login" disalbed={!isSubmit}>
+              <StyledButton type="submit" className="login-btn" aria-label="login">
                 로그인 하기
               </StyledButton>
               <StyledButton
@@ -103,7 +102,7 @@ function SignForm({
             </>
           ) : (
             <>
-              <StyledButton type="submit" className="join-btn" aria-label="join" disalbed={!isSubmit}>
+              <StyledButton type="submit" className="join-btn" aria-label="join">
                 회원가입 하기
               </StyledButton>
               <MoveLink text="이미 계정이 있으신가요?" address="/login" btnText="로그인" />
@@ -142,7 +141,6 @@ SignForm.propTypes = {
   passwordConfirmMessage: PropTypes.string,
   username: PropTypes.string,
   nameMessage: PropTypes.string,
-  isSubmit: PropTypes.bool.isRequired,
   errModalOn: PropTypes.bool.isRequired,
   handleErrModal: PropTypes.func.isRequired,
   errMsg: PropTypes.string.isRequired,

@@ -21,10 +21,6 @@ function SignInPage() {
 
   const { email, password } = inputs;
 
-  const [isEmail, setIsEmail] = useState(false);
-  const [isPassword, setIsPassword] = useState(false);
-  const [isSubmit, setIsSubmit] = useState(false);
-
   const [emailMessage, setEmailMessage] = useState('');
   const [passwordMessage, setPasswordMessage] = useState('');
 
@@ -50,34 +46,17 @@ function SignInPage() {
     });
 
     if (name === 'email') {
-      if (value.length > 0 && !emailRegex.test(value)) {
-        setIsEmail(() => false);
-        setEmailMessage('올바른 이메일 형식이 아닙니다.');
-      } else if (emailRegex.test(value)) {
-        setIsEmail(() => true);
-        setEmailMessage('');
-      } else if (value === '') {
-        setIsEmail(() => false);
-        setEmailMessage('');
-      }
+      setEmailMessage(emailRegex.test(value) ? '' : '올바른 이메일 형식이 아닙니다.');
     } else if (name === 'password') {
-      if (value.length > 0 && !passwordRegex.test(value)) {
-        setIsPassword(() => false);
-        setPasswordMessage('영문, 숫자를 반드시 포함하여 8자리 이상 20자리 이하로 입력해주세요.');
-      } else if (passwordRegex.test(value)) {
-        setIsPassword(() => true);
-        setPasswordMessage('');
-      } else if (password === '') {
-        setIsPassword(() => false);
-        setPasswordMessage('');
-      }
+      setPasswordMessage(
+        passwordRegex.test(value) ? '' : '영문, 숫자를 반드시 포함하여 8자리 이상 20자리 이하로 입력해주세요.'
+      );
     }
-    setIsSubmit(isEmail && isPassword);
   };
 
   const onSubmit = e => {
     e.preventDefault();
-    if (isEmail && isPassword) {
+    if (emailRegex.test(email) && passwordRegex.test(password)) {
       dispatch(fetchLoginThunk({ email, password }));
     }
   };
@@ -115,7 +94,6 @@ function SignInPage() {
         password={password}
         emailMessage={emailMessage}
         passwordMessage={passwordMessage}
-        isSubmit={isSubmit}
         errModalOn={errModalOn}
         handleErrModal={handleErrModal}
         errMsg={errMsg}

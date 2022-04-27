@@ -26,12 +26,6 @@ function SignUpPage() {
 
   const { email, password, passwordConfirm, username } = inputs;
 
-  const [isEmail, setIsEmail] = useState(false);
-  const [isPassword, setIsPassword] = useState(false);
-  const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
-  const [isName, setIsName] = useState(false);
-  const [isSubmit, setIsSubmit] = useState(false);
-
   const [emailMessage, setEmailMessage] = useState('');
   const [passwordMessage, setPasswordMessage] = useState('');
   const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('');
@@ -53,48 +47,16 @@ function SignUpPage() {
     });
 
     if (name === 'email') {
-      if (value.length > 0 && !emailRegex.test(value)) {
-        setIsEmail(() => false);
-        setEmailMessage('올바른 이메일 형식이 아닙니다.');
-      } else if (emailRegex.test(value)) {
-        setIsEmail(() => true);
-        setEmailMessage('');
-      } else if (value === '') {
-        setIsEmail(() => false);
-        setEmailMessage('');
-      }
+      setEmailMessage(emailRegex.test(value) ? '' : '올바른 이메일 형식이 아닙니다.');
     } else if (name === 'password') {
-      if (value.length > 0 && !passwordRegex.test(value)) {
-        setIsPassword(() => false);
-        setPasswordMessage('영문, 숫자를 반드시 포함하여 8자리 이상 20자리 이하로 입력해주세요.');
-      } else if (passwordRegex.test(value)) {
-        setIsPassword(() => true);
-        setPasswordMessage('');
-      } else if (password === '') {
-        setIsPassword(() => false);
-        setPasswordMessage('');
-      }
+      setPasswordMessage(
+        passwordRegex.test(value) ? '' : '영문, 숫자를 반드시 포함하여 8자리 이상 20자리 이하로 입력해주세요.'
+      );
     } else if (name === 'passwordConfirm') {
-      if (value !== password) {
-        setIsPasswordConfirm(() => false);
-        setPasswordConfirmMessage('비밀번호 확인이 일치하지 않습니다.');
-      } else {
-        setIsPasswordConfirm(() => true);
-        setPasswordConfirmMessage('');
-      }
+      setPasswordConfirmMessage(value === password ? '' : '비밀번호 확인이 일치하지 않습니다.');
     } else if (name === 'username') {
-      if (value !== '' && !nameRegex.test(value)) {
-        setIsName(() => false);
-        setNameMessage('한글, 영문, 숫자로 조합된 2자리 이상 12자리 이하로 입력해주세요.');
-      } else if (nameRegex.test(value)) {
-        setIsName(() => true);
-        setNameMessage('');
-      } else if (value === '') {
-        setIsName(() => false);
-        setNameMessage('');
-      }
+      setNameMessage(nameRegex.test(value) ? '' : '한글, 영문, 숫자로 조합된 2자리 이상 12자리 이하로 입력해주세요.');
     }
-    setIsSubmit(isEmail && isPassword && isPasswordConfirm && isName);
   };
 
   const onSubmit = async e => {
@@ -105,7 +67,14 @@ function SignUpPage() {
       setErrMsg('이용약관에 동의해주세요.');
       return;
     }
-    if (!(isEmail && isPassword && isPasswordConfirm && isName)) return;
+    
+    if (
+      !emailRegex.test(email) ||
+      !passwordRegex.test(password) ||
+      passwordConfirm !== password ||
+      !nameRegex.test(username)
+    )
+      return;
 
     try {
       document.querySelector('.join-btn').disabled = true;
@@ -117,7 +86,6 @@ function SignUpPage() {
         name: username,
       });
       if (data.success) {
-        setIsSubmit(prev => !prev);
         navigate(`/join/emailAuth/${data.data.userIdx}`);
       }
     } catch (err) {
@@ -143,7 +111,6 @@ function SignUpPage() {
           passwordMessage={passwordMessage}
           passwordConfirmMessage={passwordConfirmMessage}
           nameMessage={nameMessage}
-          isSubmit={isSubmit}
           errModalOn={errModalOn}
           handleErrModal={handleErrModal}
           errMsg={errMsg}
