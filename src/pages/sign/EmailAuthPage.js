@@ -13,6 +13,11 @@ function EmailAuthPage() {
     setLinkModalOn(!linkModalOn);
   };
 
+  const [resendModalOn, setResendModalOn] = useState(false);
+  const handleResendModal = () => {
+    setResendModalOn(!resendModalOn);
+  };
+
   const [errModalOn, setErrModalOn] = useState(false);
   const [errMsg, setErrMsg] = useState('');
 
@@ -43,14 +48,35 @@ function EmailAuthPage() {
     }
   };
 
+  const onResend = async e => {
+    e.preventDefault();
+
+    try {
+      const { data } = await axios.post('users/email-auth/join', {
+        idx: userIdx,
+      });
+
+      if (data.success) {
+        setResendModalOn(() => true);
+      }
+    } catch (err) {
+      setErrModalOn(prev => !prev);
+      setErrMsg(err.response.data.error);
+      setAuthNum('');
+    }
+  };
+
   return (
     <TitleWrapper title="이메일 인증">
       <EmailAuth
         onChange={onChange}
         onSubmit={onSubmit}
+        onResend={onResend}
         authNum={authNum}
         linkModalOn={linkModalOn}
         handleLinkModal={handleLinkModal}
+        resendModalOn={resendModalOn}
+        handleResendModal={handleResendModal}
         errModalOn={errModalOn}
         handleErrModal={handleErrModal}
         errMsg={errMsg}
