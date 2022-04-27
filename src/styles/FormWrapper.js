@@ -15,24 +15,28 @@ const FormWrapper = styled.form`
     padding-left: 12px;
     margin: 5px 0 8px 0;
     text-align: left;
+    font-size: 12px;
   }
   & .password-message {
     color: red;
     padding-left: 12px;
     margin: 5px 0 8px 0;
     text-align: left;
+    font-size: 12px;
   }
   & .confirm-message {
     color: red;
     padding-left: 12px;
     margin: 5px 0 8px 0;
     text-align: left;
+    font-size: 12px;
   }
   & .name-message {
     color: red;
     padding-left: 12px;
     margin: 5px 0 8px 0;
     text-align: left;
+    font-size: 12px;
   }
 `;
 

@@ -4,6 +4,9 @@ import TitleWrapper from '../../components/common/TitleWrapper';
 import SendEmailAuth from '../../components/findPassword/SendEmailAuth';
 import EmailAuth from '../../components/findPassword/EmailAuth';
 import ResetPassword from '../../components/findPassword/ResetPassword';
+import emailRegex from '../../util/emailRegex';
+import passwordRegex from '../../util/passwordRegex';
+import authNumRegex from '../../util/authNumRegex';
 
 function FindPasswordPage() {
   const [isSendMail, setIsSendMail] = useState(false);
@@ -19,6 +22,10 @@ function FindPasswordPage() {
 
   const { email, authNum, password, passwordConfirm } = inputs;
 
+  const [emailMessage, setEmailMessage] = useState('');
+  const [passwordMessage, setPasswordMessage] = useState('');
+  const [passwordConfirmMessage, setPasswordConfirmMessage] = useState('');
+
   const [errModalOn, setErrModalOn] = useState(false);
   const [errMsg, setErrMsg] = useState('');
 
@@ -33,10 +40,31 @@ function FindPasswordPage() {
       ...inputs,
       [name]: value,
     });
+
+    if (name === 'email') {
+      if (value.length > 0 && !emailRegex.test(value)) {
+        setEmailMessage('올바른 이메일 형식이 아닙니다.');
+      } else {
+        setEmailMessage('');
+      }
+    } else if (name === 'password') {
+      if (value.length > 0 && !passwordRegex.test(value)) {
+        setPasswordMessage('영문, 숫자를 반드시 포함하여 8자리 이상 20자리 이하로 입력해주세요.');
+      } else {
+        setPasswordMessage('');
+      }
+    } else if (name === 'passwordConfirm') {
+      if (value !== password) {
+        setPasswordConfirmMessage('비밀번호 확인이 일치하지 않습니다.');
+      } else {
+        setPasswordConfirmMessage('');
+      }
+    }
   };
 
   const onSendEmailSubmit = async e => {
     e.preventDefault();
+    if (email === '' || (email !== '' && emailMessage !== '')) return;
 
     try {
       const { data } = await axios.post('users/email-auth/password', {
@@ -54,7 +82,11 @@ function FindPasswordPage() {
 
   const onEmailAuthSubmit = async e => {
     e.preventDefault();
-
+    if(!authNumRegex.test(authNum)) {
+      setErrModalOn(prev => !prev);
+      setErrMsg("잘못된 인증번호입니다.");
+      return;
+    }
     try {
       const { data } = await axios.get(`users/email-auth/password?email=${email}&emailAuthNum=${authNum}`);
 
@@ -69,6 +101,8 @@ function FindPasswordPage() {
 
   const onResetPasswordSubmit = async e => {
     e.preventDefault();
+
+    if (!passwordRegex.test(password) || password !== passwordConfirm) return;
 
     try {
       const { data } = await axios.patch('users/password/reset', {
@@ -98,6 +132,8 @@ function FindPasswordPage() {
             email={email}
             password={password}
             passwordConfirm={passwordConfirm}
+            passwordMessage={passwordMessage}
+            passwordConfirmMessage={passwordConfirmMessage}
             isResetPassword={isResetPassword}
             errModalOn={errModalOn}
             handleErrModal={handleErrModal}
@@ -110,7 +146,6 @@ function FindPasswordPage() {
             email={email}
             errModalOn={errModalOn}
             handleErrModal={handleErrModal}
-            errMsg={errMsg}
           />
         )
       ) : (
@@ -118,6 +153,7 @@ function FindPasswordPage() {
           onChange={onChange}
           onSubmit={onSendEmailSubmit}
           email={email}
+          emailMessage={emailMessage}
           authNum={authNum}
           errModalOn={errModalOn}
           handleErrModal={handleErrModal}

@@ -4,10 +4,9 @@ import styled from 'styled-components';
 
 import StyledButton from '../../styles/StyledButton';
 import StyledInput from '../../styles/StyledInput';
-import ModalPortal from '../common/Modal/ModalPortal';
 import ConfirmModal from '../common/Modal/ConfirmModal';
 
-function EmailAuth({ email, authNum, onChange, onSubmit, errModalOn, handleErrModal, errMsg }) {
+function EmailAuth({ email, authNum, onChange, onSubmit, errModalOn, handleErrModal }) {
   return (
     <>
       <StyledP className="bold margin">{email}</StyledP>
@@ -17,9 +16,7 @@ function EmailAuth({ email, authNum, onChange, onSubmit, errModalOn, handleErrMo
       <StyledButton onClick={onSubmit}>이메일 인증하기</StyledButton>
       <StyledP className="info">혹시 메일을 받지 못하셨다면 스팸 메일함을 확인해주세요.</StyledP>
       {errModalOn && (
-        <ModalPortal>
-          <ConfirmModal onClose={handleErrModal} title="이메일 인증 실패!" content={errMsg} />
-        </ModalPortal>
+          <ConfirmModal onClose={handleErrModal} title="이메일 인증 실패" content="잘못된 인증번호입니다." />
       )}
     </>
   );
@@ -32,7 +29,6 @@ EmailAuth.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   errModalOn: PropTypes.bool.isRequired,
   handleErrModal: PropTypes.func.isRequired,
-  errMsg: PropTypes.string.isRequired,
 };
 
 export default EmailAuth;

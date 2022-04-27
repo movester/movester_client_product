@@ -7,13 +7,14 @@ import FormWrapper from '../../styles/FormWrapper';
 import StyledButton from '../../styles/StyledButton';
 import StyledInput from '../../styles/StyledInput';
 import MoveLink from '../common/MoveLink';
-import ModalPortal from '../common/Modal/ModalPortal';
 import ConfirmModal from '../common/Modal/ConfirmModal';
 
 function ResetPassword({
   email,
   password,
   passwordConfirm,
+  passwordMessage,
+  passwordConfirmMessage,
   isResetPassword,
   onChange,
   onSubmit,
@@ -44,7 +45,9 @@ function ResetPassword({
               onChange={onChange}
               value={password}
             />
+            <StyledP className="password-message">{passwordMessage}</StyledP>
             <StyledInput
+              className="sign"
               type="password"
               name="passwordConfirm"
               placeholder="비밀번호 확인"
@@ -52,13 +55,10 @@ function ResetPassword({
               onChange={onChange}
               value={passwordConfirm}
             />
+            <StyledP className="confirm-message">{passwordConfirmMessage}</StyledP>
             <StyledButton onClick={onSubmit}>비밀번호 재설정하기</StyledButton>
           </FormWrapper>
-          {errModalOn && (
-            <ModalPortal>
-              <ConfirmModal onClose={handleErrModal} title="이메일 인증 메일 전송 실패!" content={errMsg} />
-            </ModalPortal>
-          )}
+          {errModalOn && <ConfirmModal onClose={handleErrModal} title="이메일 인증 메일 전송 실패" content={errMsg} />}
         </>
       )}
     </EditPasswordWrapper>
@@ -69,6 +69,8 @@ ResetPassword.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   passwordConfirm: PropTypes.string.isRequired,
+  passwordMessage: PropTypes.string.isRequired,
+  passwordConfirmMessage: PropTypes.string.isRequired,
   isResetPassword: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
@@ -94,5 +96,15 @@ const StyledP = styled.p`
 
   &.margin {
     margin-bottom: 20px;
+  }
+
+  &.password-message {
+    width: 100%;
+    text-align: left;
+  }
+
+  &.confirm-message {
+    width: 100%;
+    text-align: left;
   }
 `;

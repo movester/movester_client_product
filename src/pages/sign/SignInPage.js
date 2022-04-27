@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import TitleWrapper from '../../components/common/TitleWrapper';
@@ -63,7 +63,7 @@ function SignInPage() {
     } else if (name === 'password') {
       if (value.length > 0 && !passwordRegex.test(value)) {
         setIsPassword(() => false);
-        setPasswordMessage('영문자, 숫자 조합으로 8자리 이상 입력해주세요.');
+        setPasswordMessage('영문, 숫자를 반드시 포함하여 8자리 이상 20자리 이하로 입력해주세요.');
       } else if (passwordRegex.test(value)) {
         setIsPassword(() => true);
         setPasswordMessage('');
@@ -90,7 +90,7 @@ function SignInPage() {
       });
       const errMsg = isError.error || '잘못된 이메일, 혹은 비밀번호입니다.';
 
-      if (errMsg === '이메일 인증을 해주세요.') {
+      if (errMsg === '아직 이메일 인증을 하지 않았습니다.') {
         setUserIdx(isError.data.userIdx);
         setLinkModalOn(prev => !prev);
       } else {

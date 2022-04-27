@@ -4,6 +4,7 @@ import axios from '../../services/defaultClient';
 
 import TitleWrapper from '../../components/common/TitleWrapper';
 import EmailAuth from '../../components/sign/EmailAuth';
+import authNumRegex from '../../util/authNumRegex';
 
 function EmailAuthPage() {
   const { userIdx } = useParams();
@@ -31,6 +32,11 @@ function EmailAuthPage() {
 
   const onSubmit = async e => {
     e.preventDefault();
+    if(!authNumRegex.test(authNum)) {
+      setErrModalOn(prev => !prev);
+      setErrMsg("잘못된 인증번호입니다.");
+      return;
+    }
 
     try {
       const { data } = await axios.patch('users/email-auth/join', {
