@@ -7,7 +7,7 @@ import calendarArr from '../../util/calendarArr';
 function Calendar({ stampArr, view, setView }) {
   const { dates, firstDateIndex, lastDateIndex, prevDates, TLDate } = calendarArr(view.year, view.month);
   const today = new Date();
-  // today.getDate
+
   const prevClick = () => {
     if (view.year === 2021 && view.month === 0) return;
     setView({
@@ -44,7 +44,7 @@ function Calendar({ stampArr, view, setView }) {
         {dates.map((el, index) => (
           <li
             key={index}
-            className={`${stampArr[el - 1] === 1 && index < prevDates.length + TLDate ? 'acitve' : ''} ${
+            className={`${stampArr[el - 1] === 1 && index < prevDates.length + TLDate && (index >= firstDateIndex && index < lastDateIndex + 1) ? 'acitve' : ''} ${
               view.year === today.getFullYear() &&
               view.month === today.getMonth() &&
               firstDateIndex <= index &&
