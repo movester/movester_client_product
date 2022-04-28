@@ -36,7 +36,7 @@ const ProfileWrapper = styled.div`
     border: 2px solid #fff;
   }
 
-  @media (max-width: 850px) {
+  @media (max-width: 950px) {
     margin-right: 0;
     width: 100px;
   }

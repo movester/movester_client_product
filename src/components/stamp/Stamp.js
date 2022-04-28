@@ -32,8 +32,12 @@ function Stamp() {
         <div className="flex-wrap">
           {loading && <Loading />}
           {error && <Error />}
-          {stamp && <Calendar stampArr={stamp} view={view} setView={setView} />}
-          <Submit redirect={redirect} setRedirect={setRedirect} />
+          {stamp && (
+            <>
+              <Calendar stampArr={stamp} view={view} setView={setView} />{' '}
+              <Submit redirect={redirect} setRedirect={setRedirect} />
+            </>
+          )}
         </div>
       </StyledWrap>
     </Main>

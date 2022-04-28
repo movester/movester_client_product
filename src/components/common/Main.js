@@ -35,6 +35,7 @@ const StyledMain = styled.main`
   }
 
   &.record {
+    min-height: 70vh;
     padding: 40px 5rem;
     display: flex;
     @media screen and (max-width: 600px) {

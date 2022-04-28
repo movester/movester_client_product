@@ -72,7 +72,7 @@ const StyledStampSubmit = styled.div`
     font-weight: bold;
     color: ${({ theme }) => theme.darkPurple};
     margin-bottom: 53px;
-    @media screen and (max-width: 850px) {
+    @media screen and (max-width: 950px) {
       margin: 20px 0;
     }
   }

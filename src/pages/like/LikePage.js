@@ -45,15 +45,17 @@ function LikePage() {
     };
     window.scrollTo(0, 0);
     getLikeStretchingList();
-    setLoading(false);
+    setLoading(() => false);
   }, [isStretchingActive, page, total]);
 
-  return loading ? (
-    <Loading />
-  ) : (
+  return (
     <Main type="profile">
       <Nav />
-      <Like likeStretchings={likeStretchings} handleLike={handleLike} total={total} page={page} setPage={setPage} />
+      {loading ? (
+        <Loading />
+      ) : (
+        <Like likeStretchings={likeStretchings} handleLike={handleLike} total={total} page={page} setPage={setPage} />
+      )}
       {errModalOn && <ConfirmModal onClose={handleErrModal} title="찜한 스트레칭 리스트 응답 실패" content={errMsg} />}
     </Main>
   );

@@ -57,7 +57,7 @@ const ProfileDropMenuWrapper = styled.div`
     cursor: pointer;
   }
 
-  @media (max-width: 850px) {
+  @media (max-width: 950px) {
     width: 120px;
     padding: 0;
     .user-name {

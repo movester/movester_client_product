@@ -28,16 +28,16 @@ function Header() {
     <HeaderWrapper>
       <HeaderLeftBlock>
         {isMenu ? <CloseIcon onClick={handleMenu} /> : <MenuIcon name="menu" onClick={handleMenu} />}
-        {isMenu && <NavigationDropMenu isAuth={isAuth} handleMenu={handleMenu}/>}
+        {isMenu && <NavigationDropMenu isAuth={isAuth} handleMenu={handleMenu} />}
         <Link to="/">
           <img src="/assets/logo.png" alt="뭅스터 로고" />
         </Link>
         <div className="navigation-wrapper">
           <StyledNavigation>
-            <Link to="/about">About</Link>
-            <Link to="/stretching">Stretching</Link>
-            <Link to="/event">Event</Link>
-            {isAuth ? <Link to="/mypage/profile">Mypage</Link> : ''}
+            <Link to="/about">서비스</Link>
+            <Link to="/stretching">스트레칭</Link>
+            <Link to="/event">이벤트</Link>
+            {isAuth ? <Link to="/mypage/profile">마이페이지</Link> : ''}
           </StyledNavigation>
         </div>
       </HeaderLeftBlock>
@@ -52,10 +52,10 @@ function Header() {
         ) : (
           <>
             <Link to="/join">
-              <span>Join</span>
+              <span className="sign">회원가입</span>
             </Link>
             <Link to="/login">
-              <span>Login</span>
+              <span className="sign">로그인</span>
             </Link>
           </>
         )}
@@ -94,7 +94,7 @@ const HeaderWrapper = styled.header`
     justify-content: space-around;
   }
 
-  @media (max-width: 850px) {
+  @media (max-width: 950px) {
     padding: 0;
 
     svg {
@@ -131,14 +131,19 @@ const HeaderRightBlock = styled.div`
 
   span {
     margin-left: 20px;
+
+    &.sign {
+      font-size: 16px;
+    }
   }
 `;
 
 const StyledNavigation = styled.nav`
+  width: 800px;
   margin-left: 30px;
   display: flex;
   font-size: 1.2rem;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 2;
 
   a {
@@ -146,7 +151,4 @@ const StyledNavigation = styled.nav`
     cursor: pointer;
   }
 
-  @media (max-width: 850px) {
-    font-size: 1rem;
-  }
 `;

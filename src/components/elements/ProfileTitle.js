@@ -7,7 +7,7 @@ const ProfileTitle = styled.h1`
 
   &.margin {
     margin-bottom: 60px;
-    @media screen and (max-width: 850px) {
+    @media screen and (max-width: 950px) {
       margin-bottom: 20px;
     }
   }

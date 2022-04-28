@@ -67,7 +67,7 @@ function SignUpPage() {
       setErrMsg('이용약관에 동의해주세요.');
       return;
     }
-    
+
     if (
       !emailRegex.test(email) ||
       !passwordRegex.test(password) ||
@@ -89,13 +89,15 @@ function SignUpPage() {
         navigate(`/join/emailAuth/${data.data.userIdx}`);
       }
     } catch (err) {
+      setIsLoading(() => false);
+      document.querySelector('.join-btn').disabled = false;
       setErrModalOn(prev => !prev);
       setErrMsg(err.response.data.error);
     }
   };
 
   return (
-    <TitleWrapper title={isLoading ? '인증 메일 전송중...' : '회원가입'}>
+    <TitleWrapper title={isLoading ? '잠시만 기다려주세요...' : '회원가입'}>
       {isLoading ? (
         <Loading />
       ) : (

@@ -14,17 +14,17 @@ function NavigationDropMenu({ isAuth, handleMenu }) {
     <NavigationDropMenuWrapper>
       <NavLink to="/about">
         <button type="button" onClick={handleMenu}>
-          About
+          서비스
         </button>
       </NavLink>
       <NavLink to="/stretching">
         <button type="button" onClick={handleMenu}>
-          Stretching
+          스트레칭
         </button>
       </NavLink>
       <NavLink to="/event">
         <button type="button" onClick={handleMenu}>
-          Event
+          이벤트
         </button>
       </NavLink>
       {isAuth && (
