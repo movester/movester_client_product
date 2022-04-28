@@ -55,7 +55,7 @@ function Index({ weekStretching }) {
               <ItemImage src="/assets/bottom-record.png" alt="기록 변화" />
             </ImageWrapper>
           </Link>
-          <a href="https://open.kakao.com/o/gDHdxN0c" target="_blank" rel="noreferrer">
+          <a href="https://open.kakao.com/o/gtZLyR0c" target="_blank" rel="noreferrer">
             <ImageWrapper>
               <ItemText>카톡 알림</ItemText>
               <ItemImage src="/assets/bottom-kakao.png" alt="카톡 알림" />

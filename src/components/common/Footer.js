@@ -28,7 +28,7 @@ function Footer() {
           >
             <img src="/assets/insta_logo.png" alt="인스타그램 링크" />
           </button>
-          <button type="button" onClick={() => window.open('https://open.kakao.com/o/gDHdxN0c', '_blank')}>
+          <button type="button" onClick={() => window.open('https://open.kakao.com/o/gtZLyR0c', '_blank')}>
             <img src="/assets/kakao_logo.png" alt="카카오 오픈채팅방 링크" />
           </button>
         </FooterRightBlock>
