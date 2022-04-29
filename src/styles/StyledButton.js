@@ -28,7 +28,7 @@ const StyledButton = styled.button`
   }
 
   @media (max-width: 400px) {
-    width: 250px;
+    width: 350px;
     height: 40px;
 
     &.kakao-login {

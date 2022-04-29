@@ -24,7 +24,7 @@ display: block;
   }
 
   @media (max-width: 400px) {
-    width: 250px;
+    width: 350px;
     height: 40px;
   }
 `;

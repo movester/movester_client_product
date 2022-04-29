@@ -32,7 +32,7 @@ const StyledInputWrap = styled.div`
     width: 100%;
   }
   input {
-    width: 100%;
+    width: 350px;
     max-width: 380px;
     height: 40px;
     border-radius: 20px;
