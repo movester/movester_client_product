@@ -1,18 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import ProfileTitle from '../elements/ProfileTitle';
 
 function Profile() {
+  const isKakao = useSelector(state => state.auth.user.isKakao);
+
   return (
     <StyledWrap>
-      <ProfileTitle>비밀번호 변경</ProfileTitle>
-      <Link to="/mypage/profile/passwordChange">
-        <StyledButton type="button">비밀번호 변경</StyledButton>
-      </Link>
-      <Styledmt50>
-      <ProfileTitle>회원 탈퇴</ProfileTitle>
+      {isKakao || (
+        <>
+          <ProfileTitle>비밀번호 변경</ProfileTitle>
+          <Link to="/mypage/profile/passwordChange">
+            <StyledButton type="button">비밀번호 변경</StyledButton>
+          </Link>
+          <Styledmt50/>
+        </>
+      )}
+
+        <ProfileTitle>회원 탈퇴</ProfileTitle>
         <p>
           회원 탈퇴 시, 기존 정보를 다시 복구시킬 수 없습니다. <br />
           그럼에도 회원 탈퇴를 원하시나요?
@@ -20,7 +28,6 @@ function Profile() {
         <Link to="/mypage/profile/resign">
           <StyledButton type="button">탈퇴</StyledButton>
         </Link>
-      </Styledmt50>
     </StyledWrap>
   );
 }
@@ -38,7 +45,7 @@ const StyledWrap = styled.section`
 `;
 
 const Styledmt50 = styled.div`
-  margin-top: 50px;
+  margin-bottom: 50px;
 `;
 
 const StyledButton = styled.button`

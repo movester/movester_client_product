@@ -26,14 +26,13 @@ ProfileInput.defaultProps = {
 export default ProfileInput;
 
 const StyledInputWrap = styled.div`
-  width: 60%;
+  width: 100%;
   margin-bottom: 20px;
   @media screen and (max-width: 600px) {
     width: 100%;
   }
   input {
-    width: 350px;
-    max-width: 380px;
+    width: 380px;
     height: 40px;
     border-radius: 20px;
     background-color: rgba(196, 196, 196, 0.3);
@@ -41,6 +40,9 @@ const StyledInputWrap = styled.div`
     padding: 0 15px;
     @media screen and (max-width: 1024px) {
       margin-top: 20px;
+    }
+    @media screen and (max-width: 400px) {
+      width: 350px;
     }
   }
 
