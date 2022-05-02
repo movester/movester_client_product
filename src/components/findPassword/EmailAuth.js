@@ -10,7 +10,7 @@ function EmailAuth({ email, authNum, onChange, onSubmit, errModalOn, handleErrMo
   return (
     <>
       <StyledP className="bold margin">{email}</StyledP>
-      <StyledP>비밀번호 재설정을 위한 계정 인증 메인 전송 완료!</StyledP>
+      <StyledP>비밀번호 재설정을 위한 계정 인증 메일 전송 완료!</StyledP>
       <StyledP className="margin">전송된 인증번호를 입력해주세요.</StyledP>
       <StyledInput type="text" name="authNum" value={authNum} placeholder="인증번호" onChange={onChange} />
       <StyledButton onClick={onSubmit}>이메일 인증하기</StyledButton>
