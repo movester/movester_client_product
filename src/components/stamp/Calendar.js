@@ -44,7 +44,14 @@ function Calendar({ stampArr, view, setView }) {
         {dates.map((el, index) => (
           <li
             key={index}
-            className={`${stampArr[el - 1] === 1 && index < prevDates.length + TLDate && (index >= firstDateIndex && index < lastDateIndex + 1) ? 'acitve' : ''} ${
+            className={`${
+              stampArr[el - 1] === 1 &&
+              index < prevDates.length + TLDate &&
+              index >= firstDateIndex &&
+              index < lastDateIndex + 1
+                ? 'acitve'
+                : ''
+            } ${
               view.year === today.getFullYear() &&
               view.month === today.getMonth() &&
               firstDateIndex <= index &&
@@ -106,10 +113,9 @@ const CalendarWrapper = styled.div`
       background-size: cover;
     }
     &.today {
-      color: #ffffff;
+      color: #000000;
       font-weight: bold;
       border-radius: 50%;
-      background-color: #948fbf;
     }
   }
   span {
