@@ -13,10 +13,14 @@ const StyledButton = styled.button`
 
   &.kakao-login {
     margin-top: 23px;
-    background-image: url('/assets/kakao_login_large_wide.png');
+    background-image: url('/assets/kakao_login.png');
     background-size: cover;
     background-position: center;
     display: block;
+  }
+
+  &.margin {
+    margin-bottom: 20px;
   }
 
   &.right {

@@ -32,7 +32,6 @@ function SignForm({
   userIdx,
 }) {
   return (
-
     <>
       <FormWrapper onSubmit={onSubmit}>
         <StyledWrapper>
@@ -80,7 +79,7 @@ function SignForm({
               <StyledP className="name-message">{nameMessage}</StyledP>
               <CheckboxWrapper>
                 <label className="terms">
-                  <input type="checkbox" className="agree-check"/>
+                  <input type="checkbox" className="agree-check" />
                   <StyledSpan>이용약관 및 개인정보 처리 방침에 동의합니다.</StyledSpan>
                 </label>
                 <StyledP>이메일 인증을 통해 회원가입이 진행됩니다.</StyledP>
@@ -92,11 +91,7 @@ function SignForm({
               <StyledButton type="submit" className="login-btn" aria-label="login">
                 로그인 하기
               </StyledButton>
-              <StyledButton
-                type="button"
-                className="kakao-login"
-                onClick={() => window.open(kakaoAuthURL)}
-              />
+              <StyledButton type="button" className="kakao-login" onClick={() => window.open(kakaoAuthURL)} />
               <StyledLink to="/login/findPassword">비밀번호 찾기</StyledLink>
               <MoveLink text="아직 계정이 없으신가요?" address="/join" btnText="계정 만들기" />
             </>
@@ -105,25 +100,26 @@ function SignForm({
               <StyledButton type="submit" className="join-btn" aria-label="join">
                 회원가입 하기
               </StyledButton>
+              <StyledButton type="button" className="kakao-login margin" onClick={() => window.open(kakaoAuthURL)} />
               <MoveLink text="이미 계정이 있으신가요?" address="/login" btnText="로그인" />
             </>
           )}
         </StyledWrapper>
       </FormWrapper>
-        {errModalOn && (
-          <ConfirmModal
-            onClose={handleErrModal}
-            title={type === 'login' ? '로그인 실패' : '회원가입 실패'}
-            content={errMsg}
-          />
-        )}
+      {errModalOn && (
+        <ConfirmModal
+          onClose={handleErrModal}
+          title={type === 'login' ? '로그인 실패' : '회원가입 실패'}
+          content={errMsg}
+        />
+      )}
       {linkModalOn && (
-          <LinkModal
-            onClose={handleLinkModal}
-            title="로그인 실패"
-            content="이메일 인증을 진행해주세요!"
-            link={`/join/emailAuth/${userIdx}`}
-          />
+        <LinkModal
+          onClose={handleLinkModal}
+          title="로그인 실패"
+          content="이메일 인증을 진행해주세요!"
+          link={`/join/emailAuth/${userIdx}`}
+        />
       )}
     </>
   );
@@ -191,7 +187,8 @@ const CheckboxWrapper = styled.div`
     margin: 20px auto;
   }
 
-  input, progress {
+  input,
+  progress {
     accent-color: #948fbf;
   }
 `;
