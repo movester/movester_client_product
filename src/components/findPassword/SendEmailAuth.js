@@ -9,7 +9,7 @@ import StyledInput from '../../styles/StyledInput';
 import MoveLink from '../common/MoveLink';
 import ConfirmModal from '../common/Modal/ConfirmModal';
 
-function SendEmailAuth({ email, emailMessage, onChange, onSubmit, errModalOn, handleErrModal }) {
+function SendEmailAuth({ email, emailMessage, onChange, onSubmit, errModalOn, errMsg, handleErrModal }) {
   return (
     <>
       <FindPasswordWrapper>
@@ -31,7 +31,7 @@ function SendEmailAuth({ email, emailMessage, onChange, onSubmit, errModalOn, ha
         <MoveLink text="이미 계정이 있으신가요?" address="/login" btnText="로그인" />
       </FindPasswordWrapper>
       {errModalOn && (
-        <ConfirmModal onClose={handleErrModal} title="이메일 인증 메일 전송 실패" content="잘못된 이메일입니다." />
+        <ConfirmModal onClose={handleErrModal} title="이메일 인증 메일 전송 실패" content={errMsg} />
       )}
     </>
   );
@@ -43,6 +43,7 @@ SendEmailAuth.propTypes = {
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   errModalOn: PropTypes.bool.isRequired,
+  errMsg: PropTypes.string.isRequired,
   handleErrModal: PropTypes.func.isRequired,
 };
 
