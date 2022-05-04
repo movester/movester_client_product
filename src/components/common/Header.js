@@ -94,7 +94,7 @@ const HeaderWrapper = styled.header`
     justify-content: space-around;
   }
 
-  @media (max-width: 950px) {
+  @media (max-width: 1050px) {
     padding: 0;
 
     svg {
@@ -124,7 +124,8 @@ const HeaderLeftBlock = styled.div`
 `;
 
 const HeaderRightBlock = styled.div`
-  width: 150px;
+  margin-right: 15px;
+  width: auto;
   height: 40px;
   font-size: 1.2rem;
   line-height: 2;

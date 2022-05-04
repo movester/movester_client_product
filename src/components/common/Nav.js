@@ -90,7 +90,7 @@ const StyledNavWrap = styled.nav`
     font-weight: normal;
     color: #595959;
   }
-  @media screen and (max-width: 950px) {
+  @media screen and (max-width: 1050px) {
     display:none;
   }
 `;

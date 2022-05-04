@@ -18,13 +18,14 @@ NavProfileButton.propTypes = {
 export default NavProfileButton;
 
 const ProfileWrapper = styled.div`
+  min-width: 150px;
   width: 100%;
   height: 100%;
   font-size: 1rem;
   color: #2a1598;
   border: 2px solid #2a1598;
   border-radius: 20px;
-  padding: 0.3rem;
+  padding: 0.3rem 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,8 +37,7 @@ const ProfileWrapper = styled.div`
     border: 2px solid #fff;
   }
 
-  @media (max-width: 950px) {
-    margin-right: 0;
-    width: 100px;
+  @media (max-width: 1050px) {
+    display: none;
   }
 `;
