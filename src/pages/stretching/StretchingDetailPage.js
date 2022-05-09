@@ -52,12 +52,13 @@ function StretchingDetailPage() {
   };
 
   useEffect(() => {
+    window.localStorage.setItem('scrollY', 0);
     window.scrollTo(0, 0);
     getStretching();
     getRecommendStretchings();
   }, [pathname]);
 
-  useEffect(() => {
+  useEffect(async() => {
     const getUserDifficulty = async () => {
       try {
         setLoading(true);

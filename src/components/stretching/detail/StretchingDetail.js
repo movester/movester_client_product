@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -7,32 +7,24 @@ import ReactStars from 'react-rating-stars-component';
 
 function StretchingDetail({ stretching, isAuth, handleDifficulty, userDifficulty }) {
   const user = useSelector(state => state.auth?.user?.name);
-  const scrollRef = useRef();
-  const [isStarUpdate, setIsStarUpdate] = useState(false);
-
-  const scrollToBottom = useCallback(() => {
-    if (isStarUpdate) {
-      scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
-      setIsStarUpdate(prev => !prev);
-    }
-  }, [isStarUpdate]);
 
   useEffect(() => {
-    scrollToBottom();
-  }, [isStarUpdate]);
+    window.scrollTo({ top: window.localStorage.getItem('scrollY'), behavior: 'smooth' });
+  }, []);
+
   return (
     <Content>
       <StyledPre dangerouslySetInnerHTML={{ __html: stretching.contents }} />
       {isAuth && (
-        <ScoreResearch ref={scrollRef}>
+        <ScoreResearch>
           <p>뭅스터와 함께 스트레칭을 따라해보셨나요?</p>
           <p>{user}님께서 느낀 스트레칭의 강도를 표시해주세요!</p>
           <p className="gray">* 강도 변경시, 기존 강도가 삭제되며 한 스트레칭당 하나의 강도만 저장됩니다.</p>
           <ReactStars
             count={5}
             onChange={score => {
+              window.localStorage.setItem('scrollY', window.scrollY);
               handleDifficulty(score);
-              setIsStarUpdate(prev => !prev);
             }}
             size={24}
             emptyIcon={<i className="far fa-star" />}
