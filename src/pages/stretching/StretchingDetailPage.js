@@ -51,26 +51,30 @@ function StretchingDetailPage() {
     setLoading(false);
   };
 
+  const getUserDifficulty = async () => {
+    try {
+      setLoading(true);
+      const result = await axios.get(`/stretchings/difficulty/${idx}`);
+      setUserDifficulty(() => result.data.data?.difficulty);
+      getStretching();
+    } catch (err) {
+      setErrMsg(err.response.data.error);
+      handleErrModal();
+    }
+    setLoading(false);
+  };
+
   useEffect(() => {
     window.localStorage.setItem('scrollY', 0);
     window.scrollTo(0, 0);
     getStretching();
     getRecommendStretchings();
+    if (isAuth) {
+      getUserDifficulty();
+    }
   }, [pathname]);
 
-  useEffect(async() => {
-    const getUserDifficulty = async () => {
-      try {
-        setLoading(true);
-        const result = await axios.get(`/stretchings/difficulty/${idx}`);
-        setUserDifficulty(() => result.data.data?.difficulty);
-        getStretching();
-      } catch (err) {
-        setErrMsg(err.response.data.error);
-        handleErrModal();
-      }
-      setLoading(false);
-    };
+  useEffect(async () => {
     if (isAuth) {
       getUserDifficulty();
     }
