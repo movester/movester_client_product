@@ -65,7 +65,11 @@ StretchingDetail.propTypes = {
   ).isRequired,
   isAuth: PropTypes.bool.isRequired,
   handleDifficulty: PropTypes.func.isRequired,
-  userDifficulty: PropTypes.number.isRequired,
+  userDifficulty: PropTypes.number,
+};
+
+StretchingDetail.defaultProps = {
+  userDifficulty: 0,
 };
 
 export default StretchingDetail;
