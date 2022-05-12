@@ -127,14 +127,14 @@ const StyledNav = styled.nav`
 
   h1 {
     font-size: 28px;
-    color: #948fbf;
+    color: ${({ theme }) => theme.darkPurple};
     font-weight: 700;
     margin-bottom: 3rem;
   }
 
   p {
     font-size: 18px;
-    color: #948fbf;
+    color: #000000;
     line-height: 24px;
   }
 
@@ -167,7 +167,7 @@ const Grid = styled.div`
   row-gap: 20px;
   column-gap: 20px;
   align-items: center;
-  
+
   @media screen and (max-width: 1050px) {
     grid-template-columns: 1fr;
   }
