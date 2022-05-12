@@ -10,6 +10,7 @@ import Footer from './components/common/Footer';
 import theme from './theme';
 import IndexPage from './pages/IndexPage';
 import About from './pages/About';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 import StretchingListPage from './pages/stretching/StretchingListPage';
 import StretchingDetailPage from './pages/stretching/StretchingDetailPage';
@@ -41,6 +42,7 @@ function App() {
       <Routes>
         <Route path="/" element={<IndexPage />} />
         <Route path="/about" element={<About />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route
           path="/login"
           element={

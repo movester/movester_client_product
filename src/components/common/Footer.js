@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 function Footer() {
@@ -8,7 +9,10 @@ function Footer() {
         <FooterLeftBlock>
           <img src="/assets/logo.png" alt="뭅스터 로고" />
           <div className="footer-top">
-            |&nbsp;&nbsp;<span>개인 정보 취급 방침</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>이용 약관</span>
+            |&nbsp;&nbsp;
+            <Link to="/privacy-policy">
+              <span>개인 정보 처리 방침</span>
+            </Link>
           </div>
           <div className="footer-middle">
             <span>대표자: 조나현&nbsp;&nbsp;| </span>&nbsp;&nbsp;
@@ -22,10 +26,7 @@ function Footer() {
           >
             <img src="/assets/youtube_logo.png" alt="유튜브 링크" />
           </button>
-          <button
-            type="button"
-            onClick={() => window.open('https://www.instagram.com/mus.movester', '_blank')}
-          >
+          <button type="button" onClick={() => window.open('https://www.instagram.com/mus.movester', '_blank')}>
             <img src="/assets/insta_logo.png" alt="인스타그램 링크" />
           </button>
           <button type="button" onClick={() => window.open('https://open.kakao.com/o/gtZLyR0c', '_blank')}>
@@ -62,6 +63,10 @@ const FooterLeftBlock = styled.div`
     width: 100px;
     margin-right: 10px;
     transform: translateY(3px);
+  }
+
+  span {
+    color: #2a1598;
   }
 
   .footer-top {
