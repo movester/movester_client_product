@@ -37,14 +37,14 @@ function Header() {
             <Link to="/about">서비스</Link>
             <Link to="/stretching">스트레칭</Link>
             <Link to="/event">이벤트</Link>
-            {isAuth ? <Link to="/mypage/profile">마이페이지</Link> : ''}
+            {isAuth ? <Link to="/mypage/stamp">마이페이지</Link> : ''}
           </StyledNavigation>
         </div>
       </HeaderLeftBlock>
       <HeaderRightBlock>
         {isAuth ? (
           <>
-            <Link to="/mypage/profile">
+            <Link to="/mypage/stamp">
               <NavProfileButton handleClick={handleInfo} user={user} />
             </Link>
             {isInfo}

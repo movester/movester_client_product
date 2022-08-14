@@ -15,23 +15,23 @@ function Nav() {
   const mypageList = [
     {
       id: 0,
-      title: '프로필',
-      path: '/mypage/profile',
-    },
-    {
-      id: 1,
-      title: '찜한 스트레칭',
-      path: '/mypage/like',
-    },
-    {
-      id: 2,
       title: '출석도장',
       path: '/mypage/stamp',
     },
     {
-      id: 3,
+      id: 1,
       title: '기록',
       path: '/mypage/record',
+    },
+    {
+      id: 2,
+      title: '찜한 스트레칭',
+      path: '/mypage/like',
+    },
+    {
+      id: 3,
+      title: '프로필',
+      path: '/mypage/profile',
     },
   ];
 

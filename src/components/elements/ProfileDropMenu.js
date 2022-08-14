@@ -13,10 +13,10 @@ function ProfileDropMenu({ user }) {
         <span className="user-email">{user.email}</span>
       </UserInfoContainer>
       <StyledNavigation>
-        <NavLink to="/mypage/profile">프로필</NavLink>
-        <NavLink to="/mypage/basket">찜한 스트레칭</NavLink>
         <NavLink to="/mypage/stamp">출석도장</NavLink>
         <NavLink to="/mypage/Record">기록</NavLink>
+        <NavLink to="/mypage/basket">찜한 스트레칭</NavLink>
+        <NavLink to="/mypage/profile">프로필</NavLink>
       </StyledNavigation>
     </ProfileDropMenuWrapper>
   );

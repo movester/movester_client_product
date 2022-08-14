@@ -28,9 +28,16 @@ function NavigationDropMenu({ isAuth, handleMenu }) {
         </button>
       </NavLink>
       {isAuth && (
-        <NavLink to="/mypage/profile">
+        <NavLink to="/mypage/stamp">
           <button type="button" onClick={handleMenu}>
-            프로필
+            출석도장
+          </button>
+        </NavLink>
+      )}
+      {isAuth && (
+        <NavLink to="/mypage/record">
+          <button type="button" onClick={handleMenu}>
+            기록
           </button>
         </NavLink>
       )}
@@ -42,16 +49,9 @@ function NavigationDropMenu({ isAuth, handleMenu }) {
         </NavLink>
       )}
       {isAuth && (
-        <NavLink to="/mypage/stamp">
+        <NavLink to="/mypage/profile">
           <button type="button" onClick={handleMenu}>
-            출석도장
-          </button>
-        </NavLink>
-      )}
-      {isAuth && (
-        <NavLink to="/mypage/record">
-          <button type="button" onClick={handleMenu}>
-            기록
+            프로필
           </button>
         </NavLink>
       )}
